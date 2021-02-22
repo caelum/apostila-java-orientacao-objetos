@@ -439,29 +439,19 @@ Agora conseguimos rodar a aplicação e chamar as ações de saque e depósito q
 	declarar um atributo do tipo `Conta`.
 
 	
-1. Crie o método `criaConta` que recebe como parâmetro um objeto do tipo `Evento`.
-	Instancie uma conta para o atributo `conta` e coloque os valores de `numero`,
-	`agencia` e `titular`. Algo como:
 
-	``` java
-    public void criaConta(Evento evento){
-        this.conta = new Conta();
-        this.conta.setTitular("Batman");
-        // faça o mesmo para os outros atributos
-    }
-	```
+1. Na classe `ManipuladorDeContas`, crie o método `criaConta` que recebe como parâmetro um objeto do tipo `Evento`.
+	Instancie uma conta para o atributo `conta` e coloque os valores de `numero`,
+	`agencia` e `titular`. 
 1. Com a conta instanciada, agora podemos implementar as funcionalidades de saque e
 	depósito. Crie o método `deposita` que recebe um `Evento`, que é a classe que
 	retorna os dados da tela nos tipos que precisamos. Por exemplo, se quisermos o
 	valor a depositar sabemos que ele é do tipo `double` e que o nome do campo na
-	tela é `valor` então podemos fazer:
+	tela é `valor` .
 
-	``` java
-    public void deposita(Evento evento){
-        double valorDigitado = evento.getDouble("valor");
-        this.conta.deposita(valorDigitado);
-    }
-	```
+	**Dica**: a  classe `Evento` tem o  método `getDouble()` que retorna o conteúdo deste campo. Então, use `getDouble(“valor”)` quando precisar obter o conteúdo do campo `valor`.
+
+	
 1. Crie agora o método `saca`. Ele também deve receber um `Evento` nos mesmos
 	moldes do `deposita`.
 
@@ -471,16 +461,7 @@ Agora conseguimos rodar a aplicação e chamar as ações de saque e depósito q
 	classe `TelaDeContas` que mostrará a tela de nosso sistema. Não se esqueça de
 	fazer o import desta classe!
 
-	``` java
-    import br.com.caelum.javafx.api.main.TelaDeContas;
-
-    public class TestaContas {
-
-        public static void main(String[] args) {
-            TelaDeContas.main(args);
-        }
-    }
-	```
+	**Dica**: para executar a tela da nossa aplicação, o método estático `main` da classe `TelaDeContas` deve ser invocado dentro do método `main` da classe `TestaContas` que você está criando agora.
 
 	Rode a aplicação, crie a conta e tente fazer as operações de saque e depósito. Tudo
 	deve funcionar normalmente.

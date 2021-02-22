@@ -693,4 +693,72 @@ capitulos:
       -
         titulo: "Profiling no Eclipse TPTP"
         codigo: "profiling-no-eclipse-tptp"
+  -
+    titulo: "Resoluções de Exercícios"
+    arquivo: 23-resolucoes-exercicios.md
+    codigo: resolucoes-exercicios
+    secoes:
+      -
+        titulo: "Exercícios 3.3: Variáveis e tipos primitivos"
+        codigo: "exercicios-33-variaveis-e-tipos-primitivos"
+      -
+        titulo: "Exercícios 3.13: Fixação de sintaxe"
+        codigo: "exercicios-313-fixacao-de-sintaxe"
+      -
+        titulo: "Desafios 3.14: Fibonacci"
+        codigo: "desafios-314-fibonacci"
+      -
+        titulo: "Exercícios 4.12: Orientação a Objetos"
+        codigo: "exercicios-412-orientacao-a-objetos"
+      -
+        titulo: "Desafios 4.13"
+        codigo: "desafios-413"
+      -
+        titulo: "Exercícios 5.8: Encapsulamento, construtores e static"
+        codigo: "exercicios-58-encapsulamento-construtores-e-static"
+      -
+        titulo: "Desafios 5.9"
+        codigo: "desafios-59"
+      -
+        titulo: "Exercícios 8.9: Mostrando os dados da conta na tela"
+        codigo: "exercicios-89-mostrando-os-dados-da-conta-na-tela"
+      -
+        titulo: "Exercícios 9.7: Herança e Polimorfismo"
+        codigo: "exercicios-97-heranca-e-polimorfismo"
+      -
+        titulo: "Exercícios 11.5: Interfaces"
+        codigo: "exercicios-115-interfaces"
+      -
+        titulo: "Exercícios opcionais 11.6"
+        codigo: "exercicios-opcionais-116"
+      -
+        titulo: "Exercícios 12.11: Exceções"
+        codigo: "exercicios-1211-excecoes"
+      -
+        titulo: "Desafios 12.12"
+        codigo: "desafios-1212"
+      -
+        titulo: "Exercícios 13.5: java.lang.Object"
+        codigo: "exercicios-135-javalangobject"
+      -
+        titulo: "Exercícios 13.7: java.lang.String"
+        codigo: "exercicios-137-javalangstring"
+      -
+        titulo: "Desafio 13.8"
+        codigo: "desafio-138"
+      -
+        titulo: "Exercícios 14.5: Arrays"
+        codigo: "exercicios-145-arrays"
+      -
+        titulo: "Exercícios 15.6: Ordenação"
+        codigo: "exercicios-156-ordenacao"
+      -
+        titulo: "Exercícios 15.15: Collections"
+        codigo: "exercicios-1515-collections"
+      -
+        titulo: "Desafios 15.16"
+        codigo: "desafios-1516"
+      -
+        titulo: "Exercícios 16.11: Java I/O"
+        codigo: "exercicios-1611-java-io"
 

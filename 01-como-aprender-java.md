@@ -24,7 +24,7 @@ for de seu interesse.
 
 Por fim, falta mencionar algo sobre a prática, que deve ser tratada seriamente: todos os exercícios
 são muito importantes e os desafios podem ser feitos quando o curso terminar. De qualquer maneira
-recomendamos aos alunos estudarem em casa, e praticarem bastante código e variações.
+recomendamos aos alunos estudarem em casa, e praticarem bastante código e variações. 
 
 > **O curso**
 >
@@ -43,6 +43,8 @@ Existem também, em determinados capítulos, uma série de desafios. Eles focam 
 computacional que na linguagem, porém são uma excelente forma de treinar a sintaxe e,
 principalmente, familiarizar o aluno com a biblioteca padrão Java, além de proporcionar
 um ganho na velocidade de desenvolvimento.
+
+No capítulo 23 há possibilidades de respostas para os exercícios e desafios.
 
 ## Tirando dúvidas e indo além
 

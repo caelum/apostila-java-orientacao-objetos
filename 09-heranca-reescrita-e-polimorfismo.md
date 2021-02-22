@@ -541,125 +541,77 @@ construtores das classes, o que?
 
 	* Crie a classe `ContaCorrente` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`
 	* Crie a classe `ContaPoupanca` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`
-1. Precisamos pegar os dados da tela para conseguirmos criar a conta correspondente. No
+1. Precisamos pegar os dados da tela para conseguirmos criar a conta correspondente. Na classe
 	`ManipuladorDeContas` vamos alterar o método `criaConta`. Atualmente, apenas
 	criamos uma nova conta com os dados direto no código.
 	Vamos fazer com que agora os dados sejam recuperados da tela para colocarmos na nova
-	conta, faremos isso utilizando o objeto `evento`:
+	conta. Para fazer isso utililize o objeto do tipo `evento` que é exigido como parâmetro do método `criaConta`.
 
-	``` java
-  public void criaConta(Evento evento) {
-      this.conta = new Conta();
-      this.conta.setAgencia(evento.getString("agencia"));
-      this.conta.setNumero(evento.getInt("numero"));
-      this.conta.setTitular(evento.getString("titular"));
-  }
+	**Dicas**: A seguir algumas informações importantes sobre a classe `Evento` (a qual é responsável pela tela Nova Conta):
+
+    • Para obter o conteúdo do campo `agencia`, invoque o método `getString("agencia");`  
+
+    • Para obter o conteúdo do campo `numero`, invoque o método `getInt("numero"));`
+
+    • Para obter o conteúdo do campo `titular`, invoque o método `evento.getString("titular");`
+
+	• Observe na figura anterior que agora precisamos escolher que tipo de conta queremos criar (Conta Corrente ou Conta Poupança) e portanto deveremos recuperar o tipo da conta escolhido e criar a conta correspondente.
+	
+	 Para isso, ao invés de criar um objeto do tipo 'Conta', vamos usar o método `getSelecionadoNoRadio` do objeto `evento` para pegar o tipo, fazer um `if` para verificar esse tipo e só depois criar o objeto do tipo correspondente. A seguir um trecho do código:
+
+    ``` java
+	public void criaConta(Evento evento){   
+		String tipo = evento.getSelecionadoNoRadio("tipo");
+		if (tipo.equals("Conta Corrente")) {
+		//complete o código
+		
+	} 
 	```
-
-	Mas precisamos dizer qual tipo de conta que queremos criar! Devemos então recuperar o tipo da conta escolhido e criar a conta correspondente. Para isso, ao invés de criar um objeto do tipo 'Conta', vamos usar o método `getSelecionadoNoRadio` do objeto `evento` para pegar o tipo, fazer um `if` para verificar esse tipo e só depois criar o objeto do tipo correspondente. Após essas mudanças, o método `criaConta` ficará como abaixo:
-
-	``` java
-  public void criaConta(Evento evento) {
-      String tipo = evento.getSelecionadoNoRadio("tipo");
-      if (tipo.equals("Conta Corrente")) {
-          this.conta = new ContaCorrente();
-      } else if (tipo.equals("Conta Poupança")) {
-          this.conta = new ContaPoupanca();
-      }
-      this.conta.setAgencia(evento.getString("agencia"));
-      this.conta.setNumero(evento.getInt("numero"));
-      this.conta.setTitular(evento.getString("titular"));
-  }
-	```
-1. Apesar de já conseguirmos criar os dois tipos de contas, nossa lista não consegue exibir o tipo de cada conta na lista da tela inicial. Para resolver isso, podemos criar um método `getTipo` em cada uma de nossas contas fazendo com que a conta corrente devolva a string "Conta Corrente" e a conta poupança devolva a string "Conta Poupança":
-
-	``` java
-	public class ContaCorrente extends Conta {
-		public String getTipo() {
-			return "Conta Corrente";
-		}
-	}
-
-	public class ContaPoupanca extends Conta {
-		public String getTipo() {
-			return "Conta Poupança";
-		}
-	}
-	```
-1. Altere os métodos `saca` e `deposita` para buscarem o campo `valorOperacao` ao
+	
+1. Apesar de já conseguirmos criar os dois tipos de contas, nossa lista não consegue exibir o tipo de cada conta na lista da tela inicial. Para resolver isso, podemos criar um método `getTipo` em cada uma das classes que representam nossas contas fazendo com que a conta corrente devolva a string "Conta Corrente" e a conta poupança devolva a string "Conta Poupança".
+	
+1. **Atenção!** Altere os métodos `saca` e `deposita` para buscarem o campo `valorOperacao` ao
 	invés de apenas `valor` na classe `ManipuladorDeContas`.
 
-1. Vamos mudar o comportamento da operação de saque de acordo com o tipo de conta que estiver sendo utilizada. Na classe `ManipuladorDeContas` vamos alterar o método `saca` para tirar 10 centavos de cada saque em uma conta corrente:
+1. Vamos mudar o comportamento da operação de saque de acordo com o tipo de conta que estiver sendo utilizada. Na classe `ManipuladorDeContas` vamos alterar o método `saca` para tirar 10 centavos de cada saque em uma conta corrente. A seguir um trecho do código:
 
 	``` java
     public void saca(Evento evento) {
         double valor = evento.getDouble("valorOperacao");
         if (this.conta.getTipo().equals("Conta Corrente")){
-            this.conta.saca(valor + 0.10);
-        } else {
-            this.conta.saca(valor);
-        }
+       //complete o código
+
     }
 	```
 
-	Ao tentarmos chamar o método `getTipo`, o Eclipse reclamou que esse método não existe na classe `Conta` apesar de existir nas classes filhas. Como estamos tratando todas as contas genericamente, só conseguimos acessar os métodos da classe mãe. Vamos então colocá-lo na classe `Conta`:
+	**Dica**: ao tentarmos chamar o método `getTipo`, o Eclipse reclamou que esse método não existe na classe `Conta` apesar de existir nas classes filhas. O que fazer para resolver isto?
+	
+1. O código compila mas temos um outro problema. A lógica do nosso saque vazou para a classe `ManipuladorDeContas`. Se algum dia precisarmos alterar o valor da taxa no saque, teríamos que mudar em todos os lugares onde fazemos uso do método `saca`. Esta lógica deveria estar encapsulada dentro do método `saca` de cada conta. Como resolver isso?
 
-	``` java
-    public class Conta {
-        public String getTipo() {
-        	return "Conta";
-        }
-    }
-	```
-1. Agora o código compila mas temos um outro problema. A lógica do nosso saque vazou para a classe `ManipuladorDeContas`. Se algum dia precisarmos alterar o valor da taxa no saque, teríamos que mudar em todos os lugares onde fazemos uso do método `saca`. Esta lógica deveria estar encapsulada dentro do método `saca` de cada conta. Vamos então sobrescrever o método dentro da classe `ContaCorrente`:
+	**Dica**: repare que, para acessar o atributo `saldo` herdado da classe `Conta`, **você vai precisar mudar o modificador de visibilidade de saldo para `protected`**.
 
-	``` java
-	public class ContaCorrente extends Conta {
-	    @Override
-	    public void saca(double valor) {
-	        this.saldo -= (valor + 0.10);
-	    }
-
-      // restante da classe
-	}
-	```
-
-	Repare que, para acessar o atributo saldo herdado da classe `Conta`, **você vai precisar mudar o modificador de visibilidade de saldo para `protected`**.
-
-	Agora que a lógica está encapsulada, podemos corrigir o método `saca` da classe `ManipuladorDeContas`:
-
-	``` java
-    public void saca(Evento evento) {
-        double valor = evento.getDouble("valorOperacao");
-        this.conta.saca(valor);
-    }
-	```
+	Agora que a lógica está encapsulada, você precisa corrigir o método `saca` da classe `ManipuladorDeContas`.
 
 	Perceba que agora tratamos a conta de forma genérica!
+
 1. Rode a classe `TestaContas`, adicione uma conta de cada tipo e veja se o tipo é apresentado corretamente na lista de contas da tela inicial.
 
 	Agora, clique na conta corrente apresentada na lista para abrir a tela de detalhes de contas. Teste as operações de saque e depósito e perceba que a conta apresenta o comportamento de uma conta corrente conforme o esperado.
 
 	E se tentarmos realizar uma transferência da conta corrente para a conta poupança? O que acontece?
-1. Vamos começar implementando o método `transfere` na classe `Conta`:
+	
+1. Agora você precisa implementar o método `transfere` na classe  `Conta` e na classe `ManipuladorDeContas`. Para isso, observe o seguinte:
 
-	``` java
-    public void transfere(double valor, Conta conta) {
-        this.saca(valor);
-        conta.deposita(valor);
-    }
-	```
+    • O método `transfere` da classe `Conta`, deve receber como parâmetro, duas variáveis, uma para o valor a ser transferido e outra para a conta de destino.
 
-	Também precisamos implementar o método `transfere` na classe `ManipuladorDeContas` para fazer o vínculo entre a tela e a classe `Conta`:
+    • O método `transfere` da classe  `ManipuladorDeContas` deve existir para fazer o vínculo entre a tela e a classe  `Conta`, assim ele deve receber um objeto do tipo `Evento` como parâmetro.
 
-	``` java
-    public void transfere(Evento evento) {
-        Conta destino = (Conta) evento.getSelecionadoNoCombo("destino");
-        conta.transfere(evento.getDouble("valorTransferencia"), destino);
-    }
-	```
+	• No corpo do método, por meio do objeto do tipo `Evento`, deve-se invocar o método `getSelecionadoNoCombo("destino");`
+
+	• Em seguida, por meio do objeto do tipo `Conta`, deve-se chamar o método `transfere` da classe `Conta` para que a transferência seja de fato realizada.
 
 	Rode de novo a aplicação e teste a operação de transferência.
+
 1. Considere o código abaixo:
 
 	``` java

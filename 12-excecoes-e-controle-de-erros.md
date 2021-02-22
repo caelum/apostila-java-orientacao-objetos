@@ -739,16 +739,6 @@ a semântica do finally de uma maneira bem mais simples.
 1. Na classe `Conta`, modifique o método `deposita(double x)`: Ele deve lançar uma exception
 	chamada `IllegalArgumentException`, que já faz parte da biblioteca do Java, sempre que o valor
 	passado como argumento for inválido (por exemplo, quando for negativo).
-
-	``` java
-	public void deposita(double valor) {
-		if (valor < 0) {
-			throw new IllegalArgumentException();
-		} else {
-			this.saldo += valor;		
-		}		
-	}
-	```
 1. Rode a aplicação, cadastre uma conta e tente depositar um valor negativo.
 	O que acontece?
 
@@ -756,18 +746,7 @@ a semântica do finally de uma maneira bem mais simples.
 1. Ao lançar a `IllegalArgumentException`, passe via construtor uma mensagem a ser exibida. Lembre
 	que a `String` recebida como parâmetro é acessível depois via o método `getMessage()` herdado
 	por todas as `Exceptions`.
-
-	``` java
-	public void deposita(double valor) {
-		if (valor < 0) {
-			throw new IllegalArgumentException("Você tentou depositar" + 
-												" um valor negativo");
-		} else {
-			this.saldo += valor;		
-		}		
-	}
-	```
-
+	
 	Rode a aplicação novamente e veja que agora a mensagem aparece na tela.
 1. Faça o mesmo para o método `saca` da classe `ContaCorrente`, afinal o cliente
 	também não pode sacar um valor negativo!
@@ -776,26 +755,8 @@ a semântica do finally de uma maneira bem mais simples.
 	Crie sua própria `Exception`, `SaldoInsuficienteException`. Para isso, você precisa criar uma
 	classe com esse nome que seja filha de `RuntimeException`.
 
-	``` java
-	public class SaldoInsuficienteException extends RuntimeException {
-
-	}
-	```
-
-	No método `saca` da classe `ContaCorrente` vamos utilizar esta nova `Exception`:
-	``` java
-	@Override
-	public void saca(double valor) {
-		if (valor < 0) {
-			throw new IllegalArgumentException("Você tentou sacar um valor negativo");
-		}
-		if (this.saldo < valor) {
-			throw new SaldoInsuficienteException();
-		}
-		this.saldo -= (valor + 0.10);
-	}
-	```
-
+	No método `saca` da classe `ContaCorrente` utilize esta nova  `Exception`.
+	
 	**Atenção:** nem sempre é interessante criarmos um novo tipo de exception! Depende do caso.
 	Neste aqui, seria melhor ainda utilizarmos `IllegalArgumentException`. A boa prática diz que
 	devemos preferir usar as já existentes do Java sempre que possível.

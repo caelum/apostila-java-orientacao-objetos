@@ -401,11 +401,9 @@ abordados no curso FJ-21, juntamente com DAO.
 	Para isso vamos criar uma interface no pacote `br.com.caelum.contas.modelo` do nosso projeto
 	 `fj11-contas` já existente:
 
-	``` java
-	public interface Tributavel {
-      public double getValorImposto();
-	}
-	```
+    • o nome da interface deverá ser `Tributavel`;
+
+    • deve possuir um único método chamado  `getValorImposto()` que não recebe nada e devolve um double.
 
 	Lemos essa interface da seguinte maneira: "todos que quiserem ser _tributável_
 	precisam saber retornar _o valor do imposto_, devolvendo um double".
@@ -414,130 +412,69 @@ abordados no curso FJ-21, juntamente com DAO.
 	já para `ContaCorrente` você precisa pagar 1% da conta e o `SeguroDeVida`
 	tem uma taxa fixa de 42 reais mais 2% do valor do seguro.
 
-	Aproveite o Eclipse! Quando você escrever `implements Tributavel` na classe
-	`ContaCorrente`, o _quick fix_ do Eclipse vai sugerir que você reescreva
-	o método; escolha essa opção e, depois, preencha o corpo do método adequadamente:
+	Assim, para atender esta nova necessidade, você deve:
+	* *alterar* a classe `ContaCorrente`;
+	*  *criar* a classe `SeguroDeVida` . 
 
-	``` java
-	public class ContaCorrente extends Conta implements Tributavel {
+	A classe `SeguroDeVida` deverá estar no pacote  `br.com.caelum.contas.modelo` e deve  ter os seguintes atributos encapsulados: `valor` (do tipo double), `titular` (do tipo String) e `numeroApolice` (do tipo int).
 
-		// outros atributos e métodos
-
-		public double getValorImposto() {
-			return this.getSaldo() * 0.01;
-		}
-	}
-	```
-
-	Crie a classe `SeguroDeVida`, aproveitando novamente do Eclipse, para obter:
-
-	``` java
-	public class SeguroDeVida implements Tributavel {
-		private double valor;
-		private String titular;
-		private int numeroApolice;
-
-		public double getValorImposto() {
-			return 42 + this.valor * 0.02;
-		}
-
-    // getters e setters para os atributos
-	}
-	```
-	Além disso, escreva o método `getTipo` para que o tipo do produto apareça na interface gráfica:
-	``` java
-	public String getTipo(){
-		return "Seguro de Vida";
-	}
-	```
+	**Dica**: Na classe `SeguroDeVida`, lembre-se de escrever o método  `getTipo`  para que o tipo do `produto` apareça na interface gráfica.
 
 1. Vamos criar a classe `ManipuladorDeSeguroDeVida` dentro do pacote
 	`br.com.caelum.contas` para vincular a classe `SeguroDeVida` com a tela de criação
 	de seguros. Esta classe deve ter um atributo do tipo `SeguroDeVida`.
 
-	Crie também o método `criaSeguro` que deve receber um parâmetro do tipo
-	`Evento` para conseguir obter os dados da tela. Você deve pegar os parâmetros
-	"numeroApolice" do tipo `int`, "titular" do tipo `String` e "valor" do tipo
-	`double`.
+	Deve ter também o método `criaSeguro` que não retorna nada e deve receber um parâmetro do tipo
+	`Evento` para conseguir obter os dados da tela. Use os seguintes métodos da classe `Evento` para pegar estes dados:
 
-	O código final deve ficar parecido com o código abaixo:
+	* `evento.getInt("numeroApolice"));`
+	* `evento.getString("titular"));`
+	* `evento.getDouble("valor"));`
 
-	``` java
-  package br.com.caelum.contas;
+	**Dica**: use os métodos "setters" da classe `SeguroDeVida` para guardar as informações obtidas. Exemplo:
 
-  import br.com.caelum.contas.modelo.SeguroDeVida;
-  import br.com.caelum.javafx.api.util.Evento;
-
-  public class ManipuladorDeSeguroDeVida {
-
-    private SeguroDeVida seguroDeVida;
-
-    public void criaSeguro(Evento evento){
-      this.seguroDeVida = new SeguroDeVida();
-      this.seguroDeVida.setNumeroApolice(evento.getInt("numeroApolice"));
-      this.seguroDeVida.setTitular(evento.getString("titular"));
-      this.seguroDeVida.setValor(evento.getDouble("valor"));
-    }
-  }
+	```java
+	this.seguroDeVida.setNumeroApolice(evento.getInt("numeroApolice"));
 	```
+	
 1. Execute a classe `TestaContas` e tente cadastrar um novo seguro de vida. O seguro
 	cadastrado deve aparecer na tabela de seguros de vida.
 
-1. Queremos agora saber qual o valor total dos impostos de todos os tributáveis.
+1. Queremos saber qual o valor total dos impostos de todos os tributáveis.
 	Vamos então criar a classe `ManipuladorDeTributaveis` dentro do pacote
 	`br.com.caelum.contas`.
-	Crie também o método `calculaImpostos` que recebe um parâmetro do tipo `Evento`:
+	Crie também o método `calculaImpostos` que não retorna nada e recebe um parâmetro do tipo `Evento`. Mais adiante preencheremos o corpo deste método.
 
-	``` java
-  package br.com.caelum.contas;
-
-  import br.com.caelum.javafx.api.util.Evento;
-
-  public class ManipuladorDeTributaveis {
-
-    public void calculaImpostos(Evento evento){
-      // aqui calcularemos o total
-    }
-  }
-	```
+	Esta classe também deverá ter o atributo encapsulado  `total` do tipo double.
 
 1. Agora que criamos o tributavel, vamos habilitar a última aba de nosso sistema. Altere
 	a classe `TestaContas` para passar o valor `true` na chamada do método
 	`mostraTela`.
-  Observe que agora que temos o seguro de vida funcionando, a tela de relatório já
+	
+  	Observe que agora que temos o seguro de vida funcionando, a tela de relatório já
 	consegue imprimir o valor dos impostos individuais de cada tipo de _Tributavel_.
 
-1. No método `calculaImpostos` precisamos buscar os valores de impostos de cada `Tributavel` e
-	somá-los. Para saber a quantidade de tributáveis, a classe `Evento` possui um
-	método chamado `getTamanhoDaLista` que deve receber o nome da lista desejada, no
-	caso "listaTributaveis". Existe também um outro método que retorna um `Tributavel` de uma
+1. No método `calculaImpostos` da classe `ManipuladorDeTributaveis` precisamos buscar os valores de impostos de cada `Tributavel`,
+	somá-los e atribuir ao atributo `total`. Para isto, vamos usar os seguintes métodos da classe  `Evento`:
+	* `getTamanhoDaLista` que deve receber o nome da lista desejada, no	caso "listaTributaveis". Este método retorna a quantidade de tributáveis:
+	
+	``` java
+	evento.getTamanhoDaLista("listaTributaveis");
+	```
+
+	* `getTributavel` retorna um `Tributavel` de uma
 	determinada posição de uma lista, onde precisamos passar o nome da lista e o índice
-	do elemento. Precisamos percorrer a lista inteira, passando por cada posição então
-	utilizaremos um `for` para isto.
+	do elemento:
+	``` java
+	evento.getTributavel("listaTributaveis", i);
+	```
+
+	 **Dica**: utilize o comando `for` para percorrer a lista inteira, passando por cada posição da mesma.
+
+	 Por fim, o método `calculaImpostos` deverá invocar o método `getValorImposto()` e  acumular o valor do imposto de todos os tributáveis no atributo `total`:
 
 	``` java
-  package br.com.caelum.contas;
-
-  import br.com.caelum.contas.modelo.Tributavel;
-  import br.com.caelum.javafx.api.util.Evento;
-
-  public class ManipuladorDeTributaveis {
-
-    private double total;
-
-    public void calculaImpostos(Evento evento){
-      total = 0;
-      int tamanho = evento.getTamanhoDaLista("listaTributaveis");
-      for (int i = 0; i < tamanho; i++) {
-        Tributavel t = evento.getTributavel("listaTributaveis", i);
-        total += t.getValorImposto();
-      }
-    }
-
-    public double getTotal() {
-      return total;
-    }
-  }
+	total += t.getValorImposto();
 	```
 
 	Repare que, de dentro do `ManipuladorDeTributaveis`, você não pode acessar

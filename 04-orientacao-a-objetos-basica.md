@@ -854,69 +854,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 1. Modele uma conta. A ideia aqui é apenas modelar, isto é, só identifique que informações são importantes. Desenhe no papel tudo o que uma `Conta` tem e tudo o que ela faz.
 	Ela deve ter o nome do titular (`String`), o número (`int`), a agência (`String`), o saldo (`double`) e uma data de abertura (`String`). Além disso, ela deve fazer as seguintes ações: saca, para retirar um valor do saldo; deposita, para adicionar um valor ao saldo; calculaRendimento, para devolver o rendimento mensal dessa conta.
 	
-1. Transforme o modelo acima em uma classe Java. Teste-a, usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes, contudo, ela
-	deve possuir o método `main`.
 
-	A classe Conta deve conter pelo menos os seguintes métodos:
+1. Transforme o modelo acima em uma classe Java. Teste-a, usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes, por exemplo pode chamá-la `TestaConta`, contudo, ela
+	deve necessariamente possuir o método `main`.
+
+	A classe Conta deve conter, além dos atributos mencionados anteriormente, pelo menos os seguintes métodos:
 
 	* `saca` que recebe um `valor` como parâmetro e retira esse valor do saldo da conta
 	* `deposita` que recebe um `valor` como parâmetro e adiciona esse valor ao saldo da conta
 	* `calculaRendimento` que não recebe parâmetro algum e devolve o valor do saldo multiplicado por 0.1
-
-	Um esboço da classe:
-
-	``` java
-		class Conta {
-
-			double saldo;
-			// seus outros atributos e métodos
-
-			void saca(double valor) {
-				// o que fazer aqui dentro?
-			}
-
-			void deposita(double valor) {
-				// o que fazer aqui dentro?
-			}
-
-			double calculaRendimento() {
-				// o que fazer aqui dentro?
-			}
-		}
-	```
-
-	Você pode (e deve) compilar seu arquivo java sem que você ainda tenha terminado sua classe `Conta`. Isso evitará que você receba dezenas de erros de compilação de uma vez só. Crie a classe `Conta`, coloque seus atributos
-	e, antes de colocar qualquer método, compile o arquivo java. O arquivo
-	`Conta.class` será gerado, mas não podemos "executá-lo" já que essa
-	classe não tem um `main`. De qualquer forma, a vantagem é que assim
-	verificamos que nossa classe `Conta` já está tomando forma e está
-	escrita em sintaxe correta.
-
-	Esse é um processo incremental. Procure desenvolver assim seus exercícios, para não descobrir só no fim do caminho que algo estava muito errado.
-
-	Um esboço da classe que possui o `main`:
-
-	``` java
-		class TestaConta {
-
-			public static void main(String[] args) {
-				Conta c1 = new Conta();
-
-				c1.titular = "Hugo";
-				c1.numero = 123;
-				c1.agencia = "45678-9";
-				c1.saldo = 50.0;
-				c1.dataDeAbertura = "04/06/2015";
-
-				c1.deposita(100.0);
-				System.out.println("saldo atual:" + c1.saldo);
-				System.out.println("rendimento mensal:" + c1.calculaRendimento());
-			}
-		}
-	```
-	Incremente essa classe. Faça outros testes, imprima outros atributos e invoque
-	os métodos que você criou a mais.
-
+	
 	Lembre-se de seguir a convenção java, isso é importantíssimo. Isto é, preste
 	atenção nas maiúsculas e minúsculas, seguindo o seguinte exemplo:
 	`nomeDeAtributo`, `nomeDeMetodo`, `nomeDeVariavel`, `NomeDeClasse`,
@@ -941,7 +888,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	
 
 	
-1. Crie um método `recuperaDadosParaImpressao()`, que não recebe parâmetro mas devolve o texto com todas as informações da nossa conta para efetuarmos a impressão.
+	
+	
+
+2. Na classe Conta, crie um método `recuperaDadosParaImpressao()`, que não recebe parâmetro mas devolve o texto com todas as informações da nossa conta para efetuarmos a impressão.
 
 	Dessa maneira, você não precisa ficar copiando e colando um monte de `System.out.println()` para cada mudança e teste que fizer com cada um de seus funcionários, você simplesmente vai fazer:
 
@@ -955,25 +905,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	elegante para mostrar a representação de um objeto como `String`, além de
 	não jogar tudo pro `System.out` (só se você desejar).
 
-	O esqueleto do método ficaria assim:
-
-	``` java
-		class Conta {
-
-			// seus outros atributos e métodos
-
-			String recuperaDadosParaImpressao() {
-				String dados = "Titular: " + this.titular;
-				dados += "\nNúmero: " + this.numero;
-				// imprimir aqui os outros atributos...
-				// também pode imprimir this.calculaRendimento()
-				return dados;
-			}
-		}
-	```
-
 	
-1. Construa duas contas com o `new` e compare-os com o `==`. E se eles
+
+1. Na classe de teste dentro do bloco main, construa duas contas com o `new` e compare-os com o `==`. E se eles
 	tiverem os mesmos atributos? Para isso você vai precisar criar outra referência:
 
 	``` java
@@ -993,7 +927,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	
-1. Crie duas referências para a **mesma** conta, compare-os com o `==`.
+1. Agora, crie duas referências para a **mesma** conta, compare-os com o `==`.
 	Tire suas conclusões. Para criar duas referências pra mesma conta:
 
 	``` java
@@ -1007,6 +941,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	O que acontece com o `if` do exercício anterior?
 
 	
+
 1. (opcional) Em vez de utilizar uma `String` para representar a data, crie uma outra classe, chamada `Data`. Ela possui 3 campos `int`, para dia, mês e ano. Faça com que sua conta passe a usá-la. (é parecido com o último exemplo da explicação, em que a `Conta` passou a ter referência para um `Cliente`).
 
 	``` java

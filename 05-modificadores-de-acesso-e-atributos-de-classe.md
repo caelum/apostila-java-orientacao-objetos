@@ -580,81 +580,34 @@ em vez de `getLigado` poderíamos ter `isLigado`.
 ## Exercícios: Encapsulamento, construtores e static
 
 
-1. Adicione o modificador de visibilidade (`private`, se necessário) para cada
-	atributo e método da classe `Conta`. Tente criar uma `Conta`
-	no `main` e modificar ou ler um de seus atributos privados. O que acontece?
+1. O que é necessário fazer para **garantirmos** que os atributos da classe Conta não sejam acessados de forma direta em outra classe que não seja a própria classe Conta?
+1. Após ter deixado os atributos da classe Conta com acesso restrito (privado), tente criar uma `Conta`
+	na classe `TestaConta`, dentro do `main` e modificar ou ler os atributos da conta criada. O que acontece?
 
-	
-	
-1. Crie apenas os getters e setters necessários da sua classe `Conta`. Pense sempre se é preciso criar
-	cada um deles. Por exemplo:
+	Crie apenas os getters e setters necessários na sua classe `Conta`. Pense sempre se é preciso criar
+	cada um deles.
 
-	``` java
-		class Conta {
-			private String titular;
-
-			// ...
-
-			public String getTitular() {
-				return this.titular;
-			}
-
-			public void setTitular(String titular) {
-				this.titular = titular;
-			}
-		}
-	```
-
-	Não copie e cole! Aproveite para praticar sintaxe. Logo passaremos a usar
+	Não copie e cole! Aproveite para praticar a sintaxe. Logo passaremos a usar
 	o Eclipse e aí sim teremos procedimentos mais simples para este tipo de
 	tarefa.
 
 	Repare que o método `calculaRendimento` parece também um getter. Aliás,
 	seria comum alguém nomeá-lo de `getRendimento`. Getters não precisam apenas
 	retornar atributos. Eles podem trabalhar com esses dados.
-
-	
-1. Modifique suas classes que acessam e modificam atributos de uma `Conta` para utilizar os getters e setters recém criados.
-
-	Por exemplo, onde você encontra:
-
-	``` java
-		c.titular = "Batman";
-		System.out.println(c.titular);
-	```
-
-	passa para:
-
-	``` java
-		c.setTitular("Batman");
-		System.out.println(c.getTitular());
-	```
-
-	
+1. Altere suas classes que acessam e modificam atributos de uma `Conta` para utilizar os getters e setters recém criados.
 1. Faça com que sua classe `Conta` possa receber, opcionalmente, o nome
-	do titular da `Conta` durante a criação do objeto. Utilize construtores para obter esse resultado.
-
-	Dica: utilize um construtor sem argumentos também, para o caso de a pessoa
-	não querer passar o titular da `Conta`.
-
-	Seria algo como:
-
-	``` java
-		class Conta {
-			public Conta() {
-				// construtor sem argumentos
-			}
-
-			public Conta(String titular) {
-				// construtor que recebe o titular
-			}
-		}
-	```
-
-	Por que você precisa do construtor sem argumentos para que a passagem do nome
-	seja opcional?
+	do titular da `Conta` durante a criação do objeto.
 
 	
+
+	
+
+	
+
+	
+
+	
+
 1. (opcional) Adicione um atributo na classe `Conta` de tipo `int` que
 	se chama identificador. Esse identificador deve ter um valor único para cada
 	instância do tipo `Conta`. A primeira `Conta` instanciada tem
@@ -664,9 +617,11 @@ em vez de `getLigado` poderíamos ter `isLigado`.
 	Crie um getter para o identificador. Devemos ter um setter?
 
 	
-1. (opcional) Como garantir que datas como 31/2/2012 não sejam aceitas pela sua
+
+1. (opcional) Como garantir que datas como 31/2/2021 não sejam aceitas pela sua
 	classe `Data`?
 	
+
 1. (opcional) Suponha que temos a classe `PessoaFisica` que tem um CPF como atributo.
 	Como garantir que pessoa física alguma tenha CPF invalido,
 	nem seja criada `PessoaFisica` sem cpf inicial?
@@ -688,6 +643,7 @@ em vez de `getLigado` poderíamos ter `isLigado`.
 	```
 
 	
+
 1. Imagine que tenha uma classe `FabricaDeCarro` e quero garantir que só existe um
 	objeto desse tipo em toda a memória. Não existe uma palavra chave especial para
 	isto em Java, então teremos de fazer nossa classe de tal maneira que ela respeite

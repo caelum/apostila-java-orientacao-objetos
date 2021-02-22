@@ -444,37 +444,21 @@ Isso elimina a necessidade de usar o nome da classe, sob o custo de legibilidade
 Vamos salvar as contas cadastradas em um arquivo para não precisar ficar adicionando as
 contas a todo momento.
 1. Na classe `ManipuladorDeContas`, crie o método `salvaDados` que recebe um
-	`Evento` de onde obteremos a lista de contas:
+	`Evento` de onde obteremos a lista de contas.
 
-	``` java
-  public void salvaDados(Evento evento){
-      List<Conta> contas = evento.getLista("listaContas");
-      // aqui salvaremos as contas em arquivo
-  }
-	```
+	**Dica:** a classe `Evento` possui o método `getLista("listaContas")` que vai lhe ajudar neste item.
+
 1. Para não colocarmos todo o código de gerenciamento de arquivos dentro da classe
 	`ManipuladorDeContas`, vamos criar uma nova classe cuja responsabilidade será lidar
-	com a escrita / leitura de arquivos. Crie a classe `RepositorioDeContas` dentro do
+	com a escrita / leitura de arquivos. 
+	
+	Crie a classe `RepositorioDeContas` dentro do
 	pacote `br.com.caelum.contas` e declare o método `salva` que deverá
 	receber a lista de contas a serem guardadas. Neste método você deve percorrer a lista
 	de contas e salvá-las separando as informações de `tipo`, `numero`, `agencia`,
 	`titular` e `saldo` com vírgulas.
-	O código ficará parecido com:
-
-	``` java
-  public class RepositorioDeContas {
-
-      public void salva(List<Conta> contas) {
-          PrintStream stream = new PrintStream("contas.txt");
-          for (Conta conta : contas) {
-              stream.println(conta.getTipo() + "," + conta.getNumero() + ","
-                  + conta.getAgencia() + "," + conta.getTitular() + ","
-                  + conta.getSaldo());
-          }
-          stream.close();
-      }
-  }
-	```
+	
+	**Dica**: Você vai precisar da classe java.io.PrintStream para fazer este item.
 
 	O compilador vai reclamar que você não está tratando algumas exceções (como
 	`java.io.FileNotFoundException`). Utilize o devido `try`/`catch` e relance a
@@ -490,15 +474,15 @@ contas a todo momento.
 	**importantíssimo** lembrar de fechar os canais com o exterior que abrimos utilizando
 	o método `close`!
 1. Voltando à classe `ManipuladorDeContas`, vamos completar o método `salvaDados`
-	para que utilize a nossa nova classe `RepositorioDeContas` criada.
+	para que utilize a nossa nova classe `RepositorioDeContas` criada:
 
-	``` java
-  public void salvaDados(Evento evento){
-      List<Conta> contas = evento.getLista("listaContas");
-      RepositorioDeContas repositorio = new RepositorioDeContas();
-      repositorio.salva(contas);
-  }
+	* No corpo do método, crie uma lista de contas e atribua à ela o retetorno do método `getLista` da classe `Evento`:
+	
+	```Java
+	List<Conta> contas = evento.getLista("listaContas");
 	```
+
+	**Dica**: Aqui você vai precisar invocar o método `salva` da classe `RepositorioDeContas`.
 
 	Rode sua aplicação, cadastre algumas contas e veja se aparece um arquivo chamado
 	`contas.txt` dentro do diretório `src` de seu projeto. Talvez seja necessário dar
@@ -511,10 +495,10 @@ contas a todo momento.
 	`RepositorioDeContas`:
 
 	``` java
-  public List<Conta> carregaDados() {
-      RepositorioDeContas repositorio = new RepositorioDeContas();
-      return repositorio.carrega();
-  }
+	public List<Conta> carregaDados() {
+		RepositorioDeContas repositorio = new RepositorioDeContas();
+		return repositorio.carrega();
+	}
 	```
 
 	Faça o código referente ao método `carrega` que devolve uma `List` dentro da classe
@@ -524,16 +508,16 @@ contas a todo momento.
 	`agencia`, `titular` e `saldo`. Exemplo:
 
 	``` java
-        String linha = scanner.nextLine();
-        String[] valores = linha.split(",");
-        String tipo = valores[0];
+	String linha = scanner.nextLine();
+	String[] valores = linha.split(",");
+	String tipo = valores[0];
 	```
 
 	Além disso, a conta deve ser instanciada de acordo com o conteúdo do `tipo` obtido. Também fique atento pois os dados lidos virão sempre lidos em forma de `String` e para alguns atributos será necessário transformar o dado nos tipos primitivos correspondentes. Por exemplo:
 
 	``` java
-  		String numeroTexto = valores[1];
-  		int numero = Integer.parseInt(numeroTexto);
+	String numeroTexto = valores[1];
+	int numero = Integer.parseInt(numeroTexto);
 	```
 
 	
