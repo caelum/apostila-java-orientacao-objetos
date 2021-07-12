@@ -12,49 +12,13 @@ e public;
 * Utilizar variáveis e métodos estáticos.
 
 
-<!--@note
-* Só usar o nome ENCAPSULAMENTO no final do capítulo.
 
-* O _private_ deve ser muito associado ao encapsulamento. Encapsular é fundamental e deve ser visto
-e revisto aqui, relembrando que o importante é a interface, e não o miolo dos métodos.
 
-* Getters e setters não devem ser criados sem critério algum.
 
-* O _static_ dá um bom trabalho para os alunos entenderem. Enfatize que '_static_' é sinônimo de '_da classe_',
-
-* Exemplo de analogia de '_static_': um atributo '_static_' é quando eu anoto, na receita de
-bolo, quantos bolos já fiz.
-
-* Construtor não é método nem método especial.
-
-* Importante comentar que estamos apenas começando a estudar a parte interessante de orientação a objetos.
-É indispensável que, ao final da aula,os alunos tenham uma espécie de click em relação às vantagens.
-
-* Comentar que quando não está explícito o modificador, este assume default. Veremos isso no capítulo 12 (pacotes).
-
-Aniche: eu brinco com eles e falo que os seres vivos são encapsulados; todo animal come pela boca. Essa
-é a interface. COMO cada sistema digestório atua é problema do ser vivo; está escondido!
-
-Caso seja uma turma integral, os exercícios podem ser feitos após o almoço, mas este teria que
-ser dado por volta de 12h30.
--->
-
-<!--@todo exercício do identificador tem que primeiro pedir para criar a variável total com a motivação de totalizar o número de funcionários e depois, em outro exercício, pedir a criação do identificador, porque, senão, as pessoas confundem tudo com o static. -->
 
 
 ## Controlando o acesso
-<!--@note
-Pergunta: o que restringe, de fato, um saque inválido?
 
-É importante colocar todas as situações assim como estão na apostila. Fazer todos os "TestaEstouro".
-Deixar coisas no ar como: "o método saca restringe, de fato, um saque inválido?" e
-"mas todo mundo pode sempre alterar o saldo direto?". Deixar claro que, proceduralmente, é impossível
-resolver tal problema.
-
-Diga olá ao private. Contar que só a classe consegue alterar o atributo, mais ninguém.
-É interessante (mandatório!) lembrar do caso do CPF aqui. Comentar que, no exercício, terão
-a comprovação de que acesso direto a um atributo private não compila.
--->
 
 Um dos problemas mais simples que temos no nosso sistema de contas é que o método `saca` permite sacar independentemente de o saldo ser insuficiente. A seguir, você pode lembrar como está a classe `Conta`:
 
@@ -186,7 +150,7 @@ class Conta {
 >
 > Até agora, tínhamos declarado variáveis e métodos sem nenhum modificador como `private` e `public`. Quando isso acontece, o seu método ou atributo fica em um estado de visibilidade intermediário entre o `private` e o `public`, que veremos mais para frente, no capítulo de pacotes.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 É muito comum e faz todo sentido que seus atributos sejam `private`, e quase todos seus métodos sejam `public` (não é uma regra!). Desta forma, toda conversa de um objeto com outro é feita por troca de mensagens, isto é, acessando seus métodos. Algo muito mais educado que mexer diretamente em um atributo que não é seu.
@@ -194,21 +158,7 @@ class Conta {
 Melhor ainda! O dia em que precisarmos mudar como é realizado um saque na nossa classe `Conta`, adivinhe o local onde precisaríamos modificar? Apenas no método `saca`, o que faz pleno sentido. Por exemplo, imagine cobrar CPMF de cada saque: basta você modificar ali, e nenhum outro código, fora a classe `Conta`, precisará ser recompilado. Além do mais: as classes as quais usam esse método nem precisam ficar sabendo de tal modificação. Você precisa apenas recompilar aquela classe e substituir aquele arquivo `.class`. Ganhamos muito em esconder o funcionamento do nosso método na hora de fazer manutenção e modificações.
 
 ## Encapsulamento
-<!--@note
-Filosofar um pouco com exemplos práticos de ideias de encapsulamento. Bons exemplos são:
 
-* No carro, você sabe que precisa usar o freio, embreagem e acelerador.
-Você sabe como que o acelerador faz o carro andar?
-
-* Em relação ao teclado do computador, você sabe por qual trilha passa energia após digitar uma tecla?
-
-Isso aqui é praticamente uma introdução ao conceito de Interface! É interessante que a definição de interface já esteja na cabeça dos alunos antes mesmo de saberem que há uma palavra-chave totalmente relacionada a isso.
-
-Explicar que o encapsulamento permite nossa classe ser passível de mudanças
-(lembrá-los de que os métodos públicos são chamados de interface da classe). Um exemplo o qual ilustra bem isso é utilizar-se de uma classe já existente, por exemplo, Conta, e criar uma classe que trabalhará com ela. Depois, alterar a classe Conta para ficar claro que a classe a qual a utiliza (particularmente, costumo dizer: "eu tenho mil classes iguais àquela.") não sofre consequências com as alterações. Não falar de getters/setters ainda.
-
-* Resolver o problema do CPF colocando o código na lousa.
--->
 
 
 O que começamos a ver nesse capítulo é a ideia de **encapsular**, isto é, ocultar todos os membros de uma classe (como vimos acima), além de esconder como funcionam as rotinas (no caso, métodos) do nosso sistema.
@@ -227,7 +177,7 @@ O conjunto de métodos públicos de uma classe é também chamado de **interface
 >
 > Essa frase vem do livro Design Patterns, de Eric Gamma et al., que é cultuado no meio da orientação a objetos.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Sempre que acessamos um objeto, utilizamos sua interface. Existem diversas analogias fáceis no mundo real:
@@ -308,10 +258,7 @@ class TestaAcessoComPegaSaldo {
 
  
 
-<!--@note
-Pergunta: preciso colocar getters/setters para todos os atributos?
-Não utilizar o getLimite() e nem o setSaldo(). Alterar o getSaldo() como na apostila para mostrar que getters não fazem necessariamente trabalhos bobos como `return this.x`.
--->
+
 
 A fim de permitir o acesso aos atributos (já que eles são `private`) de uma maneira controlada, a prática mais comum é criar dois métodos, um que retorna o valor, e outro o qual muda o valor.
 
@@ -385,16 +332,11 @@ Depois disso, precisaríamos mudar mais algum outro código? A resposta é não,
 >
 > http://blog.caelum.com.br/2006/09/14/nao-aprender-oo-getters-e-setters/
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Construtores
-<!--@note
-* Deixar claro que construtores não são métodos.
-* Pergunta: como as classes eram criadas se não tinham construtor?
-* Explicar o construtor Default.
-* Apenas comentar que, a partir de um construtor, podemos chamar outro construtor.
--->
+
 
 
 Quando usamos a palavra-chave `new`, estamos construindo um objeto. Sempre quando o `new` é chamado, ele executa o **construtor da classe**. O construtor da classe é um bloco declarado com o **mesmo nome** que a classe:
@@ -432,7 +374,7 @@ A mensagem "construindo uma conta" aparecerá. É como uma rotina de inicializa�
 >
 > A partir do momento que você declara um construtor, o construtor default não é mais fornecido.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 O interessante é que um construtor pode receber um argumento, inicializando, assim, algum tipo de
@@ -479,7 +421,7 @@ Você pode ter mais de um construtor na sua classe, e, no momento do `new`, o co
 >
 > Um construtor __não é__ um método. Algumas pessoas o chamam de um método especial, mas, definitivamente, não o é, uma vez que não tem retorno e só é chamado durante a construção do objeto.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Chamando outro construtor**
@@ -507,7 +449,7 @@ Você pode ter mais de um construtor na sua classe, e, no momento do `new`, o co
 > }
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Existe um outro motivo, o outro lado dos construtores: facilidade. Às vezes, criamos um construtor que recebe diversos argumentos para não obrigar o usuário de uma classe a chamar diversos métodos do tipo `'set'`.
@@ -519,18 +461,11 @@ No nosso exemplo do CPF, podemos forçar que a classe `Cliente` receba no mínim
 > Quando criamos uma classe com todos os atributos privados, seus getters, setters e um construtor vazio (padrão), na verdade, estamos criando um Java Bean (mas não confunda com EJB, que é Enterprise Java Beans).
 >
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Atributos de classe
-<!--@note
-Uma analogia boa é dizer que quero marcar quantos bolos faço com base em uma receita. Onde marcar?
-Ao marcar em atributos normais, é como se eu marcasse no bolo e depois entregasse cada bolo para a pessoa.
-Cada bolo ficaria marcado com 1, mas eu não saberia o total.
 
-Então, a ideia é marcar na receita do bolo que é única e centralizada. A receita é a classe, e marcar
-nela significa usar static.
--->
 
 Nosso banco também quer controlar a quantidade de contas existentes no sistema. Como poderíamos fazer isso? A ideia mais simples é:
 
@@ -624,7 +559,7 @@ Repare que estamos não chamando um método com uma referência a uma `Conta`, e
 >
 > O `static` realmente apresenta um "cheiro" procedural, porém, em muitas vezes, é necessário.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Um pouco mais...
@@ -641,12 +576,10 @@ tirar? O que lhe parece um método estático em casos como esses?
 `is`. Desse modo, caso tivéssemos um atributo booleano `ligado`
 em vez de `getLigado`, poderíamos ter `isLigado`.
 
-<!--  Comentário para separar quotes adjacentes. -->
+
 ## Exercícios: encapsulamento, construtores e static
 
-<!--@note
-No exercício de colocar atributos private, se faltar tempo, sugira somente a variável membro `salario`. Se fizer todos, consumirá bastante tempo.
--->
+
 1. O que é necessário fazer para **garantirmos** que os atributos da classe Conta não sejam acessados de forma direta em outra classe a qual não seja a própria classe Conta?
 1. Após deixar os atributos da classe Conta com acesso restrito (privado), tente criar uma `Conta`
 	na classe `TestaConta` dentro do `main` e modificar ou ler os atributos da conta criada. O que acontece?
@@ -665,113 +598,15 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 1. Faça com que sua classe `Conta` possa receber, opcionalmente, o nome
 	do titular da `Conta` durante a criação do objeto.
 
-	<!--@note
-	Aproveite para brincar com o pessoal. Pergunte quantos erros de
-	compilação cada um teve, incentivando a quem teve mais!!
-	-->
+	
 
-	<!--@answer
-	``` java filename="Conta.java"
-		public class Conta {
-			private String titular;
-			private int numero;
-			private String agencia;
-			private double saldo;
-			private Data dataDeAbertura;
+	
 
-			public void saca(double valor) {...}
+	
 
-			public void deposita(double valor) {...}
+	
 
-			public double calculaRendimento() {...}
-
-			public String recuperaDadosParaImpressao() {...}
-		}
-	```
-	-->
-
-	<!--@answer
-	``` java filename="Conta.java"
-		public class Conta {
-			// atributos
-
-			public double getRendimento() {
-				return this.saldo * 0.1;
-			}
-
-			public String getTitular() {
-				return this.titular;
-			}
-
-			public void setTitular (String titular) {
-				this.titular = titular;
-			}
-
-			public int getNumero() {
-				return this.numero;
-			}
-
-			public void setNumero (int numero) {
-				this.numero = numero;
-			}
-
-			public String getAgencia() {
-				return this.agencia;
-			}
-
-			public void setAgencia (String agencia) {
-				this.agencia = agencia;
-			}
-
-			public double getSaldo() {
-				return this.saldo;
-			}
-
-			public void setSaldo (double saldo) {
-				this.saldo = saldo;
-			}
-
-			public Data getDataDeAbertura() {
-				return this.dataDeAbertura;
-			}
-
-			public void setDataDeAbertura (Data dataDeAbertura) {
-				this.dataDeAbertura = dataDeAbertura;
-			}
-		}
-	```
-	-->
-
-	<!--@answer
-	``` java filename="TestaConta.java"
-		class TestaConta {
-			public static void main(String[] args) {
-				Conta c1 = new Conta("Hugo");
-				c1.setNumero(123);
-				c1.deposita(50);
-				c1.setDataDeAbertura(new Data(1, 7, 2009));
-
-				System.out.println(c1.recuperaDadosParaImpressao());
-			}
-		}
-	```
-	-->
-
-	<!--@answer
-	``` java filename="TestaConta.java"
-		public class Conta {
-			// atributos
-
-			public Conta() {}
-
-			public Conta(String titular) {
-				this.titular = titular;
-			}
-
-			// métodos
-		}
-	```
-	-->
+	
 
 1. (Opcional) Adicione um atributo, na classe `Conta` de tipo `int`, que
 	se chama identificador. Este deve ter um valor único para cada
@@ -781,84 +616,18 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 
 	Crie um getter para o identificador. Devemos ter um setter?
 
-	<!--@answer
-	``` java h="2,6," filename="TestaConta.java"
-		public class Conta {
-			private int identificador;
-			private static int proximoIdentificador;
-
-			public Conta(String titular) {
-				this.titular = titular;
-				this.identificador = proximoIdentificador++;
-			}
-
-			public int getIdentificador() {
-				return this.identificador;
-			}
-
-			// restante da classe
-		}
-	```
-
-	Não faz sentido que o identificador tenha um setter, uma vez que, pela lógica
-	da aplicação, o `identificador` é um número único para cada funcionário
-	no sistema.
-	-->
+	
 
 1. (Opcional) Como garantir que datas como 31/2/2021 não sejam aceitas pela sua
 	classe `Data`?
-	<!--@answer
-	Você pode fazer a autenticação das datas válidas ser chamada já no
-	construtor da classe Data ao passarmos o dia, mês e ano. Nesse
-	momento, a única forma de indicar a existência de um erro que você aprendeu é
-	imprimir uma mensagem no terminal avisando-o. Contudo, mais para a frente,
-	veremos uma forma muito mais elegante de tratar esses casos.
-
-	``` java
-		public class Data {
-
-			public Data(int dia, int mes, int ano) {
-				this.___ = ___;
-				if (! isDataViavel(dia, mes, ano)) {
-					System.out.println("A data " + formata() + " não existe!");
-				}
-			}
-
-			private boolean isDataViavel(int dia, int mes, int ano) {
-				if (dia <= 0 || mes <= 0) {
-					return false;
-				}
-
-				int ultimoDiaDoMes = 31; // por padrao são 31 dias
-				if (mes == 4 || mes == 6 || mes == 9 || mes == 11 ) {
-					ultimoDiaDoMes = 30;
-				} else if (mes == 2) {
-					if (ano % 4 == 0) {
-						ultimoDiaDoMes = 29;
-					} else {
-						ultimoDiaDoMes = 28;
-					}
-				}
-				if (dia > ultimoDiaDoMes) {
-					return false
-				}
-
-				return true;
-			}
-		}
-	```
-	-->
+	
 
 1. (Opcional) Imagine que tenhamos a classe `PessoaFisica` a qual tem um CPF como atributo.
 	Como garantir que alguma pessoa física tenha CPF inválido e
 	tampouco seja criada uma `PessoaFisica` sem CPF inicial?
 	(Suponha que já exista um algoritmo de validação de CPF:
 	este deve passar por um método `valida(String x)...`.)
-	<!--@answer
-	Você pode fazer a validação ser chamada no construtor e, por ora,
-	imprimir a mensagem no console. No capítulo 11, veremos uma forma de
-	realmente impedir a criação do objeto caso essa validação não passe.
-	-->
+	
 
 
 ## Desafios
@@ -873,14 +642,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 		}
 	```
 
-	<!--@answer
-	O `main` é um método estático, isto é: ele não é do objeto, é da classe.
-	Já o atributo `x` não tem a palavra `static` e, portanto, é do objeto.
-
-	Para rodar o `main`, não há necessidade ou garantia de que teremos um
-	objeto do tipo `Teste`. Então, não há como garantir que o `x` sequer
-	existirá.
-	-->
+	
 
 1. Imagine que haja uma classe `FabricaDeCarro`, e quero garantir que só exista um
 	objeto desse tipo em toda a memória. Não há uma palavra-chave especial para

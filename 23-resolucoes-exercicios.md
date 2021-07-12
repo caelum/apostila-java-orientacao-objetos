@@ -78,7 +78,7 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	```
 	
 1. Imprima a soma de 1 até 1000.
-	<!--@note Mostre também a solução com soma de progressão aritmética. -->
+	
 
 	``` java
 		class ImprimeSoma {
@@ -107,10 +107,7 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	```
 	
 1. Imprima todos os múltiplos de 3, entre 1 e 100.
-	<!--@note
-	A maioria procura múltiplos olhando para o resto (%). Mostre um que faz
-	incremento de 3 em 3.
-	-->
+	
 
 	```java
 		class MultiplosDeTresAteCem {
@@ -225,7 +222,7 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	> 			System.out.print(variavel);
 	> ```
 
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 	
 	``` java
 		class TresNMaisUm {
@@ -244,11 +241,7 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 		}
 	```
 
-	<!--@answer
-	Curiosamente, essa é a famosa conjectura de Collatz. Ninguém nunca
-	conseguiu demonstrar que sempre cairá em um desses casos até convergir
-	a 1.
-	-->
+	
 1. (Opcional)  Imprima a seguinte tabela usando `for`s encadeados:
 	```
 	1
@@ -315,7 +308,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	* `deposita`: adiciona uma determinada quantia ao saldo da conta;
 	* `calculaRendimento`: devolve o quanto essa conta rende por mês.
 
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 
 1. Transforme o modelo acima em uma classe Java. Teste a classe usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes. Por exemplo, pode chamá-la `TestaConta`. Contudo, ela
 	deve necessariamente ter o método `main`.
@@ -399,7 +392,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	>
 	> ```javac *.java```
 
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 
 	*Abaixo a resposta completa desse item:*
 	
@@ -730,19 +723,14 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 ## Exercícios 5.8: encapsulamento, construtores e static
 
-<!--@note
-No exercício de colocar atributos private, se faltar tempo, sugira somente a variável membro `salario`. Se fizer todos, consumirá bastante tempo.
--->
+
 1. Adicione o modificador de visibilidade (`private`, se necessário) para cada
 	atributo e método da classe `Conta`. Tente criar uma `Conta`
 	no `main` e modificar ou ler um de seus atributos privados. O que acontece?
 
-	<!--@note
-	Aproveite para brincar com o pessoal. Pergunte quantos erros de
-	compilação cada um tomou, incentivando a quem teve mais!!
-	-->
+	
 
-	<!-- Comentário para separar quotes adjacentes.  -->
+	
 
 	``` java
 		public class Conta {
@@ -1040,7 +1028,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	realmente impedir a criação do objeto caso essa validação não passe.
 	
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 ## Desafios 5.9
 1. Por que esse código não compila?
@@ -1080,21 +1068,11 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	A classe `ManipuladorDeContas` fará a ligação da `Conta` com a tela, por isso precisaremos
 	declarar um atributo do tipo `Conta`.
 
-	<!--@answer
-	public class ManipuladorDeContas {
+	
 
-	private Conta conta;
-	}
-	-->
+	
 
-	<!--@answer
-		public class ManipuladorDeContas {
-
-		private Conta conta;
-		}
-	-->
-
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 
 1. Crie o método `criaConta`, que recebe como parâmetro um objeto do tipo `Evento`.
 	Instancie uma conta para o atributo `conta` e coloque os valores de `numero`,
@@ -1561,14 +1539,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	que é possível fazê-lo. Nesse nosso caso, isso não tem uma utilidade. Essa
 	possibilidade foi útil no exercício anterior.
 
-	<!--@note
-	`Tributavel t = cc` gera muitas dúvidas na cabeça do pessoal. Normal!
-	Eles só precisam saber que isso pode ser feito, e não que tem alguma
-	utilidade!
-
-	Isso só vai ser útil e ficará claro quando eles virem collections
-	`List x = new ArrayList()`
-	-->
+	
 
 	*Resposta*: apesar de ser um objeto do tipo `ContaCorrente`, ao chamarmos ele de
 	`Tributavel`, apenas garantimos ao compilador que aquele objeto dispõe
@@ -1581,15 +1552,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 `conta-interface`, já que usaremos a `Conta` como classe em exercícios futuros.
 1. (Opcional) Transforme a classe `Conta` em uma interface.
 
-	<!--@note
-	Hora para um bom exemplo de refactoring!
-
-	Aqui você pode, depois, mostrar aos alunos o Extract Interface:
-	delete sua classe `Conta`, tire os extends e overrides de `ContaCorrente`
-	e `ContaPoupanca`, e aplique Extract Interface em `ContaCorrente`!
-
-	Muito melhor que um simples rename!
-	-->
+	
 
 	``` java
 	public interface Conta {
@@ -1810,15 +1773,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	um construtor em `SaldoInsuficienteException` que delegue ao construtor de sua mãe; esta
 	guardará essa mensagem para poder mostrá-la quando o método `getMessage` for invocado:
 
-	<!--@note
-	Durante esse exercício, é bom uma explicaçãozinha na lousa a respeito desse recurso.
-	Vale a pena dar a motivação explicando por que construtores não são herdados (se o fossem,
-	você poderia construir um objeto do tipo filho passando menos informações
-	que aquelas realmente necessárias para ela, já que a classe pai não precisava dela, por exemplo).
-
-	Também é bom explicar que isso é bem comum, e talvez falar do menu source, generate
-	constructor using fields (ou Control 3  + gcuf).
-	-->
+	
 
 	``` java
 		public class SaldoInsuficienteException extends RuntimeException {
@@ -2008,17 +1963,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	}
 	```
 
-	<!--@note
-	Bom momento para falar do instanceof, já que pelo contrato do Object.equals,
-	você deve retornar false caso os tipos não sejam ok.
-
-	Se falar do instanceof, tome cuidado para não animar os alunos a fazerem switches
-	com base no tipo do objeto, e acabar virando programação procedural.
-
-	Alternativa: fazer o casting com try/catch e return false dentro do catch
-	(embora, dessa forma, aceitemos polimorfismo e tipos diferentes, mas filhos sejam
-	aceitos).
-	-->
+	
 
 	Você pode usar o **Ctrl + espaço** do Eclipse para escrever o esqueleto do
 	método `equals`, basta digitar dentro da classe `equ` e pressionar
@@ -2111,10 +2056,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 	imprima a `String` de trás para a frente e em uma linha só. Teste-o para
 	_"Socorram-me, subi no ônibus em Marrocos"_ e _"anotaram a data da maratona"_.
 
-	<!--@note
-	Sempre foi meu sonho usar a frase _"Socorram-me, subi no ônibus em Marrocos"_
-	com fins profissionais. Estou realizado. Paulo Silveira.
-	-->
+	
 
 	*Resposta:*
 	``` java
@@ -2140,10 +2082,7 @@ No exercício de colocar atributos private, se faltar tempo, sugira somente a va
 		}
 	```
 
-	<!--@note
-	Essas últimas questões são para acostumar o aluno a usar o Javadoc e conhecer mais
-	a API da String, que será fundamental no seu dia a dia.
-	-->
+	
 
 ## Desafio 13.8
 1. Converta uma `String` para um número sem usar as bibliotecas do Java que já o
@@ -2521,12 +2460,7 @@ Para consolidarmos os conceitos sobre arrays, faremos alguns exercícios que nã
 
  Ordenaremos o campo de **destino** da tela de detalhes da conta para que as contas
 apareçam em ordem alfabética de titulares.
-<!--@note
-É muito interessante eles aprenderem sobre a API, mas, mais ainda, é que eles
-consigam enxergar que todos os conceitos aprendidos até agora de OO serão
-aplicados nesse exercício: em especial, muito o uso de interfaces e como
-isso desacopla código.
--->
+
 1. Faça sua classe `Conta` implementar a interface
 	`Comparable<Conta>`. Utilize o critério de ordenar pelo titular da conta.
 
@@ -2642,10 +2576,7 @@ isso desacopla código.
 	Precisamos alterar mais algum código para
 	que essa substituição funcione? Rode o programa. Alguma diferença?
 
-	<!--@note
-	Essa mudança é um pretexto para o exercício de performance ao final do
-	capitulo.
-	-->
+	
 	*Resposta:*
 	Essa mudança simplesmente funciona! O legal de chamar as coleções pelas suas
 	interfaces é isso: não importa a implementação. Como ambas **são uma**
@@ -2665,15 +2596,7 @@ isso desacopla código.
 
 ## Exercícios 15.15: collections
 
-<!--@note
-Não deixe de fazer a pergunta conceitual do exercício 2 junto com os alunos também!
-Eles vão poder exercitar o polimorfismo. Você pode também perguntar se valeria
-a pena referenciar a ArrayList como sendo um Object e fazer eles perceberem
-que é legal sempre se referenciar o mais genérico possível, mas nem sempre
-faz sentido:
 
-Object x = new ArrayList();
--->
 1. Crie um código que insira 30 mil números numa `ArrayList` e pesquise-os.
 	Usemos um método de `System` para cronometrar o tempo gasto:
 
@@ -3208,17 +3131,7 @@ a todo momento.
 	}
 	```
 
-	<!--@note
-	Cuidado com o autoboxing aqui! Se você não usar o `new`, dará `true`,
-	pois o Java faz um cachê de `Integer`, e o autoboxing não faz new, ele usa o
-	metodo `Integer valueOf(int)`, que passa por esse cachê. Mas se você usar um
-	número alto, ele não usara o cachê e dará `false`
-	(o cachê da Sun vai de -128 a 127, mas isso pode variar entre implementações
-	teoricamente).
-
-	É algo parecido com a `String`: não dá para confiar no `==` sempre, mas, às
-	vezes, funciona. Então não use!
-	-->
+	
 
     E se testarmos com o `equals`? O que podemos concluir?
 

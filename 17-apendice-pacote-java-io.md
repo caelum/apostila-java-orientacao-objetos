@@ -11,20 +11,7 @@ Ao final deste capítulo, você será capaz de:
 * Usar Scanner e PrintStream.
 
 
-<!--@note
-* É importante também olhar todas as assinaturas dos métodos antes para não ser surpreendido.
-Por exemplo, esquecer que usamos write ao invés de print.
 
-* Enfatizar que a Sun abusa do polimorfismo, usando as classes abstratas _InputStream_ e _OutputStream_.
-
-* Utilizar-se do desenho, como o da apostila, para mostrar o _Decorator_ (pattern usado no java.io). Mas
-não precisa citar a palavra Decorator. Aliás, comece pelo desenho antes de qualquer código!
-
-* Saliente que o objetivo não é decorar o nome das classes, e sim entender por que tanta
-gente usa _InputStream_ como argumento e retorno, e que mesmo as classes simples, como
-PrintStream_ e _Scanner_, no fundo, usam o que estamos vendo.
-* Falar do template method no final.
--->
 
 ## Conhecendo uma API
 Conheceremos as APIs do Java. O `java.io` e `java.util` têm as classes que
@@ -47,11 +34,7 @@ juntamente com as várias APIs.
 ## Orientação a objetos no java.io
 
 
-<!--@note
-Fundamental bater firme nesse ponto, mas particularmente é bom falar isso
-com mais ênfase depois de ter mostrado a troca de `FileInputStream` por `System.in`
-ao escrever o código que lê de um arquivo.
--->
+
 
 Assim como todo o resto das bibliotecas em Java, a parte de controle de entrada e saída de dados
 (conhecido como **io**) é orientada a objetos e usa os principais conceitos mostrados até agora:
@@ -77,12 +60,7 @@ socket, basta chamar o mesmo método, uma vez que ele aceita qualquer filha de `
 
 ## InputStream, InputStreamReader e BufferedReader
 
-<!--@note
-Bom, começar na lousa usando apenas FileInputStream. Só se referenciar a InputStream quando
-for mostrar a necessidade de usar System.in também. Faça perguntas para os alunos, como: "o que é essencial para um leitor de arquivo e seria até
-obrigatório você passar isso no construtor dele? Algo que, sem isso, ele não consegue
-funcionar?" forçando a ideia de passar o nome do arquivo para o construtor.
--->
+
 
 
 Com o escopo de ler um `byte` de um arquivo, usaremos o leitor de arquivo `FileInputStream`.
@@ -130,22 +108,7 @@ isso por você é a classe `InputStreamReader`.
 	}
 ```
 
-<!--@note
-Esse código:
 
-``` java
-InputStreamReader isr = new InputStreamReader(is);
-```
-
-Seria mais elegante escrito assim:
-
-``` java
-Reader isr = new InputStreamReader(is);
-```
-
-Pois o `BufferedReader` aceita qualquer `Reader` no construtor, e `Reader` tem `.read()` definido.
-Mas acho que é abusar dos alunos falar disso.
--->
 
 O construtor de `InputStreamReader` pode receber o encoding a ser utilizado como parâmetro, se
 desejado, tal como `UTF-8` ou `ISO-8859-1`.
@@ -158,7 +121,7 @@ desejado, tal como `UTF-8` ou `ISO-8859-1`.
 >
 > http://blog.caelum.com.br/2006/10/22/entendendo-unicode-e-os-character-encodings/
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 `InputStreamReader` é filha da classe abstrata `Reader`, que tem diversas outras filhas - são classes
@@ -186,29 +149,7 @@ muitas chamadas ao sistema operacional. Você pode até configurar o tamanho do 
 
 ![ {w=90}](assets/images/javaio/readers1.png)
 
-<!--@note
-Você pode começar o capítulo desenhando esse esquema da direita para a esquerda:
 
-Primeiramente, fale que existe uma classe leitora (e na lousa escreva `InputStream`,
-assim as pessoas percebem que realmente não há necessidade de decorar nomes nesse
-momento). Explique que ela lê bytes, porem é abstrata, então usaremos a `FileInputStream`.
-
-Faça uma seta saindo dela, indicando que essa seta devolve `byte`. Pergunte à sala
-se é com byte que queremos trabalhar. Alguns responderão que precisamos de char, outros,
-de Strings, e outros, de linhas. Lembre-os de que, no Java, é burocrático, precisamos
-ir passa a passo, e o próximo passo é trabalhar com `char`.
-
-Pergunte a eles como vamos converter de byte a char. Alguns darão ideias mirabolantes.
-Relembre-os se alguma rotina é comum, provavelmente já existe uma classe que faz esse trabalho!
-Aí apresente a `InputStreamReader`. Faça questões parecidas para chegar ate o `BufferedReader`.
-
-Até agora você não deve ter escrito UMA linha de código. Ao passar para o código, peça
-ajuda aos alunos. Eles costumam acertar muito! Quando chegar no primeiro new,
-que é do `FileInputStream`, pergunte "o que vocês acham que é fundamental um
-`FileInputStream` saber para poder funcionar?". Falarão que é o nome do arquivo!
-Lembre-os de que é justamente esse o bom uso dos construtores: receber dependências
-necessárias.
--->
 
 
 Esse padrão de composição é bastante utilizado e conhecido. É o **Decorator Pattern**.
@@ -240,16 +181,7 @@ arquivo), ele vai devolver `null`. Então, com um simples laço, podemos ler o a
 Com um passe de mágica, passamos a ler do teclado em vez de um arquivo, utilizando o `System.in`,
 que é uma referência a um `InputStream`, o qual, por sua vez, lê da entrada padrão.
 
-<!--@note
-No desenho da lousa, troque a seta de onde o `InputStreamReader` está lendo. Assim, fica
-claro que no código é só isso que eles têm de alterar também.
 
-Ao trocar o `FIS` pelo `System.in`, vá pedindo ajuda dos alunos para escrever
-as mudanças no restante do código, de linha em linha. Alguns vão perceber que só precisam realmente
-alterar metade de uma linha! Isso tem um grande efeito entre os alunos. Ressalte bastante
-que a mudança é mínima e volte a falar que o Java é muito bom quando alteraramos
-ou criamos novas funcionalidades: precisamos escrever pouco graças ao bom uso do OO.
--->
 
 ``` java
 	class TestaEntrada {
@@ -267,15 +199,7 @@ ou criamos novas funcionalidades: precisamos escrever pouco graças ao bom uso d
 	}
 ```
 
-<!--@note
-Alguns alunos vão esperar que você faça `new System.in`, o que é um absurdo
-para nós, mas faz algum sentido eles pensarem que isso é uma classe. Então mostre
-pelo Javadoc que `System.in` já é uma referência a alguém do tipo `InputStream`,
-e não a uma classe.
 
-Outro: será que devemos fazer br.close() aqui? Eu acho que sim, porque o System.in.close() não
-tem efeito. Mas é uma boa prática, já que não sabemos quem é esse BufferedReader.
--->
 
 Somente modificamos a quem a variável `is` está se referindo. Podemos receber argumentos do tipo
 `InputStream` e ter esse tipo de abstração: não importa exatamente de qual lugar estamos lendo esse
@@ -298,13 +222,7 @@ Como você pode imaginar, escrever em um arquivo é o mesmo processo:
 
 ![ {w=90}](assets/images/javaio/writers.png)
 
-<!--@note
-É importante estar na lousa com o código do `TestaEntrada`, e aqui
-você simplesmente pega uma caneta de outra cor e vai substituindo `Reader`
-por `Writer`, e `Input` por `Output`, sempre com ajuda dos alunos,
-perguntando para eles o que fazer. Essa estrétegia gera um efeito legal entre
-os alunos, pois eles sentem que sabem também. É análogo.
--->
+
 
 ``` java
 	class TestaSaida {
@@ -353,39 +271,10 @@ você pode chamar o método `newLine`.
 > }
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
 
 
-<!--@note
-O try-with-resources é bem mais detalhado do que imaginamos. Ele cuida de um monte de corner cases.
-Além disso, caso haja uma exception dentro do try, e o .close do seu recurso também lance uma exception,
-ele guardará a segunda exception dentro da `surpressed exception`:
 
-``` java
-		class Bomba implements AutoCloseable {
-			public void close() throws Exception {
-				throw new Exception("fechando");
-			}
-		}
-		
-		try(Bomba b = new Bomba()) {
-			throw new Exception("dentro do try");
-		} 
-```
 
-A exception que subirá é a de dentro do try, mas você pode pegar as informações das que foram suprimidas,
-via `.getSurpressed` ou mesmo pela stacktrace:
-
-```
-Exception in thread "main" java.lang.Exception: dentro do try
-	at TesteMethodHandle.main(TesteMethodHandle.java:25)
-	Suppressed: java.lang.Exception: fechando
-		at TesteMethodHandle$1Bomba.close(TesteMethodHandle.java:20)
-		at TesteMethodHandle.main(TesteMethodHandle.java:26)
-```
-
-E você também pode ter mais de um recurso declarado dentro do try(), separados por `;`.
--->
 ## Uma maneira mais fácil: Scanner e PrintStream
 
 A partir do Java 5, temos a classe `java.util.Scanner`, que facilita bastante o trabalho de ler de um
@@ -417,7 +306,7 @@ por meio de expressões regulares. Fica fácil parsear um arquivo com qualquer f
 > `System` é do tipo `PrintStream` (é, portanto, um `OutputStream`).
 >
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **EOF**
@@ -429,7 +318,7 @@ por meio de expressões regulares. Fica fácil parsear um arquivo com qualquer f
 > No Linux/Mac/Solaris/Unix, você o faz com o `ctrl + D`. No Windows, use
 > o `ctrl + Z`.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Um pouco mais...
@@ -518,11 +407,7 @@ primitivo a um método que receber `Object` como argumento:
 	Object o = 5;
 ```
 
-<!--@note
-Você não deve entrar nesse detalhe, mas fique atento que esse autoboxing é feito
-por meio de `Integer.valueOf(5)` (Integer, no JDK da Sun, faz cachê de -128 a 127),
-já Double não o faz, por exemplo.
--->
+
 
 ## Para saber mais: java.lang.Math
 
@@ -633,35 +518,7 @@ a todo momento.
 	int numero = Integer.parseInt(numeroTexto);
 	```
 
-	<!--@answer
-	``` java
-  public List<Conta> carrega() {
-		List<Conta> contas = new ArrayList<>();
-		try (Scanner scanner = new Scanner(new File("contas.txt"))) {
-			while (scanner.hasNextLine()) {
-				Conta conta;
-				String linha = scanner.nextLine();
-				String[] valores = linha.split(",");
-				String tipo = valores[0];
-				int numero = Integer.parseInt(valores[1]);
-				String agencia = valores[2];
-				String titular = valores[3];
-				double saldo = Double.parseDouble(valores[4]);
-
-				if (tipo.equals("Conta Corrente")) {
-					conta = new ContaCorrente(numero, agencia, titular, saldo);
-				} else {
-					conta = new ContaPoupanca(numero, agencia, titular, saldo);
-				}
-				contas.add(conta);
-			}
-		} catch (FileNotFoundException e) {
-			System.out.println("Não tem arquivo ainda");
-		}
-		return contas;
-	}
-	```
-	-->
+	
 1. (Opcional) A classe `Scanner` é muito poderosa! Consulte seu Javadoc
 	para saber sobre o `delimiter` e os outros métodos `next`.
 1. (Opcional) Crie uma classe `TestaInteger`, e façamos comparações com Integers dentro do
@@ -678,30 +535,11 @@ a todo momento.
 	}
 	```
 
-	<!--@note
-	Cuidado com o autoboxing aqui! Se você não usar o `new`, dará `true`,
-	pois o Java faz um cache de `Integer`, e o autoboxing não faz new; ele usa o
-	método `Integer valueOf(int)` que passa por esse cachê. Mas se você usar um
-	número alto, ele não usara o cachê, e dará `false`
-	(o cachê da Sun vai de -128 a 127, mas isso pode variar entre implementações,
-	teoricamente).
-
-	É algo parecido com a `String`: não dá para confiar no `==` sempre, mas, às
-	vezes, funciona. Então, não use!
-	-->
+	
 
 	E se testarmos com o `equals`? O que podemos concluir?
 
-	<!--@answer
-	A conclusão é aquela mesma do capítulo Orientação a Objeto do curso.
-	Não importa que todos as informações sejam exatamente iguais: quando usamos
-	o `==`, estamos comparando as **variáveis**, isto é, a referência a
-	objetos.
-
-	Se demos `new` duas vezes, cada referência aponta para um objeto diferente
-	e, portanto, não são iguais. Já o `equals` do `Integer`, que sobrescreve
-	o do `Object`, compara o conteúdo dos objetos.
-	-->
+	
 1. (Opcional) Um `double` não está sendo suficiente para guardar a quantidade de casas
 	necessárias em uma aplicação. Preciso guardar um número decimal muito grande.
 	O que poderia usar?
@@ -721,10 +559,7 @@ a todo momento.
 	Lembre-se: no Java, há muito já pronto. Seja na biblioteca padrão, seja em
 	bibliotecas _open source_, que você pode encontrar pela internet.
 
-	<!--@answer
-	A classe que nos ajudará a evitar arredondamentos e a armazenar números
-	decimais bem grandes é a `java.math.BigDecimal`
-	-->
+	
 
 
 ## Discussão em aula: Design Patterns e o Template Method
@@ -793,44 +628,4 @@ O instrutor comentará do `Template Method` e mostrará o código fonte do méto
 **Discuta, em aula, como esse método aplica conceitos importantes da orientação a objetos e
 promove flexibilidade e extensibilidade.**
 
-<!--@note
-Ao instrutor: mostre que o read é abstrato, e o que é template method. Não aprofundar.
 
---------------
-
-Quando alguém aprende o que é Design Pattern ou mesmo um novo Design Pattern, fica com aquele
-sentimento de que já viu isso em algum lugar antes. A API do Java SE é um excelente lugar para
-encontrar milhares de exemplos de Design Patterns.
-
-A classe abstrata `java.io.InputStream` é um excelente exemplo. Ela tem um conjunto de métodos
-para leitura de bytes, porém apenas um deles é abstrato: o método `read`, que lê apenas um único byte.
-Segue seu fonte:
-
-``` java
-public abstract int read() throws IOException;
-```
-
-Ele é abstrato, pois essa classe não sabe exatamente de qual lugar será realizada a leitura: da entrada
-padrão? De um arquivo? De uma socket? Esse comportamento será definido por meio da reescrita
-desse método em uma de suas subclasses concretas: `FileInputStream`, `SocketInputStream`,
-`ByteArrayInputStream`, entre outras. Essas, sim, sabem realizar a operação de leitura de um byte.
-
-Se a classe `InputStream` não sabe ler um byte, como, então, é possível existir um método `read`
-que recebe uma array de bytes a ser preenchida pela leitura e é abstrata? Veremos a
-fonte desse método (ele recebe, além da array a ser preenchida, a posição inicial e quantos bytes
-devem ser lidos):
-
-Não se preocupe muito com a implementação em si. Veja apenas as linhas 10 e 20 e repare nas
-chamadas ao método `read` abstrato. Isso é possível, pois sabemos que não existe como instanciar a
-classe `InputStream`: ela é abstrata. Essa invocação recairá sobre um objeto que foi instanciado,
-logo ele terá uma implementação desse método `read`.
-
-Esse é uma ótima ilustração do **Template Method**, um dos Design Patterns do livro do GoF. Os métodos
-`read` que leem mais de um byte são templates: eles têm o _algoritmo_ em si, mas ainda _falta um pouco_
-para que todas as suas funcionalidades estejam prontas. Essa parte que falta é suprida com a _implementação concreta_
-do método `read` nas classes filhas de `InputStream`. Quando a classe filha implementa esse método, os
-demais métodos de `InputStream` os quais dependem deste (os template methods) estarão prontos para uso!
-
-Ainda veremos como funcionam os input e output streams em detalhes no capítulo de java.io. Mas
-já sabemos que usam conceitos importantes da boa modelagem orientada a objetos.
--->

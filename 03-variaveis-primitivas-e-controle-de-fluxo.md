@@ -9,36 +9,7 @@ Aprenderemos a trabalhar com os seguintes recursos da linguagem Java:
 * Instruções de laço `for` e `while`, controle de fluxo com break e continue.
 
 
-<!--@note
-* Evite usar aqui termos como classes, objetos e métodos.
 
-* Aprender Java não é fácil. No começo, utilizamos muita coisa (como public, static, class)
-a qual ainda não sabemos o que faz, mas, no decorrer do curso, aprenderemos *todas* as palavras-chaves que estamos usando.
-
-* Pedir aos alunos que atentem-se às maiúsculas e minúsculas.
-
-* Forçá-los a usar ConvencoesDeNomenclatura e a identar corretamente o código.
-
-* Boolean não é 0,1 não é 'V', 'F' nem similares.
-
-* Mostrar os tipos de primitivos mais comuns (int, double, char e boolean) e a sintaxe de declaração.
-Lembrá-los de escrever sempre o código completo para deixar claro que essas declarações, neste momento,
-ficarão dentro do main.
-
-* Fazer algumas charadas de conversão, como por exemplo:
-double valor = 3;
-int valorInteiro = valor; (isso compila?)
-
-* Importante dizer que o operador de igual (=) copia e cola o valor da variável. Isso será
-relevante na hora em que trabalharmos com referências.
-
-* Testando os códigos desenvolvidos acima (Comentar aqui a diferença entre compilação e execução em Java).
-
-* Caso haja alguma pergunta relacionado ao String, basta comentar que o estudaremos em um capítulo mais à frente.
-
-* Sobre casting: sei que posso perder informação, mas estou ciente disso. E se
-der algum problema, a culpa é *SUA*.
--->
 
 ## Declarando e usando variáveis
 
@@ -79,7 +50,7 @@ idade = 15;
 > 	int idade;
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Além de atribuir, você pode utilizar esse valor. O código a seguir declara novamente a variável
@@ -159,7 +130,7 @@ int um = 5 % 2; // 5 dividido por 2 dá 2, e tem resto 1;
 
  
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -223,10 +194,7 @@ sempre é copiado.
 Apesar de a linha 2 fazer `j = i`, a partir desse momento, essas variáveis não têm relação nenhuma:
 o que acontece com uma não reflete em nada na outra.
 
-<!--@note
-Essa explicação, que pode parecer desinteressante aos alunos ao primeiro instante, será muito útil ao
-mostrar referências e que elas são passadas por valor. A analogia ajuda bastante.
--->
+
 
 > **Outros tipos primitivos**
 >
@@ -236,7 +204,7 @@ mostrar referências e que elas são passadas por valor. A analogia ajuda bastan
 > Cada tipo tem características especiais que, para um programador avançado, podem fazer muita
 > diferença.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: Variáveis e tipos primitivos
@@ -247,39 +215,10 @@ mostrar referências e que elas são passadas por valor. A analogia ajuda bastan
 
 	*Se você estiver fazendo em casa e precisar de ajuda, consulte o capítulo **Resoluções de Exercícios**.*
 	
-	<!--@answer
-	``` java h="9,10"
-	class BalancoTrimestral {
-		public static void main(String[] args) {
-			int gastosJaneiro = 15000;
-			int gastosFevereiro = 23000;
-			int gastosMarco = 17000;
-			int gastosTrimestre = gastosJaneiro + gastosFevereiro + gastosMarco;
-
-			System.out.println("Gasto do trimestre: R$" + gastosTrimestre);
-			int mediaPorMes = gastosTrimestre / 3;
-			System.out.println("Média mensal: R$" + mediaPorMes);			}
-	}
-	```
-	-->
+	
 
 ## Discussão em aula: convenções de código e código legível
-<!--@note
-Falar das code conventions do Java. Nome de classe em maiúscula, variáveis e métodos
-em minuscula. Falar do camel-case, assim como do abre-chaves que fica na linha do bloco.
-Pode comparar com C#, por exemplo, em que método é maiúscula e o abre-chaves fica na linha
-de baixo.
 
-Falar que é bom para manter padrão e todos se entenderem.
-
-Comentar o exercício do BalancoTrimestral e o porquê de escrever variáveis grandes como
-'gastosJaneiro' (muitos alunos abreviam no exercício, fazendo 'janeiro' ou 'jan' ou 'gj').
-Falar que se suas variáveis são 'janeiro', 'fevereiro', etc., como saber se o programa calcula
-gastos ou ganhos no trimestre? Colocando comentários?
-
-Explicar que evita-se colocar comentários, ao máximo, para fazer código legível que se auto
-explique. Martin Fowler diz isso no 'Refactoring', página 87.
--->
 
 Discuta com o instrutor e seus colegas sobre convenções de código Java. Por que existem?
 Por que são importantes?
@@ -289,27 +228,7 @@ excesso (dica: procure por _java code conventions_).
 
 ## Casting e promoção
 
-<!--@note
-Esse note vale tanto para FJ-11 quanto para FJ-19.
 
-Eu costumo falar que o tipo do dado é uma garagem, e o dado que você está querendo guardar
-nesse tipo é um carro. (Faço isso com a ordem crescente do tamanho dos tipos primitivos na lousa)
-
-Então, você estacionará o carro numa garagem, e o carro pode ser maior, menor ou caber
-direitinho na garagem. Se o carro é menor ou cabe direitinho na garagem, não tem problema
-nenhum, o compilador fica feliz porque ele sabe que, o que você vai fazer, tem que funcionar.
-
-O problema acontece quando você quer guardar um carro muito grande numa garagem pequena.
-O compilador percebe que se quiser estacionar um caminhão (long) numa garagem que é para um
-fusca (short), boa coisa não acontecerá. Então, ele impede que isso ocorra (falo que o compilador
-fica de braços cruzados na frente da garagem impedindo-o de estacionar seu carro lá como se fosse
-um segurança). Para conseguir colocar o caminhão na garagem, você precisa avisar o segurança e falar que
-tem consciência do que está fazendo. "Hey, segurança, eu sei que eu estou com um caminhão e sei que,
-se eu estacionar nessa garagem, eu posso perder os espelhos e arranhar o meu caminhão... mas é isso
-que eu quero fazer, então, dá licença, por favor.". Como você foi educado e compilador o deixará.
-
-Perder os espelhos é a deixa para você falar de quando quer colocar um double num long.
--->
 
 Alguns valores são incompatíveis se você tentar fazer uma atribuição direta. Enquanto um número real
 costuma ser representado em uma variável do tipo `double`, tentar atribui-lo a uma variável
@@ -410,7 +329,7 @@ int i = (int) x;
 > Até casting com variáveis do tipo `char` podem ocorrer. O único tipo primitivo que não pode ser
 > atribuído a nenhum outro tipo é o `boolean`.
 
-<!-- Comentário para separar quotes adjacentes .-->
+
 
 
 > **Castings possíveis**
@@ -423,7 +342,7 @@ int i = (int) x;
 > ![ {w=70%}](assets/images/variaveis-primitivas-controle-fluxo/casting.png)
 >
 
-<!-- Comentário para separar quotes adjacentes -->
+
 
 
 > **Tamanho dos tipos**
@@ -432,7 +351,7 @@ int i = (int) x;
 >
 > ![ {w=60%}](assets/images/variaveis-primitivas-controle-fluxo/tamanho_tipos.png)
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## O if e o else
@@ -618,7 +537,7 @@ Depende do gosto e da ocasião.
 > int x = ++i; // aqui x valera 6.
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Controlando loops
@@ -796,89 +715,16 @@ class ExercicioX {
 
 Não copie e cole de um exercício já existente! Aproveite para praticar.
 1. Imprima todos os números de 150 a 300.
-	<!--@answer
-	``` java
-		class ImprimeIntervalo {
-			public static void main(String[] args) {
-				int i = 150;
-				while (i<=300){
-					System.out.println(i);
-					i++;
-				}
-			}
-		}
-	```
-	ou
-	``` java
-		class ImprimeIntervalo {
-			public static void main(String[] args) {
-				for (int i = 150; i<=300; i++){
-					System.out.println(i);
-				}
-			}
-		}
-	```
-	-->
+	
 1. Imprima a soma de 1 até 1000.
-	<!--@note Mostre também a solução com a soma de progressão aritmética. -->
+	
 
-	<!--@answer
-	``` java
-		class ImprimeSoma {
-			public static void main(String[] args) {
-				int soma = 0;
-				int i = 1;
-				while (i<=1000){
-					soma = soma + i;
-                    i++;
-				}
-				System.out.println(i);
-			}
-		}
-	```
-	ou
-	``` java
-		class ImprimeSoma {
-			public static void main(String[] args) {
-				soma = 0;
-				for (int i = 1; i<=1000; i++){
-					soma = soma + i;
-				}
-				System.out.println(i);
-			}
-		}
-	```
-	-->
+	
 1. Imprima todos os múltiplos de 3, entre 1 e 100.
 
-	<!--@note
-	A maioria procura múltiplos olhando para o resto (%). Mostrar um que faz
-	incremento de 3 em 3.
-	-->
+	
 
-	<!--@answer
-	```
-		class MultiplosDeTresAteCem {
-			public static void main (String[] args) {
-				for (int i = 1; i < 100; i++ ){
-					if (i % 3 == 0)	{
-						System.out.println(i);
-					}
-				}
-			}
-		}
-	```
-	ou, entre outras tantas opções, a mais simples:
-	```
-		class MultiplosDeTresAteCem {
-			public static void main (String[] args) {
-				for (int i = 1; i < 100; i += 3 ){
-					System.out.println(i);
-				}
-			}
-		}
-	```
-	-->
+	
 1. Imprima os fatoriais de 1 a 10.
 
 	O fatorial de um número n é n \* (n-1) \* (n-2) \* ... \* 1. Lembre-se de utilizar os parênteses.
@@ -903,53 +749,21 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	}
 	```
 
-	<!--@answer
-	``` java
-		class Fatorial {
-			public static void main (String[] args) {
-				int fatorial = 1;
-				for (int n = 1; n <= 10; n++) {
-					fatorial = fatorial * n;
-					System.out.println("fat(" + n + ") = " + fatorial);
-				}
-			}
-		}
-	```
-	-->
+	
 1. No código do exercício anterior, aumente a quantidade de números que terão os
 	fatoriais impressos até 20, 30 e 40. Em um  determinado momento, além de esse
 	cálculo demorar, começará a mostrar respostas completamente erradas.
 	Por quê?
 
 	Mude de `int` para `long` a fim de ver alguma mudança.
-	<!--@answer
-	Isso acontece porque, a partir de 16!, o valor ultrapassa o limite superior do
-	tipo `int`. O tipo `long` consegue armazenar o cálculo dos fatoriais
-	até 21!. Teste-o!
-	-->
+	
 1. (Opcional) Imprima os primeiros números da série de Fibonacci até passar de 100.
 	A série de Fibonacci é a seguinte: 0, 1, 1, 2, 3, 5, 8, 13, 21, etc.
 	Para calculá-la, o primeiro elemento vale 0, o segundo vale 1, e daí por diante.
 	O n-ésimo elemento vale o (n-1)-ésimo elemento somado ao (n-2)-ésimo elemento
 	(ex: 8 = 5 + 3).
 
-	<!--@answer
-	``` java
-		class Fibonacci {
-			public static void main(String[] args) {
-				int anterior = 0;
-				int atual = 1;
-				while (atual < 100) {
-					System.out.println(atual);
-					int proximo = anterior + atual;
-					anterior = atual;
-					atual = proximo;
-				}
-				System.out.println(atual);
-			}
-		}
-	```
-	-->
+	
 1. (Opcional) Escreva um programa em que, dada uma variável `x` com algum valor
 	inteiro, temos um novo `x` de acordo com a seguinte regra:
 
@@ -970,30 +784,9 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	> 			System.out.print(variavel);
 	> ```
 
-	<!-- comentario para separar quotes adjacentes -->
+	
 
-	<!--@answer
-	``` java
-		class TresNMaisUm {
-			public static void main(String[] args) {
-				int x = 13;
-				System.out.println("Iniciando...\n" + x);
-				while (x != 1) {
-					if (x % 2 == 0) {
-						x = x / 2;
-					} else {
-						x = 3 * x + 1;
-					}
-					System.out.println(x);
-				}
-			}
-		}
-	```
-
-	Curiosamente, essa é a famosa conjectura de Collatz. Ninguém nunca
-	conseguiu demonstrar que sempre vai cair em um desses casos até convergir
-	a 1.
-	-->
+	
 1. (Opcional)  Imprima a seguinte tabela usando `for`s encadeados:
 	```
 	1
@@ -1003,39 +796,10 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	n n*2 n*3 .... n*n
 	```
 
-	<!--@answer
-	``` java
-		class Triangulo {
-			public static void main(String[] args) {
-				int numero = 5;
-				for (int linha = 1; linha <= numero; linha++) {
-					for (int coluna = 1; coluna <= linha; coluna++) {
-						System.out.print(linha * coluna + " ");
-					}
-					System.out.println();
-				}
-			}
-		}
-	```
-	-->
+	
 
 
 ## Desafios: Fibonacci
 1. Faça o exercício da série de Fibonacci usando apenas duas variáveis.
 
-	<!--@answer
-	``` java
-		class Desafio {
-			public static void main(String[] args) {
-				int anterior = 0;
-				int atual = 1;
-				while (atual < 100) {
-					System.out.println(atual);
-					atual = anterior + atual;
-					anterior = atual - anterior;
-				}
-				System.out.println(atual);
-			}
-		}
-	```
-	-->
+	

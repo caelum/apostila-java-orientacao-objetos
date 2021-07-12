@@ -8,22 +8,9 @@ Ao final deste capítulo, você será capaz de:
 * Popular e percorrer arrays.
 
 
-<!--@note
-* Salientar que uma array também é um objeto, portanto int[] é uma referência.
 
-* Conta[] é uma *referência a uma array de referências*
 
-* Cremos que o exercício seja um pouco complicado por causa da sintaxe. Vale colocar
-a resposta por inteira na lousa. Todo mundo tem dificuldade.
 
-* Tentar não entrar em matrizes, mas caso perguntem, é interessante ser superficial para não confundir o pessoal.
-
-* Ler e discutir o exercício com o pessoal. Importante dar sugestões e fazer uma análise das possíveis
-soluções (O(1) e O(n^2)).
--->
-
-<!--@todo Precisa deixar MUITO mais claro a necessidade do total no exercício,
-acho que não rola esse direto, tinha que ser um só de preencher valores e depois fazer um for. -->
 
 ## O problema
 Dentro de um bloco, podemos declarar diversas variáveis e usá-las:
@@ -77,7 +64,7 @@ desse alcance, um erro ocorrerá durante a execução.
 > especial os pacotes de coleções do Java, que veremos no capítulo 15. Portanto, fique tranquilo caso
 > não consiga digerir toda sintaxe das arrays em um primeiro momento.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 No caso do bilhete de loteria, podemos utilizar o mesmo recurso. Além disso, a quantidade de números
@@ -92,12 +79,7 @@ E podemos, assim, acessar e modificar os inteiros com índice de `0` a `n-1`.
 
 ## Arrays de referências
 
-<!--@note
-Mostrar por que temos de dar
-new em cada posição e como acessar atributos de uma referência que está na array. Aqui cabem-se
-perguntas como: "quantas contas eu criei?" ou "o que acontece se eu pedir o saldo da terceira conta,
-ex: contas[2].saldo?".
--->
+
 
 É comum ouvirmos "array de objetos". Porém, quando criamos uma array de alguma classe, ela tem
 referências. O objeto, como sempre, está na memória principal, e, na sua array, só ficam guardadas as
@@ -196,7 +178,7 @@ public void imprimeArray(int[] array) {
 > Se você precisar de mais espaço, será necessário criar uma nova array e, antes de se referir a ela,
 > copie os elementos da array velha.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Percorrendo uma array no Java 5.0
@@ -255,45 +237,10 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
     }
   ```
 
-  <!--@answer
-  ``` java
-    public class TestaArrays {
-      public static void main(String[] args) {
-        Conta[] contas = new Conta[10];
-
-        for (int i = 0; i < contas.length; i++) {
-          Conta conta = new ContaCorrente();
-          conta.deposita(i * 100.0);
-          contas[i] = conta;
-        }
-      }
-    }
-  ```
-  -->
+  
 1. Ainda na classe `TestaArrays`, faça um outro laço para calcular e imprimir a média dos saldos de todas as contas da array.
   
-  <!--@answer
-  ``` java
-    public class TestaArrays {
-      public static void main(String[] args) {
-        Conta[] contas = new Conta[10];
-
-        for (int i = 0; i < contas.length; i++) {
-          Conta conta = new ContaCorrente();
-          conta.deposita(i * 100.0);
-          contas[i] = conta;
-        }
-
-        double soma = 0.0;
-        for (int i = 0; i < contas.length; i++) {
-          soma += contas[i].getSaldo();
-        }
-        double media = soma / contas.length;
-        System.out.println("A média dos saldos é: " + media);
-      }
-    }
-  ```
-  -->
+  
 1. (Opcional) Crie uma classe `TestaSplit` que reescreva uma frase com as palavras na ordem invertida. _"Socorram-me, subi no ônibus em Marrocos"_ deve retornar _"Marrocos em ônibus no subi Socorram-me,"_. Utilize o método `split` da
   `String` para auxiliá-lo. Esse método divide uma `String` de acordo com o separador especificado e devolve as partes em uma array de `String`, por exemplo:
 
@@ -304,17 +251,7 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
     // Agora só basta percorrer a array na ordem inversa imprimindo as palavras.
   ```
 
-  <!--@answer
-  ``` java
-    public void invertePalavrasDaFrase(String texto) {
-      String[] palavras = texto.split(" ");
-      for (int i = palavras.length - 1; i >= 0; i--) {
-        System.out.print(palavras[i] + " ");
-      }
-      System.out.println("");
-    }
-  ```
-  -->
+  
 1. (Opcional) Crie uma classe `Banco` dentro do pacote `br.com.caelum.contas.modelo`.
 	O `Banco` deve ter obrigatoriamente um nome, um
   número e uma referência a uma
@@ -366,18 +303,7 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
   `Conta` e preenche com `titular`, `saldo`, etc. para
   então passar a referência dela.
 
-	<!--@answer
-	``` java filename="Banco.java"
-    public void adiciona(Conta c) {
-        for(int i = 0; i < this.contas.length; i++){
-            if(this.contas[i] == null) {
-                this.contas[i] = c;
-                break;
-            }
-        }
-    }
-	```
-	-->
+	
 1. (Opcional) Crie uma classe `TestaBanco` que terá um método `main`. Dentro dele, crie
 	algumas instâncias de `Conta` e passe para o banco pelo método
 	`adiciona`.
@@ -426,30 +352,7 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
 	Opcional: o método `adiciona` pode gerar uma mensagem de erro indicando quando
 	a array já está cheia.
 
-	<!--@answer
-	``` java
-    public class TestaBanco {
-
-        public static void main (String[] args) {
-            Banco banco = new Banco("CaelumBank", 999);
-
-            ContaCorrente c1 = new ContaCorrente();
-            c1.setTitular("Batman");
-            c1.setNumero(1);
-            c1.setAgencia(1000);
-            c1.deposita(100000);
-            banco.adiciona(c1);
-
-            ContaPoupanca c2 = new ContaPoupanca();
-            c2.setTitular("Coringa");
-            c2.setNumero(2);
-            c2.setAgencia(1000);
-            c2.deposita(890000);
-            banco.adiciona(c2);
-        }
-    }
-	```
-	-->
+	
 1. (Opcional) Percorra o atributo `contas` da sua instância de `Banco` e imprima os
 	dados de todas as suas contas. Para fazer isso, você pode criar um método
 	chamado `mostraContas` dentro da classe `Banco`:
@@ -473,47 +376,10 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
 	banco.mostraContas();
 	```
 
-	<!--@answer
-	``` java filename="Banco.java"
-    public void mostraContas() {
-        for (int i = 0; i < this.contas.length; i++) {
-            Conta conta = this.contas[i];
-            if (conta != null) {
-                System.out.println("Conta na posição: " + i);
-                System.out.println("Saldo da conta: " + conta.getSaldo());
-            }
-        }
-    }
-	```
-
-	E também não esqueça de alterar a classe `TestaBanco`:
-
-	``` java
-    public class TestaBanco {
-
-        public static void main (String[] args) {
-            // criação das contas...
-
-            banco.mostraContas();
-        }
-    }
-	```
-	-->
+	
 1. (Opcional) Em vez de mostrar apenas o salário de cada funcionário, você pode
 	usar o método `toString()` de cada `Conta` da sua array.
-	<!--@answer
-	``` java filename="Banco.java"
-    public void mostraContas() {
-        for (int i = 0; i < this.contas.length; i++) {
-            Conta conta = this.contas[i];
-            if (conta != null) {
-                System.out.println("Conta na posição: " + i);
-                System.out.println("Dados da conta: " + conta);
-            }
-        }
-    }
-	```
-	-->
+	
 1. (Opcional) Crie um método para verificar se uma determinada `Conta` se
 	encontra ou não como conta desse banco:
 
@@ -526,18 +392,7 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
 	Você precisará fazer um `for` em sua array e verificar se a conta
 	passada como argumento se encontra dentro da array. Evite, ao máximo, usar números
 	hard-coded, assim sendo, use o `.length`.
-	<!--@answer
-	``` java filename="Banco.java"
-    public boolean contem(Conta conta) {
-        for (int i = 0; i < this.contas.length; i++) {
-            if (contas.equals(this.contas[i])) {
-                return true;
-            }
-        }
-        return false;
-    }
-	```
-	-->
+	
 1. (Opcional) Caso a array já esteja cheia no momento de adicionar uma outra conta, crie uma array
 	nova com uma capacidade maior e copie os valores da atual. Ou seja, você fará
 	a realocação dos elementos da array, posto que o Java não tem isso: uma array nasce e morre
@@ -548,37 +403,9 @@ Com o objetivo de consolidarmos os conceitos sobre arrays, faremos alguns exerc�
 	> Dentro de um método, você pode usar a palavra `this` para referenciar a si
 	> mesmo e passar essa referência como argumento.
 
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 
-	<!--@answer
-	``` java
-    public class Banco {
-
-        // atributos
-
-        public void adiciona(Conta c) {
-            for(int i = 0; i < this.contas.length; i++){
-                if(this.contas[i] == null) {
-                    this.contas[i] = c;
-                    return;
-                }
-            }
-            this.aumentaArray();
-        }
-
-        public void aumentaArray() {
-            int novoTamanho = this.contas.length * 2;
-            Conta[] maior = new Conta[novoTamanho];
-            for (int i = 0; i < this.contas.length; i++) {
-                maior[i] = this.contas[i];
-            }
-            this.contas = maior;
-        }
-
-        // outros métodos
-    }
-	```
-	-->
+	
 
 
 ## Um pouco mais...
@@ -628,38 +455,7 @@ maisoutro
 	Faça com que a versão recursiva seja tão boa quanto a versão iterativa
 	(dica: use arrays para isso).
 
-	<!--@answer
-	``` java
-		public class FibonacciRecursivoRapido {
-			int[] sequencia = new int[50];
-			int posicaoNaoCalculada;
-
-			public int calculaFibonacci(int n) {
-				if (n < this.posicaoNaoCalculada) {
-					return this.sequencia[n];
-				} else {
-					return calculaFibonacci(n-1) + calculaFibonacci(n-2);
-				}
-			}
-		}
-
-		public class TestaFibonacciRapido {
-			public static void main(String[] args) {
-				FibonacciRecursivoRapido fib = new FibonacciRecursivoRapido();
-				fib.sequencia[0] = 0;
-				fib.sequencia[1] = 1;
-				fib.posicaoNaoCalculada = 2;
-
-				int numero = 1;
-				int valor = fib.calculaFibonacci(numero++);
-				while (valor < 100) {
-					System.out.println(valor);
-					valor = fib.calculaFibonacci(numero++);
-				}
-			}
-		}
-	```
-	-->
+	
 1. O objetivo deste exercício é fixar os conceitos vistos. Se você está com
 	dificuldade em alguma parte desse capítulo, aproveite e treine tudo o que vimos
 	até agora no pequeno programa abaixo:

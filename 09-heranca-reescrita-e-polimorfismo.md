@@ -9,20 +9,7 @@ Ao final deste capítulo, você será capaz de:
 * Usar todo o poder que o polimorfismo oferece.
 
 
-<!--@note
-* O ponto crucial é que os alunos tenham um estalo e enxerguem a vantagem de usar polimorfismo
-quando forem receber argumentos. Dessa forma, os switches são eliminados porque podemos
-reescrever os métodos.
 
-* É importante estar nesta parte, ou no começo da aula em caso de curso noturno, ou por
-volta das 14h30 para que haja tempo para os exercícios.
-
-* Ao instrutor, segue a dica de utilizar-se dos diagramas UML que estão na apostila
-durante as explicações para facilitar o entendimento dos alunos.
-
-* Ao mostrar diagramas, falar mais ou menos o que é UML e que aquilo é quase
-um diagrama de classes.
--->
 
 ## Repetindo código?
 Como toda empresa, nosso banco tem funcionários. Modelemos a classe `Funcionario`:
@@ -73,13 +60,10 @@ public class Gerente {
 > ficaria estranha. E em relação aos métodos? A classe `Gerente` tem o método `autentica`,
 > que não faz sentido existir em um funcionário o qual não é gerente.
 
-<!-- Comentário para separar quotes adjacentes. -->
 
 
-<!--@note
-Outra solução meia-boca: colocar uma flag que indica o cargo. Em alguns casos,
-pode fazer sentido.
--->
+
+
 
 Se tivéssemos um outro tipo de funcionário que tem características diferentes do funcionário comum,
 precisaríamos criar uma outra classe e copiar o código novamente!
@@ -135,11 +119,7 @@ definidos na classe `Funcionario`, pois um `Gerente` **é um** `Funcionario`:
 
  
 
-<!--@note
-Utilizar nomenclaturas conhecidas como: herdar, especializar, filha, mãe, _superclasse_ e _subclasse_.
-Sempre desenhar a setinha na lousa de G para F. Aumente o exemplo e fale de diretor,
-secretário, engenheiro e desenhe a árvore.
--->
+
 
 Dizemos que a classe `Gerente` **herda** todos os atributos e métodos da classe mãe, no nosso caso,
 a `Funcionario`. Para ser mais preciso, ela também herda os atributos e métodos privados, porém não
@@ -154,7 +134,7 @@ que a mãe expusesse um outro método visível que invocasse esse atributo ou m�
 > `Funcionario`. Outra forma é dizer que `Funcionario` é a classe **mãe** de `Gerente`,
 > e `Gerente` é a classe **filha** de `Funcionario`.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -184,7 +164,7 @@ subclasses e classes encontradas no mesmo pacote.
 > podem acessar os atributos `protected`. Veja outras alternativas ao `protected` no exercício 
 > de discussão em sala de aula juntamente com o instrutor.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Da mesma maneira, podemos ter uma classe `Diretor` que estenda `Gerente`, e a classe
@@ -199,11 +179,7 @@ Uma classe pode ter várias filhas, mas apenas uma mãe. É a chamada herança s
 
 ## Reescrita de método
 
-<!--@note
-Na lousa, você pode mostrar a reescrita com o método `mostra` antes
-do getBonificacao. Assim, você dá dois exemplos e já mostra também o acesso
-ao super.mostra().
--->
+
 
 Todo fim de ano, os funcionários do nosso banco recebem uma bonificação. Os funcionários comuns
 recebem 10% do valor do salário e os gerentes, 15%.
@@ -277,7 +253,7 @@ impresso é o correto (750):
 >
 > Repare que, por questões de compatibilidade, isso não é obrigatório. Mas caso um método esteja anotado com @Override, ele necessariamente precisa estar reescrevendo um método da classe mãe.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Invocando o método reescrito
@@ -324,24 +300,7 @@ classe mãe. Chamar ou não o método de cima é uma decisão sua e depende do s
 faz sentido invocar o método que reescrevemos.
 
 ## Polimorfismo
-<!--@note
-Dizer que Java é fortemente tipado (acredito que isso já foi dito antes), ou seja, nasce
-Gerente, morre Gerente. (Alguma brincadeira pode ser feita aqui.)
 
-"No banco, existe uma sala de coffee break a qual tem uma placa na porta dizendo que o acesso
-só é permitido a funcionários. Sabe-se que todos os que estão lá dentro são funcionários, independente
-do cargo que têm, ou seja, existem lá dentro secretárias, gerentes, programadores, analistas,
-diretores, etc. Eu sei que todo funcionário tem um salário. Posso perguntar o salário para
-alguém lá dentro? Se for um gerente, o que ele irá me responder, o salário de um gerente
-ou de um funcionário? No Java, é o mesmo!".
-
-Voltando ao Java, escrever o código Funcionário f = new Gerente();
-Fazer o desenho na lousa e explicar o que acontece, sempre lembrando da salinha do café.
-
-Fazer o Controle de bonificações. Pergunte: "eu preciso colocar um método para cada
-tipo de funcionário?". Refaça a pergunta da seguinte maneira: "eu preciso ter uma
-porta para cada tipo de funcionário? Ou uma única serve?".
--->
 
 O que guarda uma variável do tipo `Funcionario`? Uma referência para um `Funcionario`, nunca
 o objeto em si.
@@ -380,45 +339,7 @@ Parece estranho criar um gerente e referenciá-lo como apenas um funcionário. P
 Na verdade, a situação que costuma aparecer é a que temos um método que recebe um argumento do tipo
 `Funcionario`:
 
-<!--@note
-Seria legal aproveitar para revisar com a galera um pouco de OO:
-``` java
-class ControladorDeBonificacao {
-	private double bonusTotal; }
-```
-Como fazemos para que o valor do bônus do diretor, gerente, etc. seja adicionado ao
-bônus total? Ao invés de implementarmos o método, pensaremos em como usá-lo.
-``` java
-...main() {
-ControladorDeBonificacao controle = new ControladorDeBonificacao();
-Gerente gerente = new Gerente(4000);
-controle.adicionaBonus(?????);
-```
-Como conseguimos passar o bônus do Gerente para o controle?
-``` java
-controle.adicionaBonus(gerente.getBonificacao());
-```
-Ficou bom? Vamos implementar?
-``` java
-class ControladorDeBonificacao {
-	public void adicionaBonus(double valor) {this.bonusTotal+= valor}}
-```
-Funciona para Diretor, Gerente, Secretario, Engenheiro? (mostrar no main())
-Esse método garante que o valor passado será um bônus?
-``` java
-...main() {
-	controle.adicionaBonus(-10); //throll
-	controle.adicionaBonus(gerente.getSalario()); //erro honesto
-```
-Estamos separando dados de comportamento! Melhor fazermos a chamada de getBonificacao()
-dentro do método adicionaBonus. Como?
-``` java
-	public void adicionaBonus(????) {
-		???getBonificacao(); }
-```
-Depois, a motivação padrão de pedirmos um tipo e fazermos a sobrecarga para posteriormente puxar para o
-polimorfismo.
--->
+
 
 ``` java
 	class ControleDeBonificacoes {
@@ -487,7 +408,7 @@ nova classe: reaproveitamos aquele código.
 > Esse é um problema da herança, e não do polimorfismo, que resolveremos mais tarde com a ajuda de
 > Interfaces.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Um outro exemplo
@@ -589,7 +510,7 @@ construtores das classes, o quê?
 >
 > http://www.artima.com/intv/gosling3P.html
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: herança e polimorfismo
@@ -719,37 +640,12 @@ construtores das classes, o quê?
 	A nossa classe `Conta` devolve a palavra "Conta" no método `getTipo`. Use a palavra-chave `super` nos métodos `getTipo` reescritos nas classes filhas
 	para não ter de reescrever a palavra "Conta" ao devolver os textos "Conta Corrente" e "Conta Poupança".
 
-	<!--@answer
-	``` java filename="ContaCorrente.java"
-		class ContaCorrente extends Conta {
-
-			public String getTipo() {
-				return super.getTipo() + " Corrente";
-			}
-		}
-	```
-
-	E, também
-
-	``` java filename="ContaPoupanca.java"
-		class ContaPoupanca extends Conta {
-
-			public String getTipo() {
-				return super.getTipo() + " Poupança";
-			}
-			//...
-		}
-	```
-	-->
+	
 1. (Opcional) Se você precisasse criar uma classe `ContaInvestimento`, e seu
 	método `saca` fosse complicadíssimo, precisaria alterar a classe
 	`ManipuladorDeContas`?
 
-	<!--@answer
-	Não! Essa é a vantagem do polimorfismo: qualquer coisa que **seja uma** Conta
-	pode ser passada para o método `saca`. A complexidade fica isolada dentro
-	de cada classe.
-	-->
+	
 
 
 ## Discussões em aula: alternativas ao atributo protected
@@ -759,71 +655,4 @@ herança. Preciso realmente afrouxar o encapsulamento do atributo por causa da h
 Como fazer para o atributo continuar `private` na mãe, e as filhas conseguirem, de
 alguma forma, trabalhar com ele?
 
-<!--@note
-Vale muito a pena comentar isso depois do exercício (ou durante a correção).
-O pessoal gosta dessas soluções e já começa a perceber os problemas de herança.
 
-Muitas pessoas, hoje em dia, são críticas à herança, pois dizem que esta enfraquece
-(quebra) o encapsulamento. Quando começamos a aprender OO, é difícil enxergar
-isso, e essa discussão é bastante avançada!
-
-Mas, no nosso sistema de Contas do exercício anterior, já é possível sentir um
-pouco disso. Tivemos que afrouxar o encapsulamento do nosso atributo `saldo`
-com o uso do `protected`.
-
-Podíamos ter feito outras soluções e evitado essa quebra de encapsulamento.
-Nas classes filhas, por exemplo, podemos reaproveitar os métodos da classe mãe:
-
-``` java
-		class ContaCorrente extends Conta {
-			public void atualiza(double taxa) {
-				super.atualiza(taxa * 2);
-			}
-
-			public void deposita(double valor) {
-				super.deposita(valor * 0.9962);
-			}
-		}
-```
-
-Essa, aliás, é uma ótima prática. Imagine que o `atualiza` faça uma série de
-verificações antes da atualização realmente: desse novo jeito, não precisaríamos
-reescrever nada disso. Estaríamos dizendo: "a `ContaCorrente` não sabe
-atualizar-se, mas sabe que a atualização deve ser feita com o dobro da taxa"
-e, então delegamos à `Conta`.
-
-Outra solução: quando não há jeito, e realmente achamos que precisamos abrir o
-acesso ao atributo em vez de abri-lo como `protected`, usamos métodos de
-acesso get/set. No nosso exemplo, a `ContaPoupanca` poderia usar `getSaldo`
-e `setSaldo`.
-
-``` java
-		class ContaPoupanca extends Conta {
-			public void atualiza(double taxa) {
-				this.setSaldo(this.getSaldo() + this.getSaldo() * taxa * 3);
-			}
-		}
-```
-
-Mas não temos o `setSaldo` ainda! Então, vamos lá na `Conta` e criamos o
-`setSaldo`. Entretanto, vamos deixá-lo `public`? E todas as pessoas podem mudar
-o saldo?
-
-Não, criamos o `setSaldo` como `protected`:
-
-``` java
-	class Conta {
-		private double saldo;
-	
-		protected void setSaldo(String saldo) {
-			this.saldo = saldo;
-		}
-	}
-```
-
-Note que, na verdade, ao invés de deixar o atributo `protected`, deixamos o
-método `protected`. Ainda pode ser um quebra de encapsulamento, mas certamente
-menos grave que abrir o atributo. Depois, no futuro, conseguiremos acrescentar
-verificações adicionais quando o valor do saldo mudar apenas editando o
-`setSaldo`.
--->

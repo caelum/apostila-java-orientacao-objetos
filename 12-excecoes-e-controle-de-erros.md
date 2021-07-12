@@ -10,12 +10,7 @@ Ao final deste capítulo, você será capaz de:
 
 
 ## Motivação
-<!--@note
-* O que significa código de erro -4? E 5? E true/false? Meus problemas têm nomes?
-* Onde que aconteceu o problema?
-* Por onde eu havia passado até acontecer o problema?
-* E se eu esquecer de olhar o retorno do método saca? Alguém me obriga a fazer isso?
--->
+
 
 Voltando às `Conta`s que criamos no capítulo 6, o que aconteceria ao tentar chamar o método
 `saca` com um valor fora do limite? O sistema mostraria uma mensagem de erro, mas quem chamou o
@@ -119,7 +114,7 @@ saque ou `id` inválido de um cliente é uma **exceção** à regra.
 > Uma exceção representa uma situação que normalmente não ocorre e é algo de estranho ou
 > inesperado no sistema.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercício para começar com os conceitos
@@ -128,27 +123,7 @@ Antes de resolvermos o nosso problema, vejamos como a Java Virtual Machine age
 ao se deparar com situações inesperadas, como divisão por zero ou acesso a um índice
 da array que não existe.
 
-<!--@note
-Antes de eles fazerem esse exercício, você precisa escrevê-lo na lousa (não precisa
-por system.out nela) e simular
-a pilha a fim de fazê-los perceber que aquilo é o stacktrace. Mesmo para o exercício 2!
-Mostre o try catch na lousa antes.
 
-Enfatizar o fato de nossas exceções de execução terem nome e um rastro (o que estava na pilha).
-Tomar cuidado para NÃO utilizar o nome ERRO.
-
-Deixar bem claro que esse exercício é para praticar um pouco o conceito e sintaxe
-básica, porque ele em si não tem pé nem cabeça.
-
-Use os termos "java LANÇA uma bomba" e verifique se "alguém está se
-preocupando com esse tipo de bomba para PEGÁ-LA". Se não estiver, "a bomba continua
-a cair na pilha" até chegar no main, lugar onde para.
-
-Use os verbos LANÇAR e PEGAR por causa do throw e catch.
-
-Cuidado com associação do bloco try a uma transação: não há rollback,
-pode confundir... Mas é uma boa analogia.
--->
 1. Para aprendermos os conceitos básicos das exceptions do Java,
 	teste o seguinte código você mesmo:
 
@@ -329,15 +304,12 @@ exceções.
 > máquina virtual e não devem ser tratados em 99% dos casos, já que provavelmente o melhor a se fazer
 > é deixar a JVM encerrar (ou apenas a Thread em questão).
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Outro tipo de exceção: Checked Exceptions
 
-<!--@note
-Aqui você deve usar a mesma lousa que a anterior e fazer com que
-o main chame o metodo1, o qual chamará o metodo2, e este, por sua vez, dará new em FileInputStream.
--->
+
 
 Fica claro com os exemplos de código acima: não é necessário declarar que você está tentando
 fazer algo onde um erro possa ocorrer. Os dois exemplos, com ou sem o `try/catch`, compilaram e
@@ -362,7 +334,7 @@ class Teste {
 O código acima não compila, e o compilador avisa que é necessário tratar o `FileNotFoundException`
 que pode ocorrer:
 
-<!--@todo trocar por FileInputStream em vez de FileReader -->
+
 ![ {w=80}](assets/images/excecoes/checked_exception.png)
 
 Para compilar e fazer o programa funcionar, temos duas maneiras que podemos tratar o problema. A
@@ -408,7 +380,7 @@ public class TestaException {
 
 O Eclipse reclamará:
 
-<!--@todo Trocar por FileInputStream em vez de FileReader. -->
+
 ![ {w=50}](assets/images/excecoes/throws_try_catch.png)
 
 E você tem duas opções:
@@ -456,7 +428,7 @@ que o invocou.
 >
 > http://blog.caelum.com.br/2006/10/07/lidando-com-exceptions/
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Um pouco da grande família Throwable
@@ -679,7 +651,7 @@ maneira, podemos passar valores específicos para ela carregar, e que sejam úte
 
 Voltando ao exemplo das `Contas`, façamos a nossa exceção de `SaldoInsuficienteException`:
 
-<!--@todo Não sei se aqui alguém já explicou o super! Precisa revisar! -->
+
 
 ``` java
 public class SaldoInsuficienteException extends RuntimeException {	
@@ -769,10 +741,7 @@ a semântica do finally de uma maneira bem mais simples.
 1. Rode a aplicação, cadastre uma conta e tente depositar um valor negativo.
 	O que acontece?
 
-	<!--@answer
-	Uma `IllegalArgumentException` é lançada quando tentamos depositar um valor inválido, isto
-	é, o próprio método `deposita` se defende de alguém que queira fazer besteira.
-	-->
+	
 1. Ao lançar a `IllegalArgumentException`, passe via construtor uma mensagem a ser exibida. Lembre-se de
 	que a `String` recebida como parâmetro é acessível via o método `getMessage()` herdado
 	por todas as `Exceptions`.
@@ -799,15 +768,7 @@ a semântica do finally de uma maneira bem mais simples.
 	um construtor em `SaldoInsuficienteException` que delegue para o construtor de sua mãe. Este
 	guardará essa mensagem para poder mostrá-la quando o método `getMessage` for invocado:
 
-	<!--@note
-	Durante esse exercício, é bom uma explicaçãozinha na lousa a respeito desse recurso.
-	Vale a pena dar a motivação explicando por que construtores não são herdados (se fossem
-	herdados, você poderia construir um objeto do tipo filho passando menos informações
-	que as realmente necessárias por ela, já que a classe pai não precisava dela, por exemplo).
-
-	Também é bom explicar que isso é bem usual, e talvez falar do menu source, generate
-	constructor using fields (ou Control 3 + gcuf).
-	-->
+	
 
 	``` java
 	public class SaldoInsuficienteException extends RuntimeException {
@@ -833,20 +794,7 @@ a semântica do finally de uma maneira bem mais simples.
 
 	E agora? Como fica o método `saca` da classe `ContaCorrente`?
 
-	<!--@answer
-	``` java
-	@Override
-	public void saca(double valor) {
-		if (valor < 0) {
-			throw new IllegalArgumentException("Valor menor do que 0");
-		}
-		if (this.saldo < valor) {
-			throw new SaldoInsuficienteException(valor);
-		}
-		this.saldo -= (valor + 0.10);
-	}
-	```
-	-->
+	
 1. (Opcional) Declare a classe `SaldoInsuficienteException` como filha direta de `Exception` em
 	vez de `RuntimeException`. Ela passa a ser **checked**. O que isso resulta?
 
@@ -857,49 +805,13 @@ a semântica do finally de uma maneira bem mais simples.
 	Depois, retorne a exception para _unchecked_, isto é, para ser filha de `RuntimeException`,
 	pois iremos utilizá-la assim em exercícios de capítulos posteriores.
 
-	<!--@answer
-	A mudança na classe `SaldoInsuficienteException` é apenas na classe mãe:
-
-	``` java
-		public class SaldoInsuficienteException extends Exception {
-			//...	
-		}
-	```
-
-	E, por conta disso, o método `saca` da classe `ContaCorrente` precisa avisar que pode,
-	eventualmente, lançar essa exceção:
-
-	``` java filename="ContaCorrente.java"
-    public void saca(double valor) throws SaldoInsuficienteException {
-        if (valor < 0) {
-            throw new IllegalArgumentException();
-        }
-        if (this.saldo < valor) {
-            throw new SaldoInsuficienteException(valor);
-        }
-        this.saldo -= (valor + 0.10);
-    }
-	```
-	-->
+	
 
 
 ## Desafios
 1. O que acontece se acabar a memória da Java Virtual Machine?
 
-	<!--@answer
-	O que acontece é um `java.lang.OutOfMemoryError`, o qual **é um** `Error` em vez de uma
-	`Exception`. http://docs.oracle.com/javase/7/docs/api/java/lang/OutOfMemoryError.html
-
-	O código para fazer esse erro é:
-
-	``` java
-		public class TestaError {
-			public static void main(String[] args) {
-				String[] ss = new String[Integer.MAX_VALUE];
-			}
-		}
-	```
-	-->
+	
 
 
 ## Discussão em aula: catch e throws com Exception
@@ -919,7 +831,4 @@ teríamos código repetido. A fim de evitar o código repetido, podemos usar o m
 o qual permite um mesmo catch cuidar de mais de uma exceção por meio da sintaxe
 `catch(IOException | SQLException e) { ... } `.
 
-<!--@note
-É uma discussão rápida, nada de novo. Se quiser, peça para o pessoal
-entrar no link do post do kung sobre exceptions, o qual está em algumas páginas atrás.
--->
+

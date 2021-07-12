@@ -10,63 +10,9 @@ será capaz de:
 - Entender bem o conceito de máquina virtual;
 - Compilar e executar um programa simples.
 
-<!--@todo Melhorar isso aqui e deixar mais próximo ao capítulo 1 do FJ-91 -->
-
-<!--@note
-* Diferente dos cursos comuns, o nosso capítulo de introdução é fundamental e deve gerar uma discussão
-sadia entre os alunos.
-
-* Ponto fundamental: JVM é uma especificação. Existem várias
-
-* versões do Java, compatibilidade dos .class entre diferentes JVMs.
-
-* Java não serve para todo tipo de tarefa. Algumas linguagens podem ser melhores em alguns casos.
-
-* Java é produtivo para uma aplicação que não é minúscula e, em especial, se envolve
-mais de um programador, porque programar OO vai-lhe dar menos custo de manutenção. Isso
-definitivamente não quer dizer que é mais rápido programar uma telinha de cadastro em Java
-do que em outras linguagens. Muito pelo contrário, você terá mais trabalho para economizar *depois*.
-
-* Vamos utilizar editor simples de texto para se acostumar com erros de sintaxe.
-
-------------------
-
-Responder basicamente às seguintes perguntas:
-- O que é Java?
-- Quais as vantagens em relação às linguagens que já existem?
-
-Nesse ponto, o lado técnico é levemente deixado de lado, pois troca-se pelo lado marketeiro. Lembrar de frases
-clássicas como Write Once, Run Everywhere.
-
-Contar a história básica do Java e a evolução da linguagem. A tabela abaixo ajuda a relembrar:
-
-1995 – Java 1.0
-1997 – Java 1.1
-1998 – Java2 1.2 (HotSpot)
-1999 – Java2 1.3
-2001 – Java2 1.4
-2004 – Java2 5.0
-2006 – Java 6
-2011 – Java 7
-2014 – Java 8
-2016 – Java 9 (Previsão)
-
-* Explicar JIT (Just In Time) e Hotspot (pontos quentes das classes), além da diferença entre
-compilação estática (GCC e VB) e a compilação dinâmica.
-
-* Antes de apresentar o que é a JVM, esclarecer o conceito de máquina virtual. Bons exemplos podem
-ser dados explicando programas feitos para videocassetes. O que acontece com o assembly quando mudamos o hardware?
-
-Explicar o que é:
-
-* JVM: uma especificação (.Net passou a sê-lo também), e não um programa. Como a Sun ganha dinheiro com Java? Comentar as implementações da Bea (JRocket) e da IBM (J9);
-* JRE: Runtime.
-* JDK: Runtime + compilador e outras ferramentas de desenvolvimento (Javadoc, javap, etc.).
-* Java EE: apenas comentar o que é e deixar claro que está fora do escopo desse curso.
 
 
-Acabar o capítulo por volta das 10h40 da manhã (para cursos noturnos, no intervalo).
--->
+
 
 ## Java
 
@@ -169,11 +115,7 @@ uma aplicação que rode de forma parecida nos dois sistemas operacionais?
 Precisamos reescrever um mesmo pedaço da aplicação para diferentes sistemas operacionais, já que
 eles não são compatíveis.
 
-<!--@note
-Apesar de cross-plataform ser algo muito legal para JVM, isso, certamente, já não é um grande
-chamariz. Porém, ter esse bytecode bem definido ajudou o Java a ganhar vários mercados, como
-o dos dispositivos pequenos e móveis.
--->
+
 
 Já o Java utiliza o conceito de **máquina virtual**, no qual existe, entre o sistema operacional
 e a aplicação, uma camada extra responsável por traduzir – mas não apenas isso – o que sua
@@ -215,7 +157,7 @@ já que ele será traduzido pela JVM.
 > Esse era um slogan que a Sun usava para o Java, já que você não precisa reescrever partes da sua
 > aplicação toda vez que quiser mudar de sistema operacional.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 ## Java lento? Hotspot e JIT
 
@@ -360,23 +302,7 @@ _Programe voltado à interface e não à implementação_.
 
 ## Compilando o primeiro programa
 
-<!--@note
-Escrever o primeiro código. Comece pelo miolo, pelo `System.out`, depois coloque o main e a classe
-em volta (bottom up). Perguntas a serem feitas:
 
-* Escrevi muito? (Interessante colocar um código em C para comparar o tamanho e assustar o pessoal.
-Utilizar-se disso para impor a posição do instrutor.)
-* Onde que eu vou programar?
-* Explicar o primeiro programa. Importante não entrar em detalhes do Java em si, apenas explicar que começará a ser executado do main e o que acontecerá.
-* Outro ponto importante: caso alguém pergunte, não é necessário colocar public antes da palavra-chave class.
-
-Explicar um pouco da estrutura básica da sintaxe do Java.
-
-* Blocos: {} (análogo a begin/end).
-* Fim de statement: ; (análogo a Enter).
-* Case sensitive: Java diferencia maiúsculas de minúsculas.
-* Palavras-chaves: Existem pouco mais de 50, todas minúsculas.
--->
 
 Vamos para o nosso primeiro código! O programa que imprime uma linha simples.
 
@@ -408,7 +334,7 @@ class MeuPrograma {
 > A numeração das linhas **não** faz parte do código e não deve ser digitada; é apenas um recurso
 > didático. O Java é case sensitive: tome cuidado com maiúsculas e minúsculas.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 Após digitar o código acima, grave-o como **MeuPrograma.java** em algum diretório. A fim de compilar, você
 deve pedir para que o compilador de Java da Oracle, chamado `javac`, gere o bytecode correspondente ao
@@ -427,7 +353,7 @@ da sua classe Java.
 > deixará mais tranquilo em relação à curva de aprendizado da linguagem. Assim, você conhecerá como o curso está
 > organizado.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 > **Preciso sempre programar usando o Notepad ou similar?**
 >
@@ -442,7 +368,7 @@ da sua classe Java.
 > No Linux, recomendamos o uso do gedit, kate e vi. No Windows, você pode usar o Notepad++ ou o
 > TextPad. No Mac, TextMate, Sublime ou mesmo o vi.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 ## Executando seu primeiro programa
 
@@ -482,9 +408,7 @@ colocado na tela.
 
 ## Para saber mais: como é o bytecode?
 
-<!--@note
-Comentar do uso de Obfuscadores de código caso alguém fique com medo de engenharia reversa.
--->
+
 
 O `MeuPrograma.class` gerado não é legível por seres humanos (não que seja impossível). Ele está
 escrito no formato que a Virtual Machine sabe entender e o qual foi especificado que ela o entendesse.
@@ -524,28 +448,9 @@ um monte de outros recursos (indicamos o http://proguard.sf.net).
 ## Exercícios: modificando o Hello World
 
 1. Altere seu programa para imprimir uma mensagem diferente.
-   <!--@answer
-   ``` java
-   		class MeuProgramaModificado {
-   			public static void main(String[] args) {
-   				// miolo do programa começa aqui!
-   				System.out.println("Uma mensagem diferente.");
-   				// fim do miolo do programa
-   			}
-   		}
-   ```
-   -->
+   
 1. Altere seu programa para imprimir duas linhas de texto usando duas linhas de código System.out.
-   <!--@answer
-   ``` java
-   		class MeuProgramaModificado {
-   			public static void main(String[] args) {
-   				System.out.println("Uma mensagem.");
-   				System.out.println("Outra mensagem.");
-   			}
-   		}
-   ```
-   -->
+   
 1. Sabendo que os caracteres `\n` representam uma quebra de linhas, imprima duas linhas de texto
    usando uma única linha de código `System.out`.
 
@@ -635,10 +540,4 @@ Por exemplo:
 
    Compile e verifique o nome do arquivo gerado. Como executar a sua aplicação?
 
-   <!--@answer
-   O arquivo `.class` gerado tem o nome da classe em si. Então, como
-   o que executamos é a classe, para rodar, é preciso usar o nome do
-   arquivo `.class` e não do `.java`:
-
-   ```java NomeDaClasse```
-   -->
+   

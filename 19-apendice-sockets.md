@@ -3,20 +3,9 @@ _"Olho por olho, e o mundo acabará cego."--Mohandas Gandhi_
 
 Conectando-se a máquinas remotas.
 
-<!--@note
-* Dê preferência a esse apêndice, explique que o escolhemos por usar diversas APIs.
-* Pode ser executado rapidamente, dando uma explicação básica sobre o que é uma socket
-(não entrar em detalhes de TCP/IP e lembrar que podemos usar UDP com _DatagramSocket_)
-e ligeiramente apresentando _Socket_ e _ServerSocket_.
-* Importantíssimo salientar que estamos usando interfaces (_Runnable_), classes abstratas
-(_Input/Output_), Threads, exceções, io e tudo o que aprendemos durante o curso,
-fazendo com que os alunos percebam a importância de todos aqueles conceitos.
-* A figura da imagem geral ilustra bem o que está acontecendo.
-* O exercício tem a solução inteira na própria apostila, passe-o na
-lousa explicando cada tópico.
--->
 
-<!--@todo +desenhos e explicação passo a passo -->
+
+
 ## Motivação: uma API que usa os conceitos aprendidos
 
 Neste capítulo, você conhecerá a API de **Sockets** do Java pelo pacote `java.net`.
@@ -29,11 +18,7 @@ Lembre-se de fazer esse apêndice com o Javadoc aberto ao seu lado.
 
 ## Protocolo
 
-<!--@note
-Cuidado! As pessoas não sabem o que é socket ou TCP. Prefira usar o termo conexão
-em vez de socket. Elas também não sabem que quando entramos no uol.com.br, na verdade,
-fazemos uma socket tcp no uol.com.br na porta 80, então não leve isso como óbvio.
--->
+
 
 
 Da necessidade de dois computadores se comunicarem, surgiram diversos protocolos que permitissem tal
@@ -234,7 +219,7 @@ public class Cliente {
 Para testar o sistema, precisamos rodar primeiro o servidor e, logo depois, o cliente. Tudo o que for
 digitado no cliente será enviado ao servidor.
 
-<!--@todo screenshots do Eclipse de como rodar os dois ao mesmo tempo e alternar os consoles. -->
+
 
 > **Multithreading**
 >
@@ -262,7 +247,7 @@ digitado no cliente será enviado ao servidor.
 > ```
 >
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Imagem geral
@@ -343,7 +328,7 @@ ser servidor em um caso, mas pode ser cliente em outro.
 	```
 
 	Utilize os quickfixes e control espaço para os `import`s e o `throws`.
-1. <!--@todo screenshots -->
+1. 
 	Rode a classe `Servidor`: repare no console do Eclipse que o programa fica esperando.
 	Rode a classe `Cliente`: a conexão deve ser feita, e o Eclipse deve lhe mostrar os dois
 	consoles(existe um pequeno ícone na View de Console para você
@@ -351,11 +336,8 @@ ser servidor em um caso, mas pode ser cliente em outro.
 
 	Digite mensagens no cliente e veja se elas aparecem corretamente no servidor.
 
-	<!--@note
-	Alunos se perdem um pouco por causa dos múltiplos consoles. Precisa de uma screenshot aqui!
-	Além disso, muitos rodam o servidor novamente sem parar o anterior.
-	-->
-	<!--@todo adicionar screenshots do chat rodando no Eclipse com múltiplos consoles -->
+	
+	
 1. Teste seu programa com um colega do curso usando comunicação remota entre as duas máquinas.
 	Combinem entre si quem irá rodar o cliente e quem irá rodar o servidor. Quem for rodar o cliente
 	deve editar o IP na classe para indicar o endereço da outra máquina (verifique também se estão
@@ -366,20 +348,14 @@ ser servidor em um caso, mas pode ser cliente em outro.
 	> No Windows, abra o console e digite _ipconfig_ para saber qual é o seu IP. No Linux (ou no BSD, Mac, Solaris),
 	> vá no console e digite _ifconfig_.
 
-	<!-- Comentário para separar quotes adjacentes. -->
+	
 1. (Opcional) E se você quisesse, em vez de enviar tudo o que o cliente digitou,
 	transferir um arquivo texto do micro do cliente para o servidor? Seria difícil?
 
 	Use bastante o polimorfismo! Faça o cliente ler de um arquivo chamado `arquivo.txt` (crie-o!)
 	e o servidor gravar tudo o que receber em um arquivo chamado `recebido.txt`.
 
-	<!--@note
-	Basta mudar `System.in` do cliente para `new FileInputStream`, e o `System.out` do servidor
-	deve ser usado um print stream que aponta para um new FileOutputStream.
-
-	Lembre-se de focá-los no uso do polimorfismo, e não na API. Esse é um exercício bem
-	bonito para fixar de vez os conceitos do polimorfismo.
-	-->
+	
 
 
 

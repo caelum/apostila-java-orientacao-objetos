@@ -39,7 +39,7 @@ capitulos:
         titulo: "JVM? JRE? JDK? O que devo baixar?"
         codigo: "jvm-jre-jdk-o-que-devo-baixar"
       -
-        titulo: "Onde usar e os objetivos do Java"
+        titulo: "Onde usar, e os objetivos do Java"
         codigo: "onde-usar-e-os-objetivos-do-java"
       -
         titulo: "Especificação versus implementação"
@@ -60,7 +60,7 @@ capitulos:
         titulo: "Para saber mais: como é o bytecode?"
         codigo: "para-saber-mais-como-e-o-bytecode"
       -
-        titulo: "Exercícios: Modificando o Hello World"
+        titulo: "Exercícios: modificando o Hello World"
         codigo: "exercicios-modificando-o-hello-world"
       -
         titulo: "O que pode dar errado?"
@@ -72,7 +72,7 @@ capitulos:
         titulo: "Exercícios opcionais"
         codigo: "exercicios-opcionais"
   -
-    titulo: "Variáveis primitivas e Controle de fluxo"
+    titulo: "Variáveis Primitivas e Controle de Fluxo"
     arquivo: 03-variaveis-primitivas-e-controle-de-fluxo.md
     codigo: variaveis-primitivas-e-controle-de-fluxo
     secoes:
@@ -113,13 +113,13 @@ capitulos:
         titulo: "Para saber mais"
         codigo: "para-saber-mais"
       -
-        titulo: "Exercícios: Fixação de sintaxe"
+        titulo: "Exercícios: fixação de sintaxe"
         codigo: "exercicios-fixacao-de-sintaxe"
       -
         titulo: "Desafios: Fibonacci"
         codigo: "desafios-fibonacci"
   -
-    titulo: "Orientação a objetos básica"
+    titulo: "Orientação a Objetos Básica"
     arquivo: 04-orientacao-a-objetos-basica.md
     codigo: orientacao-a-objetos-basica
     secoes:
@@ -151,7 +151,7 @@ capitulos:
         titulo: "Continuando com atributos"
         codigo: "continuando-com-atributos"
       -
-        titulo: "Para saber mais: Uma Fábrica de Carros"
+        titulo: "Para saber mais: uma fábrica de carros"
         codigo: "para-saber-mais-uma-fabrica-de-carros"
       -
         titulo: "Um pouco mais..."
@@ -166,7 +166,7 @@ capitulos:
         titulo: "Fixando o conhecimento"
         codigo: "fixando-o-conhecimento"
   -
-    titulo: "Modificadores de acesso e atributos de classe"
+    titulo: "Modificadores de Acesso e Atributos de Classe"
     arquivo: 05-modificadores-de-acesso-e-atributos-de-classe.md
     codigo: modificadores-de-acesso-e-atributos-de-classe
     secoes:
@@ -177,7 +177,7 @@ capitulos:
         titulo: "Encapsulamento"
         codigo: "encapsulamento"
       -
-        titulo: "Getters e Setters"
+        titulo: "Getters e setters"
         codigo: "getters-e-setters"
       -
         titulo: "Construtores"
@@ -192,7 +192,7 @@ capitulos:
         titulo: "Um pouco mais..."
         codigo: "um-pouco-mais"
       -
-        titulo: "Exercícios: Encapsulamento, construtores e static"
+        titulo: "Exercícios: encapsulamento, construtores e static"
         codigo: "exercicios-encapsulamento-construtores-e-static"
       -
         titulo: "Desafios"
@@ -230,7 +230,7 @@ capitulos:
         titulo: "Discussão em aula: Refactoring"
         codigo: "discussao-em-aula-refactoring"
   -
-    titulo: "Pacotes - Organizando suas classes e bibliotecas"
+    titulo: "Pacotes - Organizando suas Classes e Bibliotecas"
     arquivo: 07-pacotes-organizando-suas-classes-e-bibliotecas.md
     codigo: pacotes-organizando-suas-classes-e-bibliotecas
     secoes:
@@ -250,10 +250,10 @@ capitulos:
         titulo: "Usando o Eclipse com pacotes"
         codigo: "usando-o-eclipse-com-pacotes"
       -
-        titulo: "Exercícios: Pacotes"
+        titulo: "Exercícios: pacotes"
         codigo: "exercicios-pacotes"
   -
-    titulo: "Ferramentas: jar e javadoc"
+    titulo: "Ferramentas: JAR e Javadoc"
     arquivo: 08-ferramentas-jar-e-javadoc.md
     codigo: ferramentas-jar-e-javadoc
     secoes:
@@ -270,22 +270,22 @@ capitulos:
         titulo: "Gerando o Javadoc"
         codigo: "gerando-o-javadoc"
       -
-        titulo: "Exercícios: Jar e Javadoc"
+        titulo: "Exercícios: JAR e Javadoc"
         codigo: "exercicios-jar-e-javadoc"
       -
-        titulo: "Importando um jar externo"
+        titulo: "Importando um JAR externo"
         codigo: "importando-um-jar-externo"
       -
-        titulo: "Exercícios: Importando um jar"
+        titulo: "Exercícios: Importando um JAR"
         codigo: "exercicios-importando-um-jar"
       -
         titulo: "Manipulando a conta pela interface gráfica"
         codigo: "manipulando-a-conta-pela-interface-grafica"
       -
-        titulo: "Exercícios: Mostrando os dados da conta na tela"
+        titulo: "Exercícios: mostrando os dados da conta na tela"
         codigo: "exercicios-mostrando-os-dados-da-conta-na-tela"
   -
-    titulo: "Herança, reescrita e polimorfismo"
+    titulo: "Herança, Reescrita e Polimorfismo"
     arquivo: 09-heranca-reescrita-e-polimorfismo.md
     codigo: heranca-reescrita-e-polimorfismo
     secoes:
@@ -308,10 +308,10 @@ capitulos:
         titulo: "Um pouco mais..."
         codigo: "um-pouco-mais"
       -
-        titulo: "Exercícios: Herança e Polimorfismo"
+        titulo: "Exercícios: herança e polimorfismo"
         codigo: "exercicios-heranca-e-polimorfismo"
       -
-        titulo: "Discussões em aula: Alternativas ao atributo protected"
+        titulo: "Discussões em aula: alternativas ao atributo protected"
         codigo: "discussoes-em-aula-alternativas-ao-atributo-protected"
   -
     titulo: "Classes Abstratas"
@@ -334,7 +334,7 @@ capitulos:
         titulo: "Para saber mais..."
         codigo: "para-saber-mais"
       -
-        titulo: "Exercícios: Classes Abstratas"
+        titulo: "Exercícios: classes abstratas"
         codigo: "exercicios-classes-abstratas"
   -
     titulo: "Interfaces"
@@ -354,7 +354,7 @@ capitulos:
         titulo: "Exemplo interessante: conexões com o banco de dados"
         codigo: "exemplo-interessante-conexoes-com-o-banco-de-dados"
       -
-        titulo: "Exercícios: Interfaces"
+        titulo: "Exercícios: interfaces"
         codigo: "exercicios-interfaces"
       -
         titulo: "Exercícios opcionais"
@@ -363,7 +363,7 @@ capitulos:
         titulo: "Discussão: favoreça composição em relação à herança"
         codigo: "discussao-favoreca-composicao-em-relacao-a-heranca"
   -
-    titulo: "Exceções e controle de erros"
+    titulo: "Exceções e Controle de Erros"
     arquivo: 12-excecoes-e-controle-de-erros.md
     codigo: excecoes-e-controle-de-erros
     secoes:
@@ -398,16 +398,16 @@ capitulos:
         titulo: "Para saber mais: finally"
         codigo: "para-saber-mais-finally"
       -
-        titulo: "Exercícios: Exceções"
+        titulo: "Exercícios: exceções"
         codigo: "exercicios-excecoes"
       -
         titulo: "Desafios"
         codigo: "desafios"
       -
-        titulo: "Discussão em aula: catch e throws em Exception"
-        codigo: "discussao-em-aula-catch-e-throws-em-exception"
+        titulo: "Discussão em aula: catch e throws com Exception"
+        codigo: "discussao-em-aula-catch-e-throws-com-exception"
   -
-    titulo: "O pacote java.lang"
+    titulo: "O Pacote java.lang"
     arquivo: 13-o-pacote-java-lang.md
     codigo: o-pacote-java-lang
     secoes:
@@ -436,10 +436,10 @@ capitulos:
         titulo: "Desafio"
         codigo: "desafio"
       -
-        titulo: "Discussão em aula: O que você precisa fazer em Java?"
+        titulo: "Discussão em aula: o que você precisa fazer em Java?"
         codigo: "discussao-em-aula-o-que-voce-precisa-fazer-em-java"
   -
-    titulo: "Um pouco de arrays"
+    titulo: "Um Pouco de Arrays"
     arquivo: 14-um-pouco-de-arrays.md
     codigo: um-pouco-de-arrays
     secoes:
@@ -456,22 +456,22 @@ capitulos:
         titulo: "Percorrendo uma array no Java 5.0"
         codigo: "percorrendo-uma-array-no-java-50"
       -
-        titulo: "Exercícios: Arrays"
+        titulo: "Exercícios: arrays"
         codigo: "exercicios-arrays"
       -
         titulo: "Um pouco mais..."
         codigo: "um-pouco-mais"
       -
-        titulo: "Desafios Opcionais"
+        titulo: "Desafios opcionais"
         codigo: "desafios-opcionais"
   -
-    titulo: "Collections framework"
+    titulo: "Collections Framework"
     arquivo: 15-collections-framework.md
     codigo: collections-framework
     secoes:
       -
-        titulo: "Arrays são trabalhosos, utilizar estrutura de dados"
-        codigo: "arrays-sao-trabalhosos-utilizar-estrutura-de-dados"
+        titulo: "Arrays são trabalhosas, utilizar estrutura de dados"
+        codigo: "arrays-sao-trabalhosas-utilizar-estrutura-de-dados"
       -
         titulo: "Listas: java.util.List"
         codigo: "listas-javautillist"
@@ -485,7 +485,7 @@ capitulos:
         titulo: "Ordenação: Collections.sort"
         codigo: "ordenacao-collectionssort"
       -
-        titulo: "Exercícios: Ordenação"
+        titulo: "Exercícios: ordenação"
         codigo: "exercicios-ordenacao"
       -
         titulo: "Conjunto: java.util.Set"
@@ -497,7 +497,7 @@ capitulos:
         titulo: "Percorrendo coleções no Java 5"
         codigo: "percorrendo-colecoes-no-java-5"
       -
-        titulo: "Para saber mais: Iterando sobre coleções com java.util.Iterator"
+        titulo: "Para saber mais: iterando sobre coleções com java.util.Iterator"
         codigo: "para-saber-mais-iterando-sobre-colecoes-com-javautiliterator"
       -
         titulo: "Mapas - java.util.Map"
@@ -509,7 +509,7 @@ capitulos:
         titulo: "Para saber mais: Equals e HashCode"
         codigo: "para-saber-mais-equals-e-hashcode"
       -
-        titulo: "Para saber mais: Boas práticas"
+        titulo: "Para saber mais: boas práticas"
         codigo: "para-saber-mais-boas-praticas"
       -
         titulo: "Exercícios: Collections"
@@ -521,9 +521,26 @@ capitulos:
         titulo: "Para saber mais: Comparators, classes anônimas, Java 8 e o lambda"
         codigo: "para-saber-mais-comparators-classes-anonimas-java-8-e-o-lambda"
   -
+    titulo: "E Agora?"
+    arquivo: 16-e-agora.md
+    codigo: e-agora
+    secoes:
+      -
+        titulo: "Web"
+        codigo: "web"
+      -
+        titulo: "Praticando Java e usando bibliotecas"
+        codigo: "praticando-java-e-usando-bibliotecas"
+      -
+        titulo: "Grupos de usuários"
+        codigo: "grupos-de-usuarios"
+      -
+        titulo: "Próximos cursos"
+        codigo: "proximos-cursos"
+  -
     titulo: "Pacote java.io"
-    arquivo: 16-pacote-java-io.md
-    codigo: pacote-java-io
+    arquivo: 17-apendice-pacote-java-io.md
+    codigo: apendice-pacote-java-io
     secoes:
       -
         titulo: "Conhecendo uma API"
@@ -561,23 +578,6 @@ capitulos:
       -
         titulo: "Discussão em aula: Design Patterns e o Template Method"
         codigo: "discussao-em-aula-design-patterns-e-o-template-method"
-  -
-    titulo: "E agora?"
-    arquivo: 17-e-agora.md
-    codigo: e-agora
-    secoes:
-      -
-        titulo: "Web"
-        codigo: "web"
-      -
-        titulo: "Praticando Java e usando bibliotecas"
-        codigo: "praticando-java-e-usando-bibliotecas"
-      -
-        titulo: "Grupos de Usuários"
-        codigo: "grupos-de-usuarios"
-      -
-        titulo: "Próximos cursos"
-        codigo: "proximos-cursos"
   -
     titulo: "Apêndice - Programação Concorrente e Threads"
     arquivo: 18-apendice-programacao-concorrente-e-threads.md
@@ -628,7 +628,7 @@ capitulos:
         titulo: "Exercícios: Sockets"
         codigo: "exercicios-sockets"
       -
-        titulo: "Desafio: Múltiplos Clientes"
+        titulo: "Desafio: múltiplos clientes"
         codigo: "desafio-multiplos-clientes"
       -
         titulo: "Desafio: broadcast das mensagens"
@@ -637,7 +637,7 @@ capitulos:
         titulo: "Solução do sistema de chat"
         codigo: "solucao-do-sistema-de-chat"
   -
-    titulo: "Apêndice - Problemas com concorrência"
+    titulo: "Apêndice - Problemas com Concorrência"
     arquivo: 20-apendice-problemas-com-concorrencia.md
     codigo: apendice-problemas-com-concorrencia
     secoes:
@@ -694,45 +694,45 @@ capitulos:
         titulo: "Profiling no Eclipse TPTP"
         codigo: "profiling-no-eclipse-tptp"
   -
-    titulo: "Resoluções de Exercícios"
+    titulo: "Resoluções de exercícios"
     arquivo: 23-resolucoes-exercicios.md
     codigo: resolucoes-exercicios
     secoes:
       -
-        titulo: "Exercícios 3.3: Variáveis e tipos primitivos"
+        titulo: "Exercícios 3.3: variáveis e tipos primitivos"
         codigo: "exercicios-33-variaveis-e-tipos-primitivos"
       -
-        titulo: "Exercícios 3.13: Fixação de sintaxe"
+        titulo: "Exercícios 3.13: fixação de sintaxe"
         codigo: "exercicios-313-fixacao-de-sintaxe"
       -
         titulo: "Desafios 3.14: Fibonacci"
         codigo: "desafios-314-fibonacci"
       -
-        titulo: "Exercícios 4.12: Orientação a Objetos"
+        titulo: "Exercícios 4.12: orientação a objetos"
         codigo: "exercicios-412-orientacao-a-objetos"
       -
         titulo: "Desafios 4.13"
         codigo: "desafios-413"
       -
-        titulo: "Exercícios 5.8: Encapsulamento, construtores e static"
+        titulo: "Exercícios 5.8: encapsulamento, construtores e static"
         codigo: "exercicios-58-encapsulamento-construtores-e-static"
       -
         titulo: "Desafios 5.9"
         codigo: "desafios-59"
       -
-        titulo: "Exercícios 8.9: Mostrando os dados da conta na tela"
+        titulo: "Exercícios 8.9: mostrando os dados da conta na tela"
         codigo: "exercicios-89-mostrando-os-dados-da-conta-na-tela"
       -
-        titulo: "Exercícios 9.7: Herança e Polimorfismo"
+        titulo: "Exercícios 9.7: herança e polimorfismo"
         codigo: "exercicios-97-heranca-e-polimorfismo"
       -
-        titulo: "Exercícios 11.5: Interfaces"
+        titulo: "Exercícios 11.5: interfaces"
         codigo: "exercicios-115-interfaces"
       -
         titulo: "Exercícios opcionais 11.6"
         codigo: "exercicios-opcionais-116"
       -
-        titulo: "Exercícios 12.11: Exceções"
+        titulo: "Exercícios 12.11: exceções"
         codigo: "exercicios-1211-excecoes"
       -
         titulo: "Desafios 12.12"
@@ -747,18 +747,18 @@ capitulos:
         titulo: "Desafio 13.8"
         codigo: "desafio-138"
       -
-        titulo: "Exercícios 14.5: Arrays"
+        titulo: "Exercícios 14.5: arrays"
         codigo: "exercicios-145-arrays"
       -
-        titulo: "Exercícios 15.6: Ordenação"
+        titulo: "Exercícios 15.6: ordenação"
         codigo: "exercicios-156-ordenacao"
       -
-        titulo: "Exercícios 15.15: Collections"
+        titulo: "Exercícios 15.15: collections"
         codigo: "exercicios-1515-collections"
       -
         titulo: "Desafios 15.16"
         codigo: "desafios-1516"
       -
-        titulo: "Exercícios 16.11: Java I/O"
-        codigo: "exercicios-1611-java-io"
+        titulo: "Exercícios 17.11: Apêndice Java I/O"
+        codigo: "exercicios-1711-apendice-java-io"
 

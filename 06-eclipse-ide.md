@@ -4,38 +4,7 @@ _"Dá-se importância aos antepassados quando já não temos nenhum."--François
 Neste capítulo, você será apresentado ao Ambiente de Desenvolvimento Eclipse e às suas principais
 funcionalidades.
 
-<!--@note
 
-* É fundamental, neste capítulo, que os alunos fiquem boquiabertos em relação
-ao Eclipse. Toda e qualquer criatividade para alcançar este objetivo é valida.
-
-* Explicar o que é o Eclipse e destacar que é feito em Java (cabe um comentário
-aqui para informar que o Visual Studio é feito em C/C++, em vez de .Net). Contudo, lembrar
-que não é instalável e tampouco é portável devido ao SWT.
-
-* Comentar a variedade de IDEs para trabalhar com Java. A lista a seguir tem
-algumas sugestões: NetBeans, IntelliJ, WSAD, JDeveloper, JBuilder, JCreator,
-Java Studio Creator e Java Web Studio.
-
-* Comentar um pouco as Views e que estas são agrupadas em Perspectivas de
-acordo com a necessidade que se tem no momento. Citar o caso em que se vai
-debugar ou desenvolver. O que eu preciso quando vou debugar?
-
-* Daqui em diante, seguir a apostila passo a passo, não deixando nenhum aluno
-para trás. Fazer cada comando pouco a pouco, todos juntos.
-
-* Explicar como reabrir Views. É muito comum fecharem o Console
-(basta um CTRL+3 e digitar o nome da View).
-
-* Mostrar também o Generate getters and setters, e algo muito legal de ser feito
-é utilizar o Local Repository do Eclipse. Pedir para deletar os .java e
-restaurá-los depois.
-
-* Lembre-os de que veremos, várias vezes, o Eclipse e analisaremos bastante as
-teclas de atalho e telas para que eles não se preocupem em absorver tudo de
-uma vez.
-
--->
 
 ## O Eclipse
 
@@ -67,7 +36,7 @@ Descompacte o arquivo e rode o executável.
 >
 > A empresa JetBrains desenvolve o IntelliJ IDEA, uma IDE paga que tem atraído muitos adeptos.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Apresentando o Eclipse
@@ -116,7 +85,7 @@ Vá em **File -> New -> Project**, seleciona Java Project e clique em Next.
 
 ![ {w=50%}](assets/images/eclipse/NewProject1_.png)
 
-<!--@todo Trocar screenshot para o projeto se chamar fj11-contas. -->
+
 
 Crie um projeto chamado `fj11-contas`.
 
@@ -328,9 +297,7 @@ Veremos mais atalhos no decorrer do curso, em especial, quando virmos pacotes.
 1. Clique com o botão direito em um arquivo no navigator. Escolha
 	**Compare With -> Local History**. O que é esta tela?
 
-	<!--@note
-	Comentar o versionamento em equipes, CVS, SVN e Git.
-	-->
+	
 
 	![ {w=95%}](assets/images/eclipse/LocalHistory.png)
 1. Use o _Ctrl + Shift + F_ para formatar o seu código. Dessa maneira, o comando
@@ -339,31 +306,14 @@ Veremos mais atalhos no decorrer do curso, em especial, quando virmos pacotes.
 	![ {w=95%}](assets/images/eclipse/Format2.png)
 1. (Opcional) O que são os arquivos .project e .classpath? Leia os seus conteúdos.
 
-	<!--@answer
-	Ambos são arquivos de configuração do projeto.
-
-	O arquivo `.classpath` tem informações como qual é a pasta de código, qual
-	a versão do compilador e o caminho para onde vão os arquivos compilados. E o
-	`.project` guarda o nome do projeto no Eclipse, além de dar a informação como qual compilador será usado para gerar os .class desse projeto.
-
-	Note que o primeiro trata das configurações do projeto em si, e o segundo, da relação desse projeto com o Eclipse.
-	-->
+	
 1. (Opcional) Clique com o botão direito no projeto e depois, em propriedades. É uma das telas mais
 	importantes do Eclipse, na qual você pode configurar diversas informações para
 	o seu projeto, como compilador, versões, formatador e outros.
 
 	![ {w=95%}](assets/images/eclipse/Properties.png)
 
-	<!--@answer
-	Nesse exercício, aproveite para fazer uma exploração nos seguintes itens,
-	muito usados no dia a dia:
-
-	* Java build path;
-	* Java code style (e seus submenus);
-	* Java compiler;
-	* Java editor -> Save actions.
-
-	-->
+	
 
 
 ## Discussão em aula: Refactoring
@@ -378,12 +328,4 @@ Usar bons nomes no seu código é um excelente começo para mantê-lo legível e
 encapsulamento, todas essas são formas de refatoração. E esse menu do Eclipse nos
 ajuda a fazer várias delas.
 
-<!--@note
-Comente que refatorar sempre é uma ótima atitude para melhorar o design das classes.
-Que o Eclipse tem ótimos recursos a fim de ajudar-nos a fazer refatorações.
-Fale que há um livro (avançado) sobre isso, do Martin Fowler.
 
-Mostre o menu Refactor do Eclipse e faça um rename em uma variável (alunos babam).
-Depois, faça um extract method qualquer ou outro refactoring só para demonstração.
-Não fique só no rename!
--->

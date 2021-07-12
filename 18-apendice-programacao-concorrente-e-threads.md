@@ -9,18 +9,7 @@ Ao final deste capítulo, você será capaz de:
 * Entender o funcionamento do Garbage Collector.
 
 
-<!--@note
-* Você não tem controle sobre o escalonador.
 
-* Garbage Collector: você não sabe quando ele passa.
-
-* Não precisa passar código de syncrhonized se achar a turma fraca ou estiver atrasado,
-mas é necessário demonstrar os problemas graves que podem aparecer caso duas Threads
-compartilhem acesso a um mesmo objeto.
-
-* Definir o termo Thread Safe e comparar _HashMap_ com _Hashtable_ e _ArrayList_
-com _Vector_ rapidamente.
--->
 
 ## Threads
 ### Duas tarefas ao mesmo tempo
@@ -82,11 +71,7 @@ o método `roda`? Como ela sabe qual nome de método daremos e que deve chamar
 esse método especial? Falta, na verdade, um **contrato** entre as nossas classes a
 serem executadas e a classe `Thread`.
 
-<!--@note
-Faça aqui uma conversa com os alunos e deixe que algum deles chegue à conclusão
-que para amarrar a classe Thread à sua classe, uma interface deve ser usada.
-Aí você explica que já existe a Runnable.
--->
+
 
 Esse contrato existe e é feito pela _interface_ `Runnable`: devemos dizer que
 nossa classe é executável e segue esse contrato. Na interface `Runnable`,
@@ -139,7 +124,7 @@ que a classe segue o contrato estabelecido e tem o método `run`.
 > polimorfismo, que seria a grande vantagem. Prefira implementar `Runnable` a
 > herdar de `Thread`.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Dormindo**
@@ -149,7 +134,7 @@ que a classe segue o contrato estabelecido e tem o método `run`.
 >
 > ``` javaThread.sleep(3 * 1000);```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Escalonador e trocas de contexto
@@ -174,10 +159,7 @@ public class Programa implements Runnable {
 dez mil números. Vamos usá-la duas vezes para criar duas Threads e imprimir os
 números duas vezes simultaneamente:
 
-<!--@note
-É uma boa mostrar para os alunos como não se chama o método run diretamente,
-senão seria sequencial. O start chama o run numa Thread em paralelo.
--->
+
 
 ``` java
 public class Teste {
@@ -246,7 +228,7 @@ ao mesmo tempo.
 > processadores, temos as trocas de contexto. A diferença é que o escalonador tem dois ou mais processadores para
 > executar suas threads. Mas dificilmente haverá uma máquina que executa com mais processadores do que Threads simultâneas.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Garbage Collector
@@ -295,19 +277,7 @@ Isso raramente é necessário. O _Garbage Collector_ age apenas sobre objetos, n
 Nesse caso, a variável `x` não existirá mais a cada iteração, deixando a `ArrayList` criada sem nenhuma
 referência a ela.
 
-<!--@note
-Em alguns casos particulares, é interessante atribuir `null`, por exemplo, quando você tem uma
-referência que é um atributo e já não vai mais usar aquele objeto.
 
-Ou ainda no caso de você alocar um objeto muito grande e não precisar mais dele, mas, logo em
-seguida, no mesmo metodo, você faz um `wait()` ou algo que demore muito. Como a stack só
-limpará as variáveis locais no fim do metodo, o GC entenderá que aquele objeto grande ainda pode estar
-em uso. Isso é apenas por curiosidade, obviamente não faz sentido entrar nessa profundidade.
-Saiba mais em:
-
-http://www.javaspecialists.eu/archive/Issue173.html
-http://www.javaspecialists.eu/archive/Issue174.html
--->
 
 > **System.gc()**
 >
@@ -318,7 +288,7 @@ http://www.javaspecialists.eu/archive/Issue174.html
 > Evite o uso desse método. Você não deve basear sua aplicação em quando o Garbage Collector irá
 > rodar ou não.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Finalizer**
@@ -332,7 +302,7 @@ http://www.javaspecialists.eu/archive/Issue174.html
 > o ideal é liberá-los o mais rápido possível sem depender da passagem do Garbage
 > Collector.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -379,10 +349,7 @@ http://www.javaspecialists.eu/archive/Issue174.html
 
 	Rode várias vezes a classe `Teste` e observe os diferentes resultados em
 	cada execução. O que muda?
-	<!--@answer
-	O ponto em que as Threads são alternadas varia (e não temos controle sobre
-	isso).
-	-->
+	
 
 
 ## E as classes anônimas?
@@ -426,7 +393,7 @@ t.start();
 >
 > O uso de classes anônimas tem limitações. Não podemos declarar um construtor. Como estamos instanciando uma interface, então não conseguimos passar um parâmetro para ela. De que forma, então, passamos o `id` como argumento? Você pode, de dentro de uma classe anônima, acessar os atributos da classe dentro daquela que foi declarada. Também pode acessar as variáveis locais do método, desde que elas sejam `final`.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ### E com lambda do Java 8?

@@ -10,17 +10,7 @@ Ao final deste capítulo, você será capaz de:
 - Criar o Javadoc do seu aplicativo.
 
 
-<!--@note
-* Enfatizar a importância e fazer passo a passo com os alunos usando o Eclipse.
 
-* Mostrar o Javadoc da API do Java SE primeiro. Depois, gerar o Javadoc do projeto sem nenhum
-comentário. Logo, colocar os comentários e gerar de novo.
-
-* Comentar rapidamente sobre ant/maven, etc., que ajudam a criar essas coisas.
-
-* Este capítulo pode ser todo feito em conjunto com os alunos, dando ordens: "vamos
-todos clicar no projeto com o botão direito, agora em export, agora blá-blá-blá".
--->
 
 ## Arquivos, bibliotecas e versões
 Assim que um programa fica pronto, é meio complicado enviar dezenas ou centenas de classes para cada
@@ -36,7 +26,7 @@ formato de compactação padrão é o **`ZIP`** com a extensão do arquivo compa
 > criado com qualquer compactador **`zip`** disponível no mercado, inclusive com o programa **`jar`**
 > que vem junto com o JDK.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Para criar um arquivo JAR do nosso programa de banco,
@@ -79,7 +69,7 @@ gerado automaticamente.
 > Então, é possível rodar dois programas ao mesmo tempo, cada um utilizando uma versão da biblioteca
 > por meio do parâmetro **`-classpath`** do Java.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Criando um .jar automaticamente**
@@ -93,10 +83,10 @@ gerado automaticamente.
 > uma série de recursos, as ferramentas indicadas acima têm sofisticadas maneiras de rodar um
 > script batch.
 
-<!-- Comentário para separar quotes adjacentes. -->
 
 
-<!--@todo novo box explicando o Manifest rapidamente. -->
+
+
 
 ## Gerando o JAR pelo Eclipse
 
@@ -196,7 +186,7 @@ Ou adicione alguns comentários em algum método seu:
 
 Veja como ficou:
 
-<!--@todo atualizar essa screenshot -->
+
 ![ {w=100}](assets/images/javadoc/javadoc4.png)
 
 
@@ -223,7 +213,7 @@ Veja como ficou:
 > nem atributos e métodos privados! Isso faz parte da implementação, e o que
 > importa para quem usa uma biblioteca é a interface: o que ela faz.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Importando um JAR externo
@@ -244,7 +234,7 @@ Para isso, importaremos uma biblioteca externa. O próprio Eclipse já nos dá s
 	* Clique no botão **Add External Jars...**;
 	* Selecione o arquivo **fj11-lib-contas.jar** localizado na pasta dos arquivos dos cursos/11;
 
-	<!--@todo Verificar o caminho depois de ver a infra. -->
+	
 
 	* Clique no botão **Ok** para fechar a janela de importação.
 1. Para verificarmos se a importação deu certo, chamaremos uma classe da biblioteca importada para exibir uma janela de boas-vindas.
@@ -448,12 +438,7 @@ Agora conseguimos rodar a aplicação e, em seguida, clicar nos botões de saque
 	A classe `ManipuladorDeContas` fará a ligação da `Conta` com a tela, por isso precisaremos
 	declarar um atributo do tipo `Conta`.
 
-	<!--@answer
-	public class ManipuladorDeContas {
-
-	private Conta conta;
-	}
-	-->
+	
 
 1. Na classe `ManipuladorDeContas`, crie o método `criaConta` que recebe como parâmetro um objeto do tipo `Evento`.
 	Instancie uma conta para o atributo `conta` e coloque os valores de `numero`,
@@ -470,12 +455,7 @@ Agora conseguimos rodar a aplicação e, em seguida, clicar nos botões de saque
 1. Crie agora o método `saca`. Ele também deve receber um `Evento` nos mesmos
 	moldes do `deposita`.
 
-	<!--@answer
-	public void saca(Evento evento){
-	double valorDigitado = evento.getDouble("valor");
-	this.conta.saca(valorDigitado);
-	}
-	-->
+	
 1. Precisamos agora testar nossa aplicação. Crie a classe `TestaContas` dentro do
 	pacote `br.com.caelum.contas` com um `main`. Nela importaremos o `main` da
 	classe `TelaDeContas`, que mostrará a tela de nosso sistema. Não se esqueça de

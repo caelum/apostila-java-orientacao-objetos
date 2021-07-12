@@ -9,12 +9,7 @@ Ao final deste capítulo, você será capaz de:
 * Preparar arquivos simples para distribuição.
 
 
-<!--@note
-* Motivações: organizar/separar melhor e dar nomes iguais.
 
-* Somos OBRIGADOS a manter a ordem nos arquivos .java, ou seja, primeiro temos package,
-depois import e, por último, a declaração da classe.
--->
 
 ## Organização
 
@@ -46,14 +41,7 @@ Por exemplo, no pacote `java.util`, temos as classes `Date`, `SimpleDateFormat` 
 ![ {w=60}](assets/images/pacotes/javautil.png)
 
 ## Diretórios
-<!--@note
-Uma história que ajuda a introduzir o padrão de nomeação é contar que, na Bósnia, existe uma empresa
-chamada Caelum e, coincidentemente, trabalha com Java. Mais coincidência ainda é o fato de que
-eles também criaram, assim como nós, a classe Conta.
 
-Pergunta: O que, no mundo inteiro, eu tenho certeza que é único? Existe mais de uma URL
-na internet com o mesmo nome?
--->
 
 Se a classe `Cliente` está no pacote `contas`, ela deverá estar no diretório com o mesmo nome:
 `contas`. Se ela se localiza no pacote `br.com.caelum.contas`, significa que está no diretório
@@ -90,7 +78,7 @@ Um pacote pode conter nenhum, ou mais subpacotes e/ou classes dentro dele.
 > As classes do pacote padrão de bibliotecas não seguem essa nomenclatura que foi dada para
 > bibliotecas de terceiros.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Import
@@ -207,7 +195,7 @@ usar `Banco` dentro do nosso código em vez de escrever o longo
 > É muito importante manter a ordem! Primeiro, aparece uma (ou nenhuma) vez o `package`, depois pode
 > aparecer um ou mais `import`s e, por último, as declarações de classes.
 
-<!--  Comentário para separar quotes adjacentes. -->
+
 
 
 > **Import x.y.z.*;**
@@ -224,7 +212,7 @@ usar `Banco` dentro do nosso código em vez de escrever o longo
 > prática, pois facilita a leitura a outros programadores. Uma IDE como o Eclipse já fará isso
 > por você, assim como a organização em diretórios.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Acesso aos atributos, construtores e métodos
@@ -259,14 +247,11 @@ métodos, sim.
 > Classes aninhadas podem ser `protected` ou `private`, mas esse é um tópico avançado que não
 > será estudado neste momento.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Usando o Eclipse com pacotes
-<!--@note
-Fazer os exercícios com os alunos, auxiliando-os a fim de dar dinamismo na aula e para que ninguém
-fique para trás. Mostrar como o Eclipse deixa transparente a utilização de pacotes e que, aqui, os diretórios foram criados para nós.
--->
+
 
 Você pode usar a perspectiva Java do Eclipse. A View principal de navegação é o _Package
 Explorer_, que agrupa classes pelos pacotes em vez de diretórios (você pode usá-la em conjunto com a

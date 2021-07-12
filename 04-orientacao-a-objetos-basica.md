@@ -9,42 +9,7 @@ Ao término deste capítulo, você será capaz de:
 * Entender o significado de variáveis e objetos na memória.
 
 
-<!--@note
-* Definições importantíssimas a serem feitas durante este capítulo, respeitando o melhor momento:
-- O que é o new devolve?
-- O que significa == ?
-- Nos métodos, o porquê do this?
 
-* Programação Orientada a Objetos tem sujeito e é imperativa. Procedural, não!
-
-* Vantagens da OO - escrever menos, concentrar responsabilidades, flexibilizar aplicações.
-Não comentar nada sobre herança, polimorfismo e encapsulamento.
-
-* Importante demonstrar o problema da programação procedural.
-
-* Usar _this_ sempre. Pode contar que é opcional, mas isso facilitará quando
-eles aprenderem getters, setters e construtores.
-
-* Variáveis no Java *nunca* carregam objetos, e sim referências a eles.
-
-* Fazer analogia de endereço de memória para algo menos agressivo, como _"a variável
-conta é uma gaveta na qual cabe um número que identifica um objeto do tipo Conta"_. Evite
-falar as palavras endereço e ponteiro.
-
-* Apesar de mostrar o problema, os alunos devem ficar cientes que só conseguiremos
-resolver esse problema mais para frente (cap 6) quando veremos _private_ e construtores.
-
-* UML é apresentado desde este capítulo, mas você não deve ser formal no tratamento
-desses diagramas de classe. Não há sequer necessidade de mencionar UML. Aliás, alguém
-acabará citando.
-
-* O método transfere é muito interessante, porque algumas pessoas querem que
-ele receba dois argumentos Conta como parâmetros ou ainda dois ids de conta.
-
-* Aparecerão algumas perguntas sobre _ids_ e banco de dados. Cuidado! Evite se
-aprofundar nisso e lembre-os de desassociar diagrama de classes de esquema entidade-relacional.
-
--->
 
 ## Motivação: problemas do paradigma procedural
 
@@ -106,7 +71,7 @@ essa conexão por meio dos recursos da própria linguagem.
 > Outra enorme vantagem, na qual você realmente economizará montanhas de código, é o **polimorfismo
 > das referências**, que veremos em um capítulo posterior.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Nos próximos capítulos, conseguiremos enxergar toda essa vantagem. Mas, primeiramente, é necessário
@@ -140,7 +105,7 @@ Com isso, temos o projeto de uma conta bancária. Podemos pegar esse projeto e a
 O que temos ainda é o **projeto**. Antes, precisamos **construir** uma conta para poder acessar o
 que ela tem e pedir a ela que faça algo.
 
-<!--@todo Corrigir imagem para usar titular. -->
+
 ![ {w=70%}](assets/images/oo/especificacaoDeConta.png)
 
 Repare na figura. Apesar de o papel do lado esquerdo especificar uma Conta, essa especificação é uma
@@ -199,7 +164,7 @@ Um tipo desses, como o especificado de `Conta` acima, pode ser facilmente traduz
 > ainda aprendendo o que é uma classe, entenderemos, com detalhes, a classe `String` apenas em capítulos
 > posteriores.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -432,11 +397,7 @@ class TestaDuasContas {
 ## Objetos são acessados por referências
 
 
-<!--@note
-Alguns instrutores gostam de explicar isso JUNTO com o método transfere,
-pois lá mostra a utilidade dos objetos a serem acessados por referência e
-a passagem de parâmetros.
--->
+
 
 Quando declaramos uma variável para associar a um objeto, na verdade, essa variável não guarda o
 objet, mas, sim, uma maneira de acessá-lo, chamada de **referência**.
@@ -539,7 +500,7 @@ como argumento a métodos.
 > para esse objeto, devolve uma flecha, isto é, um valor de referência. Quando você atribui isso a
 > uma variável, essa variável passa a se referir a esse mesmo objeto.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Podemos, então, ver outra situação:
@@ -574,10 +535,7 @@ Para saber se dois objetos têm o mesmo conteúdo, você precisa comparar atribu
 Veremos uma solução mais elegante para isso também.
 
 ## O método transfere()
-<!--@note
-Perguntar: "o que esse método deve receber como argumento?". É extremamente comum os
-alunos dizerem: "a conta de origem e a de destino".
--->
+
 E se quisermos ter um método que transfere dinheiro entre duas contas? Podemos ficar tentados a
 criar um método o qual recebe dois parâmetros: `conta1` e `conta2` do tipo `Conta`. Mas cuidado:
 assim estamos pensando de maneira procedural.
@@ -645,17 +603,11 @@ Esse último código poderia ser escrito com uma sintaxe muito mais sucinta. Com
 >
 > A leitura desse código seria: `Conta1` transfere para `conta2` 50 reais.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Continuando com atributos
-<!--@note
-A principal parte desse capitulo já passou. Obviamente, null, inicialização de atributos e
-composição de objetos são importantíssimos, mas você não precisa dar a mesma profundidade, até
-porque eles vão passar, diversas vezes, por esses tópicos durante o curso.
 
-Nesse ponto, eles já estão cansados. Assim, a explicação daqui até o exercício precisa ser concisa.
--->
 
 As variáveis do tipo atributo, diferentemente das variáveis temporárias (declaradas dentro de um
 método), recebem um valor padrão. No caso numérico, valem `0`e , no caso de `boolean`, valem `false`.
@@ -717,11 +669,7 @@ do objeto ao qual `minhaConta` se refere. Em outras palavras, `minhaConta` tem u
 referência ao mesmo `Cliente` a que `c` se refere, e este pode ser acessado por meio de
 `minhaConta.titular`.
 
-<!--@note
-Costumo dizer que é como a cobertura do meu bolo. Geralmente, para um mesmo bolo, posso colocar diversas caldas,
-cada uma com sua receita específica. E depois que preparei a receita da cobertura, em panela diferente,
- ainda preciso ligar as duas, despejando a cobertura sobre o bolo.
--->
+
 
 Você pode realmente navegar sobre toda essa estrutura de informação sempre usando o ponto:
 
@@ -777,7 +725,7 @@ valor default (ou use construtores, que também veremos mais à frente):
 	}
 ```
 
-<!--@mudar todo o screenshot para conter titular em vez de dono -->
+
 
 Com esse código, toda nova `Conta` criada já terá um novo `Cliente` associado sem
 necessidade de instanciá-lo logo em seguida da instanciação de uma `Conta`. Qual alternativa você
@@ -903,23 +851,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 
 1. Modele uma conta. A ideia aqui é apenas modelar, isto é, identificar quais informações são importantes. Desenhe no papel tudo o que uma `Conta` tem e tudo o que ela faz.
 	Ela deve ter o nome do titular (`String`), o número (`int`), a agência (`String`), o saldo (`double`) e uma data de abertura (`String`). Além disso, a conta deve fazer as seguintes ações: sacar para retirar um valor do saldo; depositar a fim de adicionar um valor ao saldo; calculaRendimento para devolver o seu ganho mensal.
-	<!--@answer
-		Modelando uma conta...
-
-		Toda conta **tem**:
-
-		* String titular;
-		* int numero;
-		* String agencia;
-		* Double saldo;
-		* String dataDeAbertura.
-
-		Toda conta **faz**:
-
-		* `saca`: retira uma determinada quantia do seu saldo;
-		* `deposita`: adiciona uma determinada quantia ao seu saldo;
-		* `calculaRendimento`: devolve o seu rendimento mensal.
-	-->
+	
 
 1. Transforme o modelo acima em uma classe Java. Teste-a usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes, por exemplo, pode chamá-la `TestaConta`. Contudo, ela
 	deve necessariamente ter o método `main`.
@@ -951,33 +883,11 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 	>
 	> ```javac *.java```
 
-	<!-- Comentário para separar quotes adjacentes. -->
-
-	<!--@answer
-	``` java
-		class Conta {
-			String titular;
-			int numero;
-			String agencia;
-			Double saldo;
-			String dataDeAbertura.
-
-			void saca (double valor) {
-				this.saldo -= valor;
-			}
-
-			void deposita (double valor) {
-				this.saldo += valor;
-			}
-
-			double calculaRendimento() {
-				return this.saldo * 0.1;
-			}
-		}
-	```
-	-->
 	
-	<!-- Comentário para ajustar o texto.-->
+
+	
+	
+	
 
 1. Na classe Conta, crie um método `recuperaDadosParaImpressao()` que não recebe parâmetro, mas devolve o texto com todas as informações da nossa conta para efetuarmos a impressão.
 
@@ -993,22 +903,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 	elegante para mostrar a representação de um objeto como `String`, além de
 	não jogar tudo para o `System.out` (só se você o desejar).
 
-	<!--@answer
-	``` java
-		class Conta {
-			// outros atributos e métodos...
-
-			String recuperaDadosParaImpressao() {
-				String dados = "Titular: " + this.titular;
-				dados += "\nNúmero: " + this.numero;
-				dados += "\nAgência: " + this.agencia;
-				dados += "\nSaldo: R$" + this.saldo;
-				dados += "\nData de abertura: " + this.dataDeAbertura;
-				return dados;
-			}
-		}
-	```
-	-->
+	
 
 1. Na classe de teste dentro do bloco main, construa duas contas com o `new` e compare-as com o `==`. E se eles
 	tiverem os mesmos atributos? Para isso, você precisará criar outra referência:
@@ -1029,16 +924,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 		}
 	```
 
-	<!--@answer
-	Em ambos os casos, temos `false` como resposta. Isso é porque
-	variáveis guardam apenas as referências! Por mais que dois objetos
-	diferentes tenham as mesmas informações, cada um deles é um objeto
-	à parte.
-
-	Você pode ver isso de uma forma simples: se alterar o `c1`,
-	note que o `c2` não é alterado junto. Cada um é um objeto diferente,
-	e cada variável (`c1` e `c2`) referencia um deles.
-	-->
+	
 1. Agora, crie duas referências para a **mesma** conta e compare-as com o `==`.
 	Tire suas conclusões. A fim de criar duas referências para a mesma conta:
 
@@ -1052,10 +938,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 
 	O que acontece com o `if` do exercício anterior?
 
-	<!--@answer
-	Agora, sim, obtemos true. Isso porque, de fato, ambas as variáveis têm
-	referências ao mesmo objeto. Verifique, mude o titular da `c1` para _Mariana_ e imprima `c2.titular`. Você notará que o nome mudou!
-	-->
+	
 
 1. (Opcional) Em vez de utilizar uma `String` para representar a data, crie uma outra classe chamada `Data`. Ela tem três campos `int` para dia, mês e ano. Faça com que sua conta passe a usá-la (é parecido com o último exemplo da explicação, em que a `Conta` passou a ter referência a um `Cliente`).
 
@@ -1084,51 +967,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 
 	Faça o desenho do estado da memória quando criarmos um `Conta`.
 
-	<!--@answer
-	``` java filename="Data.java"
-		class Data {
-			int dia;
-			int mes;
-			int ano;
-
-			void preencheData (int dia, int mes, int ano) {
-				this.dia = dia;
-				this.mes = mes;
-				this.ano = ano;
-			}
-		}			
-	```
-
-	e, também:
-
-	``` java filename="Conta.java" h="3"
-		class Conta {
-			// outros atributos
-			Data dataDeAbertura;
-
-			// metodos
-		}
-	```
-
-	Finalmente...
-
-	``` java filename="TestaConta.java" h="8,9,10"
-		class TestaConta {
-			public static void main(String[] args) {
-				Conta c1 = new Conta();
-				c1.titular = "Hugo";
-				c1.saldo = 50;
-				c1.deposita(100);
-
-				// adicionando a data como tipo
-				c1.dataDeAbertura = new Data();
-				c1.dataDeAbertura.preencheData(1, 7, 2009);
-
-				System.out.println(c1.recuperaDadosParaImpressao());
-			}
-		}
-	```
-	-->
+	
 1. (Opcional) Modifique seu método `recuperaDadosParaImpressao` para que ele devolva o valor da `dataDeAbertura` daquela `Conta`:
 
 	``` java
@@ -1180,17 +1019,7 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 	}
 	```
 
-	<!--@answer
-	``` java h="4,5,6"
-		class Data {
-			// atributos e preencheData
-
-			String formata() {
-				return this.dia + "/" + this.mes + "/" + this.ano;
-			}
-		}		
-	```
-	-->
+	
 
 
 ## Desafios
@@ -1212,46 +1041,14 @@ O objetivo aqui é criar um sistema com o objetivo de gerenciar as contas de um 
 	Esse método `calculaFibonacci` não pode ter nenhum laço e só pode chamar-se a si mesmo
 	sendo método. Pense nele como uma função que usa a si própria para
 	calcular o resultado.
-	<!--@answer
-	``` java
-		class FibonacciRecursivo {
-			public static void main(String[] args) {
-				int numero = 1;
-				int fib = calculaFibonacci(numero);
-				while (fib < 100) {
-					System.out.println(fib);
-					fib = calculaFibonacci(numero++);
-				}
-			}
-
-			public static int calculaFibonacci(int n) {
-				if (n == 0 || n == 1) {
-					return 1;
-				} else {
-					return fibonacci(n-1) + fibonacci(n-2);
-				}
-			}
-		}
-	```
-	-->
+	
 1. Por que o modo acima é extremamente mais lento para calcular a série do que o
 	modo iterativo (que se usa um laço)?
 
-	<!--@answer
-	Dessa forma, o código fica muito mais lento porque não consegue aproveitar
-	os Fibonaccis já calculados anteriormente. E, pior ainda, ele abre o cálculo
-	de Fibonaccis exponencialmente, pois, para calcular o Fibonacci de um número,
-	é preciso somar os dois anteriores.
-	-->
+	
 1. Escreva o método recursivo novamente usando apenas uma linha. Para isso,
 	pesquise sobre o **operador condicional ternário** (ternary operator).
-	<!--@answer
-	``` java
-		public static int calculaFibonacci(int n) {
-			return (n == 0 || n == 1) ? 1 : fibonacci(n-1) + fibonacci(n-2);
-		}
-	```
-	-->
+	
 
 
 ## Fixando o conhecimento

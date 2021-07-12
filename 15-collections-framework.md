@@ -10,92 +10,9 @@ Ao final deste capítulo, você será capaz de:
 * Usar mapas para inserção e busca de objetos.
 
 
-<!--@note
-* Faça com que eles abram o Javadoc do java.util para eles acompanharem a documentação das classes.
-* Não dar muitas explicações sobre um Hash. Explicar que é uma indexação e  _HashSet_ é
-centenas de vezes mais rápido de procurar que uma _ArrayList_ (exemplo do método _contains_).
-No máximo, faça analogia à indexação por primeira letra e cite que é uma tabela de espalhamento
-caso alguém o conheça da faculdade.
-* As pessoas têm dificuldade com generics. _Map<K,V>_ que recebe dois tipos parametrizados é pior ainda.
-* Passar rapidamente pelo _Iterator_ se achar necessário. Se não, vá apenas pelo enhanced for e
-explique que ele usa internamente um _Iterator_ que era a única forma antigamente.
-* Comparable é um excelente exemplo de uso de interfaces. Mostre que quem criou Collections
-nunca imaginou que iria comparar a classe _ContaCorrente_. Empolgue-os!
-* Comentar a classe Vector, mas dizer que não se usa mais (talvez nem comentar).
-* Só cite a interface Collection DEPOIS de ter apresentado Set. A ordem é: ArrayList,
-LinkedList. Logo, mostre que elas implementam LIST, fale um pouco de Set e, aí
-então, mostre a super interface.
--->
 
-<!--@note
-Para a galera amadurecer no uso de interfaces, vá bem devagar com a explicação.
-Foi requisitado que nossa equipe modelasse a classe Banco que tem várias
-Contas. Como só conhecemos array para o trabalho, usemos array mesmo.
-Precisamos adicionar contas no banco e remover por índice.
 
-``` java
-class Banco {
-	private Conta[] contas = new Conta[100];
-	public void adiciona(Conta conta) { 
-		//fazer na lousa, aumentando o tamanho se necessário
-	public void remove(int indice) {
-		//discutir o shifting para não só jogar referencia pra null
-		//o objetivo é mostrar a dificuldade de trabalhar com arrays mesmo!
-}
-```
 
-Questionar o que vai aparecer na Javadoc de nossa classe. Se precisarmos mudar
-a implementação e usar algo diferente de array, haverá algum impacto para quem
-estiver utilizando o Banco – usar a classe Banco em um main()?
-Antes de colocarmos nossa classe em produção, foi pedido que a lista de contas
-fosse devolvida para que pudesse ser mostrada em uma tabela em um aplicativo web.
-
-Colocar getter na classe Banco.
-E agora quem for usar nossa classe sabe que usamos array?
-No main, o uso da classe banco:
-``` java
-	...
-	Conta[] contas = banco.getContas();
-	//usando o array na criação da tabela	
-	???primeiraLinha=contas[0]; ...
-```
-
-E se decidirmos, depois, usar um tipo diferente, haverá problema?
-Então, antes de mandarmos a classe para produção, pesquisemos um pouco? Apresentar o
-ArrayList (sem comentar da interface ainda!). Usar fora do contexto do problema
-em um main(), trabalhando apenas com String e mostrando as vantagens. Depois, mudar o uso
-da array em banco para ArrayList<Conta> (já usando generics direto).
-Mudar o tipo de retorno do getContas para ArrayList<Conta> e perguntar se
-agora nossa classe está pronta.
-
-Falar que mais tarde o pessoal criou alguns botões na tabela (que era só para visualização) e
-começou a ter muita remoção por índice. Com muitas contas, o sistema ficou lento para essas
-operações. Falar da LinkedList e da diferença entre ela e a ArrayList. E agora para mudarmos?
-
-No main, o uso da classe banco:
-``` java
-	...
-	ArrayList<Conta> contas = banco.getContas();
-	//usando a lista na criação da tabela	
-	???primeiraLinha=contas.get(0); ...
-```
-
-Falar da interface List e mudar o tipo de retorno do getContas() para List. Comentar: se tivéssemos
-feito isso no começo, seria fácil a mudança (fica bem claro isso para galera).
-
-Em turmas (MUITO?) fortes, dá para arriscar motivar também o uso de generics: mostrar fora do contexto de nossa
-classe o problema de usar coleções não assinadas e perguntar se é problema para nós (o método adiciona
-garante que só haverá contas em nossa coleção?).
-``` java
-...
-List contas = banco.getContas();
-contas.add("Nome");	
-```
-
-Mudar o retorno para List<Conta> (o que não impede referenciarmos pelo raw type). O problema de mostrar a
-quebra de encapsulamento – especialmente se há alguma lógica no adiciona Conta c – é ficar encurralado
-a falar do unmodifiableList).
--->
 
 ## Arrays são trabalhosas, utilizar estrutura de dados
 Como vimos no capítulo de arrays, manipulá-las é bastante trabalhoso. Essa dificuldade
@@ -135,7 +52,7 @@ Com esses e outros objetivos em mente, o comitê responsável pelo Java criou um
 > Por exemplo, não é necessário reinventar a roda e criar uma lista ligada, mas sim utilizar aquela que
 > o Java disponibiliza.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Listas: java.util.List
@@ -162,7 +79,7 @@ interna para gerar uma lista. Portanto, ela é mais rápida na pesquisa do que s
 > propriamente encapsulado, e você não tem como acessá-lo. Repare também: você não pode usar
 > `[]` com uma `ArrayList` nem acessar o atributo `length`. Não há relação!
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Para criar um `ArrayList`, basta chamar o construtor:
@@ -171,15 +88,7 @@ Para criar um `ArrayList`, basta chamar o construtor:
 	ArrayList lista = new ArrayList();
 ```
 
-<!--@note
-Não mostre logo de cara que ArrayList é uma List. Acho melhor
-mostrar vantagens e desvantagens em relação à velocidade com a LinkedList
-e deixar os alunos em dúvida de qual usar.
 
-Ai você diz: "para que se importar com isso agora? Vamos nos
-desacoplar disso. Programar voltado à **interface**". E então apresente
-a interface `List`.
--->
 
 É sempre possível abstrair a lista a partir da interface `List`:
 
@@ -206,11 +115,7 @@ Toda lista (na verdade, toda `Collection`) trabalha do modo mais genérico poss�
 uma `ArrayList` específica para `String`s, outra para números, outra para datas, etc. Todos os
 métodos trabalham com `Object`.
 
-<!--@note
-Aqui o instrutor tem liberdade de mostrar os métodos que achar mais interessante na lousa. Remove,
-add, get, contains são bem interessantes. Cuidado com o get(), pois ele devolve object
-enquanto você ainda não apresentar generics (logo a seguir).
--->
+
 
 
 Assim, é possível criar, por exemplo, uma lista de contas-correntes:
@@ -251,9 +156,7 @@ após fazer `contas.get(i)`? Não podemos. Lembre-se de que toda lista trabalha 
 Assim, a referência devolvida pelo `get(i)` é do tipo `Object`, sendo necessário o cast para
 `ContaCorrente` se quisermos acessar o `getSaldo()`:
 
-<!--@note
-Aqui é uma boa chance para retomar a discussão de casting. Exercitar os alunos.
--->
+
 
 ``` java
 	for (int i = 0; i < contas.size(); i++) {
@@ -267,22 +170,7 @@ Há ainda outros métodos, como por exemplo o `remove()`, o qual recebe um objet
 `contains()`, que recebe um objeto como argumento e devolve `true` ou `false`, indicando se o
 elemento está ou não na lista.
 
-<!--@note
-* Você pode perguntar aos alunos o que é comum eles quererem fazer com
-uma array/lista.
 
-* É uma excelente oportunidade de demonstrar seu conhecimento: eles perguntam, e você escreve na
-lousa o metodo correspondente.
-
-* É fácil induzir para que eles o motivem a mostrar indexOf, set, contains, remove(Object),
-remove(int), removeAll, addAll, etc. até retainAll e toArray, dependendo da turma.
-
-* Não deixe de dar o exemplo com o contains na lousa! Ele será usado no exercício.
-Além do mais, pergunte a eles como acham que o contains funciona. Normalmente,
-alguém irá perceber e dizer que ele procurará se tem um elemento `equals`, que
-foi passado como argumento! (Vale lembrar que isso não é contrato da interface,
-tanto que IdentityHashMap procura por ==, mas ninguém nem vai perguntar isso).
--->
 
 A interface `List` e algumas classes que a implementam podem ser vistas no diagrama a
 seguir:
@@ -299,7 +187,7 @@ seguir:
 > percorrer uma lista usando um `for` como esse que acabamos de ver pode ser desastroso. Ao
 > percorrermos uma lista, devemos usar **sempre** um `Iterator` ou `enhanced for`, como veremos.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Uma lista é uma excelente alternativa a uma array comum, já que temos todos os benefícios de arrays
@@ -317,7 +205,7 @@ o que pode impactar performance, como veremos durante os exercícios no final do
 > Ela deve ser escolhida cautelosamente, pois lida de uma maneira diferente com processos correndo em
 > paralelo e terá um custo adicional em relação à `ArrayList` quando não houver acesso simultâneo aos dados.
 
-<!-- Comentário para separar quotes adjacentes.-->
+
 
 
 ## Listas no Java 5 e Java 7 com Generics
@@ -375,14 +263,7 @@ _operador diamante_:
 
 ## A importância das interfaces nas coleções
 
-<!--@note
-* Importantíssimo frisar a elegância do design das collections!
-* Volte a falar de como o Tributável nos ajudou, como Connection
-é legal e já é um preparo para Comparable.
-* Interface versus implementação novamente.
-* Eles verão no exercício como isso ajudará em performance, apesar
-de não ser única vantagem, mas isso enche os olhos dos alunos!
--->
+
 
 Vale ressaltar a importância do uso da interface `List`: quando desenvolvemos,
 procuramos sempre nos referir a ela, e não às implementações específicas. Por exemplo,
@@ -424,11 +305,7 @@ class Agencia {
 É o mesmo caso de preferir referenciar aos objetos com `InputStream` como fizemos
 no capítulo passado.
 
-<!--@note
-Esse momento é bastante importante. É fundamental para o aprendizado dos alunos
-que eles saiam do FJ-11 com a certeza de que o uso de interface desacopla bastante
-os seus códigos . Eles verão mais disso a seguir, com Comparable.
--->
+
 
 Assim como no retorno, é boa prática trabalhar com a interface em
 todos os lugares possíveis: métodos que precisam receber uma lista
@@ -445,10 +322,7 @@ class Agencia {
 }
 ```
 
-<!--@note
-Aqui seria melhor receber List<? extends Conta>, porém entrar na discussão
-do wildcard no FJ-11 é loucura.
--->
+
 
 Também declaramos atributos como `List`
 em vez de nos comprometer como uma ou outra implementação. Dessa
@@ -522,13 +396,7 @@ da lista sejam **comparáveis** e tenham um método que se compara com outra
 `ContaCorrente`. Como é que o método `sort` terá a garantia de que a sua
 classe tem esse método? Isso será feito, novamente, por meio de um contrato, ou seja, de uma interface!
 
-<!--@note
-Aqui é bem importante fazê-los raciocinarem e chegarem à conclusão de usar uma interface.
-Você deve mostrar o código para ordenar a `List<ContaCorrente>` e, então, perguntar como
-comparar duas contas. Depois de decidido que será por meio de um método, deve-se perguntar
-"e como o autor do `Collections.sort` vai saber o nome e assinatura do metodo que deve
-invocar dos seus objetos?".
--->
+
 
 
 
@@ -581,7 +449,7 @@ da lista pois usará o critério que definimos no método `compareTo`.
 > 		}
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Mas e o exemplo anterior com uma lista de Strings? Por que a ordenação funcionou, naquele caso, sem
@@ -616,19 +484,14 @@ entre outras.
 >
 > É importante conhecê-las para evitar escrever código já existente.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: ordenação
 
 Ordenaremos o campo de **destino** da tela de detalhes da conta para que as contas
 apareçam em ordem alfabética de titular.
-<!--@note
-É muito interessante eles aprenderem sobre a API, mas, mais ainda, é que eles
-consigam enxergar que todos os conceitos aprendidos até agora de OO serão
-aplicados nesse exercício, em especial, o uso de interfaces, e como
-isso desacopla código.
--->
+
 1. Faça sua classe `Conta` implementar a interface
 	`Comparable<Conta>`. Utilize o critério de ordenar pelo titular da conta.
 
@@ -683,52 +546,21 @@ isso desacopla código.
 	Faça um teste: remova temporariamente a sentença
 	`implements Comparable<Conta>`. Não remova o método `compareTo` e
 	veja o que acontece. Basta ter o método sem assinar a interface?
-	<!--@answer
-	Não basta! A interface é como um contrato. Sem assiná-lo, a existência do
-	método é só uma coincidência e não dá a certeza à JVM de que a intenção
-	era mesmo assinar aquele contrato.
-	-->
+	
 1. Como inverter a ordem de uma lista? Como embaralhar
 	todos os elementos de uma lista? E rotacionar os elementos
 	de uma lista?
 
 	Investigue a documentação da classe `Collections` dentro do
 	pacote `java.util`.
-	<!--@answer
-	Olhando na documentação da classe `Collections`
-	(http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html),
-	encontramos o método `reverse()`, que recebe uma `List` e altera a ordem
-	dos seus elementos, invertendo-os.
-	-->
+	
 1. (Opcional) Em uma nova classe `TestaLista`, crie
 	uma `ArrayList` e
 	insira novas contas com saldos aleatórios usando um laço (`for`).
 	Adivinhe o nome da classe para colocar saldos aleatórios? `Random`, do pacote
 	`java.util`. Consulte sua documentação para usá-la (utilize o método
 	`nextInt()` passando o número máximo a ser sorteado).
-	<!--@answer
-	``` java
-		public class TestaLista {
-
-			public static void main(String[] args) {
-				List<Conta> contas = new ArrayList<Conta>();
-				Random random = new Random();
-
-				ContaPoupanca c1 = new ContaPoupanca(random.nextInt(2000), "Caio");
-				c1.deposita(random.nextInt(10000) + random.nextDouble());
-				contas.add(c1);
-
-				ContaPoupanca c2 = new ContaPoupanca(random.nextInt(2000), "Adriano");
-				c2.deposita(random.nextInt(10000) + random.nextDouble());
-				contas.add(c2);
-
-				ContaPoupanca c3 = new ContaPoupanca(random.nextInt(2000), "Victor");
-				c3.deposita(random.nextInt(10000) + random.nextDouble());
-				contas.add(c3);
-			}
-		}
-	```
-	-->
+	
 1. Modifique a classe `TestaLista` para utilizar uma `LinkedList` em vez de 
 	`ArrayList`:
 
@@ -739,26 +571,15 @@ isso desacopla código.
 	Precisamos alterar mais algum código para
 	que essa substituição funcione? Rode o programa. Alguma diferença?
 
-	<!--@note
-	Essa mudança é um pretexto para o exercício de performance ao final do
-	capitulo.
-	-->
-	<!--@answer
-	Essa mudança simplesmente funciona! O legal de chamar as coleções pelas suas
-	interfaces é isso: não importa a implementação. Como ambas **são uma**
-	`List`, é possível trocar entre elas e continuar tratando como `List`.
-
-	É mais uma aplicação do **polimorfismo**!
-	-->
+	
+	
 1. (Opcional) Imprima a referência a essa lista. O `toString` de uma
 	`ArrayList`/`LinkedList` é reescrito?
 
 	``` java
 		System.out.println(contas);
 	```
-	<!--@answer
-	Sim! Ele mostra os elementos da lista entre colchetes e separados por vírgulas.
-	-->
+	
 
 
 ## Conjunto: java.util.Set
@@ -811,7 +632,7 @@ que têm uma performance incomparável com as `List`s quando usadas para pesquis
 >
 > Já o `LinkedHashSet` mantém a ordem de inserção dos elementos.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Antes do Java 5, não podíamos utilizar generics e, por isso, usávamos o `Set` de forma que ele
@@ -850,10 +671,7 @@ Como percorrer os elementos de uma coleção? Se for uma lista, podemos sempre u
 Por exemplo, um `Set` não tem um método para pegar o primeiro, o segundo ou o quinto elemento
 do conjunto, visto que um conjunto não tem o conceito de ordem.
 
-<!--@note
-Não há problema se você já mostrou o enhanced for antes com a lista. Na apostila, mostramos
-só aqui para ir devagar. A lousa ajuda e possibilita acelerar.
--->
+
 
 Podemos usar o **enhanced-for** (o "foreach") do Java 5 para percorrer qualquer `Collection` sem
 nos preocupar com isso. Internamente, o compilador fará com que seja usado o `Iterator` da `Collection`
@@ -878,11 +696,7 @@ Em que ordem os elementos serão acessados?
 Em uma lista, os elementos aparecerão de acordo com o índice em que foram inseridos, isto é, em concordância com o que foi pré-determinado. Em um conjunto, a ordem depende da implementação da interface `Set`:
 você, muitas vezes, não saberá ao certo em que ordem os objetos serão percorridos.
 
-<!--@note
-Você pode fazer a analogia de uma sacola e de uma fila. Numa fila, você sabe a ordem
-e pode perguntar: "quem é o terceiro da fila?", já, numa sacola, não faz sentido
-perguntar: "qual é o terceiro livro dentro dessa sacola?".
--->
+
 
 Por que o `Set` é, então, tão importante e usado?
 
@@ -947,7 +761,7 @@ quando o método `hasNext` mencionar que não existem mais itens.
 > Usando o `ListIterator`, você pode, por exemplo, adicionar um elemento à lista ou voltar ao
 > elemento que foi iterado anteriormente.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Usar Iterator em vez do enhanced-for?**
@@ -956,14 +770,10 @@ quando o método `hasNext` mencionar que não existem mais itens.
 > enhanced-for, o `Iterator` consegue remover elementos da coleção durante a iteração de uma forma
 > elegante por meio do método `remove`.
 
-<!-- Comentário para separar quotes adjacentes. -->
 
 
-<!--@note
-Esse box é por causa do `ConcurrentModificationException`:
 
-http://blog.caelum.com.br/concurrentmodificationexception-e-os-fail-fast-iterators/
--->
+
 
 ## Mapas - java.util.Map
 Muitas vezes, queremos buscar rapidamente um objeto a partir de alguma informação sobre ele. Um exemplo
@@ -976,16 +786,7 @@ Um mapa é composto por um conjunto de associações entre um objeto-chave e um 
 Perl ou PHP, têm um suporte mais direto a mapas, também chamados de matrizes/arrays
 associativas.
 
-<!--@note
-Use na lousa o exemplo em uma pseudo linguagem:
 
-cpfs["maria"] = 28848546811
-cpfs["joaquim"] = 66666666666
-cpfs["manoel"] = 333333331
-
-Separe bem os lados Chave e o lado Valor. Outro exemplo bom é o `.ini` do visual basic e o
-regedit do windows.
--->
 
 `java.util.Map` é um mapa, pois é possível usá-lo para mapear uma chave a um valor, por exemplo:
 mapeie o valor "caelum" à chave "empresa", ou então, o valor "Vergueiro" à chave "rua".
@@ -1043,15 +844,7 @@ a `Collection` com todos os valores que foram associados a alguma das chaves.
 
 ## Para saber mais: Properties
 
-<!--@note
-Se for comentar na aula, compensa mostrar o mau uso de herança nesse caso. Properties herda
-de Hashtable e é um Map. Nojento porque tem um metodo put(Object,Object) que não deve ser chamado
-se não for String.
 
-Do Javadoc: "Because Properties inherits from Hashtable, the put and putAll methods can be applied to
-a Properties object. Their use is strongly discouraged as they allow the caller to insert entries
-whose keys or values are not Strings. The setProperty method should be used instead".
--->
 Um mapa importante é a tradicional classe `Properties`, que mapeia Strings e é muito utilizada para
 a configuração de aplicações.
 
@@ -1101,7 +894,7 @@ uma mesma coleção.
 > O Eclipse é capaz de gerar uma implementação correta de equals e hashcode com base nos atributos
 > que você queira comparar. Basta ir no menu Source e depois em Generate hashcode() and equals().
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Para saber mais: boas práticas
@@ -1126,15 +919,7 @@ performance computacional. (use `Iterator`)
 
 ## Exercícios: Collections
 
-<!--@note
-Não deixe de fazer a pergunta conceitual do exercício 2 junto com os alunos também!
-Eles vão poder exercitar o polimorfismo. Você pode também perguntar se valeria
-a pena referenciar a ArrayList como sendo um Object e fazê-los perceberem
-que é legal sempre se referenciar o mais genérico possível, mas nem sempre
-faz sentido:
 
-Object x = new ArrayList();
--->
 1. Crie um código que insira 30 mil números numa `ArrayList` e pesquise-os.
 	Usemos um método de `System` para cronometrar o tempo gasto:
 
@@ -1176,13 +961,7 @@ Object x = new ArrayList();
 	como 50 ou 100 mil, verá que isso inviabiliza por completo o uso de uma `List`,
 	uma vez que queremos utilizá-la essencialmente em pesquisas.
 
-	<!--@answer
-	No caso das listas (`ArrayList` e `LinkedList`), a inserção é bem rápida, e a
-	busca **muito lenta**!
-
-	No caso dos conjuntos (`TreeSet` e `HashSet`), a inserção ainda é rápida,
-	embora um pouco mais lenta do que a das listas. E a busca é **muito rápida**!
-	-->
+	
 1. (Conceitual e importante) Repare que se você declarar a coleção e der `new`
 	assim:
 
@@ -1224,19 +1003,7 @@ Object x = new ArrayList();
 	elementos como `Collection`, mas necessariamente por interfaces mais
 	específicas como `List` ou `Set`.
 
-	<!--@answer
-	Quando precisamos colocar a semântica de que uma coleção não pode ter
-	repetição, por exemplo, precisamos de um `Set`. Se precisamos
-	necessariamente de ordem, precisamos de uma `List`.
-
-	Pense na preparação de um mochilão pela Europa. Se eu estou interessado em
-	contar para meus amigos por quais países vou passar, a repetição não
-	importa, então, eu escolheria um `Set`.
-
-	Agora, se eu quero planejar as passagens de um local a outro dessa viagem,
-	não só a repetição de locais importa como também a ordem. Então, preciso de
-	uma `List`.
-	-->
+	
 1. Faça testes com o `Map`, como visto nesse capítulo:
 
 	``` java
@@ -1278,15 +1045,7 @@ Object x = new ArrayList();
 
 	Que opção do `ctrl + 1` você escolheu para que ele adicionasse o _generics_?
 
-	<!--@answer
-	Há duas opções válidas aqui:
-
-	* Podemos usar o _Add type arguments to Map_ e depois, novamente,
-	_Add type arguments to HashMap_;
-	* Podemos escolher direto a opção _Infer generic type arguments_, que
-	já fará tudo com apenas um comando.
-
-	-->
+	
 1. (Opcional) Assim como no exercício 1, crie uma comparação entre `ArrayList` e
 	`LinkedList` a fim de verificar qual é a mais rápida para se adicionar elementos na
 	primeira posição (`list.add(0, elemento)`), por exemplo:
@@ -1323,12 +1082,7 @@ Object x = new ArrayList();
 
 	Qual das duas listas foi mais rápida para adicionar elementos à primeira posição?
 
-	<!--@answer
-	A `LinkedList` é bem mais rápida para fazer a inserção
-	**na primeira posição** do que a `ArrayList`. Isso é uma característica dos
-	algoritmos dessas listas e estudada sob o tópico de _Análise de algoritmos_
-	na literatura.
-	-->
+	
 1. (Opcional) Crie a classe `Banco` (caso não tenha sido criada anteriormente) no
 	pacote `br.com.caelum.contas.modelo`, que tem uma `List` de `Conta` chamada
 	`contas`. Repare: em uma lista de `Conta`, você pode colocar tanto
@@ -1339,25 +1093,7 @@ Object x = new ArrayList();
 	chamadas aos métodos e às coleções que estudamos.
 
 	Como ficou a classe `Banco`?
-	<!--@answer
-	``` java
-		public class Banco {
-			private List<Conta> contas = new ArrayList<>();;
-
-			public void adiciona(Conta conta) {
-				contas.add(conta);
-			}
-
-			public Conta pega(int posicao) {
-				return contas.get(posicao);
-			}
-
-			public int getQuantidadeDeContas() {
-				return contas.size();
-			}
-		}
-	```
-	-->
+	
 1. (Opcional) No `Banco`, crie um método `Conta buscaPorTitular(String nome)`
 	que procura por uma `Conta` cujo `titular` seja `equals` ao `nomeDoTitular` dado.
 
@@ -1375,23 +1111,7 @@ Object x = new ArrayList();
 	clientes com o mesmo nome nesse banco, o que sabemos que não é legal.
 
 	Como ficaria sua classe `Banco` com esse `Map`?
-	<!--@answer
-	``` java
-		public class Banco {
-			private List<Conta> contas = new ArrayList<>();
-			private Map<String, Conta> indexadoPorNome = new HashMap<>();
-
-			public void adiciona(Conta conta) {
-				contas.add(conta);
-				indexadoPorNome.put(conta.getTitular(), conta);
-			}
-
-			public Conta buscaPorTitular(String nomeDoTitular) {
-				return indexadoPorNome.get(nomeDoTitular);
-			}
-		}
-	```
-	-->
+	
 1. (Opcional e avançado) Crie o método `hashCode` para a sua conta de forma que
 	ele respeite o `equals`: duas contas são `equals` quando têm o mesmo
 	número e agência. Felizmente para nós, o próprio Eclipse já vem com um criador de
@@ -1402,37 +1122,7 @@ Object x = new ArrayList();
 	gerar o `hashCode` e o `equals`.
 
 	Como ficou o código gerado?
-	<!--@answer
-	``` java
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((agencia == null) ? 0 : agencia.hashCode());
-        result = prime * result + numero;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Conta other = (Conta) obj;
-        if (agencia == null) {
-            if (other.agencia != null)
-                return false;
-        } else if (!agencia.equals(other.agencia))
-            return false;
-        if (numero != other.numero)
-            return false;
-        return true;
-    }
-	```
-	-->
+	
 1. (Opcional e avançado) Crie uma classe de teste e verifique se sua classe `Conta`
 	funciona agora corretamente em um `HashSet`, isto é, se ela não guarda contas
 	com número e agência repetidos. Depois, remova o método `hashCode`. Continua
@@ -1440,94 +1130,21 @@ Object x = new ArrayList();
 
 	Dominar o uso e o funcionamento do `hashCode` é fundamental para o bom
 	programador.
-	<!--@answer
-	Sem o `hashCode`, o critério para definir o que são contas iguais e o que
-	são contas diferentes se perde e, assim, o `HashSet` não consegue garantir
-	a aparição única de uma conta.
-
-	A classe para fazer essa verificação fica mais ou menos assim:
-
-	``` java
-    public class TestaHashSetDeConta {
-
-        public static void main(String[] args) {
-            HashSet<Conta> contas = new HashSet<>();
-
-            ContaCorrente c1 = new ContaCorrente();
-            c1.setNumero(1);
-            c1.setAgencia(1000);
-            c1.setTitular("Batman");
-
-            ContaCorrente c2 = new ContaCorrente();
-            c2.setNumero(1);
-            c2.setAgencia(1000);
-            c2.setTitular("Robin");
-
-            ContaCorrente c3 = new ContaCorrente();
-            c3.setNumero(2);
-            c3.setAgencia(1000);
-            c3.setTitular("Coringa");
-
-            contas.add(c1);
-            contas.add(c2);
-            contas.add(c3);
-
-            System.out.println("Total de contas no HashSet: " + contas.size());
-        }
-    }
-	```
-	-->
+	
 
 
 ## Desafios
 1. Gere todos os números entre 1 e 1000 e organize-os em ordem decrescente utilizando
 	um `TreeSet`. Como ficou seu código?
-	<!--@answer
-	``` java
-		public class TestaTreeSetDecrescente {
-
-			public static void main(String[] args) {
-				TreeSet<Integer> conjunto = new TreeSet<>();
-				for (int i = 1; i <= 1000; i++) {
-					conjunto.add(i);
-				}
-
-				for (Integer i : conjunto.descendingSet()) {
-					System.out.print(i + " ");
-				}
-			}
-		}
-	```
-	-->
+	
 1. Gere todos os números entre 1 e 1000 e organize-os em ordem decrescente utilizando um
 	`ArrayList`. Como ficou seu código?
-	<!--@answer
-	``` java
-		public class TestaArrayListDecrescente {
-
-			public static void main(String[] args) {
-				List<Integer> lista = new ArrayList<>();
-				for (int i = 1; i <= 1000; i++) {
-					lista.add(i);
-				}
-
-				Collections.sort(lista);
-				Collections.reverse(lista);
-
-				for (Integer i : lista) {
-					System.out.print(i + " ");
-				}
-			}
-		}
-	```
-	-->
+	
 
 
 ## Para saber mais: Comparators, classes anônimas, Java 8 e o lambda
 
-<!--@note
-Fique atento à configuração dos computadores ao passar esses exercícios. Há a necessidade de ter o Java 8 instalado e Eclipse corretamente configurado. Em caso de emergência, instale o Java 8 localmente para os alunos e faça-os testarem esse código em um editor simples como o gedit.
--->
+
 
 E se precisarmos ordenar uma lista com outro critério de comparação? Se precisarmos alterar a própria classe e mudar seu método `compareTo`, teremos apenas uma forma de comparação por vez. Precisamos de mais!
 
@@ -1643,11 +1260,7 @@ lista.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
 ```
 
 
-<!--@note
-Para uma turma mais avançada, voce pode chegar até o `list.sort(Comparator.comparing(String::length))`, mas precisará explicar method reference também.
 
-Caso você queira organizar uma lista pela ordenação definida por ela mesma, você pode invocar o `sort` dessa forma `list.sort(Comparator.naturalOrder())`.
--->
 
 Há outros métodos nas coleções que utilizam o lambda para serem mais sucintos.
 
@@ -1661,4 +1274,4 @@ Trabalhar com lambdas no Java 8 vai muito além. Há diversos detalhes e recurso
 
 http://blog.caelum.com.br/o-minimo-que-voce-deve-saber-de-java-8/
 
-<!--@todo Exercícios. -->
+

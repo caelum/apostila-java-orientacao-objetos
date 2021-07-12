@@ -4,14 +4,9 @@ _"Quem pouco pensa engana-se muito." -- Leonardo da Vinci_
 
 ## Threads acessando dados compartilhados
 
-<!--@note
-A apostila usa o exemplo com invocações concorrentes a `atualiza` e `deposita`,
-mas fica mais fácil e mais engraçado fazendo com `saca` e `deposita`, com
-`saca` sendo parado logo no meio: o efeito é de que o saque é esquecido pelo banco (e
-os próprios alunos fazem piadas).
--->
 
-<!--@todo Mudar para deposita e saca em vez de deposita e atualiza. -->
+
+
 
 O uso de Threads começa a ficar interessante e complicado quando precisamos compartilhar objetos
 entre várias Threads.
@@ -101,16 +96,7 @@ objeto que será usado como chave. A chave só é devolvida quando a Thread que 
 
 Queremos, então, bloquear o acesso simultâneo a uma mesma `Conta`:
 
-<!--@note
-Na aula, você nem comenta o syncrhonized e só fala que com travas
-as quais existem no Java você pode resolver esse problema. Não entre muito
-profundamente nesse assunto, sempre ressalte que quem faz faculdade de ciência
-da computação leva seis meses para entender esses conceitos e aqui estamos só
-pincelando.
 
-Vale notar que é importante eles aprenderem isso especialmente quando forem
-trabalhar com web: requests simultâneos na mesma servlet.
--->
 
 ``` java
 public class Conta {
@@ -164,7 +150,7 @@ pegar um lock o qual já está pego ficarão em um conjunto especial esperando p
 > }
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **Mais sobre locks, monitores e concorrência**
@@ -179,7 +165,7 @@ pegar um lock o qual já está pego ficarão em um conjunto especial esperando p
 >
 >
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Vector e Hashtable
@@ -287,21 +273,10 @@ concorrente, locks, etc.
 	}
 	```
 
-	<!--@note
-	Legal que, às vezes, executa perfeitamente!
-	Se estiver difícil de explicar o join, faça um Thread.sleep de 10 segundos.
-	Se não estiver dando problema, aumente o número de mensagens, ou melhor, o número
-	de Threads (umas cinco ficam fáceis de dar erro o tempo todo).
-	-->
+	
 
 	Rode algumas vezes. O que acontece?
-	<!--@answer
-	Rodando com classes que não são _thread-safe_ é comum que algum registro
-	seja pulado ou que caia um null em alguma posição da coleção.
-
-	Rodando várias vezes, ocasionalmente, temos a sorte de não ter problemas, mas é
-	comum que os vejamos acontecendo com frequência e em números diferentes.
-	-->
+	
 1. Teste o código anterior, mas usando `synchronized` ao adicionar na coleção:
 
 	``` java
@@ -314,66 +289,21 @@ concorrente, locks, etc.
 	}
 	```
 
-	<!--@note
-	Parece-me que dá para perceber que com o syncrhonized vai um pouco mais lento
-	de quando está sem. Use LinkedList, e, por sorte, dará certo! O que só da
-	para sentir se o bloco synchronized for realmente muito curto.
-	-->
+	
 
-	<!--@answer
-	Tornar a coleção `synchronized` resolve o problema: agora só é possível
-	rodar o código dentro desse bloco quando ninguém mais estiver usando esse
-	objeto.
-	-->
+	
 1. Sem usar o `synchronized`, teste com a classe `Vector`, que **é uma**
 	`Collection` e _thread-safe_.
 
 	O que mudou? Olhe o código do método `add` na classe `Vector`. O que tem de
 	diferente nele?
-	<!--@answer
-	Agora não importa quantas vezes executemos, não tomamos o erro novamente.
-
-	Olhando o método `add` do `Vector`, notamos que ele é um método
-	`synchronized`:
-
-	``` javapublic synchronized boolean add(E e) {```
-	-->
+	
 1. Novamente, sem usar o `synchronized`, teste usar `HashSet` e `LinkedList`
 	no lugar de `Vector`. Faça vários testes, pois as Threads vão se entrelaçar
 	cada vez de uma maneira diferente, podendo ou não ter um efeito inesperado.
 
-	<!--@note
-	Atenção! Usar ArrayList aqui em vez de LinkedList pode fazer
-	o programa dar  ArrayIndexOutOfBoundsException! Isso ocorre porque,
-	dentro do metodo add, ele chama o ensureCapacity. Mas pode ocorrer
-	de muitas Threads pararem bem depois do ensureCapacity, e, na verdade,
-	não tinha capacidade de adicionar tantas ao mesmo tempo!!
-
-	Exemplo: tem 999 objetos e a capacidade é 1.000. 3 Threads entram para
-	adicionar cada uma um objeto. Elas executam o ensureCapacity, veem
-	que está tudo ok (afinal 999 < 1.000) e prosseguem sem aumentar a array
-	do `elementData`. Mas aí quando cada Thread vai prosseguir, a primeira
-	consegue colocar o elemento, fazendo `elementData[size++] = e;`.
-	Já a segunda, que passou desapercebida pelo ensureCapacity, dará
-	problema, porque `size` já estará valendo `length` do `elementData`!
-
-	Para o pessoal avançado, pode até explicar isso!
-
-	A fim de dar o efeito sem a exception, de new ArrayList(30.000), assim,
-	ele já terá espaço para 10.000. Aí, em vez de dar exception,
-	ele vai engoli alguns objetos, porque
-	essa linha da ArrayList poderá ser interrompida no meio:
-	`elementData[size++] = e;`
-
-	Com HashSet, os resultados são BIZARROS! Às vezes, dá um laço infinito,
-	às vezes, ele já não encontra a SQL0. Divertido! LinkedList, o erro mais comum,
-	é laço infinito.
-	-->
-	<!--@answer
-	Essas duas são também classes **não** _thread-safe_. É comum que percamos
-	registros com elas também, mas particularmente, em alguns casos, o `HashSet`
-	e a `LinkedList` se perdem mais ainda e nunca terminam de executar!
-	-->
+	
+	
 
 
 No capítulo de Sockets, usaremos Threads para solucionar um problema real de execuções paralelas.

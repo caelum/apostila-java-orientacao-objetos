@@ -10,27 +10,10 @@ Ao final deste capítulo, você será capaz de:
 * Utilizá-las como um poderoso recurso para diminuir acoplamento entre as classes.
 
 
-<!--@note
-* Utilizar os exemplos de _Connection_ e _Comparable_ bem por cima,  pois podem ajudar os alunos a
-enxergar o uso de interfaces. Em especial, _Comparable_ , porque qualquer classe pode implementar
-sem ter a *menor* similaridade com outra classe que também a implementa (não é bem assim com generics).
-Um exemplo é _ContaCorrente_ e _String_.
-* Pode usar a comparação de que interface é uma classe muito abstrata,
-mas tome cuidado! Precisa deixar explícito que interface não é uma classe,
-não há uma herança de implementação.
--->
+
 
 ## Aumentando nosso exemplo
-<!--@note
-Dar o problema de Diretor também ter o autentica e fazê-los chegar na solução do
-FuncionarioAutenticavel. Mostrar que eles conseguiram solucionar com o que já sabiam.
 
-Então, piore o problema e coloque o Cliente também. Alguém dirá: "Cliente extends FuncionarioAutenticavel",
-comente Gato extends Cachorro só por que tem patas?
-
-Esclarecer qual o problema que temos: como garantir que uma classe tenha um método que eu quero?
-Como achar um fator comum?
--->
 
 
 Imagine que um sistema de controle do banco possa ser acessado pelos
@@ -121,7 +104,7 @@ adicionar um novo método de login no `SistemaInterno`.
 > Isso se chama **sobrecarga** de método. (**Overloading**. Não confundir com **overriding**, que é um
 > conceito muito mais poderoso).
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 Uma solução mais interessante seria criar uma classe no meio da árvore de herança,
@@ -173,7 +156,7 @@ fizer isso, o `Cliente` terá, por exemplo, um método `getBonificacao`, um atri
 outros membros que não fazem o menor sentido para essa classe. Não faça herança caso a relação não
 seja estritamente "é um".
 
-<!--@todo Mudar a imagem herança_sem_sentido.png -->
+
 ![ {w=90}](assets/images/interfaces/heranca_sem_sentido.png)
 
 Como resolver essa situação? Note que conhecer a sintaxe da linguagem não é o suficiente, precisamos
@@ -262,19 +245,7 @@ public class Gerente extends Funcionario implements Autenticavel {
 O `implements` pode ser lido da seguinte maneira: "a classe `Gerente` se compromete a ser tratada
 como `Autenticavel`, sendo obrigada a ter os métodos necessários, definidos neste contrato".
 
-<!--@note
-Aqui você deve fazer várias analogias?
 
-Como usamos o celular? Por intermédio dos botões (interface) independentemente se é GSM ou CDMA (implementação).
-
-Como você usa o carro? Por meio das marchas e volantes (interface) independentemente se é a álcool,
-a gasolina ou a eletricidade (implementação).
-Mas, se você for dirigir na Inglaterra, com cambio do outro lado, terá de reaprender a dirigir
-(quebra de interface).
-
-Como você usa o computador? Mediante ao teclado, monitor e mouse (interface). Pouco importa se é
-Atlhon, Celeron, Pentium ou se o monitor é LCD ou CRT (implementação).
--->
 
 A partir de agora, podemos tratar um `Gerente` como sendo um `Autenticavel`. Ganhamos mais
 polimorfismo! Temos mais uma forma de referenciar a um `Gerente`. Quando crio uma variável do tipo
@@ -367,7 +338,7 @@ uma das ideias principais que queremos passar e, provavelmente, a mais important
 >
 > Um outro recurso em interfaces são os métodos default a partir do Java 8. Você pode, sim, declarar um método concreto utilizando a palavra `default` ao lado, e suas implementações não precisam necessariamente reescrevê-lo. Veremos que isso acontece, por exemplo, com o método `List.sort` durante o capítulo de coleções. É um truque muito utilizado para poder evoluir uma interface sem quebrar compatibilidade com as implementações anteriores.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Dificuldade no aprendizado de interfaces
@@ -422,7 +393,7 @@ abordados no curso FJ-21 juntamente com DAO.
 > desvantagem?
 >
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: interfaces
@@ -527,18 +498,7 @@ abordados no curso FJ-21 juntamente com DAO.
 
 	Quais os benefícios de manter o código com baixo acoplamento?
 
-	<!--@answer
-	Quanto menos acoplado o código, mais fácil é a sua manutenção, já que alterar
-	uma classe não deve atrapalhar o funcionamento das outras. Note que o uso de
-	interfaces cria uma ligação entre tipos que permite o **polimorfismo**, mas
-	é bem menos intrusivo do que a herança: não é possível reaproveitar código da
-	mãe.
-
-	De certa forma, isso pode parecer negativo e, por vezes, teremos um trecho de
-	código repetido. Mas a certeza de que, ao mudar uma classe, não afetaremos as
-	outras, é muito confortável. Para usar interfaces **e** evitar a repetição,
-	procure pelo conceito de **composição**.
-	-->
+	
 1. (Opcional) Crie a classe `TestaTributavel` com um método `main` para testar
 	o nosso exemplo:
 
@@ -564,22 +524,9 @@ abordados no curso FJ-21 juntamente com DAO.
 	que é possível fazê-lo. Nesse nosso caso, isso não tem uma utilidade. Essa
 	possibilidade foi útil no exercício anterior.
 
-	<!--@note
-	`Tributavel t = cc` gera muitas dúvidas na cabeça do pessoal. Normal!
-	Eles só precisam saber que isso pode ser feito, não que isso tenha alguma
-	utilidade!
+	
 
-	Isso só será útil, e ficará claro quando eles virem collections
-	`List x = new ArrayList()`.
-	-->
-
-	<!--@answer
-	Apesar de ser um objeto do tipo `ContaCorrente`, ao o chamarmos de
-	`Tributavel`, apenas garantimos ao compilador que aquele objeto tem
-	os métodos que **todo** `Tributavel` tem. E como o compilador do Java só
-	trabalha com certezas, ele só permite chamar os métodos definidos no tipo
-	da variável.
-	-->
+	
 
 
 ## Exercícios opcionais
@@ -587,15 +534,7 @@ Atenção: caso você resolva esse exercício, faça-o em um projeto à parte
 `conta-interface`, uma vez que usaremos a `Conta` como classe em exercícios futuros.
 1. (Opcional) Transforme a classe `Conta` em uma interface.
 
-	<!--@note
-	Hora para um bom exemplo de refactoring!
-
-	Aqui você pode mostrar aos alunos o Extract Interface:
-	delete sua classe `Conta`, tire os extends e overrides de `ContaCorrente`
-	e `ContaPoupanca`, e aplique extract interface em `ContaCorrente`!
-
-	Muito melhor que um simples rename!
-	-->
+	
 
 	``` java
 	public interface Conta {
@@ -622,78 +561,7 @@ Atenção: caso você resolva esse exercício, faça-o em um projeto à parte
 
 	Algum código terá de ser copiado e colado? Isso é tão ruim?
 
-	<!--@answer
-	Ao fim desse exercício, você terá os seguintes códigos:
-
-	``` java filename="Conta.java"
-		public interface Conta {
-
-			public abstract void deposita(double valor);
-			public abstract void saca(double valor);
-			public abstract double getSaldo();
-			public abstract void atualiza(double taxa);
-		}
-	```
-
-	E as classes que implementam `Conta`:
-
-	``` java filename="ContaCorrente.java"
-		public class ContaCorrente implements Conta, Tributavel {
-			private double saldo;
-
-			@Override
-			public void deposita(double valor) {
-				this.saldo += valor;
-			}
-
-			@Override
-			public void saca(double valor) {
-				this.saldo -= valor;
-			}
-
-			@Override
-			public double getSaldo() {
-				return this.saldo;
-			}
-
-			@Override
-			public void atualiza(double taxa) {
-				this.saldo += this.saldo * taxa * 2;
-			}
-
-			@Override
-			public double calculaTributos() {
-				return this.saldo * 0.01;
-			}
-		}
-	```
-
-	``` java filename="ContaPoupanca.java"
-		public class ContaPoupanca implements Conta {
-			private double saldo;
-
-			@Override
-			public void atualiza(double taxa) {
-				this.saldo += this.saldo * taxa * 3;
-			}
-
-			@Override
-			public void deposita(double valor) {
-				this.saldo += (valor - 0.1);
-			}
-
-			@Override
-			public void saca(double valor) {
-				this.saldo -= valor;
-			}
-
-			@Override
-			public double getSaldo() {
-				return this.saldo;
-			}
-		}
-	```
-	-->
+	
 1. (Opcional) Às vezes, é interessante criarmos uma interface que herde de outras
 	interfaces: aquela é chamada de subinterface, e nada mais é do que um
 	agrupamento de obrigações para a classe que a implementar.
@@ -722,26 +590,7 @@ Atenção: caso você resolva esse exercício, faça-o em um projeto à parte
 	Ao mesmo tempo que uma interface pode herdar de mais de uma outra interface,
 	classes só podem ter uma classe mãe (herança simples).
 
-	<!--@answer
-	Podemos criar a interface ContaTributavel, que é uma `Conta` e também é
-	`Tributavel`. Como as definições dos métodos já estão nas duas interfaces
-	originais, a declaração da nova fica simplesmente:
-
-	``` java filename="ContaCorrente.java"
-		public interface ContaTributavel extends Conta, Tributavel {
-		}
-	```
-
-	E, então, alteramos também a ContaCorrente, que passa a implementar apenas
-	essa nova interface:
-
-	``` java filename="ContaCorrente.java"
-		public class ContaCorrente implements ContaTributavel {
-			// restante da classe
-			// exatamente igual à do exercício anterior
-		}
-	```
-	-->
+	
 
 
 ## Discussão: favoreça composição em relação à herança
@@ -764,22 +613,4 @@ http://www.artima.com/intv/gosling3P.html
 No blog da Caelum, há também um post sobre o assunto:
 http://blog.caelum.com.br/2006/10/14/como-nao-aprender-orientacao-a-objetos-heranca/
 
-<!--@note
-Você poderia diminuir esse
-_copia e cola_ e centralizar esses códigos repetidos em um lugar só. Imagine
-uma classe chamada `ManipuladorDeSaldo` que tenha os métodos
-os quais trabalham com depósito, saque, transferência, etc. Cada uma das
-contas teriam referência a um `ManipuladorDeSaldo` e **delegariam**
-chamadas para esse objeto. Conta **tem** `ManipuladorDeSaldo`, mas não
-**é um** `ManipuladorDeSaldo`: uma relação muito mais amena.
 
-Pesquise sobre herança versus composição. É um tema em discussão desde
-a época do livro Design Patterns, em 1995, que é citado com um
-princípio da boa orientação a objetos:
-
-**Favor object composition over class inheritance**
-
-Ceci: se tenho tempo (o que significa que a turma é boa), eu costumo fazer o clássico
-classe Pessoa com filhas PessoaFisica e PessoaJuridica. Aí refatorar na lousa para
-transformar Pessoa em DadosPessoais de forma que PessoaFisica e PessoaJuridica tenham DadosPessoais. Daí mostro que perdemos o polimorfismo, então criamos a interface Pessoa e as duas classes implementam-na.
--->

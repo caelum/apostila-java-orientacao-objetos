@@ -11,13 +11,7 @@ Java;
 * Utilizar os métodos herdados de `Object` para generalizar seu conceito de objetos.
 
 
-<!--@note
-* Se ainda não abriu o Javadoc do Java para eles, precisa abri-lo nesse momento.
-* _System_ e _Math_ são bem simples.
-* Lembrar-se de que você não pode chamar _getSaldo()_ em uma referência a _Object_.
-* Não precisa explicar muito como funciona o pool de _String_, mas mostrar que a _String_ é imutável.
-* Não falar do hashCode(), deixar para comentar no capítulo de collections.
--->
+
 
 ## Pacote java.lang
 
@@ -42,16 +36,7 @@ saida.println("ola mundo!");
 ```
 
  
-<!--@note
-É legal comentar que a o out é atributo estático e público. Fale que
-a Sun o fez público no java 1.0 e que, hoje em dia, não podem mais mudar para
-privado, porque quebraria muito código. A própria Sun diz que esse atributo
-público foi um erro.
 
-Os alunos costumam confundir e dizer que println também é estático, ou ainda
-que println é da classe System. Quebrar a linha em dois ajuda a perceber
-esses erros.
--->
 
 
 O `System` conta também com um método que simplesmente desliga a Java Virtual Machine e retorna um
@@ -115,11 +100,7 @@ Podemos também afirmar que qualquer objeto em Java é um `Object` e pode ser re
 tal. Então qualquer objeto tem todos os métodos declarados na classe `Object`, e veremos alguns
 deles logo após o _casting_.
 
-<!--@note
-Importante os próprios alunos chegarem a essa conclusão. Você pode fazer isso provocando-os
-ao escrever `Object o` na lousa e perguntando a que objetos essa variável `o` pode se
-referenciar!
--->
+
 
 ## Métodos do java.lang.Object: equals e toString
 
@@ -301,7 +282,7 @@ Também falaremos dele no capítulo de `java.util`.
 > 		}
 > ```
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: java.lang.Object
@@ -310,19 +291,7 @@ Também falaremos dele no capítulo de `java.util`.
 	A maioria das classes do Java que são muito utilizadas terão seus métodos
 	`equals` e `toString` reescritos convenientemente.
 
-	<!--@answer
-	Há algumas formas de verificar a sobrescrita de um método:
-
-	* Olhar o Javadoc: se o método estiver sobrescrito, seu novo
-	comportamento estará documentado alí;
-	* Abrir a classe e olhar: no Eclipse, caso você tenha adicionado
-	o _src.zip_ às suas configurações, pode abrir a classe com
-	**ctrl + shift + T** e olhar se o método foi sobrescrito;
-	* Bom e velho Syso: outra possibilidade é criar objetos iguais, compará-los
-	com o `equals` e ver se funcionam. Os outros métodos são, no entanto,
-	bem mais eficientes.
-
-	-->
+	
 1. Utilize-se da documentação do Java e descubra de que classe é o objeto
 	referenciado pelo atributo `out` da `System`.
 
@@ -340,21 +309,11 @@ Também falaremos dele no capítulo de `java.util`.
 
 	Estudaremos essa classe em um capítulo futuro.
 
-	<!--@answer
-	A variável pública e estática `out` é do tipo `PrintStream`.
-	-->
+	
 1. Rode a aplicação e cadastre duas contas. Na tela de detalhes de conta, verifique o que aparece na caixa de seleção de conta para transferência.
 	Por que isso acontece?
 
-	<!--@answer
-	Nesse primeiro momento, algo parecido com isso deve ser mostrado:
-
-	```
-		br.com.caelum.contas.modelo.ContaCorrente@f34a08
-	```
-
-	Porque o `toString` ainda não foi sobrescrito.
-	-->
+	
 1. Reescreva o método `toString` da sua classe `Conta` fazendo com que uma
 	mensagem mais explicativa seja devolvida. Lembre-se de aproveitar os recursos
 	do Eclipse para isso: digitando apenas o começo do nome do método a ser reescrito
@@ -378,13 +337,7 @@ Também falaremos dele no capítulo de `java.util`.
 
 	Rode a aplicação novamente, cadastre duas contas e verifique, outra vez, a caixa de seleção da transferência. O que aconteceu?
 
-	<!--@answer
-	Dessa vez, o resultado foi mais agradável. Deve ter aparecido algo como:
-
-	```
-		[titular=Batman, numero=123, agencia=345]
-	```
-	-->
+	
 1. Reescreva o método `equals` da classe `Conta` para que duas contas com o
 	mesmo **número e agência** sejam consideradas iguais. Esboço:
 
@@ -404,17 +357,7 @@ Também falaremos dele no capítulo de `java.util`.
 	}
 	```
 
-	<!--@note
-	Bom momento para falar do instanceof, já que pelo contrato do Object.equals
-	você deve retornar false caso os tipos não sejam ok.
-
-	Se falar do instanceof, tome cuidado para não animar os alunos a fazerem switches
-	com base no tipo do objeto, e acabar virando programação procedural.
-
-	Alternativa: fazer o casting com try/catch e return false dentro do catch
-	(embora, dessa forma, aceitemos polimorfismo e tipos diferentes, mas filhos sejam
-	aceitos).
-	-->
+	
 
 	Você pode usar o **Ctrl + espaço** do Eclipse para escrever o esqueleto do
 	método `equals`. Basta digitar dentro da classe `equ` e pressionar
@@ -564,7 +507,7 @@ mais informações sobre isso na documentação da classe `String` e no seu mét
 >
 > Há muitos outros métodos. Recomendamos que você sempre consulte o Javadoc da classe.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 > **java.lang `StringBuffer` e `StringBuilder`**
@@ -579,26 +522,16 @@ mais informações sobre isso na documentação da classe `String` e no seu mét
 > A classe `StringBuilder` tem exatamente os mesmos métodos, com a diferença de ela não ser **thread-safe**. Esse conceito está descrito no
 > capítulo apêndice de Threads.String.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Exercícios: java.lang.String
 1. Queremos que as contas apresentadas na caixa de seleção da transferência apareçam com o nome do titular em maiúsculas. A fim de fazê-lo, alteraremos o método `toString` da classe `Conta`. Utilize o método `toUpperCase` da `String` para isso.
 
-	<!--@answer
-	``` java
-      @Override
-      public String toString() {
-	        return "[titular=" + titular.toUpperCase() + ", numero="
-              + numero + ", agencia=" + agencia + "]";
-	    }
-	```
-	-->
+	
 1. Após alterarmos o método `toString`, aconteceu alguma mudança com o nome do titular que é apresentado na lista de contas? Por quê?
 
-	<!--@answer
-	Não mudou nada, pois os métodos da `String` sempre retornam uma nova `String`, mantendo o titular da conta inalterado.
-	-->
+	
 1. Teste os exemplos desse capítulo para ver que uma `String` é imutável.
 	Por exemplo:
 
@@ -616,18 +549,7 @@ mais informações sobre isso na documentação da classe `String` e no seu mét
 
 	Como fazê-lo imprimir "fj22"?
 
-	<!--@answer
-	``` java
-		public class TestaString {
-			public static void main(String[] args) {
-				String s = "fj11";
-				String outra = s.replaceAll("1", "2");
-				System.out.println(s);
-				System.out.println(outra);
-			}
-		}
-	```
-	-->
+	
 1. Como sabemos se uma `String` se encontra dentro de outra?
 	Como fazemos para tirar os espaços em branco das pontas de uma `String`? Como sabemos
 	se uma `String` está vazia? Quantos caracteres
@@ -635,72 +557,28 @@ mais informações sobre isso na documentação da classe `String` e no seu mét
 
 	Tome como hábito sempre pesquisar o Javadoc! Conhecer a API, aos
 	poucos, é fundamental para que você não precise reescrever a roda!
-	<!--@answer
-	Abra a página da documentação da classe String da versão do Java que você
-	utiliza. http://docs.oracle.com/javase/7/docs/api/java/lang/String.html
-
-	Os exemplos dessa questão são:
-
-	* `contains`: devolve true se a `String` contém a sequência de
-	caracteres passada;
-	* `trim`: devolve uma nova `String` sem caracteres brancos do início
-	e do fim;
-	* `isEmpty`: devolve true se a `String` está vazia. Surgiu no Java 6;
-	* `length`: devolve a quantidade de caracteres da `String`.
-
-	-->
+	
 1. (Opcional) Escreva um método que usa os métodos `charAt` e `length` de uma
 	`String` para imprimí-la caractere caractere, com
 	cada caractere em uma linha diferente.
 
-	<!--@answer
-	``` java
-		public void imprimeLetraPorLetra(String texto) {
-			for (int i = 0; i < texto.length(); i++) {
-				System.out.println(texto.charAt(i));
-			}
-		}
-	```
-	-->
+	
 1. (Opcional) Reescreva o método do exercício anterior, mas modificando-o para que
 	imprima a `String` de trás para a frente e em uma linha só. Teste-a para
 	_"Socorram-me, subi no ônibus em Marrocos"_ e _"anotaram a data da maratona"_.
 
-	<!--@note
-	Sempre foi meu sonho usar a frase _"Socorram-me, subi no ônibus em Marrocos"_
-	com fins profissionais. Estou realizado. Paulo Silveira.
-	-->
+	
 
-	<!--@answer
-	``` java
-		public void inverte(String texto) {
-			for (int i = texto.length() - 1; i >= 0; i--) {
-				System.out.print(texto.charAt(i));
-			}
-			System.out.println("");
-		}
-	```
-	-->
+	
 1. (Opcional) Pesquise a classe `StringBuilder` (ou `StringBuffer` no Java 1.4).
 	Ela é mutável. Por que usá-la em vez da `String`? Quando usá-la?
 
 	Como você poderia reescrever o método de escrever a `String` de trás para a
 	frente usando um `StringBuilder`?
-	<!--@answer
-	``` java
-		public void inverteComStringBuilder(String texto) {
-			System.out.print("\t");
-			StringBuilder invertido = new StringBuilder(texto).reverse();
-			System.out.println(invertido);
-		}
-	```
-	-->
+	
 
 
-<!--@note
-Essas últimas questões são para acostumar o aluno a usar o Javadoc e conhecer mais
-a API da String, que será fundamental no seu dia a dia.
--->
+
 
 ## Desafio
 1. Converta uma `String` para um número sem usar as bibliotecas do Java que já o
@@ -718,30 +596,7 @@ a API da String, que será fundamental no seu dia a dia.
 	os números de 0 a 9 estão em sequência! Você poderia usar
 	o método estático `Character.getNumericValue(char)` em vez disso.
 
-	<!--@answer
-	``` java
-		public class DesafioConversaoDeNumeros {
-
-			public static void main(String[] args) {
-				String numero = "762";
-				System.out.println("Imprimindo a string: " + numero);
-
-				int resultado = converteParaInt(numero);
-				System.out.println("Imprimindo o int: " + resultado);
-			}
-
-			private static int converteParaInt(String numero) {
-				int resultado = 0;
-				while (numero.length() > 0) {
-					char algarismo = numero.charAt(0);
-					resultado = resultado * 10 + (algarismo - '0');
-					numero = numero.substring(1);
-				}
-				return resultado;
-			}
-		}
-	```
-	-->
+	
 
 
 ## Discussão em aula: o que você precisa fazer em Java?
@@ -754,11 +609,4 @@ um arquivo do Excel?
 O instrutor mostrará que, para a maioria absoluta das suas
 necessidades, alguém já fez uma biblioteca e a disponibilizou.
 
-<!--@note
-Não sei por que, mas muita gente conhece redes neurais: falar do joone;
-Gráficos: jfreechart, falar do apêndice;
-algoritmos genéticos: JGAP;
-Relatórios: birt e jasper;
-Excel: apache POI;
-Boleto, código de barras, validadores e formatadores: Stella
--->
+

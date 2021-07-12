@@ -4,32 +4,10 @@ _"Dá-se importância aos antepassados quando já não temos nenhum."
 
 Ao final deste capítulo, você será capaz de utilizar classes abstratas quando necessário.
 
-<!--@note
 
-* Muito simples, o difícil é os alunos entenderem quando usá-las.
-* Lembre-os de que eles vão ver isso em __java.io__ com a __InputStream__.
-* Após o lanche, seja curso noturno, seja integral.
-* Uma boa analogia a ser feita é o clássico caso de Pessoa, Pessoa Física
-e Pessoa Jurídica.
-* Herdar um método abstrato é herdar a responsabilidade de ter o método.
-
-
-Passe o exercício e dê o prazo de término até o final do período, ou seja: se for um curso
-noturno, até o final da aula, se não, até o almoço. Leia o exercício com
-eles e peça que respeitem o enunciado para não terem problemas.
--->
 
 ## Repetindo mais código?
-<!--@note
 
-* Escrever a classe Controle de Bonificações ao lado. Lembrar que o método
-recebe. Ter como argumento qualquer funcionário.
-* Convencer os alunos de que precisamos ter a referência a funcionário.
-* Convencer os alunos de que **não** precisamos ter um objeto funcionário.
-Boas perguntas a serem feitas são: "qual o salário de um funcionário?" e
-"o que faz um funcionário?".
-
--->
 
 Recordemos como pode estar nossa classe `Funcionario`:
 
@@ -178,11 +156,7 @@ método diferente de bonificação, pois, de acordo com nosso sistema, não exis
 queremos que cada pessoa a qual escreve a classe de um `Funcionario` diferente (subclasses de
 `Funcionario`) reescreva o método `getBonificacao` de acordo com as suas regras.
 
-<!--@note
-Aqui também é interessante remover da lousa o método getBonificacao de funcionário e perguntar
-se isso resolve o problema. Eles já devem perceber que vão perder polimorfismo, pois não poderão
-invocar o método por meio de uma simples referência a funcionário.
--->
+
 
 Poderíamos, então, jogar fora esse método da classe `Funcionario`? O problema é que, se ele não
 existisse, não poderíamos chamar o método apenas com uma referência a um `Funcionario`, pois
@@ -204,7 +178,7 @@ esse método, ou não compilarão. É como se você herdasse a responsabilidade 
 > Basta escrever a palavra-chave `abstract` na sua assinatura e colocar um ponto e vírgula em
 > vez de abrir e fechar chaves!
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 ``` java
 	public abstract class Funcionario {
@@ -278,7 +252,7 @@ vez disso, declarar a classe como abstrata!
 >
 > Estudaremos o pacote java.io, que usa bastantes classes abstratas, sendo um exemplo real de uso desse recurso (classe InputStream e suas filhas) e, assim, melhorando o seu entendimento.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 ## Para saber mais...
@@ -304,12 +278,7 @@ mas sua classe pai, sim!
 	Se não podemos dar `new` em `Conta`, qual é a utilidade de ter um método
 	que recebe uma referência à `Conta` como argumento? Aliás, posso ter isso?
 
-	<!--@answer
-	Esse código é possível, sim, e muito útil! Um método que receba uma `Conta`
-	como argumento poderá trabalhar com qualquer objeto que **seja uma** Conta.
-	Isto é, a classe `Conta` serve como um agrupador de tipos, e o polimorfismo
-	ainda é possível!
-	-->
+	
 1. Para entender melhor o `abstract`, comente o método `getTipo()` da
 	`ContaPoupanca`. Dessa forma, ele herdará o método diretamente de `Conta`.
 
@@ -329,52 +298,18 @@ mas sua classe pai, sim!
 
 	Qual é o problema com a classe `ContaPoupanca`?
 
-	<!--@answer
-	Tornar um método abstrato é como dar uma responsabilidade a todas as
-	filhas dessa classe: é obrigação de cada uma delas oferecer uma implementação
-	ao método declarado na mãe.
-
-	Veja pelo lado do compilador: se ele recebe um objeto que é uma `Conta`,
-	ele sabe que esse objeto consegue _recuperar o tipo_. Como a `ContaPoupanca`
-	**é uma** `Conta`, o compilador precisa que ela seja capaz de rodar o
-	`getTipo` para ter certeza de que ela funcionará.
-	-->
+	
 1. Descomente o método `getTipo` na classe `ContaPoupanca` e, se necessário, altere-o
 	para que a classe possa compilar normalmente.
 1. (Opcional) Existe outra maneira de a classe `ContaPoupanca` compilar se
 	você não reescrever o método abstrato?
 
-	<!--@answer
-	Se transformarmos a classe `ContaPoupanca` em abstrata, ela volta a
-	compilar, visto que a responsabilidade de implementar o método é repassada para
-	seus filhos.
-	-->
+	
 1. (Opcional) Para que ter o método `getTipo` na classe `Conta` se ele não
 	faz nada? O que acontece se simplesmente apagarmos esse método da classe
 	`Conta` e deixarmos o método `getTipo` nas filhas?
 
-	<!--@answer
-	O sentido de termos um método abstrato é fazer com que o compilador se
-	certifique de que haverá uma implementação daquele método para toda `Conta`.
-
-	Se tirarmos o `getTipo` da `Conta`, perdemos a garantia de que **todo**
-	objeto que **é uma** conta terá implementado esse método. Isto é, uma
-	classe que trabalhe com uma `Conta` não compilará mais a chamada ao método
-	`getTipo`. Veja o exemplo abaixo:
-
-	``` java
-		public class ManipuladorDeContas {
-        public void saca(Evento evento) {
-            double valor = evento.getDouble("valorOperacao");
-            if (conta.getTipo().equals("Conta Corrente")){
-                conta.saca(valor - 0.10);
-            } else {
-                conta.saca(valor);
-            }
-        }
-    }
-	```
-	-->
+	
 1. (Opcional) Posso chamar um método abstrato de dentro de um outro método da
 	própria classe abstrata?
 	Por exemplo, imagine que exista o seguinte método na classe `Conta`:
@@ -394,39 +329,7 @@ mas sua classe pai, sim!
       dados += "\nTipo: " + this.getTipo();
 	```
 
-	<!--@answer
-	Sim, poderia! Lembre-se de que o método é chamado no objeto, e não no tipo da
-	referência. Assim, por mais que você chame uma `ContaCorrente` de
-	`Conta`, ele continuará tendo a implementação do método
-	`getTipo` que a classe `ContaCorrente` declarar.
-	-->
+	
 
 
-<!--@note
-Às vezes, para alguma turma mais avançada, eu dou uma viajada maior na explicação
-do opcional de invocar um método abstrato dentro de outro método na classe.
 
-Pergunto a eles se o sistema deles tem relatório e o que todo relatório
-tem em comum: cabeçalho, corpo e rodapé. E daí questiono se é comum ter um relatório
-com os mesmos dados, só mudando a formatação.
-
-Aí falo que quero fazer relatórios para o nosso banco. Os cabeçalhos são iguais, o que
-muda é o corpo: em um, eu só exibo o nome, em outro, o nome e o saldo.
-
-Em seguida, vou emergindo deles as classes:
-abstract class Relatorio {
-void abstract cabecalho(), corpo(), rodape();
-public void gera() {
-cabecalho(); corpo(); rodape();
-}
-}
-
-e class RelatorioSimples extends Relatorio {}, class RelatorioCompleto extends Relatorio{}
-
-E então peço para eles o fazerem. Isso leva em torno de 1h30 e é um excelente desafio
-para as sextas-feiras, dias em que sobra um tempo depois da aula de Eclipse. No fim,
-diga que isso é o tal do Template Method.
-
-Caso você dê esse exercício, quando chegar na parte da java io e tiver o Template Method
-do método read(), será uma boa hora para conferir se eles fixaram o conhecimento.
--->

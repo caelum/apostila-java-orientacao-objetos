@@ -279,7 +279,7 @@ aplicações que rodam em múltiplas máquinas e plataformas.
 > Existem algumas alternativas ao TPTP, os mais conhecidos são Netbeans Profiler (http://profiler.netbeans.org/), que é gratuito,
 > e o JProfiler (http://www.ej-technologies.com/products/jprofiler/overview.html), que é pago.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -301,7 +301,7 @@ adicionar e a versão do TPTP que queremos instalar, neste caso, a versão 4.6.2
 > seu Eclipse.
 > Mais informações no link: http://www.eclipse.org/tptp/home/downloads/4.6.0/documents/installguide/InstallGuide46.html
 
-<!-- Comentário para separar quotes adjacentes. -->
+
 
 
 
@@ -336,4 +336,4 @@ _Run -> Profile As -> Java Application_.
 > Infelizmente, o TPTP funciona somente no Windows. Versões destinadas ao MacOS e ao Linux são prometidas, mas,
 > até hoje, estão em desenvolvimento. Uma alternativa paga para esses outros sistemas operacionais é o JProfiler.
 
-<!-- Comentário para separar quotes adjacentes. -->
+
