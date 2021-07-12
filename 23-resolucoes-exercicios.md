@@ -1,20 +1,20 @@
-# Resoluções de Exercícios
+# Resoluções de exercícios
 
-## Exercícios 3.3: Variáveis e tipos primitivos
+## Exercícios 3.3: variáveis e tipos primitivos
 
-1. Na empresa onde trabalhamos, há tabelas com o quanto foi gasto em cada mês. Para fechar o balanço do
-	primeiro trimestre, precisamos somar o gasto total. Sabendo que, em Janeiro, foram gastos 15000
-	reais, em Fevereiro, 23000 reais e em Março, 17000 reais, faça um programa que calcule e imprima o
+1. Na empresa em que trabalhamos, há tabelas com o quanto foi gasto em cada mês. Para fechar o balanço do
+	primeiro trimestre, precisamos somar o gasto total. Sabendo que, em janeiro, foram gastos 15.000
+	reais, em fevereiro, 23.000 reais, e, em março, 17.000 reais, faça um programa que calcule e imprima o
 	gasto total no trimestre e a média mensal de gastos. Siga esses passos:
 
 	* Crie uma classe chamada `BalancoTrimestral` com um bloco main, como nos
 	exemplos anteriores;
 	* Dentro do `main` (o miolo do programa), declare uma variável inteira chamada
-	`gastosJaneiro` e inicialize-a com 15000;
+	`gastosJaneiro` e inicialize-a com 15.000;
 	* Crie também as variáveis `gastosFevereiro` e `gastosMarco`, inicializando-as
-	com 23000 e 17000, respectivamente, utilize uma linha para cada declaração;
-	* Crie uma variável chamada `gastosTrimestre` e inicialize-a com a soma das outras 3 variáveis;
-	* Crie uma variável chamada `mediaPorMes` e inicialize-a com a divisão de `gastosTrimestre` por 3.
+	com 23.000 e 17.000, respectivamente. Utilize uma linha para cada declaração;
+	* Crie uma variável chamada `gastosTrimestre` e inicialize-a com a soma das outras três variáveis;
+	* Crie uma variável chamada `mediaPorMes` e inicialize-a com a divisão de `gastosTrimestre` por três.
 	* Imprima a variável `gastosTrimestre`.
 	
 	*Abaixo o código completo:*
@@ -34,20 +34,20 @@
     }
 	```
 
-## Exercícios 3.13: Fixação de sintaxe
+## Exercícios 3.13: fixação de sintaxe
 
-Mais exercícios de fixação de sintaxe. Para quem já conhece um pouco de Java, pode ser muito simples;
-mas recomendamos fortemente que você faça os exercícios para se acostumar com erros de compilação,
-mensagens do javac, convenção de código, etc...
+Mais exercícios de fixação de sintaxe. Para quem já conhece um pouco de Java, pode ser muito simples.
+Mas recomendamos fortemente que você faça os exercícios a fim de se acostumar com erros de compilação,
+mensagens do javac, convenção de código, etc.
 
 Apesar de extremamente simples, precisamos praticar a sintaxe que estamos aprendendo. Para cada
-exercício, crie um novo arquivo com extensão **.java**, e declare aquele estranho cabeçalho, dando nome
+exercício, crie um novo arquivo com extensão **.java** e declare aquele estranho cabeçalho, dando nome
 a uma classe e com um bloco `main` dentro dele:
 
 ``` java
 class ExercicioX {
 	public static void main(String[] args) {
-		// seu exercício vai aqui
+		// Seu exercício vai aqui.
 	}
 }
 ```
@@ -78,7 +78,7 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	```
 	
 1. Imprima a soma de 1 até 1000.
-	
+	<!--@note Mostre também a solução com soma de progressão aritmética. -->
 
 	``` java
 		class ImprimeSoma {
@@ -107,7 +107,10 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	```
 	
 1. Imprima todos os múltiplos de 3, entre 1 e 100.
-	
+	<!--@note
+	A maioria procura múltiplos olhando para o resto (%). Mostre um que faz
+	incremento de 3 em 3.
+	-->
 
 	```java
 		class MultiplosDeTresAteCem {
@@ -145,8 +148,8 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 
 	O fatorial de 4 é (3!) * 4 = 24
 
-	Faça um for que inicie uma variável n (número) como 1 e fatorial (resultado)
-	como 1 e varia n de 1 até 10:
+	Faça um for que inicie uma variável `n` (número) como 1, e `fatorial` (resultado)
+	como 1, variando `n` de 1 até 10:
 
 	``` java
 	int fatorial = 1;
@@ -168,23 +171,23 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 	```
 	
 1. No código do exercício anterior, aumente a quantidade de números que terão os
-	fatoriais impressos, até 20, 30, 40. Em um  determinado momento, além desse
-	cálculo demorar, vai começar a mostrar respostas completamente erradas.
+	fatoriais impressos: até 20, 30 e 40. Em um determinado momento, além desse
+	cálculo demorar, começará a mostrar respostas completamente erradas.
 	Por quê?
 
-	Mude de `int` para `long` para ver alguma mudança.
+	Mude de `int` para `long` a fim de ver alguma mudança.
 
 	*Resposta:*
 
-	Isso acontece porque, a partir de 16!, o valor supera o limite superior do
+	Isso acontece porque, a partir de 16!, o valor ultrapassa o limite superior do
 	tipo `int`. O tipo `long` consegue armazenar o cálculo dos fatoriais
 	até 21!. Teste!
 	
-1. (opcional) Imprima os primeiros números da série de Fibonacci até passar de 100.
-	A série de Fibonacci é a seguinte: 0, 1, 1, 2, 3, 5, 8, 13, 21, etc...
+1. (Opcional) Imprima os primeiros números da série de Fibonacci até passar de 100.
+	A série de Fibonacci é a seguinte: 0, 1, 1, 2, 3, 5, 8, 13, 21, etc.
 	Para calculá-la, o primeiro elemento vale 0, o segundo vale 1, daí por diante,
 	o n-ésimo elemento vale o (n-1)-ésimo elemento somado ao (n-2)-ésimo elemento
-	(ex: 8 = 5 + 3).
+	(ex: 8 = 5 + 3):
 	
 	``` java
 		class Fibonacci {
@@ -202,12 +205,12 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 		}
 	```
 	
-1. (opcional) Escreva um programa que, dada uma variável `x` com algum valor
+1. (Opcional) Escreva um programa no qual, dada uma variável `x` com algum valor
 	inteiro, temos um novo `x` de acordo com a seguinte regra:
 
-	* se `x` é par, `x = x / 2`
-	* se `x` é impar, `x = 3 * x + 1`
-	* imprime `x`
+	* Se `x` é par, `x = x / 2`.
+	* Se `x` é impar, `x = 3 * x + 1`.
+	* Imprime `x`.
 	* O programa deve parar quando `x` tiver o valor final de 1. Por exemplo,
 	para `x = 13`, a saída será:
 
@@ -215,14 +218,14 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 
 	> **Imprimindo sem pular linha**
 	>
-	> Um detalhe importante é que uma quebra de linha é impressa toda vez que
+	> Um detalhe importante: uma quebra de linha é impressa toda vez que
 	> chamamos `println`. Para não pular uma linha, usamos o código a seguir:
 	>
 	> ``` java
 	> 			System.out.print(variavel);
 	> ```
 
-	
+	<!-- Comentário para separar quotes adjacentes. -->
 	
 	``` java
 		class TresNMaisUm {
@@ -241,8 +244,12 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 		}
 	```
 
-	
-1. (opcional)  Imprima a seguinte tabela, usando `for`s encadeados:
+	<!--@answer
+	Curiosamente, essa é a famosa conjectura de Collatz. Ninguém nunca
+	conseguiu demonstrar que sempre cairá em um desses casos até convergir
+	a 1.
+	-->
+1. (Opcional)  Imprima a seguinte tabela usando `for`s encadeados:
 	```
 	1
 	2 4
@@ -283,13 +290,13 @@ Não copie e cole de um exercício já existente! Aproveite para praticar.
 		}
 	```
 
-## Exercícios 4.12: Orientação a Objetos
+## Exercícios 4.12: orientação a objetos
 O modelo da conta a seguir será utilizado para os exercícios dos próximos capítulos.
 
 O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os exercícios desse capítulo são extremamente importantes__.
 
-1. Modele uma conta. A ideia aqui é apenas modelar, isto é, só identifique que informações são importantes. Desenhe no papel tudo o que uma `Conta` tem e tudo o que ela faz.
-	Ela deve ter o nome do titular (`String`), o número (`int`), a agência (`String`), o saldo (`double`) e uma data de abertura (`String`). Além disso, ela deve fazer as seguintes ações: saca, para retirar um valor do saldo; deposita, para adicionar um valor ao saldo; calculaRendimento, para devolver o rendimento mensal dessa conta, que é de 10% sobre o saldo.
+1. Modele uma conta. A ideia nesse momento é apenas modelar, isto é, identificar quais informações são importantes. Desenhe no papel tudo o que uma `Conta` tem e tudo o que ela faz.
+	Ela deve ter o nome do titular (`String`), o número (`int`), a agência (`String`), o saldo (`double`) e uma data de abertura (`String`). Além disso, ela deve fazer as seguintes ações: `saca`, para retirar um valor do saldo; `deposita`, para adicionar um valor ao saldo; `calculaRendimento` para devolver o rendimento mensal dessa conta, que é de 10% sobre o saldo.
 
 	*Resposta:*
 
@@ -304,20 +311,20 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	* String dataDeAbertura;
 
 	Toda conta **faz**:
-	* `saca`: retira uma determinada quantia do saldo da conta
-	* `deposita`: adiciona uma determinada quantia no saldo da conta
-	* `calculaRendimento`: devolve o quanto essa conta rende por mês
+	* `saca`: retira uma determinada quantia do saldo da conta;
+	* `deposita`: adiciona uma determinada quantia ao saldo da conta;
+	* `calculaRendimento`: devolve o quanto essa conta rende por mês.
 
-	
+	<!-- Comentário para separar quotes adjacentes. -->
 
-1. Transforme o modelo acima em uma classe Java. Teste-a, usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes, por exemplo pode chamá-la `TestaConta`, contudo, ela
-	deve necessariamente possuir o método `main`.
+1. Transforme o modelo acima em uma classe Java. Teste a classe usando uma outra classe que tenha o `main`. Você deve criar a classe da conta com o nome `Conta`, mas pode nomear como quiser a classe de testes. Por exemplo, pode chamá-la `TestaConta`. Contudo, ela
+	deve necessariamente ter o método `main`.
 
 	A classe Conta deve conter, além dos atributos mencionados anteriormente, pelo menos os seguintes métodos:
 
-	* `saca` que recebe um `valor` como parâmetro e retira esse valor do saldo da conta
-	* `deposita` que recebe um `valor` como parâmetro e adiciona esse valor ao saldo da conta
-	* `calculaRendimento` que não recebe parâmetro algum e devolve o valor do saldo multiplicado por 0.1
+	* `saca`, que recebe um `valor` como parâmetro e o retira do saldo da conta;
+	* `deposita`, que recebe um `valor` como parâmetro e o adiciona ao saldo da conta;
+	* `calculaRendimento`, que não recebe parâmetro algum e devolve o valor do saldo multiplicado por 0.1.
 
 	Um esboço da classe:
 
@@ -325,32 +332,31 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		class Conta {
 
 			double saldo;
-			// seus outros atributos e métodos
+			// Seus outros atributos e métodos.
 
 			void saca(double valor) {
-				// o que fazer aqui dentro?
+				// O que fazer aqui dentro?
 			}
 
 			void deposita(double valor) {
-				// o que fazer aqui dentro?
+				// O que fazer aqui dentro?
 			}
 
 			double calculaRendimento() {
-				// o que fazer aqui dentro?
+				// O que fazer aqui dentro?
 			}
 		}
 	```
 
-	Você pode (e deve) compilar seu arquivo java sem que você ainda tenha terminado sua classe `Conta`. Isso evitará que você receba dezenas de erros de compilação de uma vez só. Crie a classe `Conta`, coloque seus atributos
-	e, antes de colocar qualquer método, compile o arquivo java. O arquivo
-	`Conta.class` será gerado, mas não podemos "executá-lo" já que essa
-	classe não tem um `main`. De qualquer forma, a vantagem é que assim
-	verificamos que nossa classe `Conta` já está tomando forma e está
+	Você pode (e deve) compilar seu arquivo Java sem que ainda tenha terminado sua classe `Conta`. Isso evitará que você receba dezenas de erros de compilação de uma vez só. Crie a classe `Conta`, ponha seus atributos
+	e, antes de colocar qualquer método, compile o arquivo Java. O arquivo
+	`Conta.class` será gerado, mas não podemos executá-lo, visto que essa
+	classe não tem um `main`. De qualquer forma, verificamos, assim, que nossa classe `Conta` já está tomando forma e está
 	escrita em sintaxe correta.
 
-	Esse é um processo incremental. Procure desenvolver assim seus exercícios, para não descobrir só no fim do caminho que algo estava muito errado.
+	Esse é um processo incremental. Procure desenvolver seus exercícios assim para não descobrir só no fim do caminho que algo estava muito errado.
 
-	Um esboço da classe que possui o `main`:
+	Um esboço da classe que tem o `main`:
 
 	``` java
 		class TestaConta {
@@ -373,15 +379,14 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Incremente essa classe. Faça outros testes, imprima outros atributos e invoque
 	os métodos que você criou a mais.
 
-	Lembre-se de seguir a convenção java, isso é importantíssimo. Isto é, preste
-	atenção nas maiúsculas e minúsculas, seguindo o seguinte exemplo:
+	Lembre-se de seguir a convenção Java, isso é importantíssimo. Preste
+	atenção nas maiúsculas e minúsculas, seguindo este exemplo:
 	`nomeDeAtributo`, `nomeDeMetodo`, `nomeDeVariavel`, `NomeDeClasse`,
-	etc...
+	etc.
 
 	> **Todas as classes no mesmo arquivo?**
 	>
-	> Você até pode colocar todas as classes no mesmo arquivo e apenas compilar
-	> esse arquivo. Ele vai gerar um `.class` para cada classe presente nele.
+	> Você até pode colocar todas as classes no mesmo arquivo e compilar apenas esse arquivo. Ele gerará um `.class` para cada classe presente nele.
 	>
 	> Porém, por uma questão de organização, é boa prática criar um arquivo
 	> `.java` para cada classe. Em capítulos posteriores, veremos também
@@ -389,14 +394,14 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	> em um arquivo separado.
 	>
 	> Essa separação não é importante nesse momento do aprendizado, mas se quiser
-	> ir praticando sem ter que compilar classe por classe, você pode dizer
-	> para o `javac` compilar todos os arquivos java de uma vez:
+	> praticar sem ter que compilar classe por classe, você pode dizer
+	> para o `javac` compilar todos os arquivos Java de uma vez:
 	>
 	> ```javac *.java```
 
-	
+	<!-- Comentário para separar quotes adjacentes. -->
 
-	*Abaixo a resposta completa deste item:*
+	*Abaixo a resposta completa desse item:*
 	
 	``` java
 		class Conta {
@@ -420,9 +425,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. Na classe Conta, crie um método `recuperaDadosParaImpressao()`, que não recebe parâmetro mas devolve o texto com todas as informações da nossa conta para efetuarmos a impressão.
+1. Na classe `Conta`, crie um método `recuperaDadosParaImpressao()` que não recebe parâmetro, mas devolve o texto com todas as informações da nossa conta para efetuarmos a impressão.
 
-	Dessa maneira, você não precisa ficar copiando e colando um monte de `System.out.println()` para cada mudança e teste que fizer com cada um de seus funcionários, você simplesmente vai fazer:
+	Dessa maneira, você não precisa ficar copiando e colando um monte de `System.out.println()` para cada mudança e teste que fizer com os seus funcionários, você simplesmente fará:
 
 	``` java
 		Conta c1 = new Conta();
@@ -430,32 +435,32 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		System.out.println(c1.recuperaDadosParaImpressao());
 	```
 
-	Veremos mais a frente o método `toString`, que é uma solução muito mais
+	Veremos, mais à frente, o método `toString`, que é uma solução muito mais
 	elegante para mostrar a representação de um objeto como `String`, além de
-	não jogar tudo pro `System.out` (só se você desejar).
+	não jogar tudo para o `System.out` (somente se você o desejar).
 
 	O esqueleto do método ficaria assim:
 
 	``` java
 		class Conta {
 
-			// seus outros atributos e métodos
+			// Seus outros atributos e métodos.
 
 			String recuperaDadosParaImpressao() {
 				String dados = "Titular: " + this.titular;
 				dados += "\nNúmero: " + this.numero;
-				// imprimir aqui os outros atributos...
-				// também pode imprimir this.calculaRendimento()
+				// Imprimir aqui os outros atributos.
+				// Também pode imprimir this.calculaRendimento()
 				return dados;
 			}
 		}
 	```
 
-	*Abaixo a resposta completa deste item:*
+	*Abaixo está a resposta completa desse item:*
 
 	``` java
 		class Conta {
-			// outros atributos e métodos...
+			// Outros atributos e métodos.
 
 			String recuperaDadosParaImpressao() {
 				String dados = "Titular: " + this.titular;
@@ -468,8 +473,8 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. Na classe de teste dentro do bloco main, construa duas contas com o `new` e compare-os com o `==`. E se eles
-	tiverem os mesmos atributos? Para isso você vai precisar criar outra referência:
+1. Na classe de teste dentro do bloco `main`, construa duas contas com o `new` e compare-as com o `==`. E se elas
+	tiverem os mesmos atributos? Para isso, você precisará criar outra referência:
 
 	``` java
 		Conta c1 = new Conta();		
@@ -492,12 +497,12 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	diferentes tenham as mesmas informações, cada um deles é um objeto
 	à parte.
 
-	Você pode ver isso de uma forma simples: se você alterar o `c1`,
-	note que o `c2` não é alterado junto. Cada um é um objeto diferente
-	e cada variável (`c1` e `c2`) referencia um deles.
+	Você pode ver isso de uma forma simples: se alterar o `c1`,
+	note que o `c2` não é alterado junto. Cada um é um objeto diferente,
+	e cada variável (`c1` e `c2`) referencia a um deles.
 	
-1. Agora, crie duas referências para a **mesma** conta, compare-os com o `==`.
-	Tire suas conclusões. Para criar duas referências pra mesma conta:
+1. Agora crie duas referências à **mesma** conta e compare-as com o `==`.
+	Tire suas conclusões. Para criar duas referências à mesma conta:
 
 	``` java
 		Conta c1 = new Conta():
@@ -511,15 +516,15 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	*Resposta:*
 
-	Agora sim, obtemos true. Isso porque, de fato, ambas as variáveis têm
-	referências para o mesmo objeto. Verifique: mude o titular da `c1` para _Mariana_ e imprima `c2.titular`. Você vai notar que o nome mudou!
+	Agora, sim, obtemos `true`. Isso porque, de fato, ambas as variáveis têm
+	referências ao mesmo objeto. Verifique: mude o titular da `c1` para _Mariana_ e imprima `c2.titular`. Você notará que o nome mudou!
 
-1. (opcional) Em vez de utilizar uma `String` para representar a data, crie uma outra classe, chamada `Data`. Ela possui 3 campos `int`, para dia, mês e ano. Faça com que sua conta passe a usá-la. (é parecido com o último exemplo da explicação, em que a `Conta` passou a ter referência para um `Cliente`).
+1. (Opcional) Em vez de utilizar uma `String` para representar a data, crie uma outra classe chamada `Data`. Ela deve ter três campos `int`: para dia, mês e ano. Faça com que sua conta passe a usá-la (é parecido com o último exemplo da explicação, em que a `Conta` passou a ter referência a um `Cliente`).
 
 	``` java
 		class Conta {
-			Data dataDeAbertura; // qual é o valor default aqui?
-			// seus outros atributos e métodos
+			Data dataDeAbertura; // Qual é o valor default aqui?
+			// Seus outros atributos e métodos.
 		}
 
 		class Data {
@@ -530,7 +535,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	Modifique sua classe `TestaConta` para que você crie uma `Data` e
-	atribua ela a `Conta`:
+	atribua-a à `Conta`:
 
 	```java
 		Conta c1 = new Conta();
@@ -566,7 +571,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	Finalmente no arquivo `TestaConta.java`...
+	Finalmente, no arquivo `TestaConta.java`:
 
 	``` java
 		class TestaConta {
@@ -585,17 +590,17 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. (opcional) Modifique seu método `recuperaDadosParaImpressao` para que ele devolva o valor da `dataDeAbertura` daquela `Conta`:
+1. (Opcional) Modifique seu método `recuperaDadosParaImpressao` para que ele devolva o valor da `dataDeAbertura` daquela `Conta`:
 
 	``` java
 	class Conta {
 
-		// seus outros atributos e métodos
+		// Seus outros atributos e métodos.
 		Data dataDeAbertura;
 
 		String recuperaDadosParaImpressao() {
 			String dados = "\nTitular: " + this.titular;
-			// imprimir aqui os outros atributos...
+			// Imprimir aqui os outros atributos.
 
 			dados += "\nDia: " + this.dataDeAbertura.dia;
 			dados += "\nMês: " + this.dataDeAbertura.mes;
@@ -605,7 +610,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Teste-o. O que acontece se chamarmos o método `recuperaDadosParaImpressao` antes de atribuirmos uma data para esta `Conta`?
+	Teste-o. O que acontece se chamarmos o método `recuperaDadosParaImpressao` antes de atribuir uma data a essa `Conta`?
 	
 	*Resposta:* dia, mês e ano serão apresentados com o valor 0.
 
@@ -618,16 +623,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		c1.numero = 557890;
 		c1.saldo = 50;
 		c1.deposita(100);
-		// adicionando a data como tipo
+		// Adicionando a data como tipo
 		c1.dataDeAbertura = new Data();
-		//chamando o método `recuperaDadosParaImpressao` antes de atribuirmos uma data para esta `Conta`
+		//Chamando o método `recuperaDadosParaImpressao` antes de atribuirmos uma data para essa `Conta`
 		System.out.println(c1.recuperaDadosParaImpressao());
 		c1.dataDeAbertura.preencheData(1, 7, 2009);
 	}
 }
 ```
-1. (opcional) O que acontece se você tentar acessar um atributo diretamente na
-	classe? Como, por exemplo:
+1. (Opcional) O que acontece se você tentar acessar um atributo diretamente na
+	classe? Por exemplo:
 
 	``` java
 		Conta.saldo = 1234;
@@ -640,16 +645,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	Faz sentido perguntar para o esquema da Conta seu valor anual?
-1. (opcional-avançado) Crie um método na classe `Data` que devolva o valor
-	formatado da data, isto é, devolva uma String com "dia/mes/ano". Isso para que
+1. (Opcional e avançado) Crie um método na classe `Data` que devolva o valor
+	formatado da data, isto é, devolva uma String no formato "dia/mês/ano". Tudo isso para que
 	o método `recuperaDadosParaImpressao` da classe `Conta` possa ficar assim:
 
 	``` java
 	class Conta {
-		// atributos e metodos
+		// Atributos e métodos.
 
 		String recuperaDadosParaImpressao() {
-			// imprime outros atributos...
+			// Imprime outros atributos.
 			dados += "\nData de abertura: " + this.dataDeAbertura.formatada();
 			return dados;
 		}
@@ -660,7 +665,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	``` java
 		class Data {
-			// atributos e método preencheData
+			// Atributos e método preencheData
 
 			String formatada() {
 				return this.dia + "/" + this.mes + "/" + this.ano;
@@ -669,9 +674,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 ## Desafios 4.13
-1. Um método pode chamar ele mesmo. Chamamos isso de **recursão**. Você pode
-	resolver a série de Fibonacci usando um método que chama ele mesmo. O objetivo
-	é você criar uma classe, que possa ser usada da seguinte maneira:
+1. Um método pode chamar-se a si mesmo. Chamamos isso de **recursão**. Você pode
+	resolver a série de Fibonacci usando um método que se chama a si mesmo. O objetivo
+	é você criar uma classe que possa ser usada da seguinte maneira:
 
 	``` java
 		Fibonacci fibonacci = new Fibonacci();
@@ -684,8 +689,8 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Aqui imprimirá a sequência de Fibonacci até a sexta posição, isto é:
 	1, 1, 2, 3, 5, 8.
 
-	Este método `calculaFibonacci` não pode ter nenhum laço, só pode chamar ele
-	mesmo como método. Pense nele como uma função, que usa a própria função para
+	Este método `calculaFibonacci` não pode ter nenhum laço, só pode chamar-se a si
+	mesmo como método. Pense nele como uma função que usa a própria função para
 	calcular o resultado.
 	
 	*Resposta*:
@@ -708,13 +713,13 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	
 	*Resposta:*
 	
-	Dessa forma, o código fica muito mais lento porque ele não consegue aproveitar
-	os fibonaccis já calculados anteriormente. E, pior ainda, ele abre o cálculo
-	de fibonaccis exponencialmente porque, para calcular o fibonacci de um número,
+	Dessa forma, o código fica muito mais lento, porque ele não consegue aproveitar
+	os Fibonaccis já calculados anteriormente. E, pior ainda, ele abre o cálculo
+	de Fibonaccis exponencialmente, uma vez que, para calcular o Fibonacci de um número,
 	é preciso somar os dois anteriores.
 	
-1. Escreva o método recursivo novamente, usando apenas uma linha. Para isso,
-	pesquise sobre o **operador condicional ternário**. (ternary operator)
+1. Escreva o método recursivo novamente usando apenas uma linha. Para isso,
+	pesquise sobre o **operador condicional ternário** (ternary operator).
 	
 	*Resposta*:
 	``` java
@@ -723,16 +728,21 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-## Exercícios 5.8: Encapsulamento, construtores e static
+## Exercícios 5.8: encapsulamento, construtores e static
 
-
+<!--@note
+No exercício de colocar atributos private, se faltar tempo, sugira somente a variável membro `salario`. Se fizer todos, consumirá bastante tempo.
+-->
 1. Adicione o modificador de visibilidade (`private`, se necessário) para cada
 	atributo e método da classe `Conta`. Tente criar uma `Conta`
 	no `main` e modificar ou ler um de seus atributos privados. O que acontece?
 
-	
+	<!--@note
+	Aproveite para brincar com o pessoal. Pergunte quantos erros de
+	compilação cada um tomou, incentivando a quem teve mais!!
+	-->
 
-	
+	<!-- Comentário para separar quotes adjacentes.  -->
 
 	``` java
 		public class Conta {
@@ -772,14 +782,14 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	Não copie e cole! Aproveite para praticar sintaxe. Logo passaremos a usar
-	o Eclipse e aí sim teremos procedimentos mais simples para este tipo de
+	o Eclipse e, aí sim, teremos procedimentos mais simples destinados a esse tipo de
 	tarefa.
 
 	Repare que o método `calculaRendimento` parece também um getter. Aliás,
 	seria comum alguém nomeá-lo de `getRendimento`. Getters não precisam apenas
-	retornar atributos. Eles podem trabalhar com esses dados.
+	retornar atributos, eles podem trabalhar com esses dados.
 	
-	*Resposta completa para este item:*
+	*Resposta completa para esse item:*
 
 	``` java
 		public class Conta {
@@ -839,7 +849,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. Altere suas classes que acessam e modificam atributos de uma `Conta` para utilizar os getters e setters recém criados.
+1. Altere suas classes que acessam e modificam atributos de uma `Conta` para utilizar os getters e setters recém-criados.
 
 	Por exemplo, onde você encontra:
 
@@ -855,7 +865,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		System.out.println(c.getTitular());
 	```
 
-	*Resposta completa para este item:*
+	*Resposta completa para esse item:*
 
 	``` java
 		class TestaConta {
@@ -873,19 +883,19 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 1. Faça com que sua classe `Conta` possa receber, opcionalmente, o nome
 	do titular da `Conta` durante a criação do objeto. Utilize construtores para obter esse resultado.
 
-	Dica: utilize um construtor sem argumentos também, para o caso de a pessoa
-	não querer passar o titular da `Conta`.
+	Dica: utilize um construtor sem argumentos também, pensando no caso em que a pessoa
+	não queira passar o titular da `Conta`.
 
 	Seria algo como:
 
 	``` java
 		class Conta {
 			public Conta() {
-				// construtor sem argumentos
+				// Construtor sem argumentos.
 			}
 
 			public Conta(String titular) {
-				// construtor que recebe o titular
+				// Construtor que recebe o titular.
 			}
 		}
 	```
@@ -893,7 +903,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Por que você precisa do construtor sem argumentos para que a passagem do nome
 	seja opcional?
 	
-	*Resposta*: A partir do momento que declaramos um construtor, o construtor default não é mais fornecido, por isso se quisermos ter a passagem do nome como opcional, teremos que ter duas versões de construtores: uma que não exige nada como parâmetro e outra que exige uma String.
+	*Resposta*: a partir do momento em que declaramos um construtor, o construtor default não é mais fornecido, por isso, se quisermos ter a passagem do nome como opcional, teremos de ter duas versões de construtores: uma que não exige nada como parâmetro, e outra que exige uma String.
 
 	``` java
 		public class Conta {
@@ -909,10 +919,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. (opcional) Adicione um atributo na classe `Conta` de tipo `int` que
-	se chama identificador. Esse identificador deve ter um valor único para cada
+1. (Opcional) Adicione um atributo na classe `Conta` de tipo `int` que
+	se chama `identificador`; este deve ter um valor único para cada
 	instância do tipo `Conta`. A primeira `Conta` instanciada tem
-	identificador 1, a segunda 2, e assim por diante. Você deve utilizar os
+	identificador 1, a segunda, 2, e assim por diante. Você deve utilizar os
 	recursos aprendidos aqui para resolver esse problema.
 
 	Crie um getter para o identificador. Devemos ter um setter?
@@ -937,16 +947,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	Não faz sentido que o identificador tenha um setter já que, pela lógica
+	Não faz sentido que o identificador tenha um setter, já que, pela lógica
 	da aplicação, o `identificador` é um número único para cada funcionário
 	no sistema.
 	
-1. (opcional) Como garantir que datas como 31/2/2021 não sejam aceitas pela sua
+1. (Opcional) Como garantir que datas como 31/2/2021 não sejam aceitas pela sua
 	classe `Data`?
 	
-	*Resposta*: Você pode definir um construtor na classe Data que exija dia, mes e ano. Este construtor invoca o método `preencheData` o qual invoca o método `isDataViavel` que faz a validação das datas válidas. Nesse
-	momento, a única forma de indicar que houve um erro que você aprendeu é
-	imprimir uma mensagem no terminal avisando, mas, mais para a frente,
+	*Resposta*: você pode definir um construtor na classe `Data` que exija dia, mês e ano. Esse construtor invoca o método `preencheData`, o qual invoca o método `isDataViavel` que, por sua vez, faz a validação das datas válidas. Nesse
+	momento, a única forma que você aprendeu de indicar se houve um erro é
+	imprimir uma mensagem no terminal avisando sobre o erro, mas, mais para a frente,
 	veremos uma forma muito mais elegante de tratar esses casos.
 
 	``` java
@@ -1003,39 +1013,37 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```java
 	class TestaDataAberturaDaConta {
 
-	public static void main(String[] args) {
-		Conta c1 = new Conta();
-		c1.setTitular("Hugo"); ;
-		c1.setAgencia("12-x");;
-		c1.setNumero(557890); ;
-		c1.deposita(50);;
-		c1.deposita(100);
-		// adicionando a data como tipo
-		c1.setDataDeAbertura(new Data(31, 2, 2021)); // teste também com datas válidas
-		System.out.println(c1.recuperaDadosParaImpressao());
+		public static void main(String[] args) {
+			Conta c1 = new Conta();
+			c1.setTitular("Hugo"); ;
+			c1.setAgencia("12-x");;
+			c1.setNumero(557890); ;
+			c1.deposita(50);;
+			c1.deposita(100);
+			// Adicionando a data como tipo
+			c1.setDataDeAbertura(new Data(31, 2, 2021)); // Teste também com datas válidas
+			System.out.println(c1.recuperaDadosParaImpressao());
+		}
 	}
-}
-
 	```
 
-
-1. (opcional) Suponha que temos a classe `PessoaFisica` que tem um CPF como atributo.
-	Como garantir que pessoa física alguma tenha CPF invalido,
-	nem seja criada `PessoaFisica` sem cpf inicial?
+1. (Opcional) Suponha que tenhamos a classe `PessoaFisica`, a qual tem um CPF como atributo.
+	Como garantir que pessoa física alguma tenha CPF inválido e tampouco
+	seja criada `PessoaFisica` sem CPF inicial?
 	
 	*Resposta*:
-	(Suponha que já existe um algoritmo de validação de cpf:
-	basta passar o cpf por um método `valida(String x)...`)
+	(Considere que já exista um algoritmo de validação de CPF:
+	basta passá-lo por um método `valida(String x)...`)
 	
 	Você pode fazer a validação ser chamada no construtor e, por ora,
-	imprimir a mensagem no console. No capítulo 11 veremos uma forma de
-	realmente impedir a criação do objeto, caso essa validação não passe.
+	imprimir a mensagem no console. No capítulo 12, veremos uma forma de
+	realmente impedir a criação do objeto caso essa validação não passe.
 	
 
-
+<!-- Comentário para separar quotes adjacentes. -->
 
 ## Desafios 5.9
-1. Porque esse código não compila?
+1. Por que esse código não compila?
 
 	``` java
 		class Teste {
@@ -1047,24 +1055,24 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 	
 	*Resposta*:
-	O `main` é um método estático, isto é: ele não é do objeto, é da classe.
+	O `main` é um método estático, isto é, ele não é do objeto, é da classe.
 	Já o atributo `x` não tem a palavra `static` e, portanto, é do objeto.
 
-	Para rodar o `main`, não há necessidade (ou garantia) de que teremos um
-	objeto do tipo `Teste`, então não há garantia de que o `x` sequer
+	Para rodar o `main`, não há necessidade nem garantia de termos um
+	objeto do tipo `Teste`, por isso não conseguimos garantir que o `x` sequer
 	existirá.
 
-1. Imagine que tenha uma classe `FabricaDeCarro` e quero garantir que só existe um
-	objeto desse tipo em toda a memória. Não existe uma palavra chave especial para
-	isto em Java, então teremos de fazer nossa classe de tal maneira que ela respeite
-	essa nossa necessidade. Como fazer isso? (pesquise: singleton design pattern)
+1. Imagine a situação: há uma classe `FabricaDeCarro`, e quero garantir que só exista um
+	objeto desse tipo em toda a memória. Não há uma palavra-chave especial para
+	isso em Java, então teremos de fazer nossa classe de tal maneira que ela respeite
+	nossa necessidade. Como fazê-lo (pesquise: Singleton Design Pattern)?
 
-## Exercícios 8.9: Mostrando os dados da conta na tela
+## Exercícios 8.9: mostrando os dados da conta na tela
 
 1. Crie a classe `ManipuladorDeContas` dentro do pacote `br.com.caelum.contas`. Repare
 	que os pacotes `br.com.caelum.contas.main` e `br.com.caelum.contas.modelo` são
-	subpacotes do pacote `br.com.caelum.contas`, portanto o pacote `br.com.caelum.contas`
-	já existe. Para criar a classe neste pacote, basta selecioná-lo na janela de criação
+	subpacotes de `br.com.caelum.contas`, portanto o pacote `br.com.caelum.contas`
+	já existe. Para criar a classe nesse pacote, basta selecioná-lo na janela de criação
 	da classe:
 
 	![ {w=70}](assets/images/javafx/manipulador.png)
@@ -1072,13 +1080,23 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	A classe `ManipuladorDeContas` fará a ligação da `Conta` com a tela, por isso precisaremos
 	declarar um atributo do tipo `Conta`.
 
-	
+	<!--@answer
+	public class ManipuladorDeContas {
 
-	
+	private Conta conta;
+	}
+	-->
 
-	
+	<!--@answer
+		public class ManipuladorDeContas {
 
-1. Crie o método `criaConta` que recebe como parâmetro um objeto do tipo `Evento`.
+		private Conta conta;
+		}
+	-->
+
+	<!-- Comentário para separar quotes adjacentes. -->
+
+1. Crie o método `criaConta`, que recebe como parâmetro um objeto do tipo `Evento`.
 	Instancie uma conta para o atributo `conta` e coloque os valores de `numero`,
 	`agencia` e `titular`. Algo como:
 
@@ -1094,10 +1112,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
     }
 	```
 1. Com a conta instanciada, agora podemos implementar as funcionalidades de saque e
-	depósito. Crie o método `deposita` que recebe um `Evento`, que é a classe que
+	depósito. Crie o método `deposita`; este recebe um `Evento`, que é a classe a qual
 	retorna os dados da tela nos tipos que precisamos. Por exemplo, se quisermos o
-	valor a depositar sabemos que ele é do tipo `double` e que o nome do campo na
-	tela é `valor` então podemos fazer:
+	valor a depositar, sabemos que ele é do tipo `double`, e o nome do campo na
+	tela é `valor`, então, podemos fazer:
 
 	``` java
     public void deposita(Evento evento){
@@ -1115,10 +1133,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 	
-1. Precisamos agora testar nossa aplicação, crie a classe `TestaContas` dentro do
-	pacote `br.com.caelum.contas` com um `main`. Nela vamos chamar o `main` da
-	classe `TelaDeContas` que mostrará a tela de nosso sistema. Não se esqueça de
-	fazer o import desta classe!
+1.  Testemos nossa aplicação. Crie a classe `TestaContas` dentro do
+	pacote `br.com.caelum.contas` com um `main`. Nela chamaremos o `main` da
+	classe `TelaDeContas`, que mostrará a tela de nosso sistema. Não se esqueça de
+	fazer o import dessa classe!
 
 	``` java
     import br.com.caelum.javafx.api.main.TelaDeContas;
@@ -1134,8 +1152,8 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Rode a aplicação, crie a conta e tente fazer as operações de saque e depósito. Tudo
 	deve funcionar normalmente.
 
-## Exercícios 9.7: Herança e Polimorfismo
-1. Vamos ter mais de um tipo de conta no nosso sistema então vamos precisar de uma nova tela para cadastrar os diferentes tipos de conta. Essa tela já está pronta e para utilizá-la só precisamos alterar a classe que estamos chamando no método `main()` no `TestaContas.java`:
+## Exercícios 9.7: herança e polimorfismo
+1. Teremos mais de um tipo de conta no nosso sistema, dessa maneira, precisaremos de uma nova tela para cadastrar os diferentes tipos de conta. Essa tela já está pronta e, para utilizá-la, só precisamos alterar a classe que estamos chamando no método `main()` do `TestaContas.java`:
 
 	``` java
     package br.com.caelum.contas.main;
@@ -1154,22 +1172,21 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	![ {w=50}](assets/images/javafx/tela-inicial.png)
 
-	Vamos entrar na tela de criação de contas para vermos o que precisamos implementar para que o sistema funcione. Para isso, clique no botão **Nova Conta**. A seguinte tela aparecerá:
+	 Entraremos na tela de criação de contas com o intuito de ver o que precisamos implementar para que o sistema funcione. Assim, clique no botão **Nova Conta**. A seguinte tela aparecerá:
 
 	![ {w=50}](assets/images/javafx/nova-conta.png)
 
-	Podemos perceber que além das informações que já tínhamos na conta, temos agora o tipo: se queremos uma conta corrente ou uma conta poupança. Vamos então criar as classes correspondentes.
+	Podemos perceber que, além das informações que já tínhamos na conta, temos agora o tipo: se queremos uma conta-corrente ou uma conta poupança. Vamos então criar as classes correspondentes.
 
-	* Crie a classe `ContaCorrente` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`
-	* Crie a classe `ContaPoupanca` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`
+	* Crie a classe `ContaCorrente` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`;
+	* Crie a classe `ContaPoupanca` no pacote `br.com.caelum.contas.modelo` e faça com que ela seja filha da classe `Conta`.
 1. Precisamos pegar os dados da tela para conseguirmos criar a conta correspondente. No
-	`ManipuladorDeContas` vamos alterar o método `criaConta`. Atualmente, apenas
+	`ManipuladorDeContas`, alteraremos o método `criaConta`. Atualmente, apenas
 	criamos uma nova conta com os dados direto no código.
-	Vamos fazer com que agora os dados sejam recuperados da tela para colocarmos na nova
-	conta, faremos isso utilizando o objeto `evento`:
+	Façamos com que agora os dados sejam recuperados da tela para colocarmos na nova
+	conta. Faremos isso utilizando o objeto `evento`:
 
 	``` java
-
 	public void criaConta(Evento evento) {
       	this.conta = new Conta();
       	this.conta.setAgencia(evento.getString("agencia"));
@@ -1178,9 +1195,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
   	}
 	```
 
-	Mas precisamos dizer qual tipo de conta que queremos criar! Devemos então recuperar o tipo da conta escolhido e criar a conta correspondente. Para isso, ao invés de criar um objeto do tipo 'Conta', vamos usar o método `getSelecionadoNoRadio` do objeto `evento` para pegar o tipo, fazer um `if` para verificar esse tipo e só depois criar o objeto do tipo correspondente. Após essas mudanças, o método `criaConta` ficará como abaixo:
+	Mas precisamos dizer qual o tipo de conta que queremos criar. Devemos, então, recuperar o tipo da conta escolhido e criar a conta correspondente. Para isso, ao invés de criar um objeto do tipo 'Conta', usaremos o método `getSelecionadoNoRadio` do objeto `evento` a fim de pegar o tipo. Faremos um `if` para verificar esse tipo e, só depois, criaremos o objeto do tipo correspondente. Após essas mudanças, o método `criaConta` ficará como abaixo:
 
-	``` java
+	```java
   	public void criaConta(Evento evento) {
       	String tipo = evento.getSelecionadoNoRadio("tipo");
       	if (tipo.equals("Conta Corrente")) {
@@ -1193,9 +1210,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
       	this.conta.setTitular(evento.getString("titular"));
  	 }
 	```
-1. Apesar de já conseguirmos criar os dois tipos de contas, nossa lista não consegue exibir o tipo de cada conta na lista da tela inicial. Para resolver isso, podemos criar um método `getTipo` em cada uma de nossas contas fazendo com que a conta corrente devolva a string "Conta Corrente" e a conta poupança devolva a string "Conta Poupança":
+1. Apesar de já conseguirmos criar os dois tipos de
+   contas, nossa lista não consegue exibir o tipo de cada conta na lista da tela inicial. Para resolver isso, podemos criar um método `getTipo` nas nossas contas fazendo com que a conta-corrente devolva a string "Conta Corrente", e a conta poupança devolva a string "Conta Poupança":
 
-	``` java
+	```java
 	public class ContaCorrente extends Conta {
 		public String getTipo() {
 			return "Conta Corrente";
@@ -1211,7 +1229,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 1. Altere os métodos `saca` e `deposita` para buscarem o campo `valorOperacao` ao
 	invés de apenas `valor` na classe `ManipuladorDeContas`.
 
-1. Vamos mudar o comportamento da operação de saque de acordo com o tipo de conta que estiver sendo utilizada. Na classe `ManipuladorDeContas` vamos alterar o método `saca` para tirar 10 centavos de cada saque em uma conta corrente:
+1. Mudaremos o comportamento da operação de saque de acordo com o tipo de conta que estiver sendo utilizada. Na classe `ManipuladorDeContas`, alteremos o método `saca` para tirar dez centavos de cada saque em uma conta-corrente:
 
 	``` java
     public void saca(Evento evento) {
@@ -1224,7 +1242,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
     }
 	```
 
-	Ao tentarmos chamar o método `getTipo`, o Eclipse reclamou que esse método não existe na classe `Conta` apesar de existir nas classes filhas. Como estamos tratando todas as contas genericamente, só conseguimos acessar os métodos da classe mãe. Vamos então colocá-lo na classe `Conta`:
+	Ao tentarmos chamar o método `getTipo`, o Eclipse reclamou que esse método não existe na classe `Conta`, apesar de existir nas classes filhas. Como estamos tratando todas as contas genericamente, só conseguimos acessar os métodos da classe mãe. Vamos então colocá-lo na classe `Conta`:
 
 	``` java
     public class Conta {
@@ -1233,7 +1251,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
         }
     }
 	```
-1. Agora o código compila mas temos um outro problema. A lógica do nosso saque vazou para a classe `ManipuladorDeContas`. Se algum dia precisarmos alterar o valor da taxa no saque, teríamos que mudar em todos os lugares onde fazemos uso do método `saca`. Esta lógica deveria estar encapsulada dentro do método `saca` de cada conta. Vamos então sobrescrever o método dentro da classe `ContaCorrente`:
+1. Agora o código compila, mas temos um outro problema. A lógica do nosso saque vazou para a classe `ManipuladorDeContas`. Se algum dia precisarmos alterar o valor da taxa no saque, teremos de mudar em todos os lugares nos quais fazemos uso do método `saca`. Essa lógica deveria estar encapsulada dentro do método `saca` de cada conta. Dessa forma, sobrescrevamos o método dentro da classe `ContaCorrente`:
 
 	``` java
 	public class ContaCorrente extends Conta {
@@ -1246,7 +1264,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Repare que, para acessar o atributo saldo herdado da classe `Conta`, **você vai precisar mudar o modificador de visibilidade de saldo para `protected`**.
+	Repare que, para acessar o atributo saldo herdado da classe `Conta`, **você precisará mudar o modificador de visibilidade de saldo para `protected`**.
 
 	Agora que a lógica está encapsulada, podemos corrigir o método `saca` da classe `ManipuladorDeContas`:
 
@@ -1260,10 +1278,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Perceba que agora tratamos a conta de forma genérica!
 1. Rode a classe `TestaContas`, adicione uma conta de cada tipo e veja se o tipo é apresentado corretamente na lista de contas da tela inicial.
 
-	Agora, clique na conta corrente apresentada na lista para abrir a tela de detalhes de contas. Teste as operações de saque e depósito e perceba que a conta apresenta o comportamento de uma conta corrente conforme o esperado.
+	Agora clique na conta-corrente apresentada na lista para abrir a tela de detalhes de contas. Teste as operações de saque e depósito e perceba que a conta apresenta o comportamento de uma conta-corrente, conforme o esperado.
 
-	E se tentarmos realizar uma transferência da conta corrente para a conta poupança? O que acontece?
-1. Vamos começar implementando o método `transfere` na classe `Conta`:
+	E se tentarmos realizar uma transferência da conta-corrente para a conta poupança? O que acontece?
+1.  Comecemos implementando o método `transfere` na classe `Conta`:
 
 	``` java
     public void transfere(double valor, Conta conta) {
@@ -1299,16 +1317,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	Compila? Roda? O que muda? Qual é a utilidade disso? Realmente, essa não é
-	a maneira mais útil do polimorfismo. Porém existe uma utilidade de declararmos uma variável de um tipo
+	a maneira mais útil do polimorfismo. Porém, existe uma utilidade se declararmos uma variável de um tipo
 	menos específico do que o objeto realmente é, como fazemos na classe `ManipuladorDeContas`.
 
 	É **extremamente importante** perceber que não importa como nos referimos a
-	um objeto, o método que será invocado é sempre o mesmo! A JVM vai descobrir em
-	tempo de execução qual deve ser invocado, dependendo de que tipo é aquele objeto,
+	um objeto, o método que será invocado é sempre o mesmo! A JVM descobrirá, em
+	tempo de execução, qual deve ser invocado, dependendo de que tipo é aquele objeto, e
 	não importando como nos referimos a ele.
 1. (Opcional)
-	A nossa classe `Conta` devolve a palavra "Conta" no método `getTipo`. Use a palavra chave `super` nos métodos `getTipo` reescritos nas classes filhas,
-	para não ter de reescrever a palavra "Conta" ao devolver os tipos "Conta Corrente" e "Conta Poupança".
+	A nossa classe `Conta` devolve a palavra "Conta" no método `getTipo`. Use a palavra-chave `super` nos métodos `getTipo` reescritos nas classes filhas
+	para não ter de reescrever a palavra "Conta" ao devolver os textos "Conta Corrente" e "Conta Poupança" para cada tipo.
 
 	``` java
 		class ContaCorrente extends Conta {
@@ -1319,7 +1337,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	E, também
+	E também
 
 	``` java
 		class ContaPoupanca extends Conta {
@@ -1337,13 +1355,13 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	*Resposta:*
 	Não! Essa é a vantagem do polimorfismo: qualquer coisa que **seja uma** Conta
-	pode ser passada para o método `saca`. A complexidade fica isolada, dentro
+	pode ser passada para o método `saca`. A complexidade fica isolada dentro
 	de cada classe.
 	
 
-## Exercícios 11.5: Interfaces
+## Exercícios 11.5: interfaces
 1. Nosso banco precisa tributar dinheiro de alguns bens que nossos clientes possuem.
-	Para isso vamos criar uma interface no pacote `br.com.caelum.contas.modelo` do nosso projeto
+	Para isso, criaremos uma interface no pacote `br.com.caelum.contas.modelo` do nosso projeto
 	 `fj11-contas` já existente:
 
 	``` java
@@ -1355,13 +1373,13 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Lemos essa interface da seguinte maneira: "todos que quiserem ser _tributável_
 	precisam saber retornar _o valor do imposto_, devolvendo um double".
 
-	Alguns bens são tributáveis e outros não, `ContaPoupanca` não é tributável,
-	já para `ContaCorrente` você precisa pagar 1% da conta e o `SeguroDeVida`
+	Alguns bens são tributáveis, e outros não. `ContaPoupanca` não é tributável.
+	Já para `ContaCorrente`, você precisa pagar 1% da conta, e o `SeguroDeVida`
 	tem uma taxa fixa de 42 reais mais 2% do valor do seguro.
 
 	Aproveite o Eclipse! Quando você escrever `implements Tributavel` na classe
-	`ContaCorrente`, o _quick fix_ do Eclipse vai sugerir que você reescreva
-	o método; escolha essa opção e, depois, preencha o corpo do método adequadamente:
+	`ContaCorrente`, o _quickfix_ do Eclipse sugerirá que você reescreva
+	o método. Escolha essa opção e depois preencha o corpo do método adequadamente:
 
 	``` java
 	public class ContaCorrente extends Conta implements Tributavel {
@@ -1374,7 +1392,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Crie a classe `SeguroDeVida`, aproveitando novamente do Eclipse, para obter:
+	Crie a classe `SeguroDeVida`, aproveitando novamente do Eclipse para obter:
 
 	``` java
 	public class SeguroDeVida implements Tributavel {
@@ -1386,7 +1404,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 			return 42 + this.valor * 0.02;
 		}
 
-    // getters e setters para os atributos
+    // Getters e setters para os atributos.
 	}
 	```
 	Além disso, escreva o método `getTipo` para que o tipo do produto apareça na interface gráfica:
@@ -1396,16 +1414,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-1. Vamos criar a classe `ManipuladorDeSeguroDeVida` dentro do pacote
-	`br.com.caelum.contas` para vincular a classe `SeguroDeVida` com a tela de criação
-	de seguros. Esta classe deve ter um atributo do tipo `SeguroDeVida`.
+1.  Criemos a classe `ManipuladorDeSeguroDeVida` dentro do pacote
+	`br.com.caelum.contas` para vincular a classe `SeguroDeVida` à tela de criação
+	de seguros. Essa classe deve ter um atributo do tipo `SeguroDeVida`.
 
 	Crie também o método `criaSeguro` que deve receber um parâmetro do tipo
-	`Evento` para conseguir obter os dados da tela. Você deve pegar os parâmetros
-	"numeroApolice" do tipo `int`, "titular" do tipo `String` e "valor" do tipo
+	`Evento` a fim de conseguir obter os dados da tela. Você deve pegar os parâmetros
+	`numeroApolice` do tipo `int`, `titular` do tipo `String` e `valor` do tipo
 	`double`.
 
-	O código final deve ficar parecido com o código abaixo:
+	O código final deve ficar parecido com este:
 
 	``` java
   	package br.com.caelum.contas;
@@ -1429,7 +1447,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	cadastrado deve aparecer na tabela de seguros de vida.
 
 1. Queremos agora saber qual o valor total dos impostos de todos os tributáveis.
-	Vamos então criar a classe `ManipuladorDeTributaveis` dentro do pacote
+	 Criemos, então, a classe `ManipuladorDeTributaveis` dentro do pacote
 	`br.com.caelum.contas`.
 	Crie também o método `calculaImpostos` que recebe um parâmetro do tipo `Evento`:
 
@@ -1441,24 +1459,24 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
   	public class ManipuladorDeTributaveis {
 
     	public void calculaImpostos(Evento evento){
-    	  // aqui calcularemos o total
+    		// Aqui calcularemos o total.
     	}
   	}
 	```
 
-1. Agora que criamos o tributavel, vamos habilitar a última aba de nosso sistema. Altere
+1. Agora que criamos o tributavel, habilitaremos a última aba de nosso sistema. Altere
 	a classe `TestaContas` para passar o valor `true` na chamada do método
 	`mostraTela`.
-  Observe que agora que temos o seguro de vida funcionando, a tela de relatório já
+  Observe: agora que temos o seguro de vida funcionando, a tela de relatório já
 	consegue imprimir o valor dos impostos individuais de cada tipo de _Tributavel_.
 
-1. No método `calculaImpostos` precisamos buscar os valores de impostos de cada `Tributavel` e
-	somá-los. Para saber a quantidade de tributáveis, a classe `Evento` possui um
-	método chamado `getTamanhoDaLista` que deve receber o nome da lista desejada, no
+1. No método `calculaImpostos`, precisamos buscar os valores de impostos de cada `Tributavel` e
+	somá-los. Para saber a quantidade de tributáveis, a classe `Evento` tem um
+	método chamado `getTamanhoDaLista`, que deve receber o nome da lista desejada, no
 	caso "listaTributaveis". Existe também um outro método que retorna um `Tributavel` de uma
-	determinada posição de uma lista, onde precisamos passar o nome da lista e o índice
-	do elemento. Precisamos percorrer a lista inteira, passando por cada posição então
-	utilizaremos um `for` para isto.
+	determinada posição de uma lista, em que precisamos passar o nome da lista e o índice
+	do elemento. Devemos percorrer a lista inteira passando por cada posição. Logo,
+	utilizaremos um `for` para isso.
 
 	``` java
   	package br.com.caelum.contas;
@@ -1487,21 +1505,20 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	Repare que, de dentro do `ManipuladorDeTributaveis`, você não pode acessar
 	o método `getSaldo`, por exemplo, pois você não tem a garantia de que o
-	`Tributavel` que vai ser passado como argumento tem esse método. A única
-	certeza que você tem é de que esse objeto tem os métodos declarados na
+	`Tributavel` o qual será passado como argumento tem esse método. Você tem a certeza de que esse objeto tem os métodos declarados na
 	interface `Tributavel`.
 
 	É interessante enxergar que as interfaces (como aqui, no caso, `Tributavel`)
 	costumam ligar classes muito distintas, unindo-as por uma característica que elas
-	tem em comum. No nosso exemplo, `SeguroDeVida` e `ContaCorrente` são
-	entidades completamente distintas, porém ambas possuem a característica de serem
+	têm em comum. No nosso exemplo, `SeguroDeVida` e `ContaCorrente` são
+	entidades completamente distintas, porém ambas têm a característica de serem
 	tributáveis.
 
 	Se amanhã o governo começar a tributar até mesmo `PlanoDeCapitalizacao`, basta
-	que essa classe implemente a interface `Tributavel`! Repare no grau de
+	que essa classe implemente a interface `Tributavel`. Repare no grau de
 	desacoplamento que temos: a classe `GerenciadorDeImpostoDeRenda` nem imagina
-	que vai trabalhar como  `PlanoDeCapitalizacao`. Para ela, o único fato que
-	importa é que o objeto respeite o contrato de um tributável, isso é, a interface
+	que trabalhará como  `PlanoDeCapitalizacao`. Para ela, o
+	importante é que o objeto respeite o contrato de um tributável, isto é, a interface
 	`Tributavel`. Novamente: programe voltado à interface, não à implementação.
 
 	Quais os benefícios de manter o código com baixo acoplamento?
@@ -1516,10 +1533,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	Por um lado, isso pode parecer negativo e, por vezes, teremos um trecho de
 	código repetido. Mas a certeza de que, ao mudar uma classe, não afetaremos as
-	outras, é muito confortável. Para usar interfaces **e** evitar a repetição,
+	outras é muito confortável. Para usar interfaces **e** evitar a repetição,
 	procure pelo conceito de **composição**.
 
-1. (opcional) Crie a classe `TestaTributavel` com um método `main` para testar
+1. (Opcional) Crie a classe `TestaTributavel` com um método `main` para testar
 	o nosso exemplo:
 
 	``` java
@@ -1537,27 +1554,42 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Tente chamar o método `getSaldo` através da referência `t`, o que ocorre?
+	Tente chamar o método `getSaldo` por meio da referência `t`. O que ocorre?
 	Por quê?
 	
 	A linha em que atribuímos `cc` a um `Tributavel` é apenas para você enxergar
 	que é possível fazê-lo. Nesse nosso caso, isso não tem uma utilidade. Essa
 	possibilidade foi útil no exercício anterior.
 
-	
+	<!--@note
+	`Tributavel t = cc` gera muitas dúvidas na cabeça do pessoal. Normal!
+	Eles só precisam saber que isso pode ser feito, e não que tem alguma
+	utilidade!
 
-	*Resposta*: Apesar de ser um objeto do tipo `ContaCorrente`, ao chamarmos ele de
-	`Tributavel`, apenas garantimos para o compilador que aquele objeto tem
-	os métodos que **todo** `Tributavel` tem. E como o compilador do Java só
+	Isso só vai ser útil e ficará claro quando eles virem collections
+	`List x = new ArrayList()`
+	-->
+
+	*Resposta*: apesar de ser um objeto do tipo `ContaCorrente`, ao chamarmos ele de
+	`Tributavel`, apenas garantimos ao compilador que aquele objeto dispõe
+	dos métodos que **todo** `Tributavel` tem. E como o compilador do Java só
 	trabalha com certezas, ele só permite chamar os métodos definidos no tipo
 	da variável.
 	
 ## Exercícios opcionais 11.6
-**Atenção**: caso você faça esse exercício, faça isso num projeto à parte
-`conta-interface` já que usaremos a `Conta` como classe em exercícios futuros.
+**Atenção**: caso você faça esse exercício, faça-o em um projeto à parte
+`conta-interface`, já que usaremos a `Conta` como classe em exercícios futuros.
 1. (Opcional) Transforme a classe `Conta` em uma interface.
 
-	
+	<!--@note
+	Hora para um bom exemplo de refactoring!
+
+	Aqui você pode, depois, mostrar aos alunos o Extract Interface:
+	delete sua classe `Conta`, tire os extends e overrides de `ContaCorrente`
+	e `ContaPoupanca`, e aplique Extract Interface em `ContaCorrente`!
+
+	Muito melhor que um simples rename!
+	-->
 
 	``` java
 	public interface Conta {
@@ -1582,9 +1614,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	Algum código vai ter de ser copiado e colado? Isso é tão ruim?
+	Algum código terá de ser copiado e colado? Isso é tão ruim?
 		
-	Ao fim desse exercício você terá os seguintes códigos:
+	Ao fim desse exercício, você terá os seguintes códigos:
 
 	``` java
 	public interface Conta {
@@ -1655,8 +1687,8 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 	
-1. (Opcional) Às vezes, é interessante criarmos uma interface que herda de outras
-	interfaces: essas, são chamadas subinterfaces. Essas, nada mais são do que um
+1. (Opcional) Às vezes, é interessante criarmos uma interface que herde de outras
+	interfaces: aquela é chamada subinterfaces; estas nada mais são do que um
 	agrupamento de obrigações para a classe que a implementar.
 
 	``` java
@@ -1664,7 +1696,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Dessa maneira, quem for implementar essa nova interface precisa implementar todos
+	Dessa maneira, quem for implementar essa nova interface precisa executar todos
 	os métodos herdados das suas superinterfaces (e talvez ainda novos métodos
 	declarados dentro dela):
 
@@ -1680,21 +1712,21 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Repare que o código pode parecer estranho, pois a interface não declara método
 	algum, só herda os métodos abstratos declarados nas outras interfaces.
 
-	Ao mesmo tempo que uma interface pode herdar de mais de uma outra interface,
-	classes só podem possuir uma classe mãe (herança simples).
+	Ao mesmo tempo que uma interface pode herdar de mais de uma outra,
+	classes só podem ter uma classe mãe (herança simples).
 	
 	*Resposta*:
 
-	Podemos criar a interface ContaTributavel, que é uma `Conta` e também é
+	Podemos criar a interface `ContaTributavel`, que é uma `Conta` e também um
 	`Tributavel`. Como as definições dos métodos já estão nas duas interfaces
-	originais, a declaração da nova fica, simplesmente:
+	originais, a declaração da nova fica simplesmente:
 
 	``` java
 		public interface ContaTributavel extends Conta, Tributavel {
 		}
 	```
 
-	E, então, alteramos também a ContaCorrente, que passa a implementar apenas
+	E então, alteramos também a ContaCorrente, que passa a implementar apenas
 	essa nova interface:
 
 	``` java
@@ -1704,9 +1736,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-## Exercícios 12.11: Exceções
-1. Na classe `Conta`, modifique o método `deposita(double x)`: Ele deve lançar uma exception
-	chamada `IllegalArgumentException`, que já faz parte da biblioteca do Java, sempre que o valor
+## Exercícios 12.11: exceções
+1. Na classe `Conta`, modifique o método `deposita(double x)`: ele deve lançar uma exception
+	chamada `IllegalArgumentException`, a qual já faz parte da biblioteca do Java, sempre que o valor
 	passado como argumento for inválido (por exemplo, quando for negativo).
 
 	``` java
@@ -1722,11 +1754,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	O que acontece?
 
 	*Resposta:*
-	Uma `IllegalArgumentException` é lançada quando tentamos depositar um valor inválido, isto
-	é, o próprio método `deposita` se defende de alguém que queira fazer algo errado.
+	Uma `IllegalArgumentException` é lançada quando tentamos depositar um valor inválido, ou seja, o próprio método `deposita` se defende de alguém que queira fazer algo errado.
 	
-1. Ao lançar a `IllegalArgumentException`, passe via construtor uma mensagem a ser exibida. Lembre
-	que a `String` recebida como parâmetro é acessível depois via o método `getMessage()` herdado
+1. Ao lançar a `IllegalArgumentException`, passe via construtor uma mensagem a ser exibida. Lembre-se de
+	que a `String` recebida como parâmetro é acessível depois por intermédio do método `getMessage()`, herdado
 	por todas as `Exceptions`.
 
 	``` java
@@ -1743,9 +1774,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	Rode a aplicação novamente e veja que agora a mensagem aparece na tela.
 1. Faça o mesmo para o método `saca` da classe `ContaCorrente`, afinal o cliente
 	também não pode sacar um valor negativo!
-1. Vamos validar também que o cliente não pode sacar um valor maior
+1. Validaremos também a situação em que o cliente não pode sacar um valor maior
 	do que o saldo disponível em conta.
-	Crie sua própria `Exception`, `SaldoInsuficienteException`. Para isso, você precisa criar uma
+	Faça sua própria `Exception`, `SaldoInsuficienteException`. Para isso, você precisa criar uma
 	classe com esse nome que seja filha de `RuntimeException`.
 
 	``` java
@@ -1754,7 +1785,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	No método `saca` da classe `ContaCorrente` vamos utilizar esta nova `Exception`:
+	No método `saca` da classe `ContaCorrente`, utilizaremos esta nova `Exception`:
 	``` java
 	@Override
 	public void saca(double valor) {
@@ -1768,19 +1799,26 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	**Atenção:** nem sempre é interessante criarmos um novo tipo de exception! Depende do caso.
-	Neste aqui, seria melhor ainda utilizarmos `IllegalArgumentException`. A boa prática diz que
-	devemos preferir usar as já existentes do Java sempre que possível.
-1. (opcional) Coloque um construtor na classe `SaldoInsuficienteException` que receba
-	o valor	que ele tentou sacar (isto é, ele vai receber um `double valor`).
+	**Atenção:** nem sempre é interessante criarmos um novo tipo de exception, depende do caso.
+	Neste aqui, seria melhor ainda utilizarmos `IllegalArgumentException`. É boa prática preferir usar as já existentes do Java sempre que possível.
+1. (Opcional) Coloque um construtor na classe `SaldoInsuficienteException` que receba
+	o valor	o qual ele tentou sacar (isto é, ele receberá um `double valor`).
 
-	Quando estendemos uma classe, não herdamos seus construtores, mas podemos acessá-los através
-	da palavra chave `super` de dentro de um construtor. As exceções do Java possuem uma série
-	de construtores úteis para poder populá-las já com uma mensagem de erro. Então vamos criar
-	um construtor em `SaldoInsuficienteException` que delegue para o construtor de sua mãe. Essa
-	vai guardar essa mensagem para poder mostrá-la ao ser invocado o método `getMessage`:
+	Quando estendemos uma classe, não herdamos seus construtores, mas podemos acessá-los por meio
+	da palavra-chave `super` de dentro de um construtor. As exceções do Java têm uma série
+	de construtores úteis que podem populá-las já com uma mensagem de erro. Então, criaremos
+	um construtor em `SaldoInsuficienteException` que delegue ao construtor de sua mãe; esta
+	guardará essa mensagem para poder mostrá-la quando o método `getMessage` for invocado:
 
-	
+	<!--@note
+	Durante esse exercício, é bom uma explicaçãozinha na lousa a respeito desse recurso.
+	Vale a pena dar a motivação explicando por que construtores não são herdados (se o fossem,
+	você poderia construir um objeto do tipo filho passando menos informações
+	que aquelas realmente necessárias para ela, já que a classe pai não precisava dela, por exemplo).
+
+	Também é bom explicar que isso é bem comum, e talvez falar do menu source, generate
+	constructor using fields (ou Control 3  + gcuf).
+	-->
 
 	``` java
 		public class SaldoInsuficienteException extends RuntimeException {
@@ -1791,7 +1829,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	Dessa maneira, na hora de dar o `throw new SaldoInsuficienteException` você vai precisar passar
+	Dessa maneira, na hora de dar o `throw new SaldoInsuficienteException`, você precisará passar
 		esse valor como argumento:
 
 	```java
@@ -1801,8 +1839,8 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	**Atenção:** você pode se aproveitar do Eclipse para isso: comece já passando o `valor` como
-		argumento para o construtor da exception e o Eclipse vai reclamar que não existe tal construtor.
-		O quick fix (`ctrl + 1`) vai sugerir que ele seja construindo, poupando-lhe tempo!
+		argumento ao construtor da exception, e o Eclipse reclamará que não existe tal construtor.
+		O _quickfix_ (**ctrl + 1**) recomendará que ele seja construido, poupando-lhe tempo!
 
 	E agora, como fica o método `saca` da classe `ContaCorrente`?
 	
@@ -1820,15 +1858,15 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-1. (opcional) Declare a classe `SaldoInsuficienteException` como filha direta de `Exception` em
-	vez de `RuntimeException`. Ela passa a ser **checked**. O que isso resulta?
+1. (Opcional) Declare a classe `SaldoInsuficienteException` como filha direta de `Exception` em
+	vez de `RuntimeException`. Ela passa a ser **checked**. Em que isso resulta?
 
-	Você vai precisar avisar que o seu método `saca()` `throws SaldoInsuficienteException`,
-	pois ela é uma _checked_ exception. Além disso, quem chama esse método vai precisar tomar uma
-	decisão entre `try-catch` ou `throws`. Faça uso do quick fix do Eclipse novamente!
+	Você precisará avisar que o seu método `saca()` `throws SaldoInsuficienteException`,
+	pois ela é uma _checked_ exception. Além disso, quem chama esse método tomará uma
+	decisão entre `try-catch` ou `throws`. Faça uso do quickfix do Eclipse novamente!
 
 	Depois, retorne a exception para _unchecked_, isto é, para ser filha de `RuntimeException`,
-	pois utilizaremos ela assim em exercícios dos capítulos posteriores.
+	pois a utilizaremos assim em exercícios dos capítulos posteriores.
 	
 	*Resposta*:
 	A mudança na classe `SaldoInsuficienteException` é apenas na classe mãe:
@@ -1855,11 +1893,11 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 ## Desafios 12.12
-1. O que acontece se acabar a memória da java virtual machine?
+1. O que acontece se acabar a memória da Java Virtual Machine?
 
 	*Resposta:*
-	O que acontece é um `java.lang.OutOfMemoryError`, que **é um** `Error` em vez de uma
-	`Exception`. http://docs.oracle.com/javase/7/docs/api/java/lang/OutOfMemoryError.html
+	O que sucede é um `java.lang.OutOfMemoryError`, que **é um** `Error` em vez de uma
+	`Exception` (http://docs.oracle.com/javase/7/docs/api/java/lang/OutOfMemoryError.html).
 
 	O código para fazer esse erro é:
 
@@ -1872,7 +1910,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 ## Exercícios 13.5: java.lang.Object
-1. Como verificar se a classe `Throwable` que é a superclasse de `Exception` também reescreve o método `toString`?
+1. Como verificar se a classe `Throwable`, que é a superclasse de `Exception`, também reescreve o método `toString`?
 
 	*Resposta:*
 	A maioria das classes do Java que são muito utilizadas terão seus métodos
@@ -1880,11 +1918,11 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 
 	Há algumas formas de verificar a sobrescrita de um método:
 
-	* Olhar o JavaDoc: se o método estiver sobrescrito, seu novo
-	comportamento estará documentado alí;
+	* Olhar o Javadoc: se o método estiver sobrescrito, seu novo
+	comportamento estará documentado ali;
 	* Abrir a classe e olhar: no Eclipse, se você tiver adicionado
 	o _src.zip_ nas suas configurações, pode abrir a classe com
-	**ctrl + shift + T** e olhar se o método foi sobrescrito;
+	**Ctrl + shift + T** e olhar se o método foi sobrescrito;
 	* Bom e velho Syso: outra possibilidade é criar objetos iguais, comparar
 	com o `equals` e ver se funciona. Os outros métodos são, no entanto,
 	bem mais eficientes.
@@ -1900,9 +1938,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	saida.println("ola");
 	```
 
-	A variável `saida` precisa ser declarada de que tipo? É isso
-	que você precisa descobrir. Se você digitar esse código no Eclipse, ele
-	vai te sugerir um quickfix e declarará a variável para você.
+	De que tipo a variável `saida` precisa ser declarada? É isso
+	que você precisa descobrir. Se digitar esse código no Eclipse, ele
+	irá sugerir-lhe um quickfix e declarará a variável por você.
 
 	Estudaremos essa classe em um capítulo futuro.
 
@@ -1923,9 +1961,9 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	
 1. Reescreva o método `toString` da sua classe `Conta` fazendo com que uma
 	mensagem mais explicativa seja devolvida. Lembre-se de aproveitar dos recursos
-	do Eclipse para isto: digitando apenas o começo do nome do método a ser reescrito
-	e pressionando **ctrl + espaço**, ele vai sugerir reescrever o método, poupando
-	o trabalho de escrever a assinatura do método e cometer algum engano.
+	do Eclipse para isso: digitando apenas o começo do nome do método a ser reescrito
+	e pressionando **Ctrl + espaço**. Ele recomendará reescrever o método e, assim, irá poupar-lhe
+	do trabalho de escrever a assinatura do método e cometer algum engano.
 
 	``` java
 	public abstract class Conta {
@@ -1942,7 +1980,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	Rode a aplicação novamente, cadastre duas contas e verifique novamente a caixa de seleção da transferência. O que aconteceu?
+	Rode a aplicação novamente, cadastre duas contas e verifique, de novo, a caixa de seleção da transferência. O que aconteceu?
 
 	*Resposta:*
 	Dessa vez, o resultado foi mais agradável. Deve ter aparecido algo como:
@@ -1970,16 +2008,26 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 
-	
+	<!--@note
+	Bom momento para falar do instanceof, já que pelo contrato do Object.equals,
+	você deve retornar false caso os tipos não sejam ok.
 
-	Você pode usar o **ctrl + espaço** do Eclipse para escrever o esqueleto do
-		método `equals`, basta digitar dentro da classe `equ` e pressionar
-		**ctrl + espaço**.
+	Se falar do instanceof, tome cuidado para não animar os alunos a fazerem switches
+	com base no tipo do objeto, e acabar virando programação procedural.
+
+	Alternativa: fazer o casting com try/catch e return false dentro do catch
+	(embora, dessa forma, aceitemos polimorfismo e tipos diferentes, mas filhos sejam
+	aceitos).
+	-->
+
+	Você pode usar o **Ctrl + espaço** do Eclipse para escrever o esqueleto do
+	método `equals`, basta digitar dentro da classe `equ` e pressionar
+	**Ctrl + espaço**.
 
 	Rode a aplicação e tente adicionar duas contas com o mesmo número e agência. O que acontece?
 
 ## Exercícios 13.7: java.lang.String
-1. Queremos que as contas apresentadas na caixa de seleção da transferência apareçam com o nome do titular em maiúsculas. Para fazer isso vamos alterar o método `toString` da classe `Conta`. Utilize o método `toUpperCase` da `String` para isso.
+1. Queremos que as contas apresentadas na caixa de seleção da transferência apareçam com o nome do titular em letras maiúsculas. Com o objetivo de fazer isso, alteraremos o método `toString` da classe `Conta`. Utilizemos o método `toUpperCase` da `String` para tal.
 
 	*Resposta:*
 	``` java
@@ -1990,12 +2038,12 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	    }
 	```
 	
-1. Após alterarmos o método `toString`, aconteceu alguma mudança com o nome do titular que é apresentado na lista de contas? Por que?
+1. Após alterarmos o método `toString`, aconteceu alguma mudança com o nome do titular que é apresentado na lista de contas? Por quê?
 
 	*Resposta:*
-	Não mudou nada pois os métodos da `String` sempre retornam uma nova `String` mantendo o titular da conta inalterado.
+	Não mudou nada, pois os métodos da `String` sempre retornam uma nova `String`, mantendo o titular da conta inalterado.
 	
-1. Teste os exemplos desse capítulo, para ver que uma `String` é imutável.
+1. Teste os exemplos desse capítulo para ver que uma `String` é imutável.
 	
 	*Resposta:*
 	Exemplos de teste:
@@ -2025,12 +2073,12 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	}
 	```
 	
-1. Como fazer para saber se uma `String` se encontra dentro de outra?
-	E para tirar os espaços em branco das pontas de uma `String`? E para saber
-	se uma `String` está vazia? E para saber quantos caracteres
+1. Como sabemos se uma `String` se encontra dentro de outra?
+	Como tiramos os espaços em branco das pontas de uma `String`? Como sabemos
+	se uma `String` está vazia e quantos caracteres
 	tem uma `String`?
 
-	Tome como hábito sempre pesquisar o JavaDoc! Conhecer a API, aos
+	Tome como hábito sempre pesquisar o Javadoc! Conhecer a API, aos
 	poucos, é fundamental para que você não precise reescrever a roda!
 	
 	Abra a página da documentação da classe String da versão do Java que você
@@ -2039,15 +2087,15 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	*Resposta:*
 	Os exemplos dessa questão são:
 
-	* `contains`: devolve true se a `String` contem a sequência de
+	* `contains`: devolve `true` se a `String` contém a sequência de
 	caracteres passada;
 	* `trim`: devolve uma nova `String` sem caracteres brancos do início
 	e do fim;
-	* `isEmpty`: devolve true se a `String` está vazia. Surgiu no Java 6;
+	* `isEmpty`: devolve `true` se a `String` está vazia. Surgiu no Java 6;
 	* `length`: devolve a quantidade de caracteres da `String`.
 	
-1. (opcional) Escreva um método que usa os métodos `charAt` e `length` de uma
-	`String` para imprimir a mesma caractere a caractere, com cada caractere em
+1. (Opcional) Escreva um método que usa os métodos `charAt` e `length` de uma
+	`String` para imprimi-la caractere a caractere, com cada um em
 	uma linha diferente.
 
 	*Resposta:*
@@ -2059,11 +2107,14 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 	
-1. (opcional) Reescreva o método do exercício anterior, mas modificando ele para que
-	imprima a `String` de trás para a frente e em uma linha só. Teste-a para
+1. (Opcional) Reescreva o método do exercício anterior, mas modificando-o para que
+	imprima a `String` de trás para a frente e em uma linha só. Teste-o para
 	_"Socorram-me, subi no ônibus em Marrocos"_ e _"anotaram a data da maratona"_.
 
-	
+	<!--@note
+	Sempre foi meu sonho usar a frase _"Socorram-me, subi no ônibus em Marrocos"_
+	com fins profissionais. Estou realizado. Paulo Silveira.
+	-->
 
 	*Resposta:*
 	``` java
@@ -2075,10 +2126,10 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-1. (opcional) Pesquise a classe `StringBuilder` (ou StringBuffer no Java 1.4).
+1. (Opcional) Pesquise a classe `StringBuilder` (ou StringBuffer no Java 1.4).
 	Ela é mutável. Por que usá-la em vez da `String`? Quando usá-la?
 
-	Como você poderia reescrever o método de escrever a `String` de trás para a
+	Como você poderia reescrever o método que imprime a `String` de trás para a
 	frente usando um `StringBuilder`?
 	*Resposta*:
 	``` java
@@ -2089,13 +2140,16 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-	
+	<!--@note
+	Essas últimas questões são para acostumar o aluno a usar o Javadoc e conhecer mais
+	a API da String, que será fundamental no seu dia a dia.
+	-->
 
 ## Desafio 13.8
-1. Converta uma `String` para um número sem usar as bibliotecas do java que já
-	fazem isso. Isso é, uma `String x = "762"` deve gerar um `int i = 762`.
+1. Converta uma `String` para um número sem usar as bibliotecas do Java que já o
+	fazem. Isto é, uma `String x = "762"` deve gerar um `int i = 762`.
 
-	Para ajudar, saiba que um `char` pode ser "transformado" em `int` com o mesmo
+	Para ajudar, saiba que um `char` pode ser transformado em `int` com o mesmo
 	valor numérico fazendo:
 
 	``` java
@@ -2104,7 +2158,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 	```
 
 	Aqui estamos nos aproveitando do conhecimento da tabela unicode:
-	os números de 0  a 9 estão em sequência! Você poderia usar
+	os números de 0 a 9 estão em sequência! Você poderia usar
 	o método estático `Character.getNumericValue(char)` em vez disso.
 
 	*Resposta:*
@@ -2131,11 +2185,11 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		}
 	```
 
-## Exercícios 14.5: Arrays
+## Exercícios 14.5: arrays
 
-Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que não interferem em nosso projeto.
+Para consolidarmos os conceitos sobre arrays, faremos alguns exercícios que não interferem em nosso projeto.
 
-1. Crie uma classe `TestaArrays` e no método `main` crie um array de contas de tamanho 10. Em seguida, faça um laço para criar 10 contas com saldos distintos e colocá-las no array. Por exemplo, você pode utilizar o índice do laço e multiplicá-lo por 100 para gerar o saldo de cada conta:
+1. Crie uma classe `TestaArrays` e, no método `main`, crie uma array de contas de tamanho 10. Em seguida, faça um laço para criar dez contas com saldos distintos e colocá-las na array. Por exemplo, você pode utilizar o índice do laço e multiplicá-lo por cem para gerar o saldo de cada conta:
 
   ``` java
     Conta[] contas = new Conta[10];
@@ -2146,7 +2200,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
       // escreva o código para guardar a conta na posição i do array
     }
   ```
-	*A seguir a resposta completa para este item:*
+	*A seguir a resposta completa para esse item:*  
 
 	```java
 	public class TestaArrays {
@@ -2162,7 +2216,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
 	}
 	```
 
-1. Ainda na classe `TestaArrays`, faça um outro laço para calcular e imprimir a média dos saldos de todas as contas do array.
+1. Ainda na classe `TestaArrays`, faça um outro laço para calcular e imprimir a média dos saldos de todas as contas da array.
   
 	*Resposta:*
 	``` java
@@ -2186,17 +2240,17 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
 	}
 	```
   
-1. (opcional) Crie uma classe ```TestaSplit``` que reescreva uma frase com as palavras na ordem invertida. _"Socorram-me, subi no ônibus em Marrocos"_ deve retornar _"Marrocos em ônibus no subi Socorram-me,"_. Utilize o método `split` da
-    `String` para te auxiliar. Esse método divide uma `String` de acordo com o separador especificado e devolve as partes em um array de `String`, por exemplo:
+1. (Opcional) Crie uma classe `TestaSplit` que reescreva uma frase com as palavras na ordem invertida. _"Socorram-me, subi no ônibus em Marrocos"_ deve retornar _"Marrocos em ônibus no subi Socorram-me,"_. Utilize o método `split` da
+    `String` para auxiliá-lo. Esse método divide uma `String` de acordo com o separador especificado e devolve as partes em uma array de `String`, por exemplo:
 
     ``` java
         String frase = "Uma mensagem qualquer";
         String[] palavras = frase.split(" ");
 
-        // Agora só basta percorrer o array na ordem inversa imprimindo as palavras
+        // Agora só basta percorrer a array na ordem inversa, imprimindo as palavras.
     ```
 
-	*A seguir a resposta completa para este item:*
+	*A seguir a resposta completa para esse item:*
     ``` java
     public void invertePalavrasDaFrase(String texto) {
         String[] palavras = texto.split(" ");
@@ -2207,8 +2261,8 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     }
     ```
 
-1. (opcional) Crie uma classe `Banco` dentro do pacote `br.com.caelum.contas.modelo`
-	O `Banco` deve ter um nome e um número (obrigatoriamente) e uma referência a uma
+1. (Opcional) Crie uma classe `Banco` dentro do pacote `br.com.caelum.contas.modelo`
+	O `Banco` deve ter um nome, um número (obrigatoriamente) e uma referência a uma
 	array de `Conta` de tamanho 10, além de outros atributos que você julgar necessário.
 
     *Resposta:*
@@ -2218,7 +2272,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
       private int numero;
       private Conta[] contas;
 
-      // outros atributos que você achar necessário
+      // Outros atributos que você achar necessário.
 
       public Banco(String nome, int numero) {
           this.nome = nome;
@@ -2226,16 +2280,16 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
           this.contas = new ContaCorrente[10];
       }
 
-      // getters para nome e número, não colocar os setters pois já recebemos no
+      // Getters para nome e número. Não colocar os setters, pois já recebemos no
       // construtor
   	}
 	```
-1. (opcional) A classe `Banco` deve ter um método `adiciona`, que recebe uma referência a `Conta` como argumento e guarda essa conta.
+1. (Opcional) A classe `Banco` deve ter um método `adiciona`, que recebe uma referência à `Conta` como argumento e guarda essa conta.
 
     *Resposta:*
 	Você deve inserir a `Conta` em uma posição da array que esteja livre.
 	Existem várias maneiras para você fazer isso: guardar um contador para indicar
-	qual a próxima posição vazia ou procurar por uma posição vazia toda vez. O que
+	qual a próxima posição vazia, ou procurar por uma posição vazia toda vez. O que
 	seria mais interessante?
 
 	Se quiser verificar qual a primeira posição vazia (nula) e adicionar nela, poderia
@@ -2250,7 +2304,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
   	}
 	```
 
-	É importante reparar que o método adiciona não recebe titular, agencia, saldo, etc. Essa seria uma maneira nem um pouco estruturada, muito menos orientada a objetos de se trabalhar. Você antes cria uma `Conta` e já passa a referência dela, que dentro do objeto possui titular, saldo, etc.
+	É importante reparar que o método adiciona não recebe titular, agência, saldo, etc. Essa não seria uma maneira estruturada nem orientada a objetos de se trabalhar. Você, primeiramente, cria uma `Conta` e já passa a referência dela, que dentro do objeto tem titular, saldo, etc.
 
 	*Resposta:*
 	```java
@@ -2264,7 +2318,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     }
 	```
 
-1. (opcional) Crie uma classe `TestaBanco` que possuirá um método `main`. Dentro dele crie
+1. (Opcional) Crie uma classe `TestaBanco` que terá um método `main`. Dentro dele, crie
 	algumas instâncias de `Conta` e passe para o banco pelo método
 	`adiciona`.
     
@@ -2293,7 +2347,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     banco.adiciona(c2);
 	```
 
-    Você pode criar essas contas dentro de um loop e dar a cada um deles valores diferentes de depósitos:
+    Você pode criar essas contas dentro de um loop e dar a cada uma delas valores diferentes de depósitos:
 
     ``` java
     for (int i = 0; i < 5; i++) {
@@ -2308,11 +2362,11 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
 
     Repare que temos de instanciar `ContaCorrente` dentro do laço. Se a instanciação
 	de `ContaCorrente` ficasse acima do laço, estaríamos adicionado cinco vezes a
-	**mesma** instância de `ContaCorrente` neste `Banco` e apenas mudando seu
-	depósito a cada iteração, que nesse caso não é o efeito desejado.
+	**mesma** instância de `ContaCorrente` nesse `Banco` e apenas mudando seu
+	depósito a cada iteração, que, neste caso, não é o efeito desejado.
 
     **Opcional**: o método `adiciona` pode gerar uma mensagem de erro indicando quando
-	o array já está cheio.
+	a array já está cheia.
 
     ``` java
     public class TestaBanco {
@@ -2337,7 +2391,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     }
     ```
 
-1. (opcional) Percorra o atributo `contas` da sua instância de `Banco` e imprima os
+1. (Opcional) Percorra o atributo `contas` da sua instância de `Banco` e imprima os
 	dados de todas as suas contas. Para fazer isso, você pode criar um método
 	chamado `mostraContas` dentro da classe `Banco`:
 
@@ -2345,16 +2399,16 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     public void mostraContas() {
         for (int i = 0; i < this.contas.length; i++) {
             System.out.println("Conta na posição " + i);
-            // preencher para mostrar outras informacoes da conta
+            // Preencher para mostrar outras informações da conta.
         }
     }
 	```
 
-    Cuidado ao preencher esse método: alguns índices do seu array podem não conter
-    referência para uma `Conta` construída, isto é, ainda se referirem para
-    `null`. Se preferir, use o `for` novo do java 5.0.
+    Cuidado ao preencher esse método: alguns índices da sua array podem não conter
+    referência a uma `Conta` construída, isto é, ainda se referirem a
+    `null`. Se preferir, use o `for` novo do Java 5.0.
 
-    Aí, através do seu `main`, depois de adicionar algumas contas, basta fazer:
+    Então, por meio do seu `main`, depois de adicionar algumas contas, basta fazer:
 
     ``` java
         banco.mostraContas();
@@ -2372,7 +2426,7 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
         }
     ```
 
-    E, também, não esqueça de alterar a classe `TestaBanco`:
+    E também altere a classe `TestaBanco`:
 
     ``` java
         public class TestaBanco {
@@ -2385,8 +2439,8 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
         }
     ```
 	
-1. (opcional) Em vez de mostrar apenas o salário de cada funcionário, você pode
-	usar o método `toString()` de cada `Conta` do seu array.
+1. (Opcional) Em vez de mostrar apenas o salário de cada funcionário, você pode
+	usar o método `toString()` de cada `Conta` da sua array.
 	
     *Resposta:*
 	``` java
@@ -2401,8 +2455,8 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
     }
 	```
 	
-1. (opcional) Crie um método para verificar se uma determinada `Conta` se
-	encontra ou não como conta deste banco:
+1. (Opcional) Crie um método para verificar se uma determinada `Conta` se
+	encontra ou não como conta desse banco:
 
 	``` java
   	public boolean contem(Conta conta) {
@@ -2410,8 +2464,8 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
   	}
 	```
 
-    Você vai precisar fazer um `for` em seu array e verificar se a conta
-    passada como argumento se encontra dentro do array. Evite ao máximo usar números
+    Você precisará fazer um `for` em sua array e verificar se a conta
+    passada como argumento se encontra dentro da array. Evite ao máximo usar números
     hard-coded, isto é, use o `.length`.
         
     ``` java
@@ -2425,10 +2479,10 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
         }
     ```
 	
-3. (opcional) Caso o array já esteja cheio no momento de adicionar uma outra conta, crie um array
-    novo com uma capacidade maior e copie os valores do array atual. Isto é, vamos fazer
-    a realocação dos elementos do array já que java não tem isso: um array nasce e morre
-    com o mesmo length.
+1. (Opcional) Caso a array já esteja cheia no momento de adicionar uma outra conta, crie uma
+    nova com uma capacidade maior e copie os valores da array atual. Isto é, faremos
+    a realocação dos elementos da array, já que Java não tem isso: uma array nasce e morre
+    com o mesmo length. 
 
     **Usando o this para passar argumento**
 
@@ -2459,15 +2513,20 @@ Para consolidarmos os conceitos sobre arrays, vamos fazer alguns exercícios que
                 this.contas = maior;
             }
 
-            // outros métodos
+            // Outros métodos
         }
     ```
 
-## Exercícios 15.6: Ordenação
+## Exercícios 15.6: ordenação
 
-Vamos ordenar o campo de **destino** da tela de detalhes da conta para que as contas
-apareçam em ordem alfabética de titular.
-
+ Ordenaremos o campo de **destino** da tela de detalhes da conta para que as contas
+apareçam em ordem alfabética de titulares.
+<!--@note
+É muito interessante eles aprenderem sobre a API, mas, mais ainda, é que eles
+consigam enxergar que todos os conceitos aprendidos até agora de OO serão
+aplicados nesse exercício: em especial, muito o uso de interfaces e como
+isso desacopla código.
+-->
 1. Faça sua classe `Conta` implementar a interface
 	`Comparable<Conta>`. Utilize o critério de ordenar pelo titular da conta.
 
@@ -2490,8 +2549,8 @@ apareçam em ordem alfabética de titular.
         }
     }
     ```
-1. Queremos que as contas apareçam no campo de destino ordenadas pelo titular. Vamos
-	então criar o método `ordenaLista` na classe `ManipuladorDeContas`.
+1. Queremos que as contas apareçam no campo de destino ordenadas pelo titular.
+	Então, criemos o método `ordenaLista` na classe `ManipuladorDeContas`.
 	Use o `Collections.sort()` para ordenar a lista recuperada do `Evento`:
 
     *Resposta:*
@@ -2507,32 +2566,32 @@ apareçam em ordem alfabética de titular.
     }
 	```
 
-	Rode a aplicação, adicione algumas contas e verifique se as contas aparecem ordenadas
-	pelo nome do titular, **no campo destino**, na parte da transferência. Para
-	ver a ordenação é necessário acessar os detalhes de uma conta.
+	Rode a aplicação, adicione algumas contas e verifique se as elas aparecem ordenadas
+	pelo nome do titular **no campo destino**, na parte da transferência. Para
+	ver a ordenação, é necessário acessar os detalhes de uma conta.
 
 	**Atenção especial**: repare que escrevemos um método `compareTo` em nossa
-	classe e nosso código **nunca** o invoca!! Isto é muito comum. Reescrevemos
-	(ou implementamos) um método e quem o invocará será um outro conjunto de classes
+	classe, e nosso código **nunca** o invoca!! Isso é muito comum. Reescrevemos
+	(ou implementamos) um método, e quem o invocará será um outro conjunto de classes
 	(nesse caso, quem está chamando o `compareTo` é o `Collections.sort`, que o
 	usa como base para o algoritmo de ordenação). Isso cria um sistema extremamente
 	coeso e, ao mesmo tempo, com baixo acoplamento: a classe `Collections` nunca
 	imaginou que ordenaria objetos do tipo `Conta`, mas já que
 	eles são `Comparable`, o seu método `sort` está satisfeito.
 1. O que teria acontecido se a classe `Conta` não implementasse
-	`Comparable<Conta>` mas tivesse o método `compareTo`?
+	`Comparable<Conta>`, mas tivesse o método `compareTo`?
 
 	Faça um teste: remova temporariamente a sentença
-	`implements Comparable<Conta>`, não remova o método `compareTo` e
-	veja o que acontece. Basta ter o método, sem assinar a interface?
+	`implements Comparable<Conta>`. Não retire o método `compareTo` e
+	veja o que acontece. Basta ter o método sem assinar a interface?
 
     *Resposta:*
-	Não basta! A interface é como um contrato e sem "assiná-lo" a existência do
-	método é só uma coincidência e não dá a certeza para a JVM de que a intenção
+	Não basta! A interface é como um contrato e, sem assiná-lo, a existência do
+	método é só uma coincidência e não dá a certeza à JVM de que a intenção
 	era mesmo assinar aquele contrato.
 	
-1. Como posso inverter a ordem de uma lista? Como posso embaralhar
-	todos os elementos de uma lista? Como posso rotacionar os elementos
+1. Como posso inverter a ordem de uma lista? E embaralhar
+	todos os elementos de uma lista? Como rotaciono os elementos
 	de uma lista?
 
 	Investigue a documentação da classe `Collections` dentro do
@@ -2544,9 +2603,9 @@ apareçam em ordem alfabética de titular.
 	encontramos o método `reverse()`, que recebe uma `List` e altera a ordem
 	dos seus elementos, invertendo-os.
 	
-1. (opcional) Crie uma nova classe `TestaLista` que cria uma `ArrayList` e
-	insere novas contas com saldos aleatórios usando um laço (`for`).
-	Adivinhe o nome da classe para colocar saldos aleatórios? `Random`. Do pacote
+1. (Opcional) Em uma nova classe `TestaLista`, crie 	uma `ArrayList` e
+	insira novas contas com saldos aleatórios usando um laço (`for`).
+	Adivinhe o nome da classe para colocar saldos aleatórios? `Random`, do pacote
 	`java.util`. Consulte sua documentação para usá-la (utilize o método
 	`nextInt()` passando o número máximo a ser sorteado).
 	
@@ -2583,7 +2642,10 @@ apareçam em ordem alfabética de titular.
 	Precisamos alterar mais algum código para
 	que essa substituição funcione? Rode o programa. Alguma diferença?
 
-	
+	<!--@note
+	Essa mudança é um pretexto para o exercício de performance ao final do
+	capitulo.
+	-->
 	*Resposta:*
 	Essa mudança simplesmente funciona! O legal de chamar as coleções pelas suas
 	interfaces é isso: não importa a implementação. Como ambas **são uma**
@@ -2591,7 +2653,7 @@ apareçam em ordem alfabética de titular.
 
 	É mais uma aplicação do **polimorfismo**!
 	
-1. (opcional) Imprima a referência para essa lista. O `toString` de uma
+1. (Opcional) Imprima a referência a essa lista. O `toString` de uma
 	`ArrayList`/`LinkedList` é reescrito?
 
 	``` java
@@ -2599,13 +2661,21 @@ apareçam em ordem alfabética de titular.
 	```
 	
     *Resposta:*
-	Sim! Ele mostra os elementos da lista, entre colchetes e separados por vírgulas.
+	Sim! Ele mostra os elementos da lista entre colchetes e separados por vírgulas.
 
-## Exercícios 15.15: Collections
+## Exercícios 15.15: collections
 
+<!--@note
+Não deixe de fazer a pergunta conceitual do exercício 2 junto com os alunos também!
+Eles vão poder exercitar o polimorfismo. Você pode também perguntar se valeria
+a pena referenciar a ArrayList como sendo um Object e fazer eles perceberem
+que é legal sempre se referenciar o mais genérico possível, mas nem sempre
+faz sentido:
 
+Object x = new ArrayList();
+-->
 1. Crie um código que insira 30 mil números numa `ArrayList` e pesquise-os.
-	Vamos usar um método de `System` para cronometrar o tempo gasto:
+	Usemos um método de `System` para cronometrar o tempo gasto:
 
 	``` java
 	public class TestaPerformance {
@@ -2632,7 +2702,7 @@ apareçam em ordem alfabética de titular.
 	}
 	```
 
-	Troque a `ArrayList` por um `HashSet` e verifique o tempo que vai demorar:
+	Troque a `ArrayList` por um `HashSet` e verifique o tempo que levará:
 
 	``` java
 		Collection<Integer> teste = new HashSet<>();
@@ -2641,18 +2711,18 @@ apareçam em ordem alfabética de titular.
 	O que é mais lento? A inserção de 30 mil elementos ou as 30 mil buscas? Descubra
 	computando o tempo gasto em cada `for` separadamente.
 
-	A diferença é mais que gritante. Se você passar de 30 mil para um número maior,
+	A diferença é mais que evidente. Se você passar de 30 mil para um número maior,
 	como 50 ou 100 mil, verá que isso inviabiliza por completo o uso de uma `List`,
-	no caso em que queremos utilizá-la essencialmente em pesquisas.
+	caso queiramos utilizá-la essencialmente em pesquisas.
 
 	*Resposta:*
 	No caso das listas (`ArrayList` e `LinkedList`), a inserção é bem rápida e a
 	busca **muito lenta**!
 
-	No caso dos conjuntos (`TreeSet` e `HashSet`), a inserção ainda é rápida,
+	Para os conjuntos (`TreeSet` e `HashSet`), a inserção ainda é rápida,
 	embora um pouco mais lenta do que a das listas. E a busca é **muito rápida**!
 	
-1. (conceitual, importante) Repare que, se você declarar a coleção e der `new`
+1. (Conceitual e importante) Repare que se você declarar a coleção e der `new`
 	assim:
 
 	``` java
@@ -2665,29 +2735,29 @@ apareçam em ordem alfabética de titular.
 		ArrayList<Integer> teste = new ArrayList<>();
 	```
 
-	É garantido que vai ter de alterar só essa linha para substituir a implementação
-	por `HashSet`. Estamos aqui usando o polimorfismo para nos proteger que
-	mudanças de implementação venham nos obrigar a alterar muito código. Mais uma
-	vez: _programe voltado a interface, e não à implementação_!
+	É garantido que terá de alterar só essa linha para substituir a implementação
+	por `HashSet`. Estamos aqui usando o polimorfismo a fim de nos proteger que
+	mudanças de implementação nos obriguem a alterar muito o código. Mais uma
+	vez: _programe voltado à interface, e não à implementação_!
 
     *Resposta:*
-	Esse é um **excelente** exemplo de bom uso de interfaces, afinal, de que importa
+	Esse é um **excelente** exemplo de bom uso de interfaces, afinal de que importa
 	como a coleção funciona? O que queremos é uma coleção qualquer, isso é suficiente
 	para os nossos propósitos! Nosso código está com **baixo acoplamento**
 	em relação a estrutura de dados utilizada: podemos trocá-la facilmente.
 
-	Esse é um código extremamente elegante e flexível. Com o tempo você vai reparar
+	Esse é um código extremamente elegante e flexível. Com o tempo, você reparará
 	que as pessoas tentam programar sempre se referindo a essas interfaces menos
 	específicas, na medida do possível: métodos costumam receber e devolver
 	`Collection`s, `List`s e `Set`s em vez de referenciar diretamente uma
 	implementação. É o mesmo que ocorre com o uso de `InputStream` e
-	`OutputStream`: eles são o suficiente, não há porque forçar o uso de algo mais
+	`OutputStream`: eles são o suficiente, não há um porquê de forçar o uso de algo mais
 	específico.
 
-	Obviamente, algumas vezes não conseguimos trabalhar dessa forma e precisamos usar
+	Obviamente, algumas vezes, não conseguimos trabalhar dessa forma e precisamos usar
 	uma interface mais específica ou mesmo nos referir ao objeto pela sua
 	implementação para poder chamar alguns métodos. Por exemplo, `TreeSet` tem mais
-	métodos que os definidos em `Set`, assim como `LinkedList` em relação à
+	métodos que os definidos em `Set`, assim como `LinkedList` em relação a
 	`List`.
 
 	Dê um exemplo de um caso em que não poderíamos nos referir a uma coleção de
@@ -2696,14 +2766,14 @@ apareçam em ordem alfabética de titular.
 
 	Quando precisamos colocar a semântica de que uma coleção não pode ter
 	repetição, por exemplo, precisamos de um `Set`. Se precisamos
-	necessariamente de ordem, precisamos de uma `List`.
+	necessariamente de ordem, necessitamos de uma `List`.
 
 	Pense na preparação de um mochilão pela Europa. Se eu estou interessado em
-	contar para meus amigos por quais países eu vou passar, a repetição não
+	contar para meus amigos por quais países eu passarei, a repetição não
 	importa, então eu escolheria um `Set`.
 
-	Agora, se eu quero planejar as passagens de um local a outro dessa viagem,
-	não só a repetição de locais importa como, também, a ordem. Então, preciso de
+	Agora se eu quero planejar as passagens de um local a outro dessa viagem,
+	não só a repetição de locais importa, como também a ordem. Então, preciso de
 	uma `List`.
 	
 1. Faça testes com o `Map`, como visto nesse capítulo:
@@ -2733,32 +2803,30 @@ apareçam em ordem alfabética de titular.
 	```
 
 	Depois, altere o código para usar o _generics_ e não haver a necessidade do
-	casting, além da garantia de que nosso mapa estará seguro em relação a tipagem
+	casting, além da garantia de que nosso mapa estará seguro em relação à tipagem
 	usada.
 
-	Você pode utilizar o _quickfix_ do Eclipse para que ele conserte isso para
-	você: na linha em que você está chamando o `put`, use o `ctrl + 1`. Depois de
-	mais um quickfix (descubra!) seu código deve ficar como segue:
+	Você pode utilizar o _quickfix_ do Eclipse para que ele conserte isso: na linha em que você está chamando o `put`, use o **Ctrl + 1**. Depois de
+	mais um quickfix (descubra qual!), seu código deve ficar como segue:
 
 	``` java
 	// cria o mapa
 	Map<String, Conta> mapaDeContas = new HashMap<>();
 	```
 
-	Que opção do `ctrl + 1` você escolheu para que ele adicionasse o _generics_
-	para você?
+	Que opção do  **Ctrl + 1** você escolheu para que ele adicionasse o _generics_?
 
 	*Resposta:*
 	Há duas opções válidas aqui:
 
-	* podemos usar o _Add type arguments to Map_ e, depois, novamente
+	* Podemos usar o _Add type arguments to Map_ e, depois, novamente
 	_Add type arguments to HashMap_;
-	* podemos escolher direto a opção _Infer generic type arguments_, que
+	* Podemos escolher direto a opção _Infer generic type arguments_, que
 	já fará tudo com apenas um comando.
 
-1. (opcional) Assim como no exercício 1, crie uma comparação entre `ArrayList` e
-	`LinkedList`, para ver qual é a mais rápida para se adicionar elementos na
-	primeira posição (`list.add(0, elemento)`), como por exemplo:
+1. (Opcional) Assim como no exercício 1, crie uma comparação entre `ArrayList` e
+	`LinkedList` para ver qual é a mais rápida ao adicionar elementos na
+	primeira posição (`list.add(0, elemento)`), por exemplo:
 
 	``` java
 	public class TestaPerformanceDeAdicionarNaPrimeiraPosicao {
@@ -2785,30 +2853,27 @@ apareçam em ordem alfabética de titular.
 	ou o `Iterator`). Para isso, insira 30 mil elementos e depois percorra-os
 	usando cada implementação de `List`.
 
-	Perceba que aqui o nosso intuito não é que você aprenda qual é o mais rápido,
-	o importante é perceber que podemos tirar proveito do polimorfismo para nos
+	Perceba que, aqui, o nosso intuito não é que você aprenda qual é o mais rápido,
+	o importante é entender que podemos tirar proveito do polimorfismo para nos
 	comprometer apenas com a interface. Depois, quando necessário, podemos
-	trocar e escolher uma implementação mais adequada as nossas necessidades.
+	trocar e escolher uma implementação mais adequada às nossas necessidades.
 
 	Qual das duas listas foi mais rápida para adicionar elementos à primeira posição?
 
 	*Resposta:*
 	A `LinkedList` é bem mais rápida para fazer a inserção
 	**na primeira posição** do que a `ArrayList`. Isso é uma característica dos
-	algoritmos dessas listas e estudada sob o tópico de _Análise de algoritmos_
+	algoritmos dessas listas, e é estudada sob o tópico de _Análise de algoritmos_
 	na literatura.
-
-	Você pode aprender mais sobre isso na apostila aberta do **CS-14**, que está
-	em: http://www.caelum.com.br/apostila-java-estrutura-dados/
 	
-1. (opcional) Crie a classe `Banco` (caso não tenha sido criada anteriormente) no
-	pacote `br.com.caelum.contas.modelo` que possui uma `List` de `Conta` chamada
-	`contas`. Repare que numa lista de `Conta`, você pode colocar tanto
+1. (Opcional) No pacote `br.com.caelum.contas.modelo`,
+   	crie a classe `Banco` (caso não tenha sido criada anteriormente) que tem uma `List` de `Conta` chamada
+	`contas`. Repare que, em uma lista de `Conta`, você pode colocar tanto
 	`ContaCorrente` quanto `ContaPoupanca` por causa do polimorfismo.
 
 	Crie um método `void adiciona(Conta c)`, um método `Conta pega(int x)` e
 	outro `int pegaQuantidadeDeContas()`. Basta usar a sua lista e delegar essas
-	chamadas para os métodos e coleções que estudamos.
+	chamadas aos métodos e às coleções que estudamos.
 
 	Como ficou a classe `Banco`?
 	
@@ -2831,21 +2896,21 @@ apareçam em ordem alfabética de titular.
 		}
 	```
 	
-1. (opcional) No `Banco`, crie um método `Conta buscaPorTitular(String nome)`
+1. (Opcional) No `Banco`, crie um método `Conta buscaPorTitular(String nome)`
 	que procura por uma `Conta` cujo `titular` seja `equals` ao `nomeDoTitular` dado.
 
 	Você pode implementar esse método com um `for` na sua lista de `Conta`,
 	porém não tem uma performance eficiente.
 
-	Adicionando um atributo privado do tipo `Map<String, Conta>` terá um
+	Adicionando um atributo privado do tipo `Map<String, Conta>`, terá um
 	impacto significativo. Toda vez que o método `adiciona(Conta c)` for
 	invocado, você deve invocar `.put(c.getTitular(), c)` no seu mapa.
 	Dessa maneira, quando alguém invocar o método
 	`Conta buscaPorTitular(String nomeDoTitular)`,
-	basta você fazer o `get` no seu mapa, passando `nomeDoTitular` como argumento!
+	basta você fazer o `get` no seu mapa, passando `nomeDoTitular` como argumento.
 
-	Note, apenas, que isso é só um exercício! Dessa forma você não poderá ter dois
-	clientes com o mesmo nome nesse banco, o que sabemos que não é legal.
+	Note que isso é somente um exercício! Desse jeito você não poderá ter dois
+	clientes com o mesmo nome nesse banco, o que não é legal.
 
 	Como ficaria sua classe `Banco` com esse `Map`?
 	
@@ -2866,12 +2931,12 @@ apareçam em ordem alfabética de titular.
 		}
 	```
 	
-1. (opcional, avançado) Crie o método `hashCode` para a sua conta, de forma que
-	ele respeite o `equals` de que duas contas são `equals` quando tem o mesmo
+1. (Opcional e avançado) Crie o método `hashCode` para a sua conta de forma que
+	ele respeite o `equals`, considerando que duas contas são `equals` quando tem o mesmo
 	número e agência. Felizmente para nós, o próprio Eclipse já vem com um criador de
-	`equals` e `hashCode` que os faz de forma consistente.
+	`equals` e `hashCode`, que os faz de forma consistente.
 
-	Na classe `Conta`, use o `ctrl + 3` e comece a escrever _hashCode_ para
+	Na classe `Conta`, use o  **Ctrl + 3** e comece a escrever _hashCode_ para
 	achar a opção de gerá-los. Então, selecione os atributos `numero` e `agencia` e mande
 	gerar o `hashCode` e o `equals`.
 
@@ -2908,9 +2973,9 @@ apareçam em ordem alfabética de titular.
     }
 	```
 	
-1. (opcional, avançado) Crie uma classe de teste e verifique se sua classe `Conta`
-	funciona agora corretamente em um `HashSet`, isto é, que ela não guarda contas
-	com número e agência repetidos. Depois, remova o método `hashCode`. Continua
+1. (Opcional e avançado) Crie uma classe de teste e verifique se sua classe `Conta`
+	funciona agora corretamente em um `HashSet`, isto é, se ela não guarda contas
+	com número e agência repetidos. Depois remova o método `hashCode`. Continua
 	funcionando?
 
     *Resposta:*
@@ -2921,7 +2986,7 @@ apareçam em ordem alfabética de titular.
 	são contas diferentes se perde e, assim, o `HashSet` não consegue garantir
 	a aparição única de uma conta.
 
-	A classe para fazer essa verificação fica mais ou menos assim.
+	A classe para fazer essa verificação fica mais ou menos assim:
 
 	``` java
     public class TestaHashSetDeConta {
@@ -2954,7 +3019,7 @@ apareçam em ordem alfabética de titular.
 	```
 
 ## Desafios 15.16
-1. Gere todos os números entre 1 e 1000 e ordene em ordem decrescente utilizando
+1. Gere todos os números entre 1 e 1000 e organize-os em ordem decrescente utilizando
 	um `TreeSet`. Como ficou seu código?
 	
     *Resposta:*
@@ -2974,7 +3039,7 @@ apareçam em ordem alfabética de titular.
 		}
 	```
 	
-1. Gere todos os números entre 1 e 1000 e ordene em ordem decrescente utilizando um
+1. Gere todos os números entre 1 e 1000 e organize-os em ordem decrescente utilizando uma
 	`ArrayList`. Como ficou seu código?
 	*Resposta:*
 	``` java
@@ -2997,25 +3062,25 @@ apareçam em ordem alfabética de titular.
 	```
 
 
-## Exercícios 16.11: Java I/O
+## Exercícios 17.11: Apêndice Java I/O
 
-Vamos salvar as contas cadastradas em um arquivo para não precisar ficar adicionando as
-contas a todo momento.
-1. Na classe `ManipuladorDeContas`, crie o método `salvaDados` que recebe um
-	`Evento` de onde obteremos a lista de contas:
+Salvemos as contas cadastradas em um arquivo para não precisar ficar adicionando-as
+a todo momento.
+1. Na classe `ManipuladorDeContas`, crie o método `salvaDados`, que recebe um
+	`Evento` do qual obteremos a lista de contas:
 
     *Resposta:*
 	``` java
   	public void salvaDados(Evento evento){
       List<Conta> contas = evento.getLista("listaContas");
-      // aqui salvaremos as contas em arquivo
+      // Aqui salvaremos as contas em arquivo.
   	}
 	```
 1. Para não colocarmos todo o código de gerenciamento de arquivos dentro da classe
-	`ManipuladorDeContas`, vamos criar uma nova classe cuja responsabilidade será lidar
-	com a escrita / leitura de arquivos. Crie a classe `RepositorioDeContas` dentro do
+	`ManipuladorDeContas`, criaremos uma nova classe cuja responsabilidade será lidar
+	com a escrita/leitura de arquivos. Crie a classe `RepositorioDeContas` dentro do
 	pacote `br.com.caelum.contas` e declare o método `salva` que deverá
-	receber a lista de contas a serem guardadas. Neste método você deve percorrer a lista
+	receber a lista de contas a serem guardadas. Nesse método, você deve percorrer a lista
 	de contas e salvá-las separando as informações de `tipo`, `numero`, `agencia`,
 	`titular` e `saldo` com vírgulas.
 	O código ficará parecido com:
@@ -3036,20 +3101,20 @@ contas a todo momento.
     }
 	```
 
-	O compilador vai reclamar que você não está tratando algumas exceções (como
+	O compilador reclamará que você não está tratando algumas exceções (como
 	`java.io.FileNotFoundException`). Utilize o devido `try`/`catch` e relance a
-	exceção como `RuntimeException`. Utilize o _quick fix_ do Eclipse para facilitar
-	(**ctrl + 1**).
+	exceção como `RuntimeException`. Utilize o _quickfix_ do Eclipse para facilitar
+	(**Ctrl + 1**).
 
 	Vale lembrar que deixar todas as exceptions passarem despercebidas não é uma boa
-	prática! Você pode usar aqui, pois estamos focando apenas no aprendizado da
+	prática. Você pode usá-la aqui, pois estamos focando apenas no aprendizado da
 	utilização do `java.io`.
 
-	Quando trabalhamos com recursos que falam com a parte externa à nossa aplicação,
+	Quando trabalhamos com recursos que falam com a parte externa da nossa aplicação,
 	é preciso que avisemos quando acabarmos de usar esses recursos. Por isso, é
-	**importantíssimo** lembrar de fechar os canais com o exterior que abrimos utilizando
+	**importantíssimo** lembrar de fechar os canais com o exterior os quais abrimos, utilizando
 	o método `close`!
-1. Voltando à classe `ManipuladorDeContas`, vamos completar o método `salvaDados`
+1. Voltando à classe `ManipuladorDeContas`, completemos o método `salvaDados`
 	para que utilize a nossa nova classe `RepositorioDeContas` criada.
 
     *Resposta:*
@@ -3063,12 +3128,12 @@ contas a todo momento.
 
     Rode sua aplicação, cadastre algumas contas e veja se aparece um arquivo chamado
 	`contas.txt` dentro do diretório `src` de seu projeto. Talvez seja necessário dar
-	um F5 nele para que o arquivo apareça.
-1. (Opcional, Difícil) Vamos fazer com que além de salvar os dados em um arquivo, nossa aplicação
-	também consiga carregar as informações das contas para já exibir na tela. Para que a
-	aplicação funcione, é necessário que a nossa classe `ManipuladorDeContas` possua um
-	método chamado `carregaDados` que devolva uma `List<Conta>`. Vamos fazer o mesmo
-	que anteriormente e encapsular a lógica de carregamento dentro da classe
+	F5 nele para que o arquivo apareça.
+1. (Opcional e difícil) Façamos com que, além de salvar os dados em um arquivo, nossa aplicação
+	também consiga carregar as informações das contas a fim de exibi-las na tela. Para o funcionamento da
+	aplicação, é necessário que a nossa classe `ManipuladorDeContas` tenha um
+	método chamado `carregaDados`, o qual devolva uma `List<Conta>`. Façamos o mesmo
+	que anteriormente e encapsulemos a lógica de carregamento dentro da classe
 	`RepositorioDeContas`:
 
 	``` java
@@ -3078,9 +3143,9 @@ contas a todo momento.
     }
 	```
 	
-	Faça o código referente ao método `carrega` que devolve uma `List` dentro da classe
-	`RepositorioDeContas` utilizando a classe `Scanner`. Para obter os valores de
-	cada atributo você pode utilizar o método `split` da `String`. Lembre-se que os
+	Faça o código referente ao método `carrega`, que devolve uma `List` dentro da classe
+	`RepositorioDeContas`, utilizando a classe `Scanner`. Para obter os valores de
+	cada atributo, você pode utilizar o método `split` da `String`. Lembre-se de que os
 	atributos das contas são carregados na seguinte ordem: `tipo`, `numero`,
 	`agencia`, `titular` e `saldo`. Exemplo:
 
@@ -3090,14 +3155,14 @@ contas a todo momento.
         String tipo = valores[0];
 	```
 
-	Além disso, a conta deve ser instanciada de acordo com o conteúdo do `tipo` obtido. Também fique atento pois os dados lidos virão sempre lidos em forma de `String` e para alguns atributos será necessário transformar o dado nos tipos primitivos correspondentes. Por exemplo:
+	Além disso, a conta deve ser instanciada de acordo com o conteúdo do `tipo` obtido. Fique atento, pois os dados lidos virão sempre lidos em forma de `String` e, para alguns atributos, será necessário transformar o dado nos tipos primitivos correspondentes. Por exemplo:
 
 	``` java
   		String numeroTexto = valores[1];
   		int numero = Integer.parseInt(numeroTexto);
 	```
 
-    *A seguir a resposta completa para este item:*
+    *A seguir a resposta completa para esse item:*
 
     ``` java
     public List<Conta> carrega() {
@@ -3127,9 +3192,9 @@ contas a todo momento.
         }
     ```
 
-1. (opcional) A classe `Scanner` é muito poderosa! Consulte seu javadoc
+1. (Opcional) A classe `Scanner` é muito poderosa! Consulte seu Javadoc
 	para saber sobre o `delimiter` e os outros métodos `next`.
-1. (opcional) Crie uma classe `TestaInteger` e vamos fazer comparações com Integers dentro do
+1. (Opcional) Crie uma classe `TestaInteger`, e façamos comparações com `Integer`s dentro do
 	`main`:
 
 	``` java
@@ -3143,25 +3208,35 @@ contas a todo momento.
 	}
 	```
 
-	
+	<!--@note
+	Cuidado com o autoboxing aqui! Se você não usar o `new`, dará `true`,
+	pois o Java faz um cachê de `Integer`, e o autoboxing não faz new, ele usa o
+	metodo `Integer valueOf(int)`, que passa por esse cachê. Mas se você usar um
+	número alto, ele não usara o cachê e dará `false`
+	(o cachê da Sun vai de -128 a 127, mas isso pode variar entre implementações
+	teoricamente).
+
+	É algo parecido com a `String`: não dá para confiar no `==` sempre, mas, às
+	vezes, funciona. Então não use!
+	-->
 
     E se testarmos com o `equals`? O que podemos concluir?
 
 	*Resposta:*
-	A conclusão é aquela mesma do capítulo de Orientação a Objeto do curso.
-	Não importa que todos as informações sejam exatamente iguais: quando usamos
-	o `==` estamos comparando as **variáveis**, isto é, a referência para
+	A conclusão é aquela mesma do capítulo de orientação a objeto do curso.
+	Não importa se todos as informações são exatamente iguais: quando usamos
+	o `==`, estamos comparando as **variáveis**, isto é, a referência a
 	objetos.
 
-	Se demos `new` duas vezes, cada referência aponta para um objeto diferente
-	e, portanto, não são iguais. Já o `equals` do `Integer`, que sobrescreve
+	Se demos `new` duas vezes, cada referência aponta para um objeto diferente,
+	e, portanto não são iguais. Já o `equals` do `Integer`, que sobrescreve
 	o do `Object`, compara o conteúdo dos objetos.
 	
-1. (opcional) Um `double` não está sendo suficiente para guardar a quantidade de casas
-	necessárias em uma aplicação. Preciso guardar um número decimal muito grande!
+1. (Opcional) Um `double` não está sendo suficiente para guardar a quantidade de casas
+	necessárias em uma aplicação. Preciso guardar um número decimal muito grande.
 	O que poderia usar?
 
-	O `double` também tem problemas de precisão ao fazer contas, por causa de
+	O `double` também tem problemas de precisão ao fazer contas por causa de
 	arredondamentos da aritmética de ponto flutuante definido pela IEEE 754:
 
 	http://en.wikipedia.org/wiki/IEEE_754
@@ -3169,13 +3244,13 @@ contas a todo momento.
 	Ele não deve ser usado se você precisa realmente de muita precisão (casos que
 	envolvam dinheiro, por exemplo).
 
-	**Consulte a documentação**, tente adivinhar onde você pode encontrar um tipo
-	que te ajudaria para resolver esses casos e veja como é intuitivo! Qual é a
+	**Consulte a documentação**, tente adivinhar em que lugar você pode encontrar um tipo
+	que o ajudaria a resolver esses casos e veja como é intuitivo. Qual é a
 	classe que resolveria esses problemas?
 
-	Lembre-se: no Java há muito já pronto. Seja na biblioteca padrão, seja em
-	bibliotecas _open source_ que você pode encontrar pela internet.
+	Lembre-se: no Java, há muito já feito. Seja na biblioteca padrão, seja em
+	bibliotecas _open source_, que você pode encontrar pela internet.
 
 	*Resposta:*
-	A classe que nos ajudará a evitar arredondamentos e a armazenar números
+	A classe que nos ajudará a evitar arredondamentos e armazenar números
 	decimais bem grandes é a `java.math.BigDecimal`

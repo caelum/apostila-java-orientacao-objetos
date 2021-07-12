@@ -3,41 +3,56 @@ _"Olho por olho, e o mundo acabará cego."--Mohandas Gandhi_
 
 Conectando-se a máquinas remotas.
 
+<!--@note
+* Dê preferência a esse apêndice, explique que o escolhemos por usar diversas APIs.
+* Pode ser executado rapidamente, dando uma explicação básica sobre o que é uma socket
+(não entrar em detalhes de TCP/IP e lembrar que podemos usar UDP com _DatagramSocket_)
+e ligeiramente apresentando _Socket_ e _ServerSocket_.
+* Importantíssimo salientar que estamos usando interfaces (_Runnable_), classes abstratas
+(_Input/Output_), Threads, exceções, io e tudo o que aprendemos durante o curso,
+fazendo com que os alunos percebam a importância de todos aqueles conceitos.
+* A figura da imagem geral ilustra bem o que está acontecendo.
+* O exercício tem a solução inteira na própria apostila, passe-o na
+lousa explicando cada tópico.
+-->
 
-
-
+<!--@todo +desenhos e explicação passo a passo -->
 ## Motivação: uma API que usa os conceitos aprendidos
 
-Neste capítulo, você vai conhecer a API de **Sockets** do java pelo pacote `java.net`.
+Neste capítulo, você conhecerá a API de **Sockets** do Java pelo pacote `java.net`.
 
-Mais útil que conhecer a API, é você perceber que estamos usando, aqui, todos os conceitos e
-bibliotecas aprendidas durante os outros capítulos. Repare, também, que é relativamente simples
+Mais útil que conhecer a API é você perceber que estamos usando aqui todos os conceitos e
+bibliotecas aprendidas durante os outros capítulos. Repare também: é relativamente simples
 aprender a utilizar uma API, agora que temos todos os conceitos necessários para tal.
 
-Lembre-se de fazer esse apêndice com o javadoc aberto ao seu lado.
+Lembre-se de fazer esse apêndice com o Javadoc aberto ao seu lado.
 
 ## Protocolo
 
-
+<!--@note
+Cuidado! As pessoas não sabem o que é socket ou TCP. Prefira usar o termo conexão
+em vez de socket. Elas também não sabem que quando entramos no uol.com.br, na verdade,
+fazemos uma socket tcp no uol.com.br na porta 80, então não leve isso como óbvio.
+-->
 
 
 Da necessidade de dois computadores se comunicarem, surgiram diversos protocolos que permitissem tal
-troca de informação: o protocolo que vamos usar aqui é o **TCP** (_Transmission Control Protocol_).
+troca de informação: o protocolo que usaremos aqui é o **TCP** (_Transmission Control Protocol_).
 
-Através do **TCP**, é possível criar um fluxo entre dois computadores - como é mostrado no diagrama
+Por meio do **TCP**, é possível criar um fluxo entre dois computadores — como é mostrado no diagrama
 abaixo:
 
 ![ {w=50}](assets/images/apendicesockets/fluxo.png)
 
 É possível conectar mais de um cliente ao mesmo servidor, como é o caso de diversos banco de dados,
-servidores Web, etc.
+servidores web, etc.
 
 Ao escrever um programa em Java que se comunique com outra aplicação, não é necessário se preocupar
 com um nível tão baixo quanto o protocolo. As classes que trabalham com eles já foram
 disponibilizadas para serem usadas por nós no pacote `java.net`.
 
-A vantagem de se usar TCP, em vez de criar nosso próprio protocolo de bytes, é que o TCP vai garantir
-a entrega dos pacotes que transferirmos e criar um protocolo base para isto é algo bem complicado.
+A vantagem de se usar TCP, em vez de criar nosso próprio protocolo de bytes, é que o ele garantirá
+a entrega dos pacotes que transferirmos, e criar um protocolo base para isto é algo bem complicado.
 
 ## Porta
 
@@ -45,38 +60,37 @@ Acabamos de mencionar que diversos computadores podem se conectar a um só, mas,
 comum encontrar máquinas clientes com uma só conexão física. Então, como é possível se conectar a
 dois pontos? Como é possível ser conectado por diversos pontos?
 
-Todas as aplicações que estão enviando e recebendo dados fazem isso através da mesma conexão física,
+Todas as aplicações que estão enviando e recebendo dados fazem isso por intermédio da mesma conexão física,
 mas o computador consegue discernir, durante a chegada de novos dados, quais informações pertencem a
 qual aplicação. Mas como?
 
 ![ {w=50}](assets/images/apendicesockets/porta.png)
 
 
-Assim como existe o **IP** para identificar uma máquina, a **porta** é a solução para identificar
-diversas aplicações em uma máquina. Esta porta é um número de 2 bytes, **varia de 0 a 65535**. Se
+Assim como existe o **IP** a fim de identificar uma máquina, a **porta** é a solução para identificar
+diversas aplicações em uma máquina. Essa porta é um número de 2 bytes, **varia de 0 a 65535**. Se
 todas as portas de uma máquina estiverem ocupadas, não é possível se conectar a ela enquanto nenhuma
 for liberada.
 
-Ao configurar um servidor para rodar na porta 80 (padrão http), é possível se conectar a esse
-servidor através dessa porta que, junto com o ip, vai formar o endereço da aplicação. Por exemplo, o
+Ao configurar um servidor para rodar na porta 80 (padrão http), é possível se conectar a ele mediante  essa porta que, junto com o IP, formará o endereço da aplicação. Por exemplo, o
 servidor web da _caelum.com.br_ pode ser representado por: _caelum.com.br:80_
 
 ## Socket
 Mas se um cliente se conecta a um programa rodando na porta 80 de um servidor, enquanto ele não se
 desconectar dessa porta, será impossível que outra pessoa se conecte?
 
-Acontece que, ao efetuar e aceitar a conexão, o servidor redireciona o cliente de uma porta para
-outra, liberando novamente sua porta inicial e permitindo que outros clientes se conectem novamente.
+Acontece que, ao efetuar e aceitar a conexão, o servidor redireciona o cliente de uma porta a
+outra, liberando novamente sua porta inicial e permitindo que outros clientes se conectem outra vez.
 
 ![ {w=50}](assets/images/apendicesockets/socket.png)
 
-Em Java, isso deve ser feito através de threads e o processo de aceitar a conexão deve ser rodado o
+Em Java, isso deve ser feito por meio de Threads, e o processo de aceitar a conexão deve ser rodado o
 mais rápido possível.
 
 ## Servidor
 
 Iniciando um modelo de servidor de chat, o serviço do computador que funciona como base deve,
-primeiro, abrir uma porta e ficar ouvindo até alguém tentar se conectar.
+primeiramente, abrir uma porta e ficar ouvindo até alguém tentar se conectar.
 
 ``` java
 import java.net.*;
@@ -93,13 +107,13 @@ public class Servidor {
 ```
 
 Se o objeto for realmente criado, significa que a porta 12345 estava fechada e foi aberta. Se outro
-programa possui o controle desta porta neste instante, é normal que o nosso exemplo não funcione,
+programa tem o controle desta porta nesse instante, é normal que o nosso exemplo não funcione,
 pois ele não consegue utilizar uma porta que já está em uso.
 
 
-Após abrir a porta, precisamos esperar por um cliente através do método `accept` da
-`ServerSocket`. Assim que um cliente se conectar, o programa continuará, por isso dizemos que esse método é
-_blocante_, segura a thread até que algo o notifique.
+Após abrir a porta, precisamos esperar um cliente por meio do método `accept` da
+`ServerSocket`. Assim que um cliente se conectar, o programa continuará. Por isso, dizemos que esse método é
+_blocante_, segura a Thread até que algo o notifique.
 
 ``` java
 Socket cliente = servidor.accept();
@@ -153,7 +167,7 @@ public class Servidor {
 
 ## Cliente
 
-A nossa tarefa é criar um programa cliente que envie mensagens para o servidor... o cliente é
+A nossa tarefa é criar um programa cliente que envie mensagens para o servidor. O cliente é
 ainda mais simples do que o servidor.
 
 O código a seguir é a parte principal e tenta se conectar a um servidor no IP 127.0.0.1 (máquina
@@ -164,7 +178,7 @@ local) e porta 12345:
 	System.out.println("O cliente se conectou ao servidor!");			
 ```
 
-Queremos ler os dados do cliente, da entrada padrão (teclado):
+Queremos ler os dados do cliente a partir da entrada padrão (teclado):
 
 ``` java
 	Scanner teclado = new Scanner(System.in);
@@ -174,7 +188,7 @@ Queremos ler os dados do cliente, da entrada padrão (teclado):
 ```
 
 
-Basta ler as linhas que o usuário digitar através do buffer de entrada (`in`), e jogá-las no
+Basta ler as linhas que o usuário digitar por meio do buffer de entrada (`in`) e jogá-las no
 buffer de saída:
 
 ``` java
@@ -187,10 +201,10 @@ saida.close();
 teclado.close();
 ```
 
-Repare que usamos os conceito de `java.io` aqui novamente, para leitura do teclado e envio
-de mensagens para o servidor. Para as classes `Scanner` e `PrintStream`, tanto faz de onde
-que se lê ou escreve os dados: o importante é que esse stream seja um `InputStream` / `OutputStream`.
-É o poder das interfaces, do polimorfismo, aparecendo novamente.
+Repare que usamos os conceito de `java.io` aqui novamente para leitura do teclado e envio
+de mensagens ao servidor. No que concerne às classes `Scanner` e `PrintStream`, tanto faz de qual lugar
+que se lê ou escreve os dados: o importante é que esse stream seja um `InputStream`/`OutputStream`.
+É o poder das interfaces e do polimorfismo aparecendo novamente.
 
 Nosso programa final:
 
@@ -218,16 +232,16 @@ public class Cliente {
 ![ {w=20}](assets/images/apendicesockets/cliente_chat.png)
 
 Para testar o sistema, precisamos rodar primeiro o servidor e, logo depois, o cliente. Tudo o que for
-digitado no cliente será enviado para o servidor.
+digitado no cliente será enviado ao servidor.
 
-
+<!--@todo screenshots do Eclipse de como rodar os dois ao mesmo tempo e alternar os consoles. -->
 
 > **Multithreading**
 >
-> Para que o servidor seja capaz de trabalhar com dois clientes ao mesmo tempo é necessário criar uma
-> thread logo após executar o método `accept`.
+> Para que o servidor seja capaz de trabalhar com dois clientes ao mesmo tempo, é necessário criar uma
+> Thread logo após executar o método `accept`.
 >
-> A thread criada será responsável pelo tratamento dessa conexão, enquanto o laço do servidor
+> A Thread criada será responsável pelo tratamento dessa conexão, enquanto o laço do servidor
 > disponibilizará a porta para uma nova conexão:
 >
 > ``` java
@@ -248,7 +262,7 @@ digitado no cliente será enviado para o servidor.
 > ```
 >
 
-
+<!-- Comentário para separar quotes adjacentes. -->
 
 
 ## Imagem geral
@@ -257,18 +271,18 @@ digitado no cliente será enviado para o servidor.
 
 A socket do cliente tem um `InputStream`, que recebe do `OutputStream` do servidor, e tem um
 `OutputStream`, que transfere tudo para o `InputStream` do servidor. Muito parecido com um
-telefone!
+telefone.
 
 Repare que cliente e servidor são rótulos que indicam um estado. Um micro (ou melhor, uma JVM) pode
-ser servidor num caso, mas pode ser cliente em outro caso.
+ser servidor em um caso, mas pode ser cliente em outro.
 
 ## Exercícios: Sockets
 1. Crie um projeto `sockets`.
 
-	Vamos fazer um pequeno sistema em que tudo que é digitado no micro cliente
-	acaba aparecendo no micro servidor. Isto é, apenas uma comunicação unidirecional.
+	Faremos um pequeno sistema no qual tudo que é digitado no microcliente
+	acaba aparecendo no microservidor. Isto é, apenas uma comunicação unidirecional.
 
-	Crie a classe `Servidor` como vimos nesse capítulo. Abuse dos recursos do Eclipse
+	Crie a classe `Servidor`, como vimos nesse capítulo. Utilize bastante os recursos do Eclipse
 	para não ter de escrever muito!
 
 	``` java
@@ -298,7 +312,7 @@ ser servidor num caso, mas pode ser cliente em outro caso.
 			}
 		}
 	```
-1. Crie a classe `Cliente` como vista anteriormente:
+1. Crie a classe `Cliente`, como vista anteriormente:
 
 	``` java
 		package br.com.caelum.chat;
@@ -328,41 +342,50 @@ ser servidor num caso, mas pode ser cliente em outro caso.
 		}
 	```
 
-	Utilize dos quick fixes e control espaço para os `import`s e o `throws`.
-1. 
+	Utilize os quickfixes e control espaço para os `import`s e o `throws`.
+1. <!--@todo screenshots -->
 	Rode a classe `Servidor`: repare no console do Eclipse que o programa fica esperando.
-	Rode a classe `Cliente`: a conexão deve ser feita e o Eclipse deve mostrar os dois
-	consoles para você (existe um pequeno ícone na view de Console para você
+	Rode a classe `Cliente`: a conexão deve ser feita, e o Eclipse deve lhe mostrar os dois
+	consoles(existe um pequeno ícone na View de Console para você
 	alternar entre eles).
 
 	Digite mensagens no cliente e veja se elas aparecem corretamente no servidor.
 
-	
-	
-1. Teste seu programa com um colega do curso, usando comunicação remota entre as duas máquinas.
-	Combinem entre si quem vai rodar o cliente e quem vai rodar o servidor. Quem for rodar o cliente
+	<!--@note
+	Alunos se perdem um pouco por causa dos múltiplos consoles. Precisa de uma screenshot aqui!
+	Além disso, muitos rodam o servidor novamente sem parar o anterior.
+	-->
+	<!--@todo adicionar screenshots do chat rodando no Eclipse com múltiplos consoles -->
+1. Teste seu programa com um colega do curso usando comunicação remota entre as duas máquinas.
+	Combinem entre si quem irá rodar o cliente e quem irá rodar o servidor. Quem for rodar o cliente
 	deve editar o IP na classe para indicar o endereço da outra máquina (verifique também se estão
 	acessando a mesma porta).
 
-	> **Descobrindo o ip da máquina**
+	> **Descobrindo o IP da máquina**
 	>
 	> No Windows, abra o console e digite _ipconfig_ para saber qual é o seu IP. No Linux (ou no BSD, Mac, Solaris),
 	> vá no console e digite _ifconfig_.
 
-	
-1. (opcional) E se você quisesse, em vez de enviar tudo o que o cliente digitou,
-	transferir um arquivo texto do micro do cliente para servidor? Seria difícil?
+	<!-- Comentário para separar quotes adjacentes. -->
+1. (Opcional) E se você quisesse, em vez de enviar tudo o que o cliente digitou,
+	transferir um arquivo texto do micro do cliente para o servidor? Seria difícil?
 
-	Abuse do polimorfismo! Faça o cliente ler de um arquivo chamado `arquivo.txt` (crie-o!)
-	e faça com que o servidor grave tudo que recebe num arquivo que chama `recebido.txt`.
+	Use bastante o polimorfismo! Faça o cliente ler de um arquivo chamado `arquivo.txt` (crie-o!)
+	e o servidor gravar tudo o que receber em um arquivo chamado `recebido.txt`.
 
-	
+	<!--@note
+	Basta mudar `System.in` do cliente para `new FileInputStream`, e o `System.out` do servidor
+	deve ser usado um print stream que aponta para um new FileOutputStream.
+
+	Lembre-se de focá-los no uso do polimorfismo, e não na API. Esse é um exercício bem
+	bonito para fixar de vez os conceitos do polimorfismo.
+	-->
 
 
 
-## Desafio: Múltiplos Clientes
+## Desafio: múltiplos clientes
 Quando o servidor aceita um cliente com a chamada ao `accept`, ele poderia chamar novamente este método
-para aceitar um novo cliente. E, se queremos aceitar vários clientes, simultâneos, basta chamar o `accept`
+para aceitar um novo cliente. E, se queremos aceitar muitos clientes simultâneos, basta chamar o `accept`
 várias vezes e tratar cada cliente em sua própria `Thread` (senão o método `accept`
 não será invocado novamente!).
 
@@ -371,26 +394,26 @@ Um esboço de solução para a classe `Servidor`:
 ``` java
 	ServerSocket servidor = new ServerSocket(12345);
 	
-	// servidor fica eternamente aceitando clientes...
+	// Servidor fica eternamente aceitando clientes...
 	while (true) {
 		Socket cliente = servidor.accept();
-		// dispara uma Thread que trata esse cliente e já espera o próximo
+		// Dispara uma Thread que trata esse cliente e já espera o próximo.
 	}
 ```
 
 [TODO: seria legal essa solução parcial para apenas essa parte!]
 
 ## Desafio: broadcast das mensagens
-Agora que vários clientes podem mandar mensagens, gostaríamos que os clientes recebessem
+Agora que vários clientes podem mandar mensagens, gostaríamos que o cliente recebesse
 as mensagens enviadas pelas outras pessoas. Ao invés do servidor simplesmente escrever as
-mensagens no console, ele deve mandar cada mensagem para todos os clientes conectados.
+mensagens no console, ele deve mandar cada uma a todos os clientes conectados.
 
 Precisamos manter uma lista de clientes conectados e, quando chegar uma mensagem (de qualquer
-cliente), percorremos essa lista e mandamos para todos.
+cliente), percorremos essa lista e a mandamos a todos.
 
 Use um `List` para guardar os `PrintStream`s dos clientes. Logo depois que o servidor
-aceitar um cliente novo, crie um `PrintStream` usando o `OutputStream` dele e adicione na lista.
-E, quando receber uma mensagem nova, envia para todos na lista.
+aceitar um cliente novo, crie um `PrintStream` usando o seu `OutputStream` e adicione-o à lista.
+E, quando receber uma mensagem nova, envie-a a todos na lista.
 
 Um esboço:
 
@@ -400,7 +423,7 @@ Adicionando na lista:
 		Socket cliente = servidor.accept();
 		this.lista.add(new PrintStream(cliente.getOutputStream()));
 		
-		// dispara uma Thread que trata esse cliente e já espera o próximo
+		// Dispara uma Thread que trata esse cliente e já espera o próximo.
 	}
 ```
 
@@ -414,12 +437,12 @@ Método que distribui as mensagens:
 	}
 ```
 
-Mas nosso cliente também recebe mensagens. Então precisamos fazer com que o Cliente,
-além de ler mensagens do teclado e enviar para o servidor, simultaneamente também possa
+Mas nosso cliente também recebe mensagens. Então, precisamos fazer com que o cliente,
+além de ler mensagens do teclado e enviar ao servidor, simultaneamente também possa
 receber mensagens de outros clientes enviadas pelo servidor.
 
-Ou seja, precisamos de uma segunda Thread na classe `Cliente` que fica recebendo mensagens do
-`InputStream` do servidor e imprimindo no console.
+Ou seja, precisamos de uma segunda Thread na classe `Cliente`, que fica recebendo mensagens do
+`InputStream` do servidor e imprimindo-a no console.
 
 Um esboço:
 
@@ -430,14 +453,14 @@ Um esboço:
 	}	
 ```
 
-Lembre que você precisará de no mínimo 2 threads para o cliente e 2 para o servidor. Então provavelmente
-você vai ter que escrever 4 classes.
+Lembre-se de que você precisará de no mínimo duas Threads para o cliente e duas para o servidor. Então provavelmente
+você terá de escrever quatro classes.
 
 Melhorias possíveis:
 
 
-* Faça com o a primeira linha enviada pelo cliente seja sempre o nick dele. E quando o servidor
-enviar a mensagem, faça ele enviar o nick de cada cliente antes da mensagem.
+* Faça com que a primeira linha enviada pelo cliente seja sempre o nick dele. E quando o servidor
+enviar a mensagem, faça-o enviar o nick de cada cliente antes da mensagem.
 
 * E quando um cliente desconectar? Como retirá-lo da lista?
 
@@ -447,12 +470,12 @@ enviar a mensagem, faça ele enviar o nick de cada cliente antes da mensagem.
 
 ## Solução do sistema de chat
 
-Uma solução para o sistema de chat cliente-servidor com múltiplos clientes proposto nos desafios acima.
-Repare que a solução não está nem um pouco elegante: o `main` já faz tudo, além de não tratarmos as
+Uma solução para o sistema de chat cliente-servidor com múltiplos clientes foi proposta nos desafios acima.
+Repare que ela não está nem um pouco elegante: o `main` já faz tudo, além de não tratarmos as
 exceptions. O código visa apenas mostrar o uso de uma API. É uma péssima prática colocar toda a
-funcionalidade do seu programa no `main` e também de jogar exceções para trás.
+funcionalidade do seu programa no `main` e também jogar exceções para trás.
 
-Nesta listagem, faltam os devidos **imports**.
+Nessa listagem, faltam os devidos **imports**.
 
 Primeiro, as duas classes para o cliente. Repare que a única mudança grande é a classe nova, Recebedor:
 
@@ -512,8 +535,8 @@ public class Recebedor implements Runnable {
 }
 ```
 
-Já o Servidor sofreu bastante modificações. A classe `TrataCliente` é a responsável por cuidar de
-cada cliente conectado no sistema:
+Já o Servidor sofreu bastantes modificações. A classe `TrataCliente` é a responsável por cuidar de
+cada cliente conectado ao sistema:
 
 ``` java
 public class Servidor {

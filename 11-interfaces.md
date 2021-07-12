@@ -2,28 +2,45 @@
 
 _"Uma imagem vale mil palavras. Uma interface vale mil imagens." -- Ben Shneiderman_
 
-Ao término desse capítulo, você será capaz de:
+Ao final deste capítulo, você será capaz de:
 
 
-* dizer o que é uma interface e as diferenças entre herança e implementação;
-* escrever uma interface em Java;
-* utilizá-las como um poderoso recurso para diminuir acoplamento entre as classes.
+* Dizer o que é uma interface e as diferenças entre herança e implementação;
+* Escrever uma interface em Java;
+* Utilizá-las como um poderoso recurso para diminuir acoplamento entre as classes.
 
 
-
+<!--@note
+* Utilizar os exemplos de _Connection_ e _Comparable_ bem por cima,  pois podem ajudar os alunos a
+enxergar o uso de interfaces. Em especial, _Comparable_ , porque qualquer classe pode implementar
+sem ter a *menor* similaridade com outra classe que também a implementa (não é bem assim com generics).
+Um exemplo é _ContaCorrente_ e _String_.
+* Pode usar a comparação de que interface é uma classe muito abstrata,
+mas tome cuidado! Precisa deixar explícito que interface não é uma classe,
+não há uma herança de implementação.
+-->
 
 ## Aumentando nosso exemplo
+<!--@note
+Dar o problema de Diretor também ter o autentica e fazê-los chegar na solução do
+FuncionarioAutenticavel. Mostrar que eles conseguiram solucionar com o que já sabiam.
+
+Então, piore o problema e coloque o Cliente também. Alguém dirá: "Cliente extends FuncionarioAutenticavel",
+comente Gato extends Cachorro só por que tem patas?
+
+Esclarecer qual o problema que temos: como garantir que uma classe tenha um método que eu quero?
+Como achar um fator comum?
+-->
 
 
-
-Imagine que um Sistema de Controle do Banco pode ser acessado, além de pelos Gerentes, pelos
-Diretores do Banco. Então, teríamos uma classe `Diretor`:
+Imagine que um sistema de controle do banco possa ser acessado pelos
+diretores do banco, além dos gerentes. Então, teríamos uma classe `Diretor`:
 
 ``` java
 public class Diretor extends Funcionario {
 
 	public boolean autentica(int senha) {
-		// verifica aqui se a senha confere com a recebida como parametro
+		// Verificar aqui se a senha confere com a recebida como parâmetro.
 	}
 
 }
@@ -35,9 +52,9 @@ E a classe `Gerente`:
 public class Gerente extends Funcionario {
 
 	public boolean autentica(int senha) {
-		// verifica aqui se a senha confere com a recebida como parametro
-		// no caso do gerente verifica também se o departamento dele
-		// tem acesso
+		// Verificar aqui se a senha confere com a recebida como parâmetro.
+		// No caso do gerente, conferir também se o departamento dele
+		// tem acesso.
 	}
 
 }
@@ -53,15 +70,15 @@ problemas. Considere o `SistemaInterno` e seu controle: precisamos receber um `D
 public class SistemaInterno {
 
 	public void login(Funcionario funcionario) {
-		// invocar o método autentica?
-		// não da! Nem todo Funcionario tem
+		// Invocar o método autentica?
+		// Não dá! Nem todo Funcionario o tem.
 	}
 }
 ```
 
 O `SistemaInterno` aceita qualquer tipo de `Funcionario`, tendo ele acesso ao sistema ou não, mas
-note que nem todo `Funcionario` possui o método `autentica`. Isso nos impede de chamar esse
-método com uma referência apenas a `Funcionario` (haveria um erro de compilação). O que fazer
+note que nem todo `Funcionario` tem o método `autentica`. Isso nos impede de chamar esse
+método com uma referência apenas a `Funcionario` (haveria um erro de compilação). O que fazer,
 então?
 
 ``` java
@@ -73,8 +90,8 @@ public class SistemaInterno {
 }
 ```
 
-Uma possibilidade é criar dois métodos `login` no `SistemaInterno`: um para receber `Diretor` e
-outro para receber `Gerente`. Já vimos que essa não é uma boa escolha. Por quê?
+Uma possibilidade é criar dois métodos `login` no `SistemaInterno`: um para receber `Diretor,` e
+outro, `Gerente`. Já vimos que essa não é uma boa escolha. Por quê?
 
 ``` java
 public class SistemaInterno {
@@ -99,12 +116,12 @@ adicionar um novo método de login no `SistemaInterno`.
 > **Métodos com mesmo nome**
 >
 > Em Java, métodos podem ter o mesmo nome desde que não sejam ambíguos, isto é, que exista uma maneira
-> de distinguir no momento da chamada.
+> de distingui-los no momento da chamada.
 >
 > Isso se chama **sobrecarga** de método. (**Overloading**. Não confundir com **overriding**, que é um
 > conceito muito mais poderoso).
 
-
+<!-- Comentário para separar quotes adjacentes. -->
 
 
 Uma solução mais interessante seria criar uma classe no meio da árvore de herança,
@@ -114,26 +131,26 @@ Uma solução mais interessante seria criar uma classe no meio da árvore de her
 public class FuncionarioAutenticavel extends Funcionario {
 
 	public boolean autentica(int senha) {
-		// faz autenticacao padrão
+		// Faz autenticação padrão.
 	}
 
-	// outros atributos e métodos
+	// Outros atributos e métodos.
 
 }
 ```
 
 As classes `Diretor` e `Gerente` passariam a estender de `FuncionarioAutenticavel`, e o
-`SistemaInterno` receberia referências desse tipo, como a seguir:
+`SistemaInterno` receberia referências desse tipo, como se mostra a seguir:
 
 ``` java
 public class SistemaInterno {
 
 	public void login(FuncionarioAutenticavel fa) {
 
-		int senha = //pega senha de um lugar, ou de um scanner de polegar
+		int senha = //Pega senha de um lugar ou de um scanner de polegar.
 
-		// aqui eu posso chamar o autentica!
-		// Pois todo FuncionarioAutenticavel tem
+		// Aqui eu posso chamar o autentica!
+		// Pois, todo FuncionarioAutenticavel o tem.
 		boolean ok = fa.autentica(senha);
 
 	}
@@ -142,21 +159,21 @@ public class SistemaInterno {
 
 ![ {w=90}](assets/images/interfaces/heranca_funcionario_autenticavel.png)
 
-Repare que `FuncionarioAutenticavel` é uma forte candidata a classe abstrata. Mais ainda, o método
-`autentica` poderia ser um método abstrato.
+Repare que `FuncionarioAutenticavel` é um forte candidato à classe abstrata. Além disso, o método
+`autentica` ainda poderia ser um método abstrato.
 
 O uso de herança resolve esse caso, mas vamos a uma outra situação um pouco mais complexa: precisamos
 que todos os clientes também tenham acesso ao `SistemaInterno`. O que fazer? Uma opção é criar
-outro método `login` em `SistemaInterno`: mas já descartamos essa anteriormente.
+outro método `login` em `SistemaInterno`, mas já descartamos essa possibilidade anteriormente.
 
-Uma outra, que é comum entre os novatos, é fazer uma herança sem sentido para resolver o problema,
-por exemplo, fazer `Cliente extends FuncionarioAutenticavel`. Realmente, resolve o problema, mas
+Uma outra opção que é comum entre os novatos é fazer uma herança sem sentido para resolver o problema,
+por exemplo, fazer `Cliente extends FuncionarioAutenticavel`. Realmente resolve o problema, mas
 trará diversos outros. `Cliente` definitivamente **não é** `FuncionarioAutenticavel`. Se você
-fizer isso, o `Cliente` terá, por exemplo, um método `getBonificacao`, um atributo salario e
-outros membros que não fazem o menor sentido para esta classe! Não faça herança quando a relação não
-é estritamente "é um".
+fizer isso, o `Cliente` terá, por exemplo, um método `getBonificacao`, um atributo salário e
+outros membros que não fazem o menor sentido para essa classe. Não faça herança caso a relação não
+seja estritamente "é um".
 
-
+<!--@todo Mudar a imagem herança_sem_sentido.png -->
 ![ {w=90}](assets/images/interfaces/heranca_sem_sentido.png)
 
 Como resolver essa situação? Note que conhecer a sintaxe da linguagem não é o suficiente, precisamos
@@ -167,28 +184,28 @@ estruturar/desenhar bem a nossa estrutura de classes.
 O que precisamos para resolver nosso problema? Arranjar uma forma de poder referenciar `Diretor`,
 `Gerente` e `Cliente` de uma mesma maneira, isto é, achar um fator comum.
 
-Se existisse uma forma na qual essas classes garantissem a existência de um determinado método,
-através de um contrato, resolveríamos o problema.
+Se houvesse uma forma na qual essas classes garantissem a existência de um determinado método
+por meio de um contrato, resolveríamos o problema.
 
-Toda classe define 2 itens:
-
-
-* o que uma classe faz (as assinaturas dos métodos)
-* como uma classe faz essas tarefas (o corpo dos métodos e atributos privados)
+Toda classe define dois itens:
 
 
+* O que uma classe faz (as assinaturas dos métodos);
+* Como uma classe faz essas tarefas (o corpo dos métodos e atributos privados).
 
-Podemos criar um "contrato" que define tudo o que uma classe deve fazer se quiser ter um determinado
+
+
+Podemos criar um "contrato" o qual define tudo o que uma classe deve fazer se quiser ter um determinado
 status. Imagine:
 
 ```
-contrato Autenticavel:
+contrato "Autenticavel":
 
-		quem quiser ser Autenticavel precisa saber fazer:
-			1.autenticar dada uma senha, devolvendo um booleano
+		Quem quiser ser "Autenticavel" precisa saber:
+			1. Autenticar uma senha, devolvendo um booleano.
 ```
 
-Quem quiser, pode "assinar" esse contrato, sendo assim obrigado a explicar como será feita essa
+Quem quiser pode assinar esse contrato, sendo, assim, obrigado a explicar como será feita essa
 autenticação. A vantagem é que, se um `Gerente` assinar esse contrato, podemos nos referenciar a
 um `Gerente` como um `Autenticavel`.
 
@@ -203,36 +220,36 @@ public interface Autenticavel {
 ```
 
 
-Chama-se `interface` pois é a maneira pela qual poderemos conversar com um `Autenticavel`.
-Interface é a maneira através da qual conversamos com um objeto.
+Chama-se `interface`, pois é a maneira pela qual poderemos conversar com um `Autenticavel`.
+Interface é a maneira por meio da qual conversamos com um objeto.
 
-Lemos a interface da seguinte maneira: _"quem desejar ser autenticável precisa saber autenticar
-dado um inteiro e retornando um booleano"_. Ela é um contrato onde quem assina se responsabiliza
+Lemos a interface da seguinte maneira: _"quem desejar ser `Autenticavel` precisa saber autenticar recebendo
+um inteiro e retornando um booleano"_. Ela é um contrato que quem assina se responsabiliza
 por implementar esses métodos (cumprir o contrato).
 
-Uma interface pode definir uma série de métodos, mas nunca conter implementação deles. Ela só expõe
-**o que o objeto deve fazer**, e não **como ele faz**, nem **o que ele tem**. **Como ele faz** vai
-ser definido em uma **implementação** dessa interface.
+Pela ideia base de uma interface, ela pode definir uma série de métodos, mas nunca conter suas implementações. Ela só expõe
+**o que o objeto deve fazer**, e não **como ele o faz**, nem **o que ele tem**. **Como ele o faz**
+será definido em uma **implementação** dessa interface.
 
 
 E o `Gerente` pode "assinar" o contrato, ou seja, **implementar** a interface. No momento em que
-ele implementa essa interface, ele precisa escrever os métodos pedidos pela interface (muito parecido
-com o efeito de herdar métodos abstratos, aliás, métodos de uma interface são públicos e abstratos,
-sempre). Para implementar usamos a palavra chave `implements` na classe:
+ele implementa essa interface, precisa escrever os métodos pedidos por ela (muito parecido
+com o efeito de herdar métodos abstratos, aliás, métodos de uma interface são públicos e abstratos
+sempre). Para implementar, usamos a palavra-chave `implements` na classe:
 
 ``` java
 public class Gerente extends Funcionario implements Autenticavel {
 
 	private int senha;
 
-	// outros atributos e métodos
+	// Outros atributos e métodos.
 
 	public boolean autentica(int senha) {
 		if(this.senha != senha) {
 			return false;
 		}
-		// pode fazer outras possíveis verificações, como saber se esse
-		// departamento do gerente tem acesso ao Sistema
+		// Pode fazer outras possíveis verificações como saber se esse
+		// departamento do gerente tem acesso ao Sistema.
 
 		return true;
 	}
@@ -242,19 +259,31 @@ public class Gerente extends Funcionario implements Autenticavel {
 
 ![ {w=90}](assets/images/interfaces/interface_autenticavel.png)
 
-O `implements` pode ser lido da seguinte maneira: "A classe `Gerente` se compromete a ser tratada
+O `implements` pode ser lido da seguinte maneira: "a classe `Gerente` se compromete a ser tratada
 como `Autenticavel`, sendo obrigada a ter os métodos necessários, definidos neste contrato".
 
+<!--@note
+Aqui você deve fazer várias analogias?
 
+Como usamos o celular? Por intermédio dos botões (interface) independentemente se é GSM ou CDMA (implementação).
+
+Como você usa o carro? Por meio das marchas e volantes (interface) independentemente se é a álcool,
+a gasolina ou a eletricidade (implementação).
+Mas, se você for dirigir na Inglaterra, com cambio do outro lado, terá de reaprender a dirigir
+(quebra de interface).
+
+Como você usa o computador? Mediante ao teclado, monitor e mouse (interface). Pouco importa se é
+Atlhon, Celeron, Pentium ou se o monitor é LCD ou CRT (implementação).
+-->
 
 A partir de agora, podemos tratar um `Gerente` como sendo um `Autenticavel`. Ganhamos mais
 polimorfismo! Temos mais uma forma de referenciar a um `Gerente`. Quando crio uma variável do tipo
-`Autenticavel`, estou criando uma referência para **qualquer** objeto de uma classe que implemente
+`Autenticavel`, estou criando uma referência a **qualquer** objeto de uma classe que implemente
 `Autenticavel`, direta ou indiretamente:
 
 ``` java
 Autenticavel a = new Gerente();
-// posso aqui chamar o método autentica!
+// Posso aqui chamar o método autentica!
 ```
 
 Novamente, a utilização mais comum seria receber por argumento, como no nosso `SistemaInterno`:
@@ -263,25 +292,25 @@ Novamente, a utilização mais comum seria receber por argumento, como no nosso 
 public class SistemaInterno {
 
   public void login(Autenticavel a) {
-     int senha = // pega senha de um lugar, ou de um scanner de polegar
+     int senha = // Pega senha de um lugar ou de um scanner de polegar.
      boolean ok =	a.autentica(senha);
 
-     // aqui eu posso chamar o autentica!
-     // não necessariamente é um Funcionario!
-     // Mais ainda, eu não sei que objeto a
+     // Aqui eu posso chamar o autentica!
+     // Não necessariamente é um Funcionario!
+     // Além do mais, eu não sei que objeto a
 	 // referência "a" está apontando exatamente! Flexibilidade.
   }
 
 }
 ```
 
-Pronto! E já podemos passar qualquer `Autenticavel` para o `SistemaInterno`. Então precisamos
+Pronto! E já podemos passar qualquer `Autenticavel` para o `SistemaInterno`. Então, precisamos
 fazer com que o `Diretor` também implemente essa interface.
 
 ``` java
 public class Diretor extends Funcionario implements Autenticavel {
 
-	// métodos e atributos, além de obrigatoriamente ter o autentica
+	// Métodos e atributos devem obrigatoriamente ter o autentica.
 
 }
 ```
@@ -289,10 +318,10 @@ public class Diretor extends Funcionario implements Autenticavel {
 ![ {w=80}](assets/images/interfaces/interface_autenticavel2.png)
 
 Podemos passar um `Diretor`. No dia em que tivermos mais um funcionário com acesso ao
-sistema, basta que ele implemente essa interface, para se encaixar no sistema.
+sistema, bastará que ele implemente essa interface para se encaixar no sistema.
 
-Qualquer `Autenticavel` passado para o `SistemaInterno` está bom para nós. Repare que pouco
-importa quem o objeto referenciado realmente é, pois ele tem um método `autentica` que é o
+Qualquer `Autenticavel` passado ao `SistemaInterno` está bom para nós. Repare que pouco
+importa quem o objeto referenciado realmente é, pois ele tem um método `autentica` o qual é 
 necessário para nosso `SistemaInterno` funcionar corretamente. Aliás, qualquer outra classe que
 futuramente implemente essa interface poderá ser passada como argumento aqui.
 
@@ -301,67 +330,67 @@ Autenticavel diretor = new Diretor();
 Autenticavel gerente = new Gerente();
 ```
 
-Ou, se achamos que o `Fornecedor` precisa ter acesso, basta que ele implemente
-`Autenticavel`. Olhe só o tamanho do desacoplamento: quem escreveu o `SistemaInterno` só precisa
+Ou, se achamos que o `Fornecedor` precisa ter acesso, ele só precisará implementar
+`Autenticavel`. Olhe só o tamanho do desacoplamento: quem escreveu o `SistemaInterno` necessita somente
 saber que ele é `Autenticavel`.
 
 ``` java
 public class SistemaInterno {
 
   public void login(Autenticavel a) {
-	// não importa se ele é um gerente ou diretor
+	// Não importa se ele é um gerente ou diretor,
 	// será que é um fornecedor?
-	// Eu, o programador do SistemaInterno, não me preocupo
-	// Invocarei o método autentica
+	// Eu, o programador do SistemaInterno, não me preocupo.
+	// Invocarei o método autentica.
   }
 
 }
 ```
 
 Não faz diferença se é um `Diretor`, `Gerente`, `Cliente` ou qualquer classe que venha por aí.
-Basta seguir o contrato! Mais ainda, cada `Autenticavel` pode se autenticar de uma maneira
+Basta seguir o contrato! Além do mais, cada `Autenticavel` pode se autenticar de uma maneira
 completamente diferente de outro.
 
-Lembre-se: a interface define que todos vão saber se autenticar (o que ele faz), enquanto a
-implementação define como exatamente vai ser feito (como ele faz).
+Lembre-se: a interface define que todos saberão se autenticar (o que ele faz), enquanto a
+implementação define como exatamente será feito (de que forma ele faz).
 
-A maneira como os objetos se comunicam num sistema orientado a objetos é muito mais importante do que
-como eles executam. **O que um objeto faz** é mais importante do que **como ele faz**. Aqueles que
-seguem essa regra, terão sistemas mais fáceis de manter e modificar. Como você já percebeu, esta é
+A maneira pela qual os objetos se comunicam em um sistema orientado a objetos é muito mais importante do que
+como eles executam. **O que um objeto faz** é mais importante do que **como ele o faz**. Aqueles que
+seguem essa regra terão sistemas mais fáceis de manter e modificar. Conforme você já percebeu, essa é
 uma das ideias principais que queremos passar e, provavelmente, a mais importante de todo esse curso.
 
 > **Mais sobre interfaces: herança e métodos default**
 >
 > Diferentemente das classes, uma interface pode herdar de mais de uma interface. É como um contrato
-> que depende que outros contratos sejam fechados antes deste valer. Você não herda métodos e
-> atributos, mas sim responsabilidades.
+> o qual depende que outros contratos sejam fechados antes daquele valer. Você não herda métodos e
+> atributos, mas, sim, responsabilidades.
 >
-> Um outro recurso em interfaces são os métodos default a partir do Java 8. Você pode sim declarar um método concreto, utilizando a palavra `default` ao lado, e suas implementações não precisam necessariamente reescrevê-lo. Veremos que isso acontece, por exemplo, com o método `List.sort`, durante o capítulo de coleções. É um truque muito utilizado para poder evoluir uma interface sem quebrar compatibilidade com as implementações anteriores.
+> Um outro recurso em interfaces são os métodos default a partir do Java 8. Você pode, sim, declarar um método concreto utilizando a palavra `default` ao lado, e suas implementações não precisam necessariamente reescrevê-lo. Veremos que isso acontece, por exemplo, com o método `List.sort` durante o capítulo de coleções. É um truque muito utilizado para poder evoluir uma interface sem quebrar compatibilidade com as implementações anteriores.
 
-
+<!-- Comentário para separar quotes adjacentes. -->
 
 
 ## Dificuldade no aprendizado de interfaces
 
 Interfaces representam uma barreira no aprendizado do Java: parece que estamos escrevendo um código
-que não serve pra nada, já que teremos essa linha (a assinatura do método) escrita nas nossas classes
+o qual não serve para nada, uma vez que teremos essa linha (a assinatura do método) escrita nas nossas classes
 implementadoras. Essa é uma maneira errada de se pensar. O objetivo do uso de uma interface é deixar
 seu código mais flexível e possibilitar a mudança de implementação sem maiores traumas. **Não é
-apenas um código de prototipação, um cabeçalho**!
+apenas um código de prototipação ou um cabeçalho**!
 
-Os mais radicais dizem que toda classe deve ser "interfaceada", isto é, só devemos nos referir a
-objetos através de suas interfaces. Se determinada classe não tem uma interface, ela deveria ter.
+Os mais radicais dizem que toda classe deve ser interfaceada, isto é, só devemos nos referir a
+objetos por intermédio das suas interfaces. Se determinada classe não tem uma interface, ela deveria tê-la.
 Os autores deste material acham tal medida radical demais, porém o uso de interfaces em vez de
 herança é amplamente aconselhado. Você pode encontrar mais informações sobre o assunto nos livros
 _Design Patterns_, _Refactoring_ e _Effective Java_.
 
-No livro Design Patterns, logo no início, os autores citam 2 regras "de ouro". Uma é "evite herança,
-prefira composição" e a outra, "programe voltado a interface e não à implementação".
+No livro Design Patterns, logo no início, os autores citam duas regras de ouro. Uma é: "evite herança,
+prefira composição", e a outra: "programe voltado à interface, e não à implementação".
 
-Veremos o uso de interfaces no capítulo de coleções, o que melhora o entendimento do assunto. O
-exemplo da interface `Comparable` também é muito esclarecedor, onde enxergamos o reaproveitamento
-de código através das interfaces, além do encapsulamento. Para o método `Collections.sort()`, pouco
-importa quem vai ser passado como argumento. Para ele, basta que a coleção seja de objetos
+Veremos o uso de interfaces no capítulo de coleções, o que melhorará o entendimento do assunto. O
+exemplo da interface `Comparable` também é muito esclarecedor, no qual enxergamos o reaproveitamento
+de código mediante as interfaces, além do encapsulamento. Para o método `Collections.sort()`, pouco
+importa quem será passado como argumento, pois basta que a coleção seja de objetos
 comparáveis. Ele pode ordenar `Elefante`, `Conexao` ou `ContaCorrente`, desde que implementem
 `Comparable`.
 
@@ -370,21 +399,21 @@ comparáveis. Ele pode ordenar `Elefante`, `Conexao` ou `ContaCorrente`, desde q
 Como fazer com que todas as chamadas para bancos de dados diferentes respeitem a mesma regra? Usando
 interfaces!
 
-Imagine uma interface `Conexao` contendo todos os métodos necessários para a comunicação e troca de
+Imagine uma interface `Conexao` contendo todos os métodos necessários à comunicação e troca de
 dados com um banco de dados. Cada banco de dados fica encarregado de criar a sua implementação para
 essa interface.
 
-Quem for usar uma `Conexao` não precisa se importar com qual objeto exatamente está trabalhando, já
-que ele vai cumprir o papel que toda `Conexao` deve ter. Não importa se é uma conexão com um Oracle
+Quem for usar uma `Conexao` não precisa se importar com qual objeto exatamente está trabalhando, posto
+que ele cumprirá o papel que toda `Conexao` deve ter. Não importa se é uma conexão com um Oracle
 ou MySQL.
 
 ![ {w=80}](assets/images/interfaces/interface_banco_dados.png)
 
-Apesar do `java.sql.Connection` não trabalhar bem assim, a ideia é muito similar, porém as conexões
+Apesar do `java.sql.Connection` não trabalhar bem assim, a ideia é muito similar. Porém, as conexões
 vêm de uma _factory_ chamada `DriverManager`.
 
 Conexão a banco de dados está fora do escopo desse treinamento, mas é um dos primeiros tópicos
-abordados no curso FJ-21, juntamente com DAO.
+abordados no curso FJ-21 juntamente com DAO.
 
 > **Um pouco mais...**
 >
@@ -393,45 +422,45 @@ abordados no curso FJ-21, juntamente com DAO.
 > desvantagem?
 >
 
+<!-- Comentário para separar quotes adjacentes. -->
 
 
-
-## Exercícios: Interfaces
+## Exercícios: interfaces
 1. Nosso banco precisa tributar dinheiro de alguns bens que nossos clientes possuem.
-	Para isso vamos criar uma interface no pacote `br.com.caelum.contas.modelo` do nosso projeto
+	Para isso, criaremos uma interface no pacote `br.com.caelum.contas.modelo` do nosso projeto
 	 `fj11-contas` já existente:
 
-    • o nome da interface deverá ser `Tributavel`;
+    • O nome da interface deverá ser `Tributavel`;
 
-    • deve possuir um único método chamado  `getValorImposto()` que não recebe nada e devolve um double.
+    • Deverá ter um único método chamado  `getValorImposto()`, que não recebe nada e devolve um double.
 
 	Lemos essa interface da seguinte maneira: "todos que quiserem ser _tributável_
 	precisam saber retornar _o valor do imposto_, devolvendo um double".
 
-	Alguns bens são tributáveis e outros não, `ContaPoupanca` não é tributável,
-	já para `ContaCorrente` você precisa pagar 1% da conta e o `SeguroDeVida`
+	Alguns bens são tributáveis e outros não. `ContaPoupanca` não é tributável,
+	já para `ContaCorrente`, você precisa pagar 1% da conta, e o `SeguroDeVida`
 	tem uma taxa fixa de 42 reais mais 2% do valor do seguro.
 
-	Assim, para atender esta nova necessidade, você deve:
-	* *alterar* a classe `ContaCorrente`;
-	*  *criar* a classe `SeguroDeVida` . 
+	Assim, para atender a essa nova necessidade, você deve:
+	* *Alterar* a classe `ContaCorrente`;
+	*  *Criar* a classe `SeguroDeVida` . 
 
-	A classe `SeguroDeVida` deverá estar no pacote  `br.com.caelum.contas.modelo` e deve  ter os seguintes atributos encapsulados: `valor` (do tipo double), `titular` (do tipo String) e `numeroApolice` (do tipo int).
+	A classe `SeguroDeVida` deverá estar no pacote `br.com.caelum.contas.modelo` e ter os seguintes atributos encapsulados: `valor` (do tipo double), `titular` (do tipo String) e `numeroApolice` (do tipo int).
 
-	**Dica**: Na classe `SeguroDeVida`, lembre-se de escrever o método  `getTipo`  para que o tipo do `produto` apareça na interface gráfica.
+	**Dica**: na classe `SeguroDeVida`, lembre-se de escrever o método  `getTipo`  para que o tipo do `produto` apareça na interface gráfica.
 
-1. Vamos criar a classe `ManipuladorDeSeguroDeVida` dentro do pacote
-	`br.com.caelum.contas` para vincular a classe `SeguroDeVida` com a tela de criação
-	de seguros. Esta classe deve ter um atributo do tipo `SeguroDeVida`.
+1.  Criaremos a classe `ManipuladorDeSeguroDeVida` dentro do pacote
+	`br.com.caelum.contas` para vincular a classe `SeguroDeVida` à tela de criação
+	de seguros. Aquela classe deve ter um atributo do tipo `SeguroDeVida`.
 
-	Deve ter também o método `criaSeguro` que não retorna nada e deve receber um parâmetro do tipo
-	`Evento` para conseguir obter os dados da tela. Use os seguintes métodos da classe `Evento` para pegar estes dados:
+	Deve ter também o método `criaSeguro`, que não retorna nada e deve receber um parâmetro do tipo
+	`Evento` para conseguir obter os dados da tela. Use os seguintes métodos da classe `Evento` a fim de pegar estes dados:
 
 	* `evento.getInt("numeroApolice"));`
 	* `evento.getString("titular"));`
 	* `evento.getDouble("valor"));`
 
-	**Dica**: use os métodos "setters" da classe `SeguroDeVida` para guardar as informações obtidas. Exemplo:
+	**Dica**: use os métodos _setters_ da classe `SeguroDeVida` para guardar as informações obtidas. Exemplo:
 
 	```java
 	this.seguroDeVida.setNumeroApolice(evento.getInt("numeroApolice"));
@@ -441,65 +470,76 @@ abordados no curso FJ-21, juntamente com DAO.
 	cadastrado deve aparecer na tabela de seguros de vida.
 
 1. Queremos saber qual o valor total dos impostos de todos os tributáveis.
-	Vamos então criar a classe `ManipuladorDeTributaveis` dentro do pacote
+	Então criemos a classe `ManipuladorDeTributaveis` dentro do pacote
 	`br.com.caelum.contas`.
-	Crie também o método `calculaImpostos` que não retorna nada e recebe um parâmetro do tipo `Evento`. Mais adiante preencheremos o corpo deste método.
+	Crie também o método `calculaImpostos`, que não retorna nada e recebe um parâmetro do tipo `Evento`. Mais pra frente preencheremos o corpo desse método.
 
-	Esta classe também deverá ter o atributo encapsulado  `total` do tipo double.
+	Essa classe também deverá ter o atributo encapsulado `total` do tipo double.
 
-1. Agora que criamos o tributavel, vamos habilitar a última aba de nosso sistema. Altere
+1. Agora que criamos o tributável, habilitaremos a última aba de nosso sistema. Altere
 	a classe `TestaContas` para passar o valor `true` na chamada do método
 	`mostraTela`.
 	
-  	Observe que agora que temos o seguro de vida funcionando, a tela de relatório já
+  	Observe: agora que temos o seguro de vida funcionando, a tela de relatório já
 	consegue imprimir o valor dos impostos individuais de cada tipo de _Tributavel_.
 
-1. No método `calculaImpostos` da classe `ManipuladorDeTributaveis` precisamos buscar os valores de impostos de cada `Tributavel`,
-	somá-los e atribuir ao atributo `total`. Para isto, vamos usar os seguintes métodos da classe  `Evento`:
-	* `getTamanhoDaLista` que deve receber o nome da lista desejada, no	caso "listaTributaveis". Este método retorna a quantidade de tributáveis:
+1. No método `calculaImpostos` da classe `ManipuladorDeTributaveis`, precisamos buscar os valores de impostos de cada `Tributavel`,
+	somá-los e atribuí-los ao atributo `total`. Para isso, usaremos os seguintes métodos da classe  `Evento`:
+	* `getTamanhoDaLista` que deve receber o nome da lista desejada, nesse caso, "listaTributaveis". Esse método retorna a quantidade de tributáveis:
 	
 	``` java
 	evento.getTamanhoDaLista("listaTributaveis");
 	```
 
 	* `getTributavel` retorna um `Tributavel` de uma
-	determinada posição de uma lista, onde precisamos passar o nome da lista e o índice
+	determinada posição de uma lista, em que precisamos passar o nome da lista e o índice
 	do elemento:
 	``` java
 	evento.getTributavel("listaTributaveis", i);
 	```
 
-	 **Dica**: utilize o comando `for` para percorrer a lista inteira, passando por cada posição da mesma.
+	 **Dica**: utilize o comando `for` para percorrer a lista inteira, passando por cada posição.
 
-	 Por fim, o método `calculaImpostos` deverá invocar o método `getValorImposto()` e  acumular o valor do imposto de todos os tributáveis no atributo `total`:
+	 Por fim, o método `calculaImpostos` deverá invocar o método `getValorImposto()` e acumular o valor do imposto de todos os tributáveis no atributo `total`:
 
 	``` java
 	total += t.getValorImposto();
 	```
 
 	Repare que, de dentro do `ManipuladorDeTributaveis`, você não pode acessar
-	o método `getSaldo`, por exemplo, pois você não tem a garantia de que o
-	`Tributavel` que vai ser passado como argumento tem esse método. A única
-	certeza que você tem é de que esse objeto tem os métodos declarados na
+	o método `getSaldo`, por exemplo, pois não há a garantia de que o
+	`Tributavel` a ser passado como argumento tenha esse método. A única
+	certeza é a de que esse objeto tem os métodos declarados na
 	interface `Tributavel`.
 
-	É interessante enxergar que as interfaces (como aqui, no caso, `Tributavel`)
+	É interessante enxergar que as interfaces (como nesse caso, `Tributavel`)
 	costumam ligar classes muito distintas, unindo-as por uma característica que elas
-	tem em comum. No nosso exemplo, `SeguroDeVida` e `ContaCorrente` são
+	têm em comum. No nosso exemplo, `SeguroDeVida` e `ContaCorrente` são
 	entidades completamente distintas, porém ambas possuem a característica de serem
 	tributáveis.
 
 	Se amanhã o governo começar a tributar até mesmo `PlanoDeCapitalizacao`, basta
 	que essa classe implemente a interface `Tributavel`! Repare no grau de
 	desacoplamento que temos: a classe `GerenciadorDeImpostoDeRenda` nem imagina
-	que vai trabalhar como  `PlanoDeCapitalizacao`. Para ela, o único fato que
-	importa é que o objeto respeite o contrato de um tributável, isso é, a interface
+	que trabalhará como  `PlanoDeCapitalizacao`. Para ela, o único fato
+	importante é que o objeto respeite o contrato de um tributável, isto é, a interface
 	`Tributavel`. Novamente: programe voltado à interface, não à implementação.
 
 	Quais os benefícios de manter o código com baixo acoplamento?
 
-	
-1. (opcional) Crie a classe `TestaTributavel` com um método `main` para testar
+	<!--@answer
+	Quanto menos acoplado o código, mais fácil é a sua manutenção, já que alterar
+	uma classe não deve atrapalhar o funcionamento das outras. Note que o uso de
+	interfaces cria uma ligação entre tipos que permite o **polimorfismo**, mas
+	é bem menos intrusivo do que a herança: não é possível reaproveitar código da
+	mãe.
+
+	De certa forma, isso pode parecer negativo e, por vezes, teremos um trecho de
+	código repetido. Mas a certeza de que, ao mudar uma classe, não afetaremos as
+	outras, é muito confortável. Para usar interfaces **e** evitar a repetição,
+	procure pelo conceito de **composição**.
+	-->
+1. (Opcional) Crie a classe `TestaTributavel` com um método `main` para testar
 	o nosso exemplo:
 
 	``` java
@@ -517,24 +557,45 @@ abordados no curso FJ-21, juntamente com DAO.
 	}
 	```
 
-	Tente chamar o método `getSaldo` através da referência `t`, o que ocorre?
+	Tente chamar o método `getSaldo` por meio da referência `t`. O que ocorre?
 	Por quê?
 
 	A linha em que atribuímos `cc` a um `Tributavel` é apenas para você enxergar
 	que é possível fazê-lo. Nesse nosso caso, isso não tem uma utilidade. Essa
 	possibilidade foi útil no exercício anterior.
 
-	
+	<!--@note
+	`Tributavel t = cc` gera muitas dúvidas na cabeça do pessoal. Normal!
+	Eles só precisam saber que isso pode ser feito, não que isso tenha alguma
+	utilidade!
 
-	
+	Isso só será útil, e ficará claro quando eles virem collections
+	`List x = new ArrayList()`.
+	-->
+
+	<!--@answer
+	Apesar de ser um objeto do tipo `ContaCorrente`, ao o chamarmos de
+	`Tributavel`, apenas garantimos ao compilador que aquele objeto tem
+	os métodos que **todo** `Tributavel` tem. E como o compilador do Java só
+	trabalha com certezas, ele só permite chamar os métodos definidos no tipo
+	da variável.
+	-->
 
 
 ## Exercícios opcionais
-Atenção: caso você faça esse exercício, faça isso num projeto à parte
-`conta-interface` já que usaremos a `Conta` como classe em exercícios futuros.
+Atenção: caso você resolva esse exercício, faça-o em um projeto à parte
+`conta-interface`, uma vez que usaremos a `Conta` como classe em exercícios futuros.
 1. (Opcional) Transforme a classe `Conta` em uma interface.
 
-	
+	<!--@note
+	Hora para um bom exemplo de refactoring!
+
+	Aqui você pode mostrar aos alunos o Extract Interface:
+	delete sua classe `Conta`, tire os extends e overrides de `ContaCorrente`
+	e `ContaPoupanca`, e aplique extract interface em `ContaCorrente`!
+
+	Muito melhor que um simples rename!
+	-->
 
 	``` java
 	public interface Conta {
@@ -545,7 +606,7 @@ Atenção: caso você faça esse exercício, faça isso num projeto à parte
 	}
 	```
 
-	Adapte `ContaCorrente` e `ContaPoupanca` para essa modificação:
+	Adapte `ContaCorrente` e `ContaPoupanca` a essa modificação:
 
 	``` java
 	public class ContaCorrente implements Conta {
@@ -559,11 +620,82 @@ Atenção: caso você faça esse exercício, faça isso num projeto à parte
 	}
 	```
 
-	Algum código vai ter de ser copiado e colado? Isso é tão ruim?
+	Algum código terá de ser copiado e colado? Isso é tão ruim?
 
-	
-1. (Opcional) Às vezes, é interessante criarmos uma interface que herda de outras
-	interfaces: essas, são chamadas subinterfaces. Essas, nada mais são do que um
+	<!--@answer
+	Ao fim desse exercício, você terá os seguintes códigos:
+
+	``` java filename="Conta.java"
+		public interface Conta {
+
+			public abstract void deposita(double valor);
+			public abstract void saca(double valor);
+			public abstract double getSaldo();
+			public abstract void atualiza(double taxa);
+		}
+	```
+
+	E as classes que implementam `Conta`:
+
+	``` java filename="ContaCorrente.java"
+		public class ContaCorrente implements Conta, Tributavel {
+			private double saldo;
+
+			@Override
+			public void deposita(double valor) {
+				this.saldo += valor;
+			}
+
+			@Override
+			public void saca(double valor) {
+				this.saldo -= valor;
+			}
+
+			@Override
+			public double getSaldo() {
+				return this.saldo;
+			}
+
+			@Override
+			public void atualiza(double taxa) {
+				this.saldo += this.saldo * taxa * 2;
+			}
+
+			@Override
+			public double calculaTributos() {
+				return this.saldo * 0.01;
+			}
+		}
+	```
+
+	``` java filename="ContaPoupanca.java"
+		public class ContaPoupanca implements Conta {
+			private double saldo;
+
+			@Override
+			public void atualiza(double taxa) {
+				this.saldo += this.saldo * taxa * 3;
+			}
+
+			@Override
+			public void deposita(double valor) {
+				this.saldo += (valor - 0.1);
+			}
+
+			@Override
+			public void saca(double valor) {
+				this.saldo -= valor;
+			}
+
+			@Override
+			public double getSaldo() {
+				return this.saldo;
+			}
+		}
+	```
+	-->
+1. (Opcional) Às vezes, é interessante criarmos uma interface que herde de outras
+	interfaces: aquela é chamada de subinterface, e nada mais é do que um
 	agrupamento de obrigações para a classe que a implementar.
 
 	``` java
@@ -588,18 +720,37 @@ Atenção: caso você faça esse exercício, faça isso num projeto à parte
 	algum, só herda os métodos abstratos declarados nas outras interfaces.
 
 	Ao mesmo tempo que uma interface pode herdar de mais de uma outra interface,
-	classes só podem possuir uma classe mãe (herança simples).
+	classes só podem ter uma classe mãe (herança simples).
 
-	
+	<!--@answer
+	Podemos criar a interface ContaTributavel, que é uma `Conta` e também é
+	`Tributavel`. Como as definições dos métodos já estão nas duas interfaces
+	originais, a declaração da nova fica simplesmente:
+
+	``` java filename="ContaCorrente.java"
+		public interface ContaTributavel extends Conta, Tributavel {
+		}
+	```
+
+	E, então, alteramos também a ContaCorrente, que passa a implementar apenas
+	essa nova interface:
+
+	``` java filename="ContaCorrente.java"
+		public class ContaCorrente implements ContaTributavel {
+			// restante da classe
+			// exatamente igual à do exercício anterior
+		}
+	```
+	-->
 
 
 ## Discussão: favoreça composição em relação à herança
 
-Discuta com o instrutor e seus colegas, alternativas à herança. Falaremos
-de herança versus composição e porquê a herança é muitas vezes considerada
+Discuta com o seu instrutor e colegas alternativas à herança. Falaremos
+de herança versus composição, além de o porquê da herança ser, muitas vezes, considerada
 maléfica.
 
-Numa entrevista, James Gosling, "pai do java", fala sobre uma linguagem
+Em uma entrevista, James Gosling, pai do Java, fala sobre uma linguagem
 puramente de delegação e chega a dizer:
 
 _Rather than subclassing, just use pure interfaces.
@@ -610,7 +761,25 @@ has problems._
 
 http://www.artima.com/intv/gosling3P.html
 
-No blog da Caelum há também um post sobre o assunto:
+No blog da Caelum, há também um post sobre o assunto:
 http://blog.caelum.com.br/2006/10/14/como-nao-aprender-orientacao-a-objetos-heranca/
 
+<!--@note
+Você poderia diminuir esse
+_copia e cola_ e centralizar esses códigos repetidos em um lugar só. Imagine
+uma classe chamada `ManipuladorDeSaldo` que tenha os métodos
+os quais trabalham com depósito, saque, transferência, etc. Cada uma das
+contas teriam referência a um `ManipuladorDeSaldo` e **delegariam**
+chamadas para esse objeto. Conta **tem** `ManipuladorDeSaldo`, mas não
+**é um** `ManipuladorDeSaldo`: uma relação muito mais amena.
 
+Pesquise sobre herança versus composição. É um tema em discussão desde
+a época do livro Design Patterns, em 1995, que é citado com um
+princípio da boa orientação a objetos:
+
+**Favor object composition over class inheritance**
+
+Ceci: se tenho tempo (o que significa que a turma é boa), eu costumo fazer o clássico
+classe Pessoa com filhas PessoaFisica e PessoaJuridica. Aí refatorar na lousa para
+transformar Pessoa em DadosPessoais de forma que PessoaFisica e PessoaJuridica tenham DadosPessoais. Daí mostro que perdemos o polimorfismo, então criamos a interface Pessoa e as duas classes implementam-na.
+-->
