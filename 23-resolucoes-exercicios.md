@@ -623,7 +623,7 @@ O objetivo aqui é criar um sistema para gerenciar as contas de um `Banco`. __Os
 		c1.dataDeAbertura.preencheData(1, 7, 2009);
 	}
 }
-```
+
 1. (Opcional) O que acontece se você tentar acessar um atributo diretamente na
 	classe? Por exemplo:
 
